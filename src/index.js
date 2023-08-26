@@ -5,6 +5,7 @@ import "./index.css";
 import "./css/dzialy.css";
 import "./css/main.css";
 import "./css/styles.css";
+import "./css/learn.css";
 import reportWebVitals from "./reportWebVitals";
 import "aos/dist/aos.css";
 import "bootstrap/dist/css/bootstrap.css";

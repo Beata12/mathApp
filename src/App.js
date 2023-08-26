@@ -3,6 +3,7 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Dzialy from "./Dzialy";
 import Numbs from "./Numbs";
+import Numbslearn from "./Numbslearn";
 import Numbseasy from "./Numbseasy";
 import Numbshard from "./Numbshard";
 import Numbslisten from "./Numbslisten";
@@ -25,6 +26,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Dzialy />} />
 				<Route path="/num" element={<Numbs />} />
+				<Route path="/numlearn" element={<Numbslearn />} />
 				<Route path="/nume" element={<Numbseasy />} />
 				<Route path="/numh" element={<Numbshard />} />
 				<Route path="/numl" element={<Numbslisten />} />

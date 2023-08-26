@@ -7,6 +7,9 @@ function Numbers() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
+						<Link to="/numlearn">
+							<li className="list">Poznaje cyfry</li>
+						</Link>
 						<Link to="/nume">
 							<li className="list">Coś łatwego</li>
 						</Link>

@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
+
+.dzialy-mobile {
+	display: none;
+}
+
+.dzialy-desktop {
+	display: block;
+}
+
+.number {
+	font-size: 100px;
+}
+
+@media screen and (max-width: 600px) {
+	/* body {
+		background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/50598/concrete-wall-background.jpg)
+			center center fixed;
+		background-size: cover;
+	} */
+
+	.dzialy-mobile {
+		display: block;
+	}
+
+	.dzialy-desktop {
+		display: none;
+	}
+
+	.number {
+		margin-left: 20px;
+		color: white;
+		font-size: 100px;
+		font-family: "Grand Hotel", cursive;
+	}
+
+	.number-tekst {
+		color: white;
+		margin-top: 25%;
+		font-size: 50px;
+		font-family: "Grand Hotel", cursive;
+	}
+
+	.blackboard {
+		width: 80% !important;
+		height: 80%;
+		border: #b9713d solid 12px;
+		border-top: #8b4513 solid 12px;
+		border-left: #b9713d solid 12px;
+		border-bottom: #8b4513 solid 12px;
+		box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #8b4513,
+			0px 0px 0px 4px #b9713d, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+		background-image: radial-gradient(
+				circle at left 30%,
+				#228b22,
+				#117811 80px,
+				#006400 160px,
+				#2e8b57
+			),
+			linear-gradient(
+				215deg,
+				transparent,
+				transparent 100px,
+				#2e8b57 260px,
+				#228b22 320px,
+				transparent
+			),
+			radial-gradient(circle at right, #006400, #556b2f);
+		background-color: #228b22;
+	}
+
+	.ball {
+		margin: 20px;
+		margin-bottom: 40px;
+		height: 100px;
+	}
+}
