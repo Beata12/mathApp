@@ -28,17 +28,17 @@ function Navigation() {
 					<ul className="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
 						<li className="nav-item">
 							<a className="nav-link" href="index.html">
-								Home
+								Poznajemy cyfry
 							</a>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link" href="resume.html">
-								Apps
+								Dodajemy
 							</a>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link" href="contact.html">
-								Contact
+								Odejmujemy
 							</a>
 						</li>
 					</ul>

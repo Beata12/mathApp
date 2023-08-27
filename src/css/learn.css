@@ -18,6 +18,10 @@
 			center center fixed;
 		background-size: cover;
 	} */
+	.main-dzialy {
+		overflow: scroll;
+		height: 100%;
+	}
 
 	.dzialy-mobile {
 		display: block;
@@ -28,7 +32,7 @@
 	}
 
 	.number {
-		margin-left: 20px;
+		/* margin-left: 20px; */
 		color: white;
 		font-size: 100px;
 		font-family: "Grand Hotel", cursive;
@@ -69,9 +73,47 @@
 		background-color: #228b22;
 	}
 
-	.ball {
+	.ball-class,
+	.piec-class {
 		margin: 20px;
-		margin-bottom: 40px;
 		height: 100px;
+	}
+
+	.cat-class,
+	.an2-class {
+		margin: 10px;
+		height: 70px;
+	}
+
+	.ball2-class {
+		margin: 20px;
+		height: 75px;
+	}
+
+	.bas2-class,
+	.base-class,
+	.basket-class {
+		margin: 10px;
+		height: 50px;
+	}
+
+	.an-class {
+		margin: 5px;
+		margin-bottom: 10px;
+		height: 50px;
+	}
+
+	.base2-class {
+		margin: 5px;
+		margin-bottom: 10px;
+		height: 40px;
+	}
+
+	.fa-face-smile {
+		color: green;
+	}
+
+	.fa-face-frown {
+		color: red;
 	}
 }
