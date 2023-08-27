@@ -10,12 +10,15 @@ function Numbers() {
 						<Link to="/sign">
 							<li className="list">Poznaje znaki matematyczne</li>
 						</Link>
-						<Link to="/">
-							<li className="list">Łatwe</li>
+						<Link to="/esm">
+							<li className="list">Mniejsze</li>
 						</Link>
-						<Link to="/">
-							<li className="list">Trudne</li>
+						<Link to="/egr">
+							<li className="list">Większe</li>
 						</Link>
+						<Link to="/grsm">
+							<li className="list">Mniejsze czy większe?</li>
+						</Link>{" "}
 						<Link to="/">
 							<li className="list">Wróć</li>
 						</Link>

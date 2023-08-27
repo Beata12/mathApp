@@ -10,6 +10,9 @@ import Numbslisten from "./LearnNumbs/Numbslisten";
 import Comparison from "./GreaterSmaller/Comparison";
 import Addition from "./Addition/Addition";
 import Signs from "./GreaterSmaller/Signs";
+import GrtSmlr from "./GreaterSmaller/GrtSmlr";
+import EasyGreater from "./GreaterSmaller/EasyGreater";
+import EasySmaller from "./GreaterSmaller/EasySmaller";
 import Substraction from "./Substraction/Substraction";
 import Unknown from "../Unknown";
 import { useEffect } from "react";
@@ -35,6 +38,9 @@ function App() {
 				<Route path="/sign" element={<Signs />} />
 				<Route path="/sub" element={<Substraction />} />
 				<Route path="/un" element={<Unknown />} />
+				<Route path="/egr" element={<EasyGreater />} />
+				<Route path="/esm" element={<EasySmaller />} />
+				<Route path="/grsm" element={<GrtSmlr />} />
 			</Routes>
 			<Footer />
 		</div>

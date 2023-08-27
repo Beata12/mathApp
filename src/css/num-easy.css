@@ -2,11 +2,13 @@
 
 @media screen and (max-width: 600px) {
 	.fa-face-smile {
-		color: green;
+		color: #008000;
+		font-size: 50px;
 	}
 
 	.fa-face-frown {
 		color: red;
+		font-size: 50px;
 	}
 
 	.digits {

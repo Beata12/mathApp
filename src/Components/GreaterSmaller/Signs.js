@@ -46,7 +46,7 @@ function Signs() {
 			</div>
 
 			<ul className="text-center">
-				<Link to="/num">
+				<Link to="/comp">
 					<li className="list">Chcesz poćwiczyć</li>
 				</Link>
 				<Link to="/">
