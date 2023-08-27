@@ -127,12 +127,6 @@ function Numberseasy() {
 								))}
 							</div>
 						</div>
-						{isCorrect && (
-							<div className="correct-answer">
-								Poprawna odpowiedź! Przechodzisz do następnego
-								pytania.
-							</div>
-						)}
 						<Link to="/num">
 							<li className="list">Wybierz inny lewel</li>
 						</Link>
