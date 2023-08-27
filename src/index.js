@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
+import "./css/index.css";
 import "./css/dzialy.css";
 import "./css/main.css";
 import "./css/styles.css";
+import "./css/num-easy.css";
 import "./css/learn.css";
 import reportWebVitals from "./reportWebVitals";
 import "aos/dist/aos.css";

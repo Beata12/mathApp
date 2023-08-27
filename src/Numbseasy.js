@@ -101,10 +101,12 @@ function Numberseasy() {
 					<ul className="text-center">
 						<li className="list">Poziom łatwy</li>
 						<div className="dobre-zle">
-							{isCorrect ? (
+							{isCorrect === true ? (
 								<FontAwesomeIcon icon={faFaceSmile} />
-							) : (
+							) : isCorrect === false ? (
 								<FontAwesomeIcon icon={faFaceFrown} />
+							) : (
+								<></> // Display nothing if no answer has been selected
 							)}
 						</div>
 						<Canvas>
