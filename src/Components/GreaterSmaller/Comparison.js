@@ -7,6 +7,15 @@ function Numbers() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
+						<Link to="/sign">
+							<li className="list">Poznaje znaki matematyczne</li>
+						</Link>
+						<Link to="/">
+							<li className="list">Łatwe</li>
+						</Link>
+						<Link to="/">
+							<li className="list">Trudne</li>
+						</Link>
 						<Link to="/">
 							<li className="list">Wróć</li>
 						</Link>

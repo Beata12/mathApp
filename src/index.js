@@ -7,13 +7,14 @@ import "./css/main.css";
 import "./css/styles.css";
 import "./css/num-easy.css";
 import "./css/learn.css";
+import "./css/compare.css";
 import reportWebVitals from "./reportWebVitals";
 import "aos/dist/aos.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "font-awesome/css/font-awesome.css";
 
-import App from "./App";
+import App from "./Components/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
