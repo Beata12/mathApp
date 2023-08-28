@@ -25,6 +25,11 @@ function Numbers() {
 						<Link to="/u20">
 							<li className="list">Dodawanie do 20</li>
 						</Link>
+						<Link to="/w20">
+							<li className="list">
+								Dodawanie do 20 - wpisywanie
+							</li>
+						</Link>
 						<Link to="/">
 							<li className="list">Wróć</li>
 						</Link>

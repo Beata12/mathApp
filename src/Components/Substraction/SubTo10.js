@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Upto20() {
+function SubtractionUpTo10() {
 	const [randomNumber1, setRandomNumber1] = useState(null);
 	const [randomNumber2, setRandomNumber2] = useState(null);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
@@ -27,25 +27,31 @@ function Upto20() {
 	}, [userChoice]);
 
 	const generateRandomNumbers = () => {
-		const possibleSums = [];
-		for (let i = 1; i <= 20; i++) {
-			possibleSums.push(i);
-		}
-
+		const possibleNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 		const newRandomNumber1 =
-			possibleSums[Math.floor(Math.random() * possibleSums.length)];
-		const newRandomNumber2 = Math.floor(
-			Math.random() * (21 - newRandomNumber1)
+			possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
+
+		// Generate a valid second number considering previous difference and previous numbers
+		let newRandomNumber2;
+		do {
+			newRandomNumber2 = Math.floor(
+				Math.random() * (newRandomNumber1 + 1)
+			);
+		} while (
+			(newRandomNumber1 === randomNumber1 &&
+				newRandomNumber2 === randomNumber2) ||
+			newRandomNumber1 - newRandomNumber2 < 0
 		);
+
 		setRandomNumber1(newRandomNumber1);
 		setRandomNumber2(newRandomNumber2);
-		setCorrectAnswer(newRandomNumber1 + newRandomNumber2);
+		setCorrectAnswer(newRandomNumber1 - newRandomNumber2);
 	};
 
 	const generateUniqueOptions = () => {
 		const options = [];
 		while (options.length < 2) {
-			const newRandomOption = Math.floor(Math.random() * 21);
+			const newRandomOption = Math.floor(Math.random() * 11);
 			if (
 				options.indexOf(newRandomOption) === -1 &&
 				newRandomOption !== correctAnswer
@@ -71,12 +77,12 @@ function Upto20() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div>Dodawanie do</div>
+						<div>Odejmowanie do</div>
 						<div className="row">
 							<div className="firstNumber col">
 								{randomNumber1}
 							</div>
-							<div className="add col">+</div>
+							<div className="subtract col">-</div>
 							<div className="secondNumber col">
 								{randomNumber2}
 							</div>
@@ -114,7 +120,7 @@ function Upto20() {
 						)}
 						<div className="score">Score: {score}</div>
 
-						<Link to="/add">
+						<Link to="/sub">
 							<li className="list">Wróć</li>
 						</Link>
 					</ul>
@@ -124,4 +130,4 @@ function Upto20() {
 	);
 }
 
-export default Upto20;
+export default SubtractionUpTo10;

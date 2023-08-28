@@ -13,12 +13,21 @@ import UpTo20 from "./Addition/UpTo20";
 import UpTo5 from "./Addition/UpTo5";
 import UpTo10 from "./Addition/UpTo10";
 import Write10 from "./Addition/UpTo10Write";
+import Write20 from "./Addition/UpTo20Write";
 import Signs from "./GreaterSmaller/Signs";
 import GrtSmlr from "./GreaterSmaller/GrtSmlr";
 import EasyGreater from "./GreaterSmaller/EasyGreater";
 import EasySmaller from "./GreaterSmaller/EasySmaller";
 import Substraction from "./Substraction/Substraction";
-import Unknown from "../Unknown";
+import SubTo5 from "./Substraction/SubTo5";
+import SubTo10 from "./Substraction/SubTo10";
+import SubTo10Write from "./Substraction/SubTo10Write";
+import SubTo20 from "./Substraction/SubTo20";
+import SubTo20Write from "./Substraction/SubTo20Write";
+import Unknown from "./Unknown/Unknown";
+import UnknownAdd from "./Unknown/UknnowAdd";
+import UnknownSub from "./Unknown/UknnowSub";
+import UnknownAddSub from "./Unknown/UknnowAddSub";
 import { useEffect } from "react";
 import AOS from "aos";
 import React from "react";
@@ -41,11 +50,20 @@ function App() {
 				<Route path="/add" element={<Addition />} />
 				<Route path="/u5" element={<UpTo5 />} />
 				<Route path="/u10" element={<UpTo10 />} />
-				<Route path="/w10" element={<Write10 />} />{" "}
+				<Route path="/w10" element={<Write10 />} />
 				<Route path="/u20" element={<UpTo20 />} />
+				<Route path="/w20" element={<Write20 />} />
 				<Route path="/sign" element={<Signs />} />
 				<Route path="/sub" element={<Substraction />} />
+				<Route path="/o5" element={<SubTo5 />} />
+				<Route path="/o10" element={<SubTo10 />} />
+				<Route path="/ow10" element={<SubTo10Write />} />
+				<Route path="/o20" element={<SubTo20 />} />
+				<Route path="/ow20" element={<SubTo20Write />} />
 				<Route path="/un" element={<Unknown />} />
+				<Route path="/una" element={<UnknownAdd />} />
+				<Route path="/uns" element={<UnknownSub />} />
+				<Route path="/unas" element={<UnknownAddSub />} />
 				<Route path="/egr" element={<EasyGreater />} />
 				<Route path="/esm" element={<EasySmaller />} />
 				<Route path="/grsm" element={<GrtSmlr />} />

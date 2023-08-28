@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Upto20() {
+function SubtractionUpTo20() {
 	const [randomNumber1, setRandomNumber1] = useState(null);
 	const [randomNumber2, setRandomNumber2] = useState(null);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
@@ -27,19 +27,19 @@ function Upto20() {
 	}, [userChoice]);
 
 	const generateRandomNumbers = () => {
-		const possibleSums = [];
+		const possibleNumbers = [];
 		for (let i = 1; i <= 20; i++) {
-			possibleSums.push(i);
+			possibleNumbers.push(i);
 		}
 
 		const newRandomNumber1 =
-			possibleSums[Math.floor(Math.random() * possibleSums.length)];
+			possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
 		const newRandomNumber2 = Math.floor(
-			Math.random() * (21 - newRandomNumber1)
+			Math.random() * (newRandomNumber1 + 1)
 		);
 		setRandomNumber1(newRandomNumber1);
 		setRandomNumber2(newRandomNumber2);
-		setCorrectAnswer(newRandomNumber1 + newRandomNumber2);
+		setCorrectAnswer(newRandomNumber1 - newRandomNumber2);
 	};
 
 	const generateUniqueOptions = () => {
@@ -71,12 +71,12 @@ function Upto20() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div>Dodawanie do</div>
+						<div>Odejmowanie do</div>
 						<div className="row">
 							<div className="firstNumber col">
 								{randomNumber1}
 							</div>
-							<div className="add col">+</div>
+							<div className="subtract col">-</div>
 							<div className="secondNumber col">
 								{randomNumber2}
 							</div>
@@ -114,7 +114,7 @@ function Upto20() {
 						)}
 						<div className="score">Score: {score}</div>
 
-						<Link to="/add">
+						<Link to="/sub">
 							<li className="list">Wróć</li>
 						</Link>
 					</ul>
@@ -124,4 +124,4 @@ function Upto20() {
 	);
 }
 
-export default Upto20;
+export default SubtractionUpTo20;
