@@ -9,6 +9,10 @@ import Numbshard from "./LearnNumbs/Numbshard";
 import Numbslisten from "./LearnNumbs/Numbslisten";
 import Comparison from "./GreaterSmaller/Comparison";
 import Addition from "./Addition/Addition";
+import UpTo20 from "./Addition/UpTo20";
+import UpTo5 from "./Addition/UpTo5";
+import UpTo10 from "./Addition/UpTo10";
+import Write10 from "./Addition/UpTo10Write";
 import Signs from "./GreaterSmaller/Signs";
 import GrtSmlr from "./GreaterSmaller/GrtSmlr";
 import EasyGreater from "./GreaterSmaller/EasyGreater";
@@ -35,6 +39,10 @@ function App() {
 				<Route path="/numl" element={<Numbslisten />} />
 				<Route path="/comp" element={<Comparison />} />
 				<Route path="/add" element={<Addition />} />
+				<Route path="/u5" element={<UpTo5 />} />
+				<Route path="/u10" element={<UpTo10 />} />
+				<Route path="/w10" element={<Write10 />} />{" "}
+				<Route path="/u20" element={<UpTo20 />} />
 				<Route path="/sign" element={<Signs />} />
 				<Route path="/sub" element={<Substraction />} />
 				<Route path="/un" element={<Unknown />} />
