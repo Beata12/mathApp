@@ -1,8 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Import useEffect
 import { Link } from "react-router-dom";
 
 function Numbslearn() {
 	const [currentNumber, setCurrentNumber] = useState(1);
+
+	const pics = {
+		1: "1.png",
+		2: ["2.png", "2.png"],
+		3: ["3.png", "3.png", "3.png"],
+		4: ["4.png", "4.png", "4.png", "4.png"],
+		5: ["5.png"],
+		6: ["6.png", "6.png", "6.png", "6.png", "6.png", "6.png"],
+		7: ["7.png", "7.png", "7.png", "7.png", "7.png", "7.png", "7.png"],
+		8: [
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+		],
+		9: [
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+		],
+		10: [
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+		],
+	};
+
+	const [currentPic, setCurrentPic] = useState(pics[currentNumber]);
 
 	const numberTexts = {
 		1: "jeden",
@@ -17,19 +62,6 @@ function Numbslearn() {
 		10: "dziesięć",
 	};
 
-	const numberImages = {
-		1: "ball",
-		2: "cat",
-		3: "an2",
-		4: "base",
-		5: "5",
-		6: "an",
-		7: "basket",
-		8: "ball2",
-		9: "bas2",
-		10: "base2",
-	};
-
 	const handleNext = () => {
 		if (currentNumber < 10) {
 			setCurrentNumber(currentNumber + 1);
@@ -42,9 +74,18 @@ function Numbslearn() {
 		}
 	};
 
+	useEffect(() => {
+		// Aktualizuj currentPic na podstawie currentNumber po zmianie currentNumber
+		setCurrentPic(pics[currentNumber]);
+	}, [currentNumber, pics]);
+
 	return (
 		<main className="main-dzialy">
 			<div className="blackboard container text-center">
+				<div className="text-center">
+					<button onClick={handlePrevious}>Poprzedni</button>
+					<button onClick={handleNext}>Dalej</button>
+				</div>
 				<div className="row">
 					<div className="col">
 						<p className="number">{currentNumber}</p>
@@ -56,18 +97,12 @@ function Numbslearn() {
 					</div>
 				</div>
 				<img
-					className={`image-${numberImages[currentNumber]}`}
-					src={
-						require(`./photos/${numberImages[currentNumber]}.png`)
-							.default
-					}
-					alt={`Add more descriptive alt for ${numberTexts[currentNumber]}`}
+					className="an-class"
+					src={require(`./photos/${currentPic}`)}
+					alt={"Add more descriptive alt"}
 				/>
 			</div>
-			<div className="text-center">
-				<button onClick={handlePrevious}>Poprzedni</button>
-				<button onClick={handleNext}>Dalej</button>
-			</div>
+
 			<ul className="text-center">
 				<Link to="/num">
 					<li className="list">Chcesz poćwiczyć</li>

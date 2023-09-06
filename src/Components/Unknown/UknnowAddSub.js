@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import UnknownAdd from "./Unknown/UknnowAdd";
-import UnknownSub from "./Unknown/UknnowSub";
+// import UnknownAdd from "./Unknown/UknnowAdd";
+// import UnknownSub from "./Unknown/UknnowSub";
 
-function App() {
+function UnnknowAddSub() {
 	const [currentMode, setCurrentMode] = useState(0); // 0 for addition, 1 for subtraction
 
 	const toggleMode = () => {
@@ -17,10 +17,10 @@ function App() {
 					Toggle Mode:{" "}
 					{currentMode === 0 ? "Addition" : "Subtraction"}
 				</button>
-				{currentMode === 0 ? <UnknownAdd /> : <UnknownSub />}
+				{/* {currentMode === 0 ? <UnknownAdd /> : <UnknownSub />} */}
 			</header>
 		</div>
 	);
 }
 
-export default App;
+export default UnnknowAddSub;
