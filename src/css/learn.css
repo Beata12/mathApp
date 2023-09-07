@@ -73,39 +73,48 @@
 		background-color: #228b22;
 	}
 
-	.ball-class,
-	.piec-class {
+	.btn-changenum {
+		margin: 10px;
+		color: white !important;
+		border: #b9713d solid 12px;
+		border-top: #8b4513 solid 12px;
+		border-left: #b9713d solid 12px;
+		border-bottom: #8b4513 solid 12px;
+		box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #8b4513,
+			0px 0px 0px 4px #b9713d, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+	}
+
+	.one-class {
 		margin: 20px;
 		height: 100px;
 	}
 
-	.cat-class,
-	.an2-class {
+	.two-class,
+	.three-class,
+	.four-class,
+	.fife-class {
 		margin: 10px;
-		height: 70px;
+		height: 85px;
 	}
 
-	.ball2-class {
+	.six-class {
 		margin: 20px;
 		height: 75px;
 	}
 
-	.bas2-class,
-	.base-class,
-	.basket-class {
+	.seven-class {
 		margin: 10px;
-		height: 50px;
+		height: 70px;
+	}
+	.nine-class {
+		margin: 7px;
+		height: 80px;
 	}
 
-	.an-class {
+	.eight-class,
+	.ten-class {
 		margin: 5px;
-		margin-bottom: 10px;
-		height: 50px;
-	}
-
-	.base2-class {
-		margin: 5px;
-		margin-bottom: 10px;
-		height: 40px;
+		margin-bottom: 20px;
+		height: 70px;
 	}
 }

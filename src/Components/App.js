@@ -37,7 +37,7 @@ function App() {
 		AOS.init();
 	}, []);
 	return (
-		<div className="App">
+		<div className="App blackboard container text-center">
 			<Navigation />
 			<Routes>
 				<Route path="/" element={<Dzialy />} />

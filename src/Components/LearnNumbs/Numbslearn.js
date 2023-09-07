@@ -1,24 +1,8 @@
-import React, { useState, useEffect } from "react"; // Import useEffect
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Numbslearn() {
 	const [currentNumber, setCurrentNumber] = useState(1);
-
-	const pics = {
-		1: "1.png",
-		2: "2.png",
-		3: "3.png",
-		4: "4.png",
-		5: "5.png",
-		6: "6.png",
-		7: "7.png",
-		8: "8.png",
-		9: "9.png",
-
-		10: "10.png",
-	};
-
-	const [currentPic, setCurrentPic] = useState(pics[currentNumber]);
 
 	const numberTexts = {
 		1: "jeden",
@@ -47,15 +31,83 @@ function Numbslearn() {
 
 	useEffect(() => {
 		// Aktualizuj currentPic na podstawie currentNumber po zmianie currentNumber
-		setCurrentPic(pics[currentNumber]);
-	}, [currentNumber, pics]);
+		// Pobierz nazwy plików obrazów z obiektu pics bez przecinków
+		const picNames = pics[currentNumber];
+
+		setCurrentPic(picNames);
+	}, [currentNumber]);
+
+	const pics = {
+		1: ["1.png"],
+		2: ["2.png", "2.png"],
+		3: ["3.png", "3.png", "3.png"],
+		4: ["4.png", "4.png", "4.png", "4.png"],
+		5: ["5.png", "5.png", "5.png", "5.png", "5.png"],
+		6: ["6.png", "6.png", "6.png", "6.png", "6.png", "6.png"],
+		7: ["7.png", "7.png", "7.png", "7.png", "7.png", "7.png", "7.png"],
+		8: [
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+			"8.png",
+		],
+		9: [
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+			"9.png",
+		],
+		10: [
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+			"10.png",
+		],
+	};
+
+	const classes = {
+		1: "one-class",
+		2: "two-class",
+		3: "three-class",
+		4: "four-class",
+		5: "fife-class",
+		6: "six-class",
+		7: "seven-class",
+		8: "eight-class",
+		9: "nine-class",
+		10: "ten-class",
+	};
+
+	const [currentPic, setCurrentPic] = useState(pics[currentNumber]);
 
 	return (
 		<main className="main-dzialy">
 			<div className="blackboard container text-center">
 				<div className="text-center">
-					<button onClick={handlePrevious}>Poprzedni</button>
-					<button onClick={handleNext}>Dalej</button>
+					<button
+						className="btn btn-changenum"
+						onClick={handlePrevious}
+					>
+						Poprzedni
+					</button>
+					<button className="btn btn-changenum" onClick={handleNext}>
+						Dalej
+					</button>
 				</div>
 				<div className="row">
 					<div className="col">
@@ -67,11 +119,14 @@ function Numbslearn() {
 						</p>
 					</div>
 				</div>
-				<img
-					className="an-class"
-					src={require(`./photos/${currentPic}`)}
-					alt={"Add more descriptive alt"}
-				/>
+				{currentPic.map((pic, index) => (
+					<img
+						className={` ${classes[currentNumber]}`}
+						key={index}
+						src={require(`./photos/${pic}`)}
+						alt={`Zdjęcie ${currentNumber}`}
+					/>
+				))}
 			</div>
 
 			<ul className="text-center">
