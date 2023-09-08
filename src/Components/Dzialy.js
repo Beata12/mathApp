@@ -72,9 +72,16 @@ function Dzialy() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<Link to="./num">
-							<li className="list">Poznajemy liczby</li>
-						</Link>
+						<div>
+							<img
+								className="animal"
+								src={require("./photo/animal.png")}
+								alt={"Add more descriptive alt"}
+							/>
+							<Link to="./num">
+								<li className="list">Poznajemy liczby</li>
+							</Link>
+						</div>
 						<Link to="./sign">
 							<li className="list">
 								Poznajemy znaki matematyczne
@@ -83,12 +90,20 @@ function Dzialy() {
 						<Link to="./add">
 							<li className="list">Uczymy się dodawać</li>
 						</Link>
-						<Link to="./sub">
-							<li className="list">Uczymy się odejmować</li>
-						</Link>
+						<div>
+							<img
+								className="pens"
+								src={require("./photo/pens.png")}
+								alt={"Add more descriptive alt"}
+							/>
+							<Link to="./sub">
+								<li className="list">Uczymy się odejmować</li>
+							</Link>
+						</div>
 						<Link to="./comp">
 							<li className="list">Większy/Mniejszy</li>
 						</Link>
+
 						<Link to="./un">
 							<li className="list">Działania z niewiadomą</li>
 						</Link>

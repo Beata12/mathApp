@@ -20,3 +20,26 @@
 	font-family: "Dancing Script", cursive;
 	font-size: 25px;
 }
+
+.scroll {
+	max-width: 1200px;
+	margin: 0 auto;
+	overflow-y: auto; /* Add vertical scroll if needed */
+}
+
+.list {
+	color: white;
+	text-decoration: none;
+	font-size: 25px;
+}
+
+.animal {
+	height: 180px;
+	float: right;
+}
+
+.pens {
+	height: 200px;
+	float: left;
+	margin-left: 0px;
+}
