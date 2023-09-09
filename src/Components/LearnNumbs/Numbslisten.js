@@ -7,13 +7,13 @@ function Numbers() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<li className="list">Słucham</li>
+						<li className="list-mobile">Słucham</li>
 
-						<Link to="/num">
-							<li className="list">Wybierz inny lewel</li>
+						<Link style={{ textDecoration: "none" }} to="/num">
+							<li className="list-mobile">Wybierz inny lewel</li>
 						</Link>
-						<Link to="/">
-							<li className="list">Powrót do menu</li>
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="list-mobile">Powrót do menu</li>
 						</Link>
 					</ul>
 				</div>

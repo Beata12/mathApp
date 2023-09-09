@@ -6,8 +6,16 @@ function Navigation() {
 		<nav className="navbar navbar-expand-lg navbar-light py-3 ">
 			<div className="container px-5">
 				<a className="navbar-brand" href="index.html">
-					<span className="fw-bolder">Nazwa aplikacji</span>
+					<div>
+						<img
+							className="appname"
+							src={require("./photo/mis.png")}
+							alt={"Add more descriptive alt"}
+						/>
+						<span className="fw-bolder">Nazwa aplikacji</span>
+					</div>
 				</a>
+
 				<button
 					className="navbar-toggler"
 					type="button"

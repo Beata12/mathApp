@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -31,20 +31,46 @@ function Numberseasy() {
 		Math.floor(Math.random() * 10) + 1
 	);
 	const spacing = 2;
+	const [showEmoji, setShowEmoji] = useState(false);
+	const [cubes, setCubes] = useState([]);
 
-	const cubes = Array.from({ length: randomCubeCount }).map((_, index) => (
-		<Cube
-			key={index}
-			position={[
-				index * spacing - (randomCubeCount - 1) * spacing * 0.5,
-				0,
-				0,
-			]}
-		/>
-	));
+	const numRows = Math.ceil(randomCubeCount / 5);
+	const numColumns = Math.min(randomCubeCount, 5);
 
-	// Generate number options for the current question
-	function generateNumberOptions(cubeCount, correctAnswer) {
+	// Funkcja do usuwania obiektów
+	const removeCubes = () => {
+		setCubes([]);
+	};
+
+	const generateCubes = () => {
+		const newCubes = [];
+		for (let row = 0; row < numRows; row++) {
+			for (let col = 0; col < numColumns; col++) {
+				const index = row * 5 + col;
+				if (index < randomCubeCount) {
+					newCubes.push(
+						<Cube
+							key={index}
+							position={[
+								col * spacing -
+									(numColumns - 1) * spacing * 0.5,
+								row * spacing,
+								0,
+							]}
+						/>
+					);
+				}
+			}
+		}
+		setCubes(newCubes);
+	};
+
+	useEffect(() => {
+		// Generuj kostki na początku
+		generateCubes();
+	}, [randomCubeCount]);
+
+	const generateNumberOptions = (cubeCount, correctAnswer) => {
 		let options = [correctAnswer.toString()];
 		while (options.length < 3) {
 			const randomNumber = getRandomNumber(cubeCount);
@@ -57,37 +83,37 @@ function Numberseasy() {
 		}
 		options = shuffleArray(options);
 		return options;
-	}
+	};
 
-	// Generate a random number within a range
-	function getRandomNumber(maxNumber) {
+	const getRandomNumber = (maxNumber) => {
 		return Math.floor(Math.random() * maxNumber) + 1;
-	}
+	};
 
-	// Shuffle an array using the Fisher-Yates algorithm
-	function shuffleArray(array) {
+	const shuffleArray = (array) => {
 		for (let i = array.length - 1; i > 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
 			[array[i], array[j]] = [array[j], array[i]];
 		}
 		return array;
-	}
+	};
 
-	// Handle click on number option
-	function handleNumberClick(selectedNumber) {
+	const handleNumberClick = (selectedNumber) => {
 		if (selectedNumber === randomCubeCount.toString()) {
 			setIsCorrect(true);
-			setTimeout(() => {
-				setIsCorrect(false);
-				const newRandomCubeCount = Math.floor(Math.random() * 10) + 1;
-				setCurrentQuestion(currentQuestion + 1);
-				setRandomCubeCount(newRandomCubeCount);
-			}, 2000);
 		} else {
 			setIsCorrect(false);
-			// Handle incorrect answer if needed...
 		}
-	}
+		setShowEmoji(true);
+		setTimeout(() => {
+			setShowEmoji(false);
+			const newRandomCubeCount = Math.floor(Math.random() * 10) + 1;
+			setCurrentQuestion(currentQuestion + 1);
+			setRandomCubeCount(newRandomCubeCount);
+			// Usuń stare kostki i wygeneruj nowe
+			removeCubes();
+			generateCubes();
+		}, 2000);
+	};
 
 	const numberOptions = generateNumberOptions(
 		randomCubeCount,
@@ -99,17 +125,23 @@ function Numberseasy() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<li className="list">Poziom łatwy</li>
+						<li className="header-mobile">Poziom łatwy</li>
 						<div className="dobre-zle">
-							{isCorrect === true ? (
+							{showEmoji && isCorrect === true ? (
 								<FontAwesomeIcon icon={faFaceSmile} />
-							) : isCorrect === false ? (
+							) : showEmoji && isCorrect === false ? (
 								<FontAwesomeIcon icon={faFaceFrown} />
 							) : (
-								<></> // Display nothing if no answer has been selected
+								<></>
 							)}
 						</div>
-						<Canvas>
+						<Canvas
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
 							<ambientLight />
 							<pointLight position={[10, 10, 10]} />
 							{cubes}
@@ -129,11 +161,11 @@ function Numberseasy() {
 								))}
 							</div>
 						</div>
-						<Link to="/num">
-							<li className="list">Wybierz inny lewel</li>
+						<Link style={{ textDecoration: "none" }} to="/num">
+							<li className="list-mobile">Wybierz inny lewel</li>
 						</Link>
-						<Link to="/">
-							<li className="list">Powrót do menu</li>
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="list-mobile">Powrót do menu</li>
 						</Link>
 					</ul>
 				</div>

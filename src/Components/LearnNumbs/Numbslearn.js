@@ -97,6 +97,7 @@ function Numbslearn() {
 
 	return (
 		<main className="main-dzialy">
+			<div className="header-mobile">Poznaje cyfty</div>
 			<div className="blackboard container text-center">
 				<div className="text-center">
 					<button
@@ -110,7 +111,7 @@ function Numbslearn() {
 					</button>
 				</div>
 				<div className="row">
-					<div className="col">
+					<div className="col ">
 						<p className="number">{currentNumber}</p>
 					</div>
 					<div className="col">
@@ -130,11 +131,11 @@ function Numbslearn() {
 			</div>
 
 			<ul className="text-center">
-				<Link to="/num">
-					<li className="list">Chcesz poćwiczyć</li>
+				<Link style={{ textDecoration: "none" }} to="/num">
+					<li className="list-mobile">Chcesz poćwiczyć</li>
 				</Link>
-				<Link to="/">
-					<li className="list">Powrót do menu</li>
+				<Link style={{ textDecoration: "none" }} to="/">
+					<li className="list-mobile">Powrót do menu</li>
 				</Link>
 			</ul>
 		</main>

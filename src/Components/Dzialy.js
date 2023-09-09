@@ -78,35 +78,41 @@ function Dzialy() {
 								src={require("./photo/animal.png")}
 								alt={"Add more descriptive alt"}
 							/>
-							<Link to="./num">
-								<li className="list">Poznajemy liczby</li>
+							<Link style={{ textDecoration: "none" }} to="./num">
+								<li className="list-mobile">
+									Poznajemy liczby
+								</li>
 							</Link>
 						</div>
-						<Link to="./sign">
-							<li className="list">
+						<Link style={{ textDecoration: "none" }} to="./sign">
+							<li className="list-mobile">
 								Poznajemy znaki matematyczne
 							</li>
 						</Link>
-						<Link to="./add">
-							<li className="list">Uczymy się dodawać</li>
+
+						<Link style={{ textDecoration: "none" }} to="./add">
+							<li className="list-mobile">Uczymy się dodawać</li>
+						</Link>
+						<Link style={{ textDecoration: "none" }} to="./sub">
+							<li className="list-mobile">
+								Uczymy się odejmować
+							</li>
+						</Link>
+						<Link style={{ textDecoration: "none" }} to="./comp">
+							<li className="list-mobile">Większy/Mniejszy</li>
 						</Link>
 						<div>
 							<img
 								className="pens"
-								src={require("./photo/pens.png")}
+								src={require("./photo/pen.png")}
 								alt={"Add more descriptive alt"}
 							/>
-							<Link to="./sub">
-								<li className="list">Uczymy się odejmować</li>
+							<Link style={{ textDecoration: "none" }} to="./un">
+								<li className="list-mobile">
+									Działania z niewiadomą
+								</li>
 							</Link>
 						</div>
-						<Link to="./comp">
-							<li className="list">Większy/Mniejszy</li>
-						</Link>
-
-						<Link to="./un">
-							<li className="list">Działania z niewiadomą</li>
-						</Link>
 					</ul>
 				</div>
 			</div>

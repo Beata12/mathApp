@@ -27,10 +27,10 @@
 	overflow-y: auto; /* Add vertical scroll if needed */
 }
 
-.list {
+.list-mobile {
 	color: white;
-	text-decoration: none;
 	font-size: 25px;
+	margin: 7vh;
 }
 
 .animal {
@@ -42,4 +42,14 @@
 	height: 200px;
 	float: left;
 	margin-left: 0px;
+}
+
+ul.text-center {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.appname {
+	height: 80px;
+	width: 150px;
 }

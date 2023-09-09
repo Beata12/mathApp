@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Blaka+Ink&family=Nabla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Neonderthaw&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap");
 
 .dzialy-mobile {
 	display: none;
@@ -32,17 +35,16 @@
 	}
 
 	.number {
-		/* margin-left: 20px; */
 		color: white;
 		font-size: 100px;
-		font-family: "Grand Hotel", cursive;
+		font-family: "Petit Formal Script", cursive;
 	}
 
 	.number-tekst {
 		color: white;
 		margin-top: 25%;
 		font-size: 50px;
-		font-family: "Grand Hotel", cursive;
+		font-family: "Petit Formal Script", cursive;
 	}
 
 	.blackboard-main {
@@ -73,8 +75,8 @@
 		background-color: #228b22;
 	}
 	.blackboard {
-		width: 80% !important;
-		height: 80%;
+		width: 95% !important;
+		height: 600px;
 		border: #b9713d solid 12px;
 		border-top: #8b4513 solid 12px;
 		border-left: #b9713d solid 12px;
@@ -100,24 +102,36 @@
 		background-color: #228b22;
 	}
 
+	.text-marg {
+		margin: 50%;
+	}
+
 	.btn-changenum {
-		margin: 10px;
+		margin: 20px;
 		color: white !important;
-		border: #b9713d solid 12px;
-		border-top: #8b4513 solid 12px;
-		border-left: #b9713d solid 12px;
-		border-bottom: #8b4513 solid 12px;
+		border: #b9713d solid 2px;
+		border-top: #8b4513 solid 2px;
+		border-left: #b9713d solid 2px;
+		border-bottom: #8b4513 solid 2px;
 		box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #8b4513,
 			0px 0px 0px 4px #b9713d, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
 	}
 
 	.one-class {
-		margin: 20px;
-		height: 100px;
+		margin-top: 50px;
+		height: 160px;
 	}
 
-	.two-class,
-	.three-class,
+	.two-class {
+		margin: 10px;
+		height: 130px;
+	}
+
+	.three-class {
+		margin: 10px;
+		height: 80px;
+	}
+
 	.four-class,
 	.fife-class {
 		margin: 10px;
@@ -135,13 +149,19 @@
 	}
 	.nine-class {
 		margin: 7px;
-		height: 80px;
+		height: 75px;
 	}
 
 	.eight-class,
 	.ten-class {
 		margin: 5px;
 		margin-bottom: 20px;
-		height: 70px;
+		height: 65px;
+	}
+
+	.header-mobile {
+		margin: 20px;
+		font-size: 30px;
+		color: white;
 	}
 }

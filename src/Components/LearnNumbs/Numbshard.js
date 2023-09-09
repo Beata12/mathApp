@@ -57,7 +57,7 @@ function NumbHard() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<li className="list">Poziom trudny</li>
+						<li className="list-mobile">Poziom trudny</li>
 						<div className="horizontal-options">
 							<p className="digitword">{randomDigitWord}</p>
 						</div>
@@ -77,11 +77,11 @@ function NumbHard() {
 							))}
 						</div>
 
-						<Link to="/num">
-							<li className="list">Wybierz inny poziom</li>
+						<Link style={{ textDecoration: "none" }} to="/num">
+							<li className="list-mobile">Wybierz inny poziom</li>
 						</Link>
-						<Link to="/">
-							<li className="list">Powrót do menu</li>
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="list-mobile">Powrót do menu</li>
 						</Link>
 					</ul>
 				</div>
