@@ -9,7 +9,10 @@ function EasySmaller() {
 	const [result, setResult] = useState(null);
 	const [points, setPoints] = useState(0);
 	const [isComparing, setIsComparing] = useState(false);
+	const [isTimeoutExpired, setIsTimeoutExpired] = useState(true);
+	const [timer, setTimer] = useState(10); // Początkowy czas na liczniku
 
+	// Funkcja do generowania losowych liczb
 	const generateRandomNumbers = () => {
 		const randomNum1 = Math.floor(Math.random() * 11); // Losowa cyfra od 0 do 10
 		let randomNum2 = randomNum1;
@@ -19,33 +22,53 @@ function EasySmaller() {
 		setNumber1(randomNum1);
 		setNumber2(randomNum2);
 		setResult(null);
+		setIsTimeoutExpired(false);
+		setTimer(10); // Zresetuj czas na 10 sekund
 	};
 
+	// Funkcja do rozpoczęcia odliczania czasu
+	const startTimer = () => {
+		const intervalId = setInterval(() => {
+			setTimer((prevTimer) => {
+				if (prevTimer === 0) {
+					clearInterval(intervalId);
+					handleTimeout(); // Obsługa zdarzenia, gdy czas się skończy
+					return prevTimer;
+				}
+				return prevTimer - 1;
+			});
+		}, 1000); // 1000 milisekund = 1 sekunda
+	};
+
+	// Funkcja do obsługi zdarzenia, gdy czas się skończy
+	const handleTimeout = () => {
+		setResult("timeout");
+		setIsComparing(false);
+		setTimeout(() => {
+			setResult(null);
+			generateRandomNumbers();
+		}, 2000); // Opóźnienie 2 sekundy
+	};
+
+	// Funkcja do obsługi wyboru odpowiedzi
 	const handleComparison = (selectedNumber) => {
-		if (isComparing) {
-			return; // Jeśli porównywanie trwa, nie rób nic
+		if (isComparing || isTimeoutExpired) {
+			return; // Jeśli porównywanie trwa lub czas odpowiedzi minął, nie rób nic
 		}
 
 		setIsComparing(true);
 
 		let isCorrect = false;
 
-		if (selectedNumber === "number1") {
-			if (number1 < number2) {
-				// Sprawdź, która liczba jest mniejsza
-				setResult("correct");
-				isCorrect = true;
-			} else {
-				setResult("incorrect");
-			}
-		} else if (selectedNumber === "number2") {
-			if (number2 < number1) {
-				// Sprawdź, która liczba jest mniejsza
-				setResult("correct");
-				isCorrect = true;
-			} else {
-				setResult("incorrect");
-			}
+		if (
+			(selectedNumber === "number1" && number1 < number2) ||
+			(selectedNumber === "number2" && number2 < number1)
+		) {
+			// Sprawdź, która liczba jest mniejsza
+			setResult("correct");
+			isCorrect = true;
+		} else {
+			setResult("incorrect");
 		}
 
 		setTimeout(() => {
@@ -60,6 +83,7 @@ function EasySmaller() {
 
 	useEffect(() => {
 		generateRandomNumbers();
+		startTimer(); // Rozpocznij odliczanie czasu po wygenerowaniu liczb
 	}, []);
 
 	return (
@@ -71,23 +95,26 @@ function EasySmaller() {
 						<FontAwesomeIcon icon={faFaceSmile} />
 					) : result === "incorrect" ? (
 						<FontAwesomeIcon icon={faFaceFrown} />
+					) : result === "timeout" ? (
+						<FontAwesomeIcon icon={faFaceFrown} /> // Ikona smutnej buźki po czasie
 					) : null}
 				</div>
 				<div className="numbers-mobile">
 					<button
 						onClick={() => handleComparison("number1")}
-						disabled={isComparing}
+						disabled={isComparing || isTimeoutExpired}
 					>
 						{number1}
 					</button>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<button
 						onClick={() => handleComparison("number2")}
-						disabled={isComparing}
+						disabled={isComparing || isTimeoutExpired}
 					>
 						{number2}
 					</button>
 				</div>
+				<div>Czas: {timer} s</div>
 				<div>Punkty: {points}</div>
 
 				<Link style={{ textDecoration: "none" }} to="/comp">
