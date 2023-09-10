@@ -8,8 +8,8 @@
 	border: 1px solid black;
 }
 
-.numbers {
-	margin-top: 10vh;
+.numbers-mobile {
+	margin: 30px;
 	font-size: 30px;
 	/* font-family: "Caveat", cursive; */
 	/* font-family: "Rubik Wet Paint", cursive; */

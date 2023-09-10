@@ -10,6 +10,11 @@ function Numbers() {
 						<Link style={{ textDecoration: "none" }} to="/numlearn">
 							<li className="list-mobile">Poznaje cyfry</li>
 						</Link>
+						<img
+							className="animal"
+							src={require("./photos/question.png")}
+							alt={"Add more descriptive alt"}
+						/>
 						<Link style={{ textDecoration: "none" }} to="/nume">
 							<li className="list-mobile">Coś łatwego</li>
 						</Link>

@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Signs() {
+function Examples() {
 	const divContents = [
-		{ explanation: "Znak", meaning: "dodawania", sign: "+" },
-		{ explanation: "Znak", meaning: "odejmowania", sign: "-" },
-		{ explanation: "Znak", meaning: "równości", sign: "=" },
-		{ explanation: "Znak", meaning: "większości", sign: ">" },
-		{ explanation: "Znak", meaning: "mniejszości", sign: "<" },
+		{ explanation: "Przykład:", meaning: "większy", sign: "10 > 6" },
+		{ explanation: "Przykład:", meaning: "większy", sign: "8 > 2" },
+		{ explanation: "Przykład:", meaning: "mniejszy", sign: "3 < 5" },
+		{ explanation: "Przykład:", meaning: "mniejszy", sign: "6 < 8" },
+		{ explanation: "Przykład:", meaning: "równy", sign: "6 = 6" },
+		{ explanation: "Przykład:", meaning: "równy", sign: "2 = 2" },
 	];
 
 	const [currentDivIndex, setCurrentDivIndex] = useState(0);
 
 	const handleNextClick = () => {
 		const nextIndex = (currentDivIndex + 1) % divContents.length;
-		setCurrentDivIndex(nextIndex);
+		if (nextIndex < divContents.length) {
+			setCurrentDivIndex(nextIndex);
+		}
 	};
 
 	const handlePreviousClick = () => {
@@ -53,9 +56,6 @@ function Signs() {
 			</div>
 
 			<ul className="text-center">
-				<Link style={{ textDecoration: "none" }} to="/eg">
-					<li className="list-mobile">Przykłady</li>
-				</Link>
 				<Link style={{ textDecoration: "none" }} to="/comp">
 					<li className="list-mobile">Chcesz poćwiczyć</li>
 				</Link>
@@ -67,4 +67,4 @@ function Signs() {
 	);
 }
 
-export default Signs;
+export default Examples;

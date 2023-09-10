@@ -33,11 +33,11 @@ function Numberseasy() {
 	const spacing = 2;
 	const [showEmoji, setShowEmoji] = useState(false);
 	const [cubes, setCubes] = useState([]);
+	const [points, setPoints] = useState(0); // Dodaj licznik punktów
 
 	const numRows = Math.ceil(randomCubeCount / 5);
 	const numColumns = Math.min(randomCubeCount, 5);
 
-	// Funkcja do usuwania obiektów
 	const removeCubes = () => {
 		setCubes([]);
 	};
@@ -66,7 +66,6 @@ function Numberseasy() {
 	};
 
 	useEffect(() => {
-		// Generuj kostki na początku
 		generateCubes();
 	}, [randomCubeCount]);
 
@@ -100,6 +99,7 @@ function Numberseasy() {
 	const handleNumberClick = (selectedNumber) => {
 		if (selectedNumber === randomCubeCount.toString()) {
 			setIsCorrect(true);
+			setPoints(points + 1); // Zwiększ punkty o 1
 		} else {
 			setIsCorrect(false);
 		}
@@ -109,7 +109,6 @@ function Numberseasy() {
 			const newRandomCubeCount = Math.floor(Math.random() * 10) + 1;
 			setCurrentQuestion(currentQuestion + 1);
 			setRandomCubeCount(newRandomCubeCount);
-			// Usuń stare kostki i wygeneruj nowe
 			removeCubes();
 			generateCubes();
 		}, 2000);
@@ -135,6 +134,7 @@ function Numberseasy() {
 								<></>
 							)}
 						</div>
+
 						<Canvas
 							style={{
 								display: "flex",
@@ -160,6 +160,11 @@ function Numberseasy() {
 									</div>
 								))}
 							</div>
+						</div>
+						<div>
+							<p className="list-mobile">
+								Punkty: {points} są do stylizacji
+							</p>
 						</div>
 						<Link style={{ textDecoration: "none" }} to="/num">
 							<li className="list-mobile">Wybierz inny lewel</li>

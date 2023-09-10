@@ -18,6 +18,7 @@ import Signs from "./GreaterSmaller/Signs";
 import GrtSmlr from "./GreaterSmaller/GrtSmlr";
 import EasyGreater from "./GreaterSmaller/EasyGreater";
 import EasySmaller from "./GreaterSmaller/EasySmaller";
+import Examples from "./GreaterSmaller/Examples";
 import Substraction from "./Substraction/Substraction";
 import SubTo5 from "./Substraction/SubTo5";
 import SubTo10 from "./Substraction/SubTo10";
@@ -67,6 +68,7 @@ function App() {
 				<Route path="/egr" element={<EasyGreater />} />
 				<Route path="/esm" element={<EasySmaller />} />
 				<Route path="/grsm" element={<GrtSmlr />} />
+				<Route path="/eg" element={<Examples />} />
 			</Routes>
 			<Footer />
 		</div>

@@ -7,20 +7,27 @@ function Numbers() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<Link to="/sign">
-							<li className="list">Poznaje znaki matematyczne</li>
+						<Link style={{ textDecoration: "none" }} to="/sign">
+							<li className="list-mobile">
+								Poznaje znaki matematyczne
+							</li>
 						</Link>
-						<Link to="/esm">
-							<li className="list">Mniejsze</li>
+						<Link style={{ textDecoration: "none" }} to="/eg">
+							<li className="list-mobile">Przykłady????????</li>
 						</Link>
-						<Link to="/egr">
-							<li className="list">Większe</li>
+						<Link style={{ textDecoration: "none" }} to="/esm">
+							<li className="list-mobile">Mniejsze</li>
 						</Link>
-						<Link to="/grsm">
-							<li className="list">Mniejsze czy większe?</li>
+						<Link style={{ textDecoration: "none" }} to="/egr">
+							<li className="list-mobile">Większe</li>
 						</Link>
-						<Link to="/">
-							<li className="list">Wróć</li>
+						<Link style={{ textDecoration: "none" }} to="/grsm">
+							<li className="list-mobile">
+								Mniejsze czy większe?
+							</li>
+						</Link>
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="list-mobile">Wróć</li>
 						</Link>
 					</ul>
 				</div>

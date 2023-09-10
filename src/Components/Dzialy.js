@@ -84,7 +84,7 @@ function Dzialy() {
 								</li>
 							</Link>
 						</div>
-						<Link style={{ textDecoration: "none" }} to="./sign">
+						<Link style={{ textDecoration: "none" }} to="./comp">
 							<li className="list-mobile">
 								Poznajemy znaki matematyczne
 							</li>

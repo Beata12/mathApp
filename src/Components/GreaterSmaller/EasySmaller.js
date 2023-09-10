@@ -73,13 +73,14 @@ function EasySmaller() {
 						<FontAwesomeIcon icon={faFaceFrown} />
 					) : null}
 				</div>
-				<div className="numbers">
+				<div className="numbers-mobile">
 					<button
 						onClick={() => handleComparison("number1")}
 						disabled={isComparing}
 					>
 						{number1}
 					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
 					<button
 						onClick={() => handleComparison("number2")}
 						disabled={isComparing}
@@ -89,8 +90,11 @@ function EasySmaller() {
 				</div>
 				<div>Punkty: {points}</div>
 
-				<Link to="/comp">
-					<li className="list">Powrót do menu</li>
+				<Link style={{ textDecoration: "none" }} to="/comp">
+					<li className="list-mobile">Wybierz inny poziom</li>
+				</Link>
+				<Link style={{ textDecoration: "none" }} to="/comp">
+					<li className="list-mobile">Powrót do menu</li>
 				</Link>
 			</ul>
 		</main>
