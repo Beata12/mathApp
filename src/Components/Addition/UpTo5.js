@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 
 function Upto5() {
 	const [randomNumber1, setRandomNumber1] = useState(null);
@@ -10,12 +12,15 @@ function Upto5() {
 	const [score, setScore] = useState(0);
 	const [showNextQuestionButton, setShowNextQuestionButton] = useState(false);
 	const [previousSum, setPreviousSum] = useState(null);
+	const [timeRemaining, setTimeRemaining] = useState(10);
 
 	useEffect(() => {
 		generateRandomNumbers();
 	}, []);
 
 	useEffect(() => {
+		let timer;
+
 		if (userChoice !== null) {
 			const timeout = setTimeout(() => {
 				generateRandomNumbers();
@@ -25,9 +30,26 @@ function Upto5() {
 			}, 3000); // Auto transition after 3 seconds
 			return () => clearTimeout(timeout);
 		}
+
+		if (timeRemaining === 0) {
+			clearInterval(timer);
+			setIsCorrect("incorrect");
+			setIsCorrect(false);
+
+			setTimeout(() => {
+				setIsCorrect(null);
+				generateRandomNumbers();
+				startTimer();
+			}, 2000);
+		}
+
+		return () => {
+			clearInterval(timer);
+		};
 	}, [userChoice]);
 
 	const generateRandomNumbers = () => {
+		setTimeRemaining(10);
 		const possibleNumbers = [0, 1, 2, 3, 4, 5];
 		const newRandomNumber1 =
 			possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
@@ -49,6 +71,11 @@ function Upto5() {
 		setRandomNumber2(newRandomNumber2);
 		setCorrectAnswer(newRandomNumber1 + newRandomNumber2);
 		setPreviousSum(newRandomNumber1 + newRandomNumber2);
+		startTimer();
+	};
+
+	const startTimer = () => {
+		setIsCorrect(true);
 	};
 
 	const generateUniqueOptions = () => {
@@ -81,6 +108,13 @@ function Upto5() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div>Dodawanie do</div>
+						<div className="result">
+							{isCorrect === true ? (
+								<FontAwesomeIcon icon={faFaceSmile} />
+							) : isCorrect === false ? (
+								<FontAwesomeIcon icon={faFaceFrown} />
+							) : null}
+						</div>
 						<div className="row">
 							<div className="firstNumber col">
 								{randomNumber1}
@@ -123,8 +157,11 @@ function Upto5() {
 						)}
 						<div className="score">Score: {score}</div>
 
-						<Link to="/add">
-							<li className="list">Wróć</li>
+						<Link style={{ textDecoration: "none" }} to="/add">
+							<li className="list-mobile">Wróć</li>
+						</Link>
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="list-mobile">Powrót do menu</li>
 						</Link>
 					</ul>
 				</div>
