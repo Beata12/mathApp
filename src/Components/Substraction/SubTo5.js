@@ -50,7 +50,7 @@ function SubtractionUpTo5() {
 
 	const generateRandomNumbers = () => {
 		setCanAnswer(true);
-		const min = 0;
+		const min = 1;
 		const max = 5;
 
 		let newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -70,10 +70,7 @@ function SubtractionUpTo5() {
 		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
 		let incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
 
-		// Ensure that none of the answers are empty
 		if (incorrect1 === "" || incorrect2 === "") {
-			// You can handle this case by generating new incorrect answers.
-			// Here, we'll simply set them to 0.
 			incorrect1 = 0;
 			incorrect2 = 0;
 		}
@@ -81,7 +78,6 @@ function SubtractionUpTo5() {
 		setNumber1(newNumber1);
 		setNumber2(newNumber2);
 
-		// Create an array with answers (excluding any empty answers)
 		const answers = [correct, incorrect1, incorrect2].filter(
 			(answer) => answer !== ""
 		);
@@ -97,7 +93,7 @@ function SubtractionUpTo5() {
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {
-		const min = 0;
+		const min = 1;
 		const max = 5;
 
 		let incorrect = Math.floor(Math.random() * (max - min + 1)) + min;
