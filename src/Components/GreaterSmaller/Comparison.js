@@ -7,11 +7,6 @@ function Numbers() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<Link style={{ textDecoration: "none" }} to="/sign">
-							<li className="list-mobile">
-								Poznaje znaki matematyczne
-							</li>
-						</Link>
 						<Link style={{ textDecoration: "none" }} to="/eg">
 							<li className="list-mobile">Przykłady????????</li>
 						</Link>

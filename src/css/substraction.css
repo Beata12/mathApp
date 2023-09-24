@@ -1,3 +1,9 @@
+.list-title-mobile {
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+}
+
 .answer-box-mobile {
 	border: #b9713d solid 2px;
 	border-top: #8b4513 solid 2px;
@@ -8,7 +14,10 @@
 	min-width: 30px;
 	min-height: 50px;
 	margin: 10px;
-	margin-top: 20px !important;
+	margin-top: 10px !important;
+	background-color: transparent;
+	color: white;
+	font-size: 20px;
 }
 
 .equations-mobile {
@@ -38,4 +47,17 @@
 	margin: 20px;
 	color: red;
 	height: 40px;
+}
+
+.btn-mobile {
+	border: none;
+	background: transparent;
+	color: white;
+	font-size: 25px;
+}
+
+.choose-level-mobile {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: 23px;
 }

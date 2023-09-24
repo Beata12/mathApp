@@ -30,12 +30,10 @@ function SubtractionUpTo5() {
 				setTimer(timer - 1);
 			} else if (timer === 0 && canAnswer) {
 				clearInterval(intervalId);
-				setShowFrown(true); // Pokaż smutną buźkę po zakończeniu czasu
-				// Zmniejsz liczbę żyć po upływie czasu
+				setShowFrown(true);
 				if (lives > 0) {
 					setLives(lives - 1);
 				} else {
-					// Jeśli nie ma już żyć, zakończ grę
 					setGameOver(true);
 				}
 				setTimeout(() => {
@@ -63,20 +61,36 @@ function SubtractionUpTo5() {
 		}
 
 		const correct = newNumber1 - newNumber2;
-		const incorrectIndexes = [0, 1, 2].filter((index) => index !== correct);
+		const incorrectIndexes = [0, 1, 2];
+		const correctIndex = Math.floor(Math.random() * 3);
+
+		incorrectIndexes.splice(correctIndex, 1);
 
 		let incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
+		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
 		let incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
 
-		while (incorrect1 === incorrect2) {
-			incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+		// Ensure that none of the answers are empty
+		if (incorrect1 === "" || incorrect2 === "") {
+			// You can handle this case by generating new incorrect answers.
+			// Here, we'll simply set them to 0.
+			incorrect1 = 0;
+			incorrect2 = 0;
 		}
 
 		setNumber1(newNumber1);
 		setNumber2(newNumber2);
-		setAnswer1(correct);
-		setAnswer2(incorrect1);
-		setAnswer3(incorrect2);
+
+		// Create an array with answers (excluding any empty answers)
+		const answers = [correct, incorrect1, incorrect2].filter(
+			(answer) => answer !== ""
+		);
+		const shuffledAnswers = shuffleArray(answers);
+
+		setAnswer1(shuffledAnswers[0]);
+		setAnswer2(shuffledAnswers[1]);
+		setAnswer3(shuffledAnswers[2]);
+
 		setCorrectAnswer(correct);
 		setShowSmile(false);
 		setTimer(10);
@@ -95,6 +109,18 @@ function SubtractionUpTo5() {
 		return incorrect;
 	};
 
+	const shuffleArray = (array) => {
+		const shuffledArray = [...array];
+		for (let i = shuffledArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffledArray[i], shuffledArray[j]] = [
+				shuffledArray[j],
+				shuffledArray[i],
+			];
+		}
+		return shuffledArray;
+	};
+
 	const checkAnswer = (selectedAnswer) => {
 		if (canAnswer) {
 			setCanAnswer(false);
@@ -109,7 +135,6 @@ function SubtractionUpTo5() {
 				}, 2000);
 			} else {
 				setIncorrectAnswers(incorrectAnswers + 1);
-				// Zmniejsz liczbę żyć po niepoprawnej odpowiedzi
 				if (lives > 0) {
 					setLives(lives - 1);
 				}
@@ -119,7 +144,6 @@ function SubtractionUpTo5() {
 					setShowFrown(false);
 					generateRandomNumbers();
 
-					// Sprawdź, czy liczba błędnych odpowiedzi wynosi 3, jeśli tak, to koniec gry
 					if (incorrectAnswers === 2) {
 						setGameOver(true);
 					}
@@ -128,7 +152,6 @@ function SubtractionUpTo5() {
 		}
 	};
 
-	// Funkcja do generowania ikon serduszek na podstawie liczby żyć
 	const generateHeartIcons = () => {
 		const heartIcons = [];
 		for (let i = 0; i < 3 - lives; i++) {
@@ -152,21 +175,41 @@ function SubtractionUpTo5() {
 		return heartIcons;
 	};
 
+	const startNewGame = () => {
+		setGameOver(false);
+		setPoints(0);
+		setLives(3);
+		setIncorrectAnswers(0);
+		generateRandomNumbers();
+	};
+
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-mobile">Odejmowanie do 5</div>
+						<div className="list-title-mobile">
+							ODEJMOWANIE DO 5
+						</div>
 						{gameOver && (
-							<div className="pojawiaSie">
-								<div>KONIEC GRY</div>
-								<div>Punkty: {points}</div>
-								<div>Gratulacje</div>
+							<div className="gameOver">
+								<div className="list-mobile">KONIEC GRY</div>
+								<div className="list-mobile">
+									Punkty: {points}
+								</div>
+								<div className="list-mobile">Gratulacje</div>
+								<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+									<button
+										onClick={startNewGame}
+										className="btn-mobile"
+									>
+										Zagraj jeszcze raz
+									</button>
+								</div>{" "}
 							</div>
 						)}
 						{!gameOver && (
-							<div className="znika">
+							<div className="gameOver">
 								<div className="icons-mobile">
 									{showSmile && (
 										<FontAwesomeIcon
@@ -258,10 +301,14 @@ function SubtractionUpTo5() {
 							</div>
 						)}
 						<Link style={{ textDecoration: "none" }} to="/sub">
-							<li className="list-mobile">Wybierz inny poziom</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Wybierz inny poziom
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/">
-							<li className="list-mobile">Powrót do menu</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Powrót do menu
+							</li>
 						</Link>
 					</ul>
 				</div>

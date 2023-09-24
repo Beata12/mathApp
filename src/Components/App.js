@@ -14,7 +14,7 @@ import UpTo5 from "./Addition/UpTo5";
 import UpTo10 from "./Addition/UpTo10";
 import Write10 from "./Addition/UpTo10Write";
 import Write20 from "./Addition/UpTo20Write";
-import Signs from "./GreaterSmaller/Signs";
+import Signs from "./Signs";
 import GrtSmlr from "./GreaterSmaller/GrtSmlr";
 import EasyGreater from "./GreaterSmaller/EasyGreater";
 import EasySmaller from "./GreaterSmaller/EasySmaller";
