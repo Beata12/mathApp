@@ -65,3 +65,11 @@
 .smile-icon {
 	color: rgb(35, 162, 35);
 }
+
+.input-mobile {
+	width: 65% !important;
+}
+
+.input-bck-mobile {
+	background-color: rgb(51, 110, 51);
+}
