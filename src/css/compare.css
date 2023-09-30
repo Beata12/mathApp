@@ -5,6 +5,14 @@
 	.signs-content-mobile {
 		font-family: "Petit Formal Script", cursive;
 		font-size: 70px;
+		font-weight: bold;
+		margin-top: 20px;
+	}
+
+	.signs-content-exmp-mobile {
+		font-size: 60px;
+		font-weight: bold;
+		margin-top: 20px;
 	}
 
 	.result {
@@ -13,11 +21,22 @@
 
 	.meaning-mobile {
 		margin-top: 40px;
-		font-size: 50px;
+		font-size: 35px;
+	}
+
+	.meaning-exmp-mobile {
+		margin-top: 50px;
+		font-size: 35px;
+		font-weight: 500;
 	}
 
 	.sign-mobile {
-		margin-top: 40px;
-		font-size: 140px;
+		font-size: 180px;
+	}
+
+	.sign-exmp-mobile {
+		font-size: 80px;
+		margin-top: 50px;
+		font-weight: 500;
 	}
 }

@@ -185,7 +185,7 @@ function SubtractionUpTo20() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div className="list-title-mobile">
-							ODEJMOWANIE DO 10
+							ODEJMOWANIE DO 20
 						</div>
 						{gameOver && (
 							<div className="gameOver">

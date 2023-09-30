@@ -2,43 +2,68 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
-function Upto20Write() {
-	const [randomNumber1, setRandomNumber1] = useState(null);
-	const [randomNumber2, setRandomNumber2] = useState(null);
-	const [correctAnswer, setCorrectAnswer] = useState(null);
+function UpTo20Write() {
+	const [timer, setTimer] = useState(10);
+	const [number1, setNumber1] = useState(null);
+	const [number2, setNumber2] = useState(null);
 	const [userInput, setUserInput] = useState("");
-	const [isCorrect, setIsCorrect] = useState(false);
-	const [score, setScore] = useState(0);
-	const [showNextQuestionButton, setShowNextQuestionButton] = useState(false);
+	const [correctAnswer, setCorrectAnswer] = useState(null);
+	const [points, setPoints] = useState(0);
+	const [showSmile, setShowSmile] = useState(false);
+	const [showFrown, setShowFrown] = useState(false);
+	const [canAnswer, setCanAnswer] = useState(true);
+	const [lives, setLives] = useState(3);
+	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
+	const [gameOver, setGameOver] = useState(false);
+	const [isCheckingAnswer, setIsCheckingAnswer] = useState(false); // New state
 
 	useEffect(() => {
 		generateRandomNumbers();
 	}, []);
 
 	useEffect(() => {
-		if (userInput !== "") {
-			setShowNextQuestionButton(true);
-		} else {
-			setShowNextQuestionButton(false);
-		}
-	}, [userInput]);
+		const intervalId = setInterval(() => {
+			if (timer > 0 && canAnswer) {
+				setTimer(timer - 1);
+			} else if (timer === 0 && canAnswer) {
+				clearInterval(intervalId);
+				setShowFrown(true);
+				if (lives > 0) {
+					setLives(lives - 1);
+					setIncorrectAnswers(incorrectAnswers + 1); // Increment incorrect answers
+				} else {
+					setGameOver(true);
+				}
+				setTimeout(() => {
+					setShowFrown(false);
+					generateRandomNumbers();
+				}, 2000);
+			}
+		}, 1000);
+
+		return () => {
+			clearInterval(intervalId);
+		};
+	}, [timer, canAnswer, lives, incorrectAnswers]);
 
 	const generateRandomNumbers = () => {
-		const possibleNumbers = [];
-		for (let i = 1; i <= 20; i++) {
-			possibleNumbers.push(i);
-		}
+		setCanAnswer(true);
+		const min = 0;
+		const max = 10;
 
-		const newRandomNumber1 =
-			possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
-		const maxRandomNumber2 = 20 - newRandomNumber1;
-		const newRandomNumber2 = Math.floor(
-			Math.random() * (maxRandomNumber2 + 1)
-		);
-		setRandomNumber1(newRandomNumber1);
-		setRandomNumber2(newRandomNumber2);
-		setCorrectAnswer(newRandomNumber1 + newRandomNumber2);
+		let newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
+		let newNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+
+		const correct = newNumber1 + newNumber2;
+
+		setNumber1(newNumber1);
+		setNumber2(newNumber2);
+
+		setCorrectAnswer(correct);
+		setShowSmile(false);
+		setTimer(10);
 	};
 
 	const handleUserInput = (event) => {
@@ -46,19 +71,76 @@ function Upto20Write() {
 	};
 
 	const checkAnswer = () => {
-		if (userInput === correctAnswer.toString()) {
-			setIsCorrect(true);
-			setScore(score + 1);
-		} else {
-			setIsCorrect(false);
+		if (isCheckingAnswer) {
+			return; // Return early if already checking answer
 		}
+
+		setIsCheckingAnswer(true); // Set to true while checking the answer
+
+		if (userInput === correctAnswer.toString()) {
+			setPoints(points + 1);
+			setShowSmile(true);
+		} else {
+			setIncorrectAnswers(incorrectAnswers + 1);
+			if (lives > 0) {
+				setLives(lives - 1);
+			}
+			setShowFrown(true);
+
+			if (incorrectAnswers + 1 >= 3) {
+				setGameOver(true);
+			}
+		}
+
+		setCanAnswer(false); // Disable answering while showing icons
+
+		setTimeout(() => {
+			setShowSmile(false);
+			setShowFrown(false);
+			generateRandomNumbers();
+			setUserInput(""); // Clear the userInput field
+			setCanAnswer(true); // Enable answering for the new question
+			setIsCheckingAnswer(false); // Set to false when answer check is completed
+
+			// Check for game over after an incorrect answer
+			if (
+				incorrectAnswers + 1 >= 3 &&
+				userInput !== correctAnswer.toString()
+			) {
+				setGameOver(true);
+			}
+		}, 2000);
 	};
 
-	const nextQuestion = () => {
+	const generateHeartIcons = () => {
+		const heartIcons = [];
+		for (let i = 0; i < 3 - lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeartCrack}
+					className="heart-icon"
+					key={`cracked-heart-${i}`}
+				/>
+			);
+		}
+		for (let i = 0; i < lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeart}
+					className="heart-icon"
+					key={`heart-${i}`}
+				/>
+			);
+		}
+		return heartIcons;
+	};
+
+	const startNewGame = () => {
+		setGameOver(false);
+		setPoints(0);
+		setLives(3);
+		setIncorrectAnswers(0);
 		generateRandomNumbers();
-		setUserInput("");
-		setIsCorrect(false);
-		setShowNextQuestionButton(false);
 	};
 
 	return (
@@ -66,52 +148,103 @@ function Upto20Write() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div>Dodawanie do</div>
-						<div className="result">
-							{isCorrect === true ? (
-								<FontAwesomeIcon icon={faFaceSmile} />
-							) : isCorrect === false ? (
-								<FontAwesomeIcon icon={faFaceFrown} />
-							) : null}
-						</div>
-						<div className="row">
-							<div className="firstNumber col">
-								{randomNumber1}
-							</div>
-							<div className="add col">+</div>
-							<div className="secondNumber col">
-								{randomNumber2}
-							</div>
-							<div className="equal col">=</div>
-						</div>
-						<div className="userinput">
-							<input
-								type="number"
-								value={userInput}
-								onChange={handleUserInput}
-								max="20"
-							/>
-							<button
-								onClick={() => {
-									checkAnswer();
-									setShowNextQuestionButton(true);
-								}}
-								disabled={!showNextQuestionButton}
-							>
-								Sprawdź
-							</button>
-						</div>
-						{showNextQuestionButton && (
-							<div>
-								<button onClick={nextQuestion}>
-									Następne pytanie
-								</button>
+						<div className="list-title-mobile">DODAWANIE DO 20</div>
+						{gameOver && (
+							<div className="gameOver">
+								<div className="list-mobile">KONIEC GRY</div>
+								<div className="list-mobile">
+									Punkty: {points}
+								</div>
+								<div className="list-mobile">Gratulacje</div>
+								<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+									<button
+										onClick={startNewGame}
+										className="btn-mobile"
+									>
+										Zagraj jeszcze raz
+									</button>
+								</div>{" "}
 							</div>
 						)}
-						<div className="score">Score: {score}</div>
-
-						<Link to="/add">
-							<li className="list">Wróć</li>
+						{!gameOver && (
+							<div className="gameOver">
+								<div className="icons-mobile">
+									{showSmile && (
+										<FontAwesomeIcon
+											icon={faFaceSmile}
+											className="smile-icon"
+										/>
+									)}
+									{showFrown && (
+										<FontAwesomeIcon
+											icon={faFaceFrown}
+											className="frown-icon"
+										/>
+									)}
+								</div>
+								<div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											<div className="col-2 equations-mobile">
+												{number1}
+											</div>
+											<div className="col-2 equations-mobile">
+												+
+											</div>
+											<div className="col-2 equations-mobile">
+												{number2}
+											</div>
+										</div>
+									</div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											<input
+												className=" answer-box-mobile d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
+												type="number"
+												value={userInput}
+												onChange={handleUserInput}
+												max="10"
+												disabled={isCheckingAnswer} // Disable input while checking answer
+											/>
+											<button
+												className=" answer-box-mobile d-flex align-items-center justify-content-center input-mobile"
+												onClick={() => {
+													checkAnswer();
+												}}
+												disabled={
+													!canAnswer ||
+													isCheckingAnswer
+												} // Disable button when answering is disabled or answer is being checked
+											>
+												Sprawdź
+											</button>
+										</div>
+									</div>
+									<div className="information-mobile">
+										Czas: {timer}
+									</div>
+									<div className="information-mobile">
+										Punkty: {points}
+									</div>
+									<div className="container">
+										<div className="row">
+											<div className="col">
+												{generateHeartIcons()}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						)}
+						<Link style={{ textDecoration: "none" }} to="/add">
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Wybierz inny poziom
+							</li>
+						</Link>
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Powrót do menu
+							</li>
 						</Link>
 					</ul>
 				</div>
@@ -119,5 +252,4 @@ function Upto20Write() {
 		</main>
 	);
 }
-
-export default Upto20Write;
+export default UpTo20Write;

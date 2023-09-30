@@ -2,104 +2,161 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
-function Upto5() {
-	const [randomNumber1, setRandomNumber1] = useState(null);
-	const [randomNumber2, setRandomNumber2] = useState(null);
+function UpTo5() {
+	const [timer, setTimer] = useState(10);
+	const [numbers, setNumbers] = useState({ num1: null, num2: null });
+	const [answers, setAnswers] = useState([null, null, null]);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
-	const [userChoice, setUserChoice] = useState(null);
-	const [isCorrect, setIsCorrect] = useState(false);
-	const [score, setScore] = useState(0);
-	const [showNextQuestionButton, setShowNextQuestionButton] = useState(false);
-	const [previousSum, setPreviousSum] = useState(null);
-	const [timeRemaining, setTimeRemaining] = useState(10);
+	const [points, setPoints] = useState(0);
+	const [emoji, setEmoji] = useState(null);
+	const [canAnswer, setCanAnswer] = useState(true);
+	const [lives, setLives] = useState(3);
+	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
+	const [gameOver, setGameOver] = useState(false);
 
 	useEffect(() => {
 		generateRandomNumbers();
 	}, []);
 
 	useEffect(() => {
-		let timer;
-
-		if (userChoice !== null) {
-			const timeout = setTimeout(() => {
-				generateRandomNumbers();
-				setUserChoice(null);
-				setIsCorrect(false);
-				setShowNextQuestionButton(false);
-			}, 3000); // Auto transition after 3 seconds
-			return () => clearTimeout(timeout);
-		}
-
-		if (timeRemaining === 0) {
-			clearInterval(timer);
-			setIsCorrect("incorrect");
-			setIsCorrect(false);
-
-			setTimeout(() => {
-				setIsCorrect(null);
-				generateRandomNumbers();
-				startTimer();
-			}, 2000);
-		}
+		const intervalId = setInterval(() => {
+			if (timer > 0 && canAnswer) {
+				setTimer((prevTimer) => prevTimer - 1);
+			} else if (timer === 0 && canAnswer) {
+				clearInterval(intervalId);
+				handleWrongAnswer();
+			}
+		}, 1000);
 
 		return () => {
-			clearInterval(timer);
+			clearInterval(intervalId);
 		};
-	}, [userChoice]);
+	}, [timer, canAnswer]);
 
 	const generateRandomNumbers = () => {
-		setTimeRemaining(10);
-		const possibleNumbers = [0, 1, 2, 3, 4, 5];
-		const newRandomNumber1 =
-			possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
+		setCanAnswer(true);
+		const min = 1;
+		const max = 5;
 
-		// Generate a valid second number considering previous sum and previous numbers
-		let newRandomNumber2;
+		let newNumber1, newNumber2, correct;
 		do {
-			newRandomNumber2 = Math.floor(
-				Math.random() * (6 - newRandomNumber1)
-			);
-		} while (
-			(previousSum === 4 &&
-				(newRandomNumber1 === 0 || newRandomNumber2 === 0)) ||
-			(newRandomNumber1 === randomNumber1 &&
-				newRandomNumber2 === randomNumber2)
+			newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
+			newNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+			correct = newNumber1 + newNumber2;
+		} while (correct > 5);
+
+		const incorrectIndexes = [0, 1, 2];
+		const correctIndex = Math.floor(Math.random() * 3);
+
+		incorrectIndexes.splice(correctIndex, 1);
+
+		const incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
+		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
+		const incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+
+		setNumbers({ num1: newNumber1, num2: newNumber2 });
+		const answers = [correct, incorrect1, incorrect2].filter(
+			(answer) => answer !== ""
 		);
-
-		setRandomNumber1(newRandomNumber1);
-		setRandomNumber2(newRandomNumber2);
-		setCorrectAnswer(newRandomNumber1 + newRandomNumber2);
-		setPreviousSum(newRandomNumber1 + newRandomNumber2);
-		startTimer();
+		const shuffledAnswers = shuffleArray(answers);
+		setAnswers(shuffledAnswers);
+		setCorrectAnswer(correct);
+		setEmoji(null);
+		setTimer(10);
 	};
 
-	const startTimer = () => {
-		setIsCorrect(true);
+	const generateIncorrectAnswer = (excludedIndexes, correct) => {
+		const min = 1;
+		const max = 5;
+
+		let incorrect;
+		do {
+			incorrect = Math.floor(Math.random() * (max - min + 1)) + min;
+		} while (excludedIndexes.includes(incorrect) || incorrect === correct);
+
+		return incorrect;
 	};
 
-	const generateUniqueOptions = () => {
-		const options = [];
-		while (options.length < 2) {
-			const newRandomOption = Math.floor(Math.random() * 6);
-			if (
-				options.indexOf(newRandomOption) === -1 &&
-				newRandomOption !== correctAnswer
-			) {
-				options.push(newRandomOption);
+	const shuffleArray = (array) => {
+		const shuffledArray = [...array];
+		for (let i = shuffledArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffledArray[i], shuffledArray[j]] = [
+				shuffledArray[j],
+				shuffledArray[i],
+			];
+		}
+		return shuffledArray;
+	};
+
+	const handleAnswerClick = (selectedAnswer) => {
+		if (canAnswer) {
+			setCanAnswer(false);
+
+			if (selectedAnswer === correctAnswer) {
+				handleCorrectAnswer();
+			} else {
+				handleWrongAnswer();
 			}
 		}
-		options.push(correctAnswer);
-		return options.sort(() => Math.random() - 0.5);
 	};
 
-	const handleUserChoice = (choice) => {
-		setUserChoice(choice);
-		setIsCorrect(choice === correctAnswer);
-		if (choice === correctAnswer) {
-			setScore(score + 1);
+	const handleCorrectAnswer = () => {
+		setPoints((prevPoints) => prevPoints + 1);
+		setEmoji("smile");
+		setTimeout(() => {
+			setEmoji(null);
+			generateRandomNumbers();
+		}, 2000);
+	};
+
+	const handleWrongAnswer = () => {
+		setIncorrectAnswers((prevIncorrect) => prevIncorrect + 1);
+		if (lives > 0) {
+			setLives((prevLives) => prevLives - 1);
 		}
-		setShowNextQuestionButton(true);
+		setEmoji("frown");
+		setTimeout(() => {
+			setEmoji(null);
+			generateRandomNumbers();
+
+			if (incorrectAnswers === 2) {
+				setGameOver(true);
+			}
+		}, 2000);
+	};
+
+	const generateHeartIcons = () => {
+		const heartIcons = [];
+		for (let i = 0; i < 3 - lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeartCrack}
+					className="heart-icon"
+					key={`cracked-heart-${i}`}
+				/>
+			);
+		}
+		for (let i = 0; i < lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeart}
+					className="heart-icon"
+					key={`heart-${i}`}
+				/>
+			);
+		}
+		return heartIcons;
+	};
+
+	const startNewGame = () => {
+		setGameOver(false);
+		setPoints(0);
+		setLives(3);
+		setIncorrectAnswers(0);
+		generateRandomNumbers();
 	};
 
 	return (
@@ -107,61 +164,105 @@ function Upto5() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div>Dodawanie do</div>
-						<div className="result">
-							{isCorrect === true ? (
-								<FontAwesomeIcon icon={faFaceSmile} />
-							) : isCorrect === false ? (
-								<FontAwesomeIcon icon={faFaceFrown} />
-							) : null}
-						</div>
-						<div className="row">
-							<div className="firstNumber col">
-								{randomNumber1}
+						<div className="list-title-mobile">DODAWANIE DO 5</div>
+						{gameOver ? (
+							<div className="gameOver">
+								<div className="list-mobile">KONIEC GRY</div>
+								<div className="list-mobile">
+									Punkty: {points}
+								</div>
+								<div className="list-mobile">Gratulacje</div>
+								<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+									<button
+										onClick={startNewGame}
+										className="btn-mobile"
+									>
+										Zagraj jeszcze raz
+									</button>
+								</div>{" "}
 							</div>
-							<div className="add col">+</div>
-							<div className="secondNumber col">
-								{randomNumber2}
-							</div>
-							<div className="equal col">=</div>
-						</div>
-						<div className="userchoose">
-							{generateUniqueOptions().map((option) => (
-								<button
-									key={option}
-									className={`option-button ${
-										userChoice === option
-											? isCorrect
-												? "correct"
-												: "incorrect"
-											: ""
-									}`}
-									onClick={() => handleUserChoice(option)}
-									disabled={userChoice !== null}
-								>
-									{option}
-								</button>
-							))}
-						</div>
-						{userChoice !== null && (
-							<div
-								className={`feedback ${
-									isCorrect ? "correct" : "incorrect"
-								}`}
-							>
-								{isCorrect
-									? "Correct!"
-									: "Incorrect. Correct answer: " +
-									  correctAnswer}
+						) : (
+							<div className="gameOver">
+								<div className="icons-mobile">
+									{emoji === "smile" && (
+										<FontAwesomeIcon
+											icon={faFaceSmile}
+											className="smile-icon"
+										/>
+									)}
+									{emoji === "frown" && (
+										<FontAwesomeIcon
+											icon={faFaceFrown}
+											className="frown-icon"
+										/>
+									)}
+								</div>
+								<div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											<div className="col-2 equations-mobile">
+												{numbers.num1}
+											</div>
+											<div className="col-2 equations-mobile">
+												+
+											</div>
+											<div className="col-2 equations-mobile">
+												{numbers.num2}
+											</div>
+										</div>
+									</div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											{answers.map((answer, index) => (
+												<div
+													className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+													key={index}
+												>
+													<button
+														className="equations-mobile"
+														onClick={() =>
+															handleAnswerClick(
+																answer
+															)
+														}
+														disabled={
+															numbers.num1 ===
+																null ||
+															numbers.num2 ===
+																null
+														}
+													>
+														{answer}
+													</button>
+												</div>
+											))}
+										</div>
+									</div>
+									<div className="information-mobile">
+										Czas: {timer}
+									</div>
+									<div className="information-mobile">
+										Punkty: {points}
+									</div>
+									<div className="container">
+										<div className="row">
+											<div className="col">
+												{generateHeartIcons()}
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						)}
-						<div className="score">Score: {score}</div>
-
-						<Link style={{ textDecoration: "none" }} to="/add">
-							<li className="list-mobile">Wróć</li>
+						<Link style={{ textDecoration: "none" }} to="/sub">
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Wybierz inny poziom
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/">
-							<li className="list-mobile">Powrót do menu</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Powrót do menu
+							</li>
 						</Link>
 					</ul>
 				</div>
@@ -170,4 +271,4 @@ function Upto5() {
 	);
 }
 
-export default Upto5;
+export default UpTo5;

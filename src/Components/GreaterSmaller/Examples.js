@@ -48,16 +48,21 @@ function Examples() {
 						Dalej
 					</button>
 				</div>
-				<div className="signs-content-mobile">
+				<div className="signs-content-exmp-mobile">
 					<div>{currentDiv.explanation}</div>
-					<div className="meaning-mobile">{currentDiv.meaning}</div>
-					<div className="sign-mobile">{currentDiv.sign}</div>
+					<div className="meaning-exmp-mobile">
+						{currentDiv.meaning}
+					</div>
+					<div className="sign-exmp-mobile">{currentDiv.sign}</div>
 				</div>
 			</div>
 
 			<ul className="text-center">
 				<Link style={{ textDecoration: "none" }} to="/comp">
 					<li className="list-mobile">Chcesz poćwiczyć</li>
+				</Link>
+				<Link style={{ textDecoration: "none" }} to="/sign">
+					<li className="list-mobile">Znaki matematyczne</li>
 				</Link>
 				<Link style={{ textDecoration: "none" }} to="/">
 					<li className="list-mobile">Powrót do menu</li>

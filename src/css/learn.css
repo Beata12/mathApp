@@ -36,11 +36,24 @@
 
 	.number {
 		color: white;
-		font-size: 100px;
+		font-size: 70px;
 		font-family: "Petit Formal Script", cursive;
 	}
 
 	.number-tekst {
+		color: white;
+		margin-top: 25%;
+		font-size: 35px;
+		font-family: "Petit Formal Script", cursive;
+	}
+
+	.number-nine {
+		color: white;
+		font-size: 900px;
+		font-family: "Petit Formal Script", cursive;
+	}
+
+	.number-tekst-nine {
 		color: white;
 		margin-top: 25%;
 		font-size: 50px;

@@ -90,6 +90,10 @@ function SubtractionUpTo20Write() {
 				setLives(lives - 1);
 			}
 			setShowFrown(true);
+
+			if (incorrectAnswers + 1 >= 3) {
+				setGameOver(true);
+			}
 		}
 
 		setCanAnswer(false); // Disable answering while showing icons
@@ -103,7 +107,10 @@ function SubtractionUpTo20Write() {
 			setIsCheckingAnswer(false); // Set to false when answer check is completed
 
 			// Check for game over after an incorrect answer
-			if (incorrectAnswers + 1 >= 3) {
+			if (
+				incorrectAnswers + 1 >= 3 &&
+				userInput !== correctAnswer.toString()
+			) {
 				setGameOver(true);
 			}
 		}, 2000);
