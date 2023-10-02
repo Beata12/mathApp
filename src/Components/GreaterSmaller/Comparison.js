@@ -8,7 +8,7 @@ function Numbers() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<Link style={{ textDecoration: "none" }} to="/eg">
-							<li className="list-mobile">Przykłady????????</li>
+							<li className="list-mobile">Przykłady</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/esm">
 							<li className="list-mobile">Mniejsze</li>

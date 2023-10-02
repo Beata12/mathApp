@@ -187,8 +187,10 @@ function GreaterSmaller() {
 								</div>
 							</div>
 						</div>
-						<div>Punkty: {points}</div>
-						<div>Czas: {timer}</div>
+						<div className="information-mobile">
+							Punkty: {points}
+						</div>
+						<div className="information-mobile">Czas: {timer}</div>
 					</>
 				)}
 				<Link style={{ textDecoration: "none" }} to="/comp">

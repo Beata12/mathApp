@@ -7,21 +7,19 @@ function Numbers() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<Link to="/">
-							<li className="list">Poznaje znaki matematyczne</li>
+						<Link style={{ textDecoration: "none" }} to="/una">
+							<li className="list-mobile">Dodawanie</li>
 						</Link>
-
-						<Link to="/una">
-							<li className="list">Dodawanie</li>
+						<Link style={{ textDecoration: "none" }} to="/uns">
+							<li className="list-mobile">Odejmowanie</li>
 						</Link>
-						<Link to="/uns">
-							<li className="list">Odejmowanie</li>
+						<Link style={{ textDecoration: "none" }} to="/unas">
+							<li className="list-mobile">
+								Dodawanie/Odejmowanie
+							</li>
 						</Link>
-						<Link to="/unas">
-							<li className="list">Dodawanie/Odejmowanie</li>
-						</Link>
-						<Link to="/">
-							<li className="list">Wróć</li>
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="list-mobile">Wróć</li>
 						</Link>
 					</ul>
 				</div>
