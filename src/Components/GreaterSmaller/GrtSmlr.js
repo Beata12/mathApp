@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
 function GreaterSmaller() {
 	const [number1, setNumber1] = useState(0);
@@ -10,9 +11,11 @@ function GreaterSmaller() {
 	const [points, setPoints] = useState(0);
 	const [isComparing, setIsComparing] = useState(false);
 	const [selectedSign, setSelectedSign] = useState("");
-	const [timer, setTimer] = useState(10); // Countdown timer in seconds
+	const [timer, setTimer] = useState(10);
 	const [isTimeUp, setIsTimeUp] = useState(false);
 	const [hasSelectedAnswer, setHasSelectedAnswer] = useState(false);
+	const [lives, setLives] = useState(3); // Maksymalnie 3 życia
+	const [gameOver, setGameOver] = useState(false);
 
 	const generateRandomNumbers = () => {
 		const randomNum1 = Math.floor(Math.random() * 11);
@@ -21,9 +24,9 @@ function GreaterSmaller() {
 		setNumber2(randomNum2);
 		setResultIcon(null);
 		setSelectedSign("");
-		setIsTimeUp(false); // Reset the time-up flag
-		setTimer(10); // Reset the timer to 10 seconds with each new question
-		setHasSelectedAnswer(false); // Reset the selected answer flag
+		setIsTimeUp(false);
+		setTimer(10);
+		setHasSelectedAnswer(false);
 	};
 
 	const handleComparison = () => {
@@ -40,13 +43,19 @@ function GreaterSmaller() {
 			isCorrect = true;
 		} else {
 			setResultIcon(faFaceFrown);
+			// Zmiana ikony serduszka na faHeartCrack w przypadku złej odpowiedzi
+			setLives(lives - 1);
 		}
 
 		setTimeout(() => {
 			setResultIcon(null);
-			generateRandomNumbers();
 			if (isCorrect) {
 				setPoints(points + 1);
+			}
+			if (lives === 0) {
+				setGameOver(true);
+			} else {
+				generateRandomNumbers();
 			}
 			setIsComparing(false);
 		}, 2000);
@@ -63,19 +72,18 @@ function GreaterSmaller() {
 	}, [selectedSign]);
 
 	useEffect(() => {
-		// Start the countdown timer
 		const countdown = setInterval(() => {
 			if (timer > 0 && !hasSelectedAnswer) {
 				setTimer(timer - 1);
 			} else if (!hasSelectedAnswer) {
-				setIsTimeUp(true); // Time's up!
+				setIsTimeUp(true);
 				clearInterval(countdown);
-				handleComparison(); // Automatically handle comparison when time's up
+				handleComparison();
 			}
 		}, 1000);
 
 		return () => {
-			clearInterval(countdown); // Clean up the timer when the component unmounts
+			clearInterval(countdown);
 		};
 	}, [timer, hasSelectedAnswer]);
 
@@ -86,43 +94,112 @@ function GreaterSmaller() {
 		}
 	};
 
+	const generateHeartIcons = () => {
+		const heartIcons = [];
+		for (let i = 0; i < 3 - lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeartCrack}
+					className="heart-icon"
+					key={`cracked-heart-${i}`}
+				/>
+			);
+		}
+		for (let i = 0; i < lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeart}
+					className="heart-icon"
+					key={`heart-${i}`}
+				/>
+			);
+		}
+		return heartIcons;
+	};
+
+	const startNewGame = () => {
+		setGameOver(false);
+		setPoints(0);
+		setLives(3);
+		generateRandomNumbers();
+	};
+
 	return (
 		<main className="main-dzialy">
 			<ul className="text-center">
-				<div className="list">Wybierz znak:</div>
-				<div className="result">
-					{resultIcon ? <FontAwesomeIcon icon={resultIcon} /> : null}
+				<div className="list-title-mobile">
+					Wybierz odpowiedni znak:
 				</div>
-				<div className="numbers-mobile">
-					{number1} &nbsp;&nbsp; {selectedSign} &nbsp;&nbsp; {number2}
-				</div>
-				<div className="numbers-mobile">
-					<button
-						onClick={() => handleAnswerClick("<")}
-						disabled={isComparing || isTimeUp}
-					>
-						{"<"}
-					</button>
-					<button
-						onClick={() => handleAnswerClick(">")}
-						disabled={isComparing || isTimeUp}
-					>
-						{">"}
-					</button>
-					<button
-						onClick={() => handleAnswerClick("=")}
-						disabled={isComparing || isTimeUp}
-					>
-						{"="}
-					</button>
-				</div>
-				<div>Punkty: {points}</div>
-				<div>Czas: {timer} s</div>
+				{gameOver ? (
+					<div className="gameOver">
+						<div className="list-mobile">KONIEC GRY</div>
+						<div className="list-mobile">Punkty: {points}</div>
+						<div className="list-mobile">Gratulacje</div>
+						<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							<button
+								onClick={startNewGame}
+								className="btn-mobile"
+							>
+								Zagraj jeszcze raz
+							</button>
+						</div>
+					</div>
+				) : (
+					<>
+						<div className="result">
+							{resultIcon ? (
+								<FontAwesomeIcon icon={resultIcon} />
+							) : null}
+						</div>
+						<div className="numbers-mobile">
+							{number1} &nbsp;&nbsp; {selectedSign} &nbsp;&nbsp;{" "}
+							{number2}
+						</div>
+						<div className="container">
+							<div className="row d-flex justify-content-center">
+								<button
+									className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+									onClick={() => handleAnswerClick("<")}
+									disabled={isComparing || isTimeUp}
+								>
+									{"<"}
+								</button>
+								<button
+									className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+									onClick={() => handleAnswerClick(">")}
+									disabled={isComparing || isTimeUp}
+								>
+									{">"}
+								</button>
+								<button
+									className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+									onClick={() => handleAnswerClick("=")}
+									disabled={isComparing || isTimeUp}
+								>
+									{"="}
+								</button>
+							</div>
+						</div>
+						<div className="container">
+							<div className="row">
+								<div className="col">
+									{generateHeartIcons()}
+								</div>
+							</div>
+						</div>
+						<div>Punkty: {points}</div>
+						<div>Czas: {timer}</div>
+					</>
+				)}
 				<Link style={{ textDecoration: "none" }} to="/comp">
-					<li className="list-mobile">Wybierz inny poziom</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Wybierz inny poziom
+					</li>
 				</Link>
 				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="list-mobile">Powrót do menu</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Powrót do menu
+					</li>
 				</Link>
 			</ul>
 		</main>

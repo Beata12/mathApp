@@ -2,149 +2,223 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
-function EasyGreater() {
-	// Stan dla liczb, wyniku, punktów, stanu porównywania oraz pozostałego czasu
+function EasySmaller() {
 	const [number1, setNumber1] = useState(0);
 	const [number2, setNumber2] = useState(0);
 	const [result, setResult] = useState(null);
 	const [points, setPoints] = useState(0);
 	const [isComparing, setIsComparing] = useState(false);
 	const [timeRemaining, setTimeRemaining] = useState(10);
+	const [lives, setLives] = useState(3);
+	const [gameOver, setGameOver] = useState(false);
+	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 
-	// Uruchomienie generowania losowych liczb na początku
 	useEffect(() => {
 		generateRandomNumbers();
 	}, []);
 
-	// Efekt monitorujący stan czasu i stan porównywania
 	useEffect(() => {
 		let timer;
 
-		// Uruchomienie odliczania czasu, jeśli trwa porównywanie i czas jest większy od zera
 		if (isComparing) {
 			timer = setInterval(() => {
 				setTimeRemaining((prevTime) => prevTime - 1);
 			}, 1000);
 		} else {
-			clearInterval(timer); // Zatrzymanie odliczania czasu, jeśli nie trwa porównywanie
+			clearInterval(timer);
 		}
 
-		// Obsługa przypadku, gdy czas się skończy
 		if (timeRemaining === 0) {
-			clearInterval(timer); // Zatrzymanie odliczania czasu
-			setResult("incorrect"); // Ustawienie wyniku na "incorrect"
-			setIsComparing(false); // Zakończenie porównywania
+			clearInterval(timer);
+			setResult("incorrect");
+			setLives((prevLives) => prevLives - 1);
+			setIsComparing(false);
+			setIncorrectAnswers((prevIncorrect) => prevIncorrect + 1);
+		}
 
-			// Opóźnione resetowanie wyniku i wylosowanie nowych liczb
+		if (result === "incorrect") {
 			setTimeout(() => {
 				setResult(null);
 				generateRandomNumbers();
-				startTimer(); // Uruchomienie odliczania czasu po wylosowaniu nowych liczb
+				startTimer();
 			}, 2000);
 		}
 
-		// Czyszczenie timera po zakończeniu komponentu
+		if (incorrectAnswers >= 3) {
+			setGameOver(true);
+		}
+
 		return () => {
 			clearInterval(timer);
 		};
-	}, [timeRemaining, isComparing]);
+	}, [timeRemaining, isComparing, result, incorrectAnswers]);
 
-	// Funkcja do generowania losowych liczb
 	const generateRandomNumbers = () => {
-		setTimeRemaining(10); // Zresetowanie czasu na 10 sekund
-		const randomNum1 = Math.floor(Math.random() * 11); // Losowa liczba 0-10
+		setTimeRemaining(10);
+		const randomNum1 = Math.floor(Math.random() * 11);
 		let randomNum2 = randomNum1;
 
 		while (randomNum2 === randomNum1) {
-			randomNum2 = Math.floor(Math.random() * 11); // Losowa liczba 0-10 różna od poprzedniej
+			randomNum2 = Math.floor(Math.random() * 11);
 		}
 
-		setNumber1(randomNum1); // Ustawienie pierwszej liczby
-		setNumber2(randomNum2); // Ustawienie drugiej liczby
-		setResult(null); // Zresetowanie wyniku
-		startTimer(); // Uruchomienie odliczania czasu po wylosowaniu nowych liczb
+		setNumber1(randomNum1);
+		setNumber2(randomNum2);
+		setResult(null);
+		startTimer();
 	};
 
-	// Funkcja do uruchomienia odliczania czasu
 	const startTimer = () => {
-		setIsComparing(true); // Ustawienie stanu porównywania na true
+		setIsComparing(true);
 	};
 
-	// Funkcja do obsługi porównywania liczb
 	const handleComparison = (selectedNumber) => {
 		if (isComparing) {
-			setIsComparing(false); // Zakończenie porównywania
+			setIsComparing(false);
 
 			let isCorrect = false;
 
-			// Porównywanie wybranej liczby z drugą liczbą
-			if (selectedNumber === "number1") {
-				if (number1 > number2) {
-					setResult("correct"); // Ustawienie wyniku na "correct" w przypadku poprawnej odpowiedzi
-					isCorrect = true;
-				} else {
-					setResult("incorrect"); // Ustawienie wyniku na "incorrect" w przypadku niepoprawnej odpowiedzi
-				}
-			} else if (selectedNumber === "number2") {
-				if (number2 > number1) {
-					setResult("correct"); // Ustawienie wyniku na "correct" w przypadku poprawnej odpowiedzi
-					isCorrect = true;
-				} else {
-					setResult("incorrect"); // Ustawienie wyniku na "incorrect" w przypadku niepoprawnej odpowiedzi
-				}
+			if (
+				(selectedNumber === "number1" && number1 > number2) ||
+				(selectedNumber === "number2" && number2 > number1)
+			) {
+				setResult("correct");
+				isCorrect = true;
+			} else {
+				setResult("incorrect");
+				setLives((prevLives) => prevLives - 1);
+				setIncorrectAnswers((prevIncorrect) => prevIncorrect + 1);
 			}
 
-			// Opóźnione resetowanie wyniku i wylosowanie nowych liczb
 			setTimeout(() => {
 				setResult(null);
 				generateRandomNumbers();
 			}, 2000);
 
-			// Zwiększenie punktów w przypadku poprawnej odpowiedzi
 			if (isCorrect) {
 				setPoints(points + 1);
 			}
 		}
 	};
 
+	const generateHeartIcons = () => {
+		const heartIcons = [];
+		for (let i = 0; i < 3 - lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeartCrack}
+					className="heart-icon"
+					key={`cracked-heart-${i}`}
+				/>
+			);
+		}
+		for (let i = 0; i < lives; i++) {
+			heartIcons.push(
+				<FontAwesomeIcon
+					icon={faHeart}
+					className="heart-icon"
+					key={`heart-${i}`}
+				/>
+			);
+		}
+		return heartIcons;
+	};
+
+	const startNewGame = () => {
+		setGameOver(false);
+		setPoints(0);
+		setLives(3);
+		setIncorrectAnswers(0);
+		generateRandomNumbers();
+	};
+
 	return (
 		<main className="main-dzialy">
 			<ul className="text-center">
-				<div className="list">Która liczba jest większa?</div>
-				<div className="result">
-					{result === "correct" ? (
-						<FontAwesomeIcon icon={faFaceSmile} />
-					) : result === "incorrect" ? (
-						<FontAwesomeIcon icon={faFaceFrown} />
-					) : null}
+				<div className="list-title-mobile">
+					Która liczba jest mniejsza?
 				</div>
-				<div className="numbers-mobile">
-					<button
-						onClick={() => handleComparison("number1")}
-						disabled={!isComparing}
-					>
-						{number1}
-					</button>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<button
-						onClick={() => handleComparison("number2")}
-						disabled={!isComparing}
-					>
-						{number2}
-					</button>
-				</div>
-				<div>Punkty: {points}</div>
-				<div>Czas: {timeRemaining}</div>
+				{gameOver ? (
+					<div className="gameOver">
+						<div className="list-mobile">KONIEC GRY</div>
+						<div className="list-mobile">Punkty: {points}</div>
+						<div className="list-mobile">Gratulacje</div>
+						<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							<button
+								onClick={startNewGame}
+								className="btn-mobile"
+							>
+								Zagraj jeszcze raz
+							</button>
+						</div>
+					</div>
+				) : (
+					<>
+						<div className="result">
+							{result === "correct" ? (
+								<FontAwesomeIcon icon={faFaceSmile} />
+							) : result === "incorrect" ? (
+								<>
+									<FontAwesomeIcon icon={faFaceFrown} />
+								</>
+							) : null}
+						</div>
+						<div className="container">
+							<div className="row d-flex justify-content-center">
+								<div className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile">
+									<button
+										className="equations-mobile"
+										onClick={() =>
+											handleComparison("number1")
+										}
+										disabled={!isComparing}
+									>
+										{number1}
+									</button>
+								</div>
+								<div className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile">
+									<button
+										className="equations-mobile"
+										onClick={() =>
+											handleComparison("number2")
+										}
+										disabled={!isComparing}
+									>
+										{number2}
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="information-mobile">
+							Czas: {timeRemaining}
+						</div>
+						<div className="information-mobile">
+							Punkty: {points}
+						</div>
+						<div className="container">
+							<div className="row">
+								<div className="col">
+									{generateHeartIcons()}
+								</div>
+							</div>
+						</div>
+					</>
+				)}
 				<Link style={{ textDecoration: "none" }} to="/comp">
-					<li className="list-mobile">Wybierz inny poziom</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Wybierz inny poziom
+					</li>
 				</Link>
 				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="list-mobile">Powrót do menu</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Powrót do menu
+					</li>
 				</Link>
 			</ul>
 		</main>
 	);
 }
 
-export default EasyGreater;
+export default EasySmaller;
