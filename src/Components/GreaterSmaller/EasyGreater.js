@@ -138,7 +138,7 @@ function EasySmaller() {
 		<main className="main-dzialy">
 			<ul className="text-center">
 				<div className="list-title-mobile">
-					Która liczba jest mniejsza?
+					Która liczba jest większa?
 				</div>
 				{gameOver ? (
 					<div className="gameOver">

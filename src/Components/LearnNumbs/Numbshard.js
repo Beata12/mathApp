@@ -4,7 +4,41 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
-function NumbHard() {
+const numbersdigit = {
+	1: "jeden",
+	2: "dwa",
+	3: "trzy",
+	4: "cztery",
+	5: "pięć",
+	6: "sześć",
+	7: "siedem",
+	8: "osiem",
+	9: "dziewięć",
+	10: "dziesięć",
+};
+
+const answers = {
+	jeden: 1,
+	dwa: 2,
+	trzy: 3,
+	cztery: 4,
+	pięć: 5,
+	sześć: 6,
+	siedem: 7,
+	osiem: 8,
+	dziewięć: 9,
+	dziesięć: 10,
+};
+
+const getRandomNumbers = () => {
+	const uniqueNumbers = new Set();
+	while (uniqueNumbers.size < 3) {
+		uniqueNumbers.add(Math.floor(Math.random() * 10) + 1);
+	}
+	return [...uniqueNumbers];
+};
+
+const NumbHard = () => {
 	const [timer, setTimer] = useState(10);
 	const [numbers, setNumbers] = useState([]);
 	const [randomWord, setRandomWord] = useState("");
@@ -14,29 +48,12 @@ function NumbHard() {
 	const [points, setPoints] = useState(0);
 	const [canAnswer, setCanAnswer] = useState(true);
 	const [lives, setLives] = useState(3);
-	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
 	const [showNextQuestion, setShowNextQuestion] = useState(false);
-
-	const numbersdigit = {
-		1: "jeden",
-		2: "dwa",
-		3: "trzy",
-		4: "cztery",
-		5: "pięć",
-		6: "sześć",
-		7: "siedem",
-		8: "osiem",
-		9: "dziewięć",
-		10: "dziesięć",
-	};
+	const [emoji, setEmoji] = useState(null);
 
 	const generateRandomNumbers = () => {
-		const uniqueNumbers = new Set();
-		while (uniqueNumbers.size < 3) {
-			uniqueNumbers.add(Math.floor(Math.random() * 10) + 1);
-		}
-		const optionsArray = [...uniqueNumbers];
+		const optionsArray = getRandomNumbers();
 		const randomIndex = Math.floor(Math.random() * optionsArray.length);
 		const correctNum = optionsArray[randomIndex];
 		setNumbers(optionsArray);
@@ -44,31 +61,40 @@ function NumbHard() {
 		setRandomWord(numbersdigit[correctNum]);
 	};
 
-	let intervalId; // Declare intervalId outside of useEffect
+	let intervalId;
 
 	const handleDigitClick = (digit) => {
 		if (!canAnswer) return;
 
+		setCanAnswer(false); // Disable answering during the transition
 		setSelectedDigit(digit);
 		const isCorrect = digit === correctDigit;
 		setCorrectAnswer(isCorrect);
 
 		if (isCorrect) {
 			setPoints((prevPoints) => prevPoints + 1);
-			setCanAnswer(false);
-			clearInterval(intervalId);
-			setTimeout(() => {
-				setCanAnswer(true);
-				setCorrectAnswer(null);
-				generateRandomNumbers();
-				setTimer(10);
-				setShowNextQuestion(true);
-				setTimeout(() => {
-					setShowNextQuestion(false);
-					startTimer();
-				}, 2000);
-			}, 2000);
+			setEmoji("frown"); // Set the emoji to sad face
+		} else {
+			setLives((prevLives) => prevLives - 1);
+			setEmoji("frown"); // Set the emoji to sad face
+			if (lives === 1) {
+				setGameOver(true);
+			}
 		}
+
+		clearInterval(intervalId);
+		setTimeout(() => {
+			setCorrectAnswer(null);
+			generateRandomNumbers();
+			setTimer(10);
+			setShowNextQuestion(true);
+			setTimeout(() => {
+				setShowNextQuestion(false);
+				startTimer();
+				setEmoji(null); // Reset the emoji
+				setCanAnswer(true); // Enable answering for the new question
+			}, 2000);
+		}, 2000);
 	};
 
 	const generateHeartIcons = () => {
@@ -98,8 +124,9 @@ function NumbHard() {
 		setGameOver(false);
 		setPoints(0);
 		setLives(3);
-		setIncorrectAnswers(0);
+		setEmoji(null); // Reset the emoji
 		generateRandomNumbers();
+		startTimer();
 	};
 
 	useEffect(() => {
@@ -144,6 +171,20 @@ function NumbHard() {
 							</div>
 						) : (
 							<>
+								<div className="icons-mobile">
+									{emoji === "smile" && (
+										<FontAwesomeIcon
+											icon={faFaceSmile}
+											className="smile-icon"
+										/>
+									)}
+									{emoji === "frown" && (
+										<FontAwesomeIcon
+											icon={faFaceFrown}
+											className="frown-icon"
+										/>
+									)}
+								</div>
 								<div className="horizontal-options">
 									<p className="digitword">{randomWord}</p>
 								</div>
@@ -193,6 +234,6 @@ function NumbHard() {
 			</div>
 		</main>
 	);
-}
+};
 
 export default NumbHard;
