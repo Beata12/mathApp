@@ -8,21 +8,29 @@ function Numbers() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<Link style={{ textDecoration: "none" }} to="/eg">
-							<li className="list-mobile">Przykłady</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Porównywanie liczb - przykłady
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/esm">
-							<li className="list-mobile">Mniejsze</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Porównywanie liczb - która liczba jest mniejsza
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/egr">
-							<li className="list-mobile">Większe</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Porównywanie liczb - która liczba jest większa
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/grsm">
-							<li className="list-mobile">
-								Mniejsze czy większe?
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Porównywanie liczb
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/">
-							<li className="list-mobile">Wróć</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Powrót do menu
+							</li>
 						</Link>
 					</ul>
 				</div>

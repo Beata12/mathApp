@@ -8,24 +8,30 @@ function Numbers() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<Link style={{ textDecoration: "none" }} to="/numlearn">
-							<li className="list-mobile">Poznaje cyfry</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Poznaje liczby
+							</li>
 						</Link>
-						<img
-							className="animal"
-							src={require("./photos/question.png")}
-							alt={"Add more descriptive alt"}
-						/>
+
 						<Link style={{ textDecoration: "none" }} to="/nume">
-							<li className="list-mobile">Coś łatwego</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Rozpoznawanie liczb - poziom łatwy
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/numh">
-							<li className="list-mobile">Trudniejsze</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Rozpoznawanie liczb - poziom trudny
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/numl">
-							<li className="list-mobile">Słucham</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Rozpoznawanie liczb - słuchanie
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/">
-							<li className="list-mobile">Powrót do menu</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Powrót do menu
+							</li>
 						</Link>
 					</ul>
 				</div>

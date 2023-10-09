@@ -54,13 +54,19 @@ function Signs() {
 
 			<ul className="text-center">
 				<Link style={{ textDecoration: "none" }} to="/eg">
-					<li className="list-mobile">Przykłady</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Przykłady
+					</li>
 				</Link>
 				<Link style={{ textDecoration: "none" }} to="/comp">
-					<li className="list-mobile">Chcesz poćwiczyć</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Chcesz poćwiczyć
+					</li>
 				</Link>
 				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="list-mobile">Powrót do menu</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Powrót do menu
+					</li>
 				</Link>
 			</ul>
 		</main>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { star } from "@fortawesome/free-regular-svg-icons";
 
 function Numbslearn() {
 	const [currentNumber, setCurrentNumber] = useState(1);
@@ -132,10 +134,14 @@ function Numbslearn() {
 
 			<ul className="text-center">
 				<Link style={{ textDecoration: "none" }} to="/num">
-					<li className="list-mobile">Chcesz poćwiczyć</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Chcesz poćwiczyć
+					</li>
 				</Link>
 				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="list-mobile">Powrót do menu</li>
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Powrót do menu
+					</li>
 				</Link>
 			</ul>
 		</main>

@@ -8,18 +8,24 @@ function Numbers() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<Link style={{ textDecoration: "none" }} to="/una">
-							<li className="list-mobile">Dodawanie</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Dodawanie z liczbą niewiadomą
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/uns">
-							<li className="list-mobile">Odejmowanie</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Odejmowanie z liczbą niewiadomą
+							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/unas">
-							<li className="list-mobile">
-								Dodawanie/Odejmowanie
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Dodawanie i odejmowanie z liczbą niewiadomą
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/">
-							<li className="list-mobile">Wróć</li>
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								Powrót do menu
+							</li>
 						</Link>
 					</ul>
 				</div>

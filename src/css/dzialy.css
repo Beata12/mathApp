@@ -1,11 +1,38 @@
+body {
+	border: #b9713d solid 12px;
+	border-top: #8b4513 solid 12px;
+	border-left: #b9713d solid 12px;
+	border-bottom: #8b4513 solid 12px;
+	box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #8b4513,
+		0px 0px 0px 4px #b9713d, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+	background-image: radial-gradient(
+			circle at left 30%,
+			#228b22,
+			#117811 80px,
+			#006400 160px,
+			#2e8b57
+		),
+		linear-gradient(
+			215deg,
+			transparent,
+			transparent 100px,
+			#2e8b57 260px,
+			#228b22 320px,
+			transparent
+		),
+		radial-gradient(circle at right, #006400, #556b2f);
+	background-color: #228b22;
+}
+
 ul {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
 }
 
-.list {
-	margin: 7vh;
+.list-desktop {
+	color: white;
+	font-size: 30px;
 }
 
 .dzialy-mobile {
@@ -14,10 +41,21 @@ ul {
 
 .main-dzialy {
 	max-height: 90vh;
-	overflow: hidden;
 }
+
 .dzialy-desktop {
 	display: block;
+}
+
+.board-desktop {
+	border: #b9713d solid 5px;
+	border-top: #8b4513 solid 5px;
+	border-left: #b9713d solid 5px;
+	border-bottom: #8b4513 solid 5px;
+	box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #8b4513,
+		0px 0px 0px 4px #b9713d, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+	margin: 40px;
+	padding: 15px;
 }
 
 @media only screen and (max-width: 800px) {
