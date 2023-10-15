@@ -6,7 +6,7 @@ function Dzialy() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div>
-					<div className="d-flex justify-content-center header-text-desktop">
+					<div className="d-flex justify-content-center list-desktop">
 						DZIAŁY
 					</div>
 				</div>
@@ -41,10 +41,10 @@ function Dzialy() {
 								to="./comp"
 							>
 								<li className="list-desktop board-desktop">
-									Większy/Mniejszy
+									Porównywanie liczb
 								</li>
 							</Link>
-							<Link style={{ textDecoration: "none" }} to="./um">
+							<Link style={{ textDecoration: "none" }} to="./un">
 								<li className="list-desktop board-desktop">
 									Działania z niewiadomą
 								</li>
@@ -79,7 +79,7 @@ function Dzialy() {
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./comp">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Większy/Mniejszy
+								Porównywanie liczb
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./un">
