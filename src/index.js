@@ -9,6 +9,7 @@ import "./css/num-easy.css";
 import "./css/learn.css";
 import "./css/compare.css";
 import "./css/substraction.css";
+import "./css/nav.css";
 import reportWebVitals from "./reportWebVitals";
 import "aos/dist/aos.css";
 import "bootstrap/dist/css/bootstrap.css";

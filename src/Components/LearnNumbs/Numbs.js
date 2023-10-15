@@ -12,7 +12,7 @@ function Numbers() {
 								style={{ textDecoration: "none" }}
 								to="/numlearn"
 							>
-								<li className="d-flex justify-content-center list-desktop">
+								<li className="list-desktop board-desktop">
 									Poznaje liczby
 								</li>
 							</Link>

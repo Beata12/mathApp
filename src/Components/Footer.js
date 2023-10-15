@@ -5,7 +5,7 @@ function Footer() {
 		<footer className=" py-4 mt-auto ">
 			<div className="container px-5">
 				<div className="d-flex justify-content-center">
-					<div className="small m-0  copy-mobile">
+					<div className="small m-0 copy-mobile">
 						Copyright &copy; Beata 2023
 					</div>
 				</div>

@@ -7,12 +7,14 @@ function Navigation() {
 			<div className="container px-5">
 				<a className="navbar-brand" href="index.html">
 					<div>
-						<img
+						{/* <img
 							className="appname"
 							src={require("./photo/mis.png")}
 							alt={"Add more descriptive alt"}
-						/>
-						<span className="fw-bolder">Nazwa aplikacji</span>
+						/> */}
+						<span className="fw-bolder navigation">
+							MATEMATYKA DLA SMYKA
+						</span>
 					</div>
 				</a>
 
@@ -33,18 +35,18 @@ function Navigation() {
 				>
 					<ul className="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
 						<li className="nav-item">
-							<a className="nav-link" href="index.html">
-								Poznajemy cyfry
+							<a className="nav-link navigation" href="numlearn">
+								LICZBY
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="resume.html">
-								Dodajemy
+							<a className="nav-link navigation" href="sign">
+								ZNAKI MATEMATYCZNE
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="contact.html">
-								Odejmujemy
+							<a className="nav-link navigation" href="./">
+								DZIAŁY
 							</a>
 						</li>
 					</ul>

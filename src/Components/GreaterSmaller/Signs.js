@@ -29,46 +29,72 @@ function Signs() {
 
 	return (
 		<main className="main-dzialy">
-			<div className="blackboard container">
-				<div className="text-center">
-					<button
-						className="btn btn-changenum"
-						onClick={handlePreviousClick}
-					>
-						Poprzedni
-					</button>
-
-					<button
-						className="btn btn-changenum"
-						onClick={handleNextClick}
-					>
-						Dalej
-					</button>
-				</div>
-				<div className="signs-content-mobile">
-					<div>{currentDiv.explanation}</div>
-					<div className="meaning-mobile">{currentDiv.meaning}</div>
-					<div className="sign-mobile">{currentDiv.sign}</div>
+			<div className="dzialy-desktop">
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-8 ">
+						<ul className="text-center">
+							<Link style={{ textDecoration: "none" }} to="/eg">
+								<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+									Przykłady
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/comp">
+								<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+									Chcesz poćwiczyć
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/">
+								<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+									Powrót do menu
+								</li>
+							</Link>
+						</ul>
+					</div>
 				</div>
 			</div>
+			<div className="dzialy-mobile">
+				<div className="blackboard container">
+					<div className="text-center">
+						<button
+							className="btn btn-changenum"
+							onClick={handlePreviousClick}
+						>
+							Poprzedni
+						</button>
 
-			<ul className="text-center">
-				<Link style={{ textDecoration: "none" }} to="/eg">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Przykłady
-					</li>
-				</Link>
-				<Link style={{ textDecoration: "none" }} to="/comp">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Chcesz poćwiczyć
-					</li>
-				</Link>
-				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Powrót do menu
-					</li>
-				</Link>
-			</ul>
+						<button
+							className="btn btn-changenum"
+							onClick={handleNextClick}
+						>
+							Dalej
+						</button>
+					</div>
+					<div className="signs-content-mobile">
+						<div>{currentDiv.explanation}</div>
+						<div className="meaning-mobile">
+							{currentDiv.meaning}
+						</div>
+						<div className="sign-mobile">{currentDiv.sign}</div>
+					</div>
+				</div>
+				<ul className="text-center">
+					<Link style={{ textDecoration: "none" }} to="/eg">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Przykłady
+						</li>
+					</Link>
+					<Link style={{ textDecoration: "none" }} to="/comp">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Chcesz poćwiczyć
+						</li>
+					</Link>
+					<Link style={{ textDecoration: "none" }} to="/">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Powrót do menu
+						</li>
+					</Link>
+				</ul>
+			</div>
 		</main>
 	);
 }
