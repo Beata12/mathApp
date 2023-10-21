@@ -7,12 +7,42 @@
 	display: none;
 }
 
+.title-page {
+	background-image: linear-gradient(
+		to right,
+		rgba(195, 160, 130, 1) 0%,
+		rgba(195, 160, 130, 1) 90%,
+		rgb(111, 111, 110, 0.7) 100%
+	);
+	background-image: linear-gradient(
+		to left,
+		rgba(195, 160, 130, 1) 0%,
+		rgba(195, 160, 130, 1) 90%,
+		rgb(111, 111, 110, 0.7) 100%
+	);
+	background-image: linear-gradient(
+		to bottom,
+		rgba(195, 160, 130, 1) 0%,
+		rgba(195, 160, 130, 1) 90%,
+		rgb(111, 111, 110, 0.7) 100%
+	);
+	background-image: linear-gradient(
+		to top,
+		rgba(195, 160, 130, 1) 0%,
+		rgba(195, 160, 130, 1) 90%,
+		rgb(111, 111, 110, 0.7) 100%
+	);
+}
 .dzialy-desktop {
 	display: block;
 }
 
 .number {
 	font-size: 100px;
+}
+
+.demoPage {
+	background-color: blueviolet;
 }
 
 .blackboard-main-desktop {

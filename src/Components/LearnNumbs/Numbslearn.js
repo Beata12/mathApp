@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { star } from "@fortawesome/free-regular-svg-icons";
+import HTMLFlipBook from "react-pageflip";
 
 function Numbslearn() {
 	const [currentNumber, setCurrentNumber] = useState(1);
@@ -99,51 +100,94 @@ function Numbslearn() {
 
 	return (
 		<main className="main-dzialy">
-			<div className="header-mobile">Poznaje cyfty</div>
-			<div className="blackboard container text-center">
-				<div className="text-center">
-					<button
-						className="btn btn-changenum"
-						onClick={handlePrevious}
-					>
-						Poprzedni
-					</button>
-					<button className="btn btn-changenum" onClick={handleNext}>
-						Dalej
-					</button>
-				</div>
-				<div className="row">
-					<div className="col ">
-						<p className="number">{currentNumber}</p>
+			<div className="dzialy-desktop">
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-8 ">
+						<div className="d-flex justify-content-center">
+							<HTMLFlipBook width={300} height={500}>
+								<div className="table" data-density="hard">
+									<img
+										width={300}
+										height={500}
+										src={require("./photos/desk.jpg")}
+										alt={"desk"}
+									/>
+								</div>
+								<div className="title-page d-flex justify-content-center">
+									<div className="d-flex align-items-center">
+										UCZE SIĘ CYFEREK
+									</div>
+								</div>
+								<div className="demoPage">
+									jak to zrobić zeby każda strona była nowym
+									komponentem
+								</div>
+								<div className="demoPage">
+									jak to zrobić zeby każda strona była nowym
+									komponentem
+								</div>
+							</HTMLFlipBook>
+						</div>
+						<ul className="text-center">
+							<Link style={{ textDecoration: "none" }} to="/">
+								<li className="list-desktop board-desktop">
+									Powrót do menu
+								</li>
+							</Link>
+						</ul>
 					</div>
-					<div className="col">
-						<p className="number-tekst">
-							{numberTexts[currentNumber]}
-						</p>
-					</div>
 				</div>
-				{currentPic.map((pic, index) => (
-					<img
-						className={` ${classes[currentNumber]}`}
-						key={index}
-						src={require(`./photos/${pic}`)}
-						alt={`Zdjęcie ${currentNumber}`}
-					/>
-				))}
 			</div>
+			<div className="dzialy-mobile">
+				<div className="header-mobile">Poznaje cyfty</div>
+				<div className="blackboard container text-center">
+					<div className="text-center">
+						<button
+							className="btn btn-changenum"
+							onClick={handlePrevious}
+						>
+							Poprzedni
+						</button>
+						<button
+							className="btn btn-changenum"
+							onClick={handleNext}
+						>
+							Dalej
+						</button>
+					</div>
+					<div className="row">
+						<div className="col ">
+							<p className="number">{currentNumber}</p>
+						</div>
+						<div className="col">
+							<p className="number-tekst">
+								{numberTexts[currentNumber]}
+							</p>
+						</div>
+					</div>
+					{currentPic.map((pic, index) => (
+						<img
+							className={` ${classes[currentNumber]}`}
+							key={index}
+							src={require(`./photos/${pic}`)}
+							alt={`Zdjęcie ${currentNumber}`}
+						/>
+					))}
+				</div>
 
-			<ul className="text-center">
-				<Link style={{ textDecoration: "none" }} to="/num">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Chcesz poćwiczyć
-					</li>
-				</Link>
-				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Powrót do menu
-					</li>
-				</Link>
-			</ul>
+				<ul className="text-center">
+					<Link style={{ textDecoration: "none" }} to="/num">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Chcesz poćwiczyć
+						</li>
+					</Link>
+					<Link style={{ textDecoration: "none" }} to="/">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Powrót do menu
+						</li>
+					</Link>
+				</ul>
+			</div>
 		</main>
 	);
 }
