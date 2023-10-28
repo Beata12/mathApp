@@ -129,30 +129,22 @@ function Numbslearn() {
 									</div>
 								</div>
 								<div class="wrap-paper">
-									<div class="paper row">
+									<div class="paper ">
 										<div class="d-flex align-items-center text-book row">
 											<div className="text-desktop">
-												jeden
+												<div class="row ">jeden</div>
+												<div class="row ">1</div>
 											</div>
-										</div>
-										<div class="row">
-											<div className="text-desktop">
-												1
-											</div>
-										</div>
-										<div className="row">
-											<img
-												className="pic-de"
-												src={require("./photos/1.png")}
-												alt={"desk"}
-											/>
 										</div>
 									</div>
 								</div>
 								<div class="wrap-paper">
 									<div class="paper">
-										jak to zrobić zeby każda strona była
-										nowym komponentem
+										<img
+											className="pic-de"
+											src={require("./photos/1.png")}
+											alt={"desk"}
+										/>
 									</div>
 								</div>
 								<div class="wrap-paper">
