@@ -103,28 +103,83 @@ function Numbslearn() {
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-8 ">
-						<div className="d-flex justify-content-center">
-							<HTMLFlipBook width={300} height={500}>
-								<div className="table" data-density="hard">
+						<div className="d-flex justify-content-center book">
+							<HTMLFlipBook width={400} height={700}>
+								<div className="table">
 									<img
-										width={300}
-										height={500}
+										width={400}
+										height={700}
 										src={require("./photos/desk.jpg")}
 										alt={"desk"}
 									/>
 								</div>
 								<div className="title-page d-flex justify-content-center">
-									<div className="d-flex align-items-center">
-										UCZE SIĘ CYFEREK
+									<div class="d-flex align-items-center text-book row">
+										<div class="row "></div>
+										<div class="row ">
+											<div>UCZE</div>
+										</div>
+										<div class="row ">
+											<div>SIĘ</div>
+										</div>
+										<div class="row ">
+											<div>CYFEREK</div>
+										</div>
+										<div class="row "></div>
 									</div>
 								</div>
-								<div className="demoPage">
-									jak to zrobić zeby każda strona była nowym
-									komponentem
+								<div class="wrap-paper">
+									<div class="paper row">
+										<div class="d-flex align-items-center text-book row">
+											<div className="text-desktop">
+												jeden
+											</div>
+										</div>
+										<div class="row">
+											<div className="text-desktop">
+												1
+											</div>
+										</div>
+										<div className="row">
+											<img
+												className="pic-de"
+												src={require("./photos/1.png")}
+												alt={"desk"}
+											/>
+										</div>
+									</div>
 								</div>
-								<div className="demoPage">
-									jak to zrobić zeby każda strona była nowym
-									komponentem
+								<div class="wrap-paper">
+									<div class="paper">
+										jak to zrobić zeby każda strona była
+										nowym komponentem
+									</div>
+								</div>
+								<div class="wrap-paper">
+									<div class="paper">
+										jak to zrobić zeby każda strona była
+										nowym komponentem
+									</div>
+								</div>
+								<div class="wrap-paper">
+									<div class="paper">
+										jak to zrobić zeby każda strona była
+										nowym komponentem
+									</div>
+								</div>
+								<div class="wrap-paper">
+									<div class="paper">
+										jak to zrobić zeby każda strona była
+										nowym komponentem
+									</div>
+								</div>
+								<div className="table">
+									<img
+										width={400}
+										height={700}
+										src={require("./photos/desk.jpg")}
+										alt={"desk"}
+									/>
 								</div>
 							</HTMLFlipBook>
 						</div>

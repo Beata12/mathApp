@@ -5,7 +5,7 @@ function Navigation() {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light py-3 ">
 			<div className="container px-5">
-				<a className="navbar-brand" href="index.html">
+				<a className="navbar-brand" href="">
 					<div>
 						{/* <img
 							className="appname"

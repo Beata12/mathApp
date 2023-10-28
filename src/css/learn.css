@@ -7,32 +7,67 @@
 	display: none;
 }
 
+::-webkit-scrollbar {
+	display: none;
+}
+
+.book {
+	margin-top: 70px;
+	margin-bottom: 70px;
+}
+
+.pic-de {
+	width: 300px !important;
+}
+
+.text-book {
+	font-size: 80px;
+}
+
+.text-desktop {
+	font-size: 80px;
+}
+
 .title-page {
+	background-color: #f8f5de;
 	background-image: linear-gradient(
 		to right,
-		rgba(195, 160, 130, 1) 0%,
-		rgba(195, 160, 130, 1) 90%,
-		rgb(111, 111, 110, 0.7) 100%
+		rgba(255, 102, 0, 0.4),
+		rgba(200, 160, 0, 0.1) 11%,
+		rgba(0, 0, 0, 0) 35%,
+		rgba(200, 160, 0, 0.1) 65%
 	);
-	background-image: linear-gradient(
-		to left,
-		rgba(195, 160, 130, 1) 0%,
-		rgba(195, 160, 130, 1) 90%,
-		rgb(111, 111, 110, 0.7) 100%
-	);
-	background-image: linear-gradient(
-		to bottom,
-		rgba(195, 160, 130, 1) 0%,
-		rgba(195, 160, 130, 1) 90%,
-		rgb(111, 111, 110, 0.7) 100%
-	);
-	background-image: linear-gradient(
-		to top,
-		rgba(195, 160, 130, 1) 0%,
-		rgba(195, 160, 130, 1) 90%,
-		rgb(111, 111, 110, 0.7) 100%
-	);
+	box-shadow: inset 0 0 75px rgba(255, 210, 0, 0.3),
+		inset 0 0 20px rgba(255, 210, 0, 0.4),
+		inset 0 0 30px rgba(220, 120, 0, 0.8);
+	color: rgba(0, 0, 0, 0.5);
 }
+
+.wrap-paper {
+	text-align: justify;
+	width: 210mm;
+	height: 297mm;
+	margin: auto;
+	padding: 0;
+	background-color: #f2f2f2;
+	box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+	font-family: Cursive;
+	color: #8c816c;
+	overflow: hidden;
+}
+
+.paper {
+	width: 180mm;
+	height: 267mm;
+	padding: 15mm;
+	line-height: 1.4em;
+	background-image: linear-gradient(to right, #8c816c 1px, transparent 1px),
+		linear-gradient(to bottom, #8c816c 1px, transparent 1px);
+	background-size: 1.4em 1.4em;
+	background-position: 0 1.1em;
+	background-origin: content-box;
+}
+
 .dzialy-desktop {
 	display: block;
 }
@@ -42,7 +77,20 @@
 }
 
 .demoPage {
-	background-color: blueviolet;
+	background-image: linear-gradient(
+		to right,
+		rgba(195, 160, 130, 1) 0%,
+		rgba(195, 160, 130, 1) 90%,
+		rgb(111, 111, 110, 0.7) 100%
+	);
+}
+
+.demoPage2 {
+	background-image: linear-gradient(
+		to left,
+		rgba(195, 160, 130, 1) 97%,
+		rgba(29, 29, 29, 0.7) 100%
+	);
 }
 
 .blackboard-main-desktop {
