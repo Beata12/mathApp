@@ -1,7 +1,30 @@
+.list-title-desktop {
+	font-size: 40px;
+	font-weight: bold;
+	color: white;
+	margin: 40px;
+}
+
 .list-title-mobile {
 	font-size: 30px;
 	font-weight: bold;
 	color: white;
+}
+
+.answer-box-desktop {
+	border: #b9713d solid 5px;
+	border-top: #8b4513 solid 5px;
+	border-left: #b9713d solid 5px;
+	border-bottom: #8b4513 solid 5px;
+	box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #8b4513,
+		0px 0px 0px 4px #b9713d, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
+	min-width: 30px;
+	min-height: 50px;
+	margin: 10px;
+	margin-top: 20px !important;
+	background-color: transparent;
+	color: white;
+	font-size: 20px;
 }
 
 .answer-box-mobile {
@@ -20,6 +43,13 @@
 	font-size: 20px;
 }
 
+.equations-desktop {
+	color: white;
+	font-size: 50px;
+	background-color: transparent;
+	border: none;
+}
+
 .equations-mobile {
 	color: white;
 	font-size: 30px;
@@ -27,9 +57,20 @@
 	border: none;
 }
 
+.information-desktop {
+	color: white;
+	font-size: 25px;
+	margin: 20px;
+}
+
 .information-mobile {
 	color: white;
 	font-size: 25px;
+	margin: 20px;
+}
+
+.icons-desktop {
+	height: 80px;
 	margin: 20px;
 }
 
@@ -49,6 +90,13 @@
 	height: 40px;
 }
 
+.btn-desktop {
+	border: none;
+	background: transparent;
+	color: white;
+	font-size: 30px;
+}
+
 .btn-mobile {
 	border: none;
 	background: transparent;
@@ -64,6 +112,20 @@
 
 .smile-icon {
 	color: rgb(35, 162, 35);
+}
+
+.smile-icon-desktop {
+	color: rgb(35, 162, 35);
+	height: 70px;
+}
+
+.frown-icon {
+	color: red;
+}
+
+.frown-icon-desktop {
+	color: red;
+	height: 70px;
 }
 
 .input-mobile {

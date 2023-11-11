@@ -33,9 +33,15 @@ ul {
 	margin: 0;
 }
 
+.play-again-desktop {
+	color: white;
+	font-size: 30px;
+}
+
 .list-desktop {
 	color: white;
 	font-size: 30px;
+	margin: 20px;
 }
 
 .dzialy-mobile {
