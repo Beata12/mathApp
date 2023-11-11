@@ -13,6 +13,7 @@ import UpTo20 from "./Addition/UpTo20";
 import UpTo5 from "./Addition/UpTo5";
 import UpTo5Easy from "./Addition/UpTo5Easy";
 import UpTo10 from "./Addition/UpTo10";
+import UpTo10Easy from "./Addition/UpTo10Easy";
 import Write10 from "./Addition/UpTo10Write";
 import Write20 from "./Addition/UpTo20Write";
 import Signs from "./GreaterSmaller/Signs";
@@ -53,6 +54,7 @@ function App() {
 				<Route path="/u5" element={<UpTo5 />} />
 				<Route path="/u5e" element={<UpTo5Easy />} />
 				<Route path="/u10" element={<UpTo10 />} />
+				<Route path="/u10e" element={<UpTo10Easy />} />
 				<Route path="/w10" element={<Write10 />} />
 				<Route path="/u20" element={<UpTo20 />} />
 				<Route path="/w20" element={<Write20 />} />

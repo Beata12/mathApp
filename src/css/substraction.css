@@ -74,6 +74,10 @@
 	margin: 20px;
 }
 
+.icons-space-desktop {
+	height: 120px;
+}
+
 .icons-mobile {
 	height: 40px;
 	margin: 10px;
@@ -128,10 +132,53 @@
 	height: 70px;
 }
 
+.star1-icon-desktop {
+	color: rgb(255, 255, 0);
+	height: 70px;
+	margin: 10px;
+}
+
+.star2-icon-desktop {
+	color: rgb(0, 255, 17);
+	height: 70px;
+	margin: 10px;
+}
+
+.star1b-icon-desktop {
+	color: rgb(255, 255, 0);
+	height: 38px;
+	margin: 10px;
+}
+
+.star2b-icon-desktop {
+	color: rgb(0, 255, 17);
+	height: 38px;
+	margin: 10px;
+}
+
 .input-mobile {
 	width: 65% !important;
 }
 
 .input-bck-mobile {
 	background-color: rgb(51, 110, 51);
+}
+
+.hover-easy:hover {
+	color: rgb(67, 209, 67);
+	font-size: 36px;
+	padding: 10px !important;
+}
+
+.hover-hard:hover {
+	color: rgb(101, 0, 0);
+	font-size: 36px;
+	padding: 10px !important;
+	font-weight: bold;
+}
+
+.hover-back:hover {
+	font-size: 36px;
+	padding: 10px !important;
+	font-weight: bold;
 }

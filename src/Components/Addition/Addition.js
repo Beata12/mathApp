@@ -9,37 +9,42 @@ function Numbers() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<Link style={{ textDecoration: "none" }} to="/u5e">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-easy">
 									Dodawanie do 5 - poziom łatwy
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/u5">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-hard">
 									Dodawanie do 5 - poziom trudny
 								</li>
 							</Link>
+							<Link style={{ textDecoration: "none" }} to="/u10e">
+								<li className="list-desktop board-desktop hover-easy">
+									Dodawanie do 10 - poziom łatwy
+								</li>
+							</Link>
 							<Link style={{ textDecoration: "none" }} to="/u10">
-								<li className="list-desktop board-desktop">
-									Dodawanie do 10
+								<li className="list-desktop board-desktop hover-hard">
+									Dodawanie do 10 - poziom trudny
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/w10">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-hard">
 									Dodawanie do 10 - wpisywanie
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/u20">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-hard">
 									Dodawanie do 20
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/w20">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-hard">
 									Dodawanie do 20 - wpisywanie
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Wróć
 								</li>
 							</Link>

@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faHeartCrack,
+	faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
-function UpTo20() {
+function UpTo10() {
 	const [timer, setTimer] = useState(10);
 	const [number1, setNumber1] = useState(null);
 	const [number2, setNumber2] = useState(null);
@@ -51,14 +55,16 @@ function UpTo20() {
 	const generateRandomNumbers = () => {
 		setCanAnswer(true);
 		const min = 1;
-		const max = 20;
+		const max = 10;
 
 		let newNumber1, newNumber2, correct;
+
 		do {
 			newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
 			newNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+
 			correct = newNumber1 + newNumber2;
-		} while (correct > 20);
+		} while (correct > 10);
 
 		const incorrectIndexes = [0, 1, 2];
 		const correctIndex = Math.floor(Math.random() * 3);
@@ -93,7 +99,7 @@ function UpTo20() {
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {
 		const min = 1;
-		const max = 20;
+		const max = 10;
 
 		let incorrect = Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -185,7 +191,7 @@ function UpTo20() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<div className="list-title-desktop">
-								DODAWANIE DO 20
+								DODAWANIE DO 10
 							</div>
 							{gameOver && (
 								<div className="gameOver">
@@ -225,6 +231,122 @@ function UpTo20() {
 										)}
 									</div>
 									<div>
+										<div className="container">
+											<div className="icons-space">
+												<div className="row justify-content-center">
+													<div
+														className={`col-2 equations-desktop d-flex justify-content-center align-items-center ${
+															number1 > 5
+																? "flex-column"
+																: ""
+														}`}
+													>
+														{Array.from(
+															{
+																length: Math.min(
+																	2,
+																	Math.ceil(
+																		number1 /
+																			5
+																	)
+																), // Max 2 rows
+															},
+															(_, groupIndex) => (
+																<div
+																	key={
+																		groupIndex
+																	}
+																	className="d-flex"
+																>
+																	{Array.from(
+																		{
+																			length: Math.min(
+																				5,
+																				number1 -
+																					groupIndex *
+																						5
+																			), // Max 5 icons in a row
+																		},
+																		(
+																			_,
+																			index
+																		) => (
+																			<FontAwesomeIcon
+																				key={
+																					groupIndex *
+																						5 +
+																					index
+																				}
+																				icon={
+																					faStar
+																				}
+																				className="star1b-icon-desktop"
+																			/>
+																		)
+																	)}
+																</div>
+															)
+														)}
+													</div>
+													<div className="col-2"></div>
+													<div
+														className={`col-2 equations-desktop d-flex justify-content-center align-items-center ${
+															number2 > 5
+																? "flex-column"
+																: ""
+														}`}
+													>
+														{Array.from(
+															{
+																length: Math.min(
+																	2,
+																	Math.ceil(
+																		number2 /
+																			5
+																	)
+																), // Max 2 rows
+															},
+															(_, groupIndex) => (
+																<div
+																	key={
+																		groupIndex
+																	}
+																	className="d-flex"
+																>
+																	{Array.from(
+																		{
+																			length: Math.min(
+																				5,
+																				number2 -
+																					groupIndex *
+																						5
+																			), // Max 5 icons in a row
+																		},
+																		(
+																			_,
+																			index
+																		) => (
+																			<FontAwesomeIcon
+																				key={
+																					groupIndex *
+																						5 +
+																					index
+																				}
+																				icon={
+																					faStar
+																				}
+																				className="star2b-icon-desktop"
+																			/>
+																		)
+																	)}
+																</div>
+															)
+														)}
+													</div>
+												</div>
+											</div>
+										</div>
+
 										<div className="container">
 											<div className="row d-flex justify-content-center">
 												<div className="col-2 equations-desktop">
@@ -317,7 +439,7 @@ function UpTo20() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-title-mobile">DODAWANIE DO 20</div>
+						<div className="list-title-mobile">DODAWANIE DO 10</div>
 						{gameOver && (
 							<div className="gameOver">
 								<div className="list-mobile">KONIEC GRY</div>
@@ -427,7 +549,7 @@ function UpTo20() {
 								</div>
 							</div>
 						)}
-						<Link style={{ textDecoration: "none" }} to="/add">
+						<Link style={{ textDecoration: "none" }} to="/sub">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Wybierz inny poziom
 							</li>
@@ -444,4 +566,4 @@ function UpTo20() {
 	);
 }
 
-export default UpTo20;
+export default UpTo10;

@@ -68,7 +68,7 @@ function UpTo5() {
 		setAnswers(shuffledAnswers);
 		setCorrectAnswer(correct);
 		setEmoji(null);
-		// setTimer(10);
+		setTimer(10);
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {
@@ -211,9 +211,7 @@ function UpTo5() {
 									<div>
 										<div className="container">
 											<div className="row justify-content-center">
-												<div
-													className={`col-${numbers.num1} equations-desktop`}
-												>
+												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
 															length: numbers.num1,
@@ -222,15 +220,13 @@ function UpTo5() {
 															<FontAwesomeIcon
 																key={index}
 																icon={faStar}
-																className="frown-icon-desktop"
+																className="star1-icon-desktop"
 															/>
 														)
 													)}
 												</div>
 												<div className="col-2"></div>
-												<div
-													className={`col-${numbers.num2} equations-desktop`}
-												>
+												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
 															length: numbers.num2,
@@ -239,7 +235,7 @@ function UpTo5() {
 															<FontAwesomeIcon
 																key={index}
 																icon={faStar}
-																className="frown-icon-desktop"
+																className="star2-icon-desktop"
 															/>
 														)
 													)}
