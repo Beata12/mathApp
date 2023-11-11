@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faHeartCrack,
+	faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 function UpTo5() {
 	const [timer, setTimer] = useState(10);
@@ -64,7 +68,7 @@ function UpTo5() {
 		setAnswers(shuffledAnswers);
 		setCorrectAnswer(correct);
 		setEmoji(null);
-		setTimer(10);
+		// setTimer(10);
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {
@@ -205,6 +209,43 @@ function UpTo5() {
 										)}
 									</div>
 									<div>
+										<div className="container">
+											<div className="row justify-content-center">
+												<div
+													className={`col-${numbers.num1} equations-desktop`}
+												>
+													{Array.from(
+														{
+															length: numbers.num1,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faStar}
+																className="frown-icon-desktop"
+															/>
+														)
+													)}
+												</div>
+												<div className="col-2"></div>
+												<div
+													className={`col-${numbers.num2} equations-desktop`}
+												>
+													{Array.from(
+														{
+															length: numbers.num2,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faStar}
+																className="frown-icon-desktop"
+															/>
+														)
+													)}
+												</div>
+											</div>
+										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
 												<div className="col-2 equations-desktop">
@@ -371,7 +412,7 @@ function UpTo5() {
 								</div>
 							</div>
 						)}
-						<Link style={{ textDecoration: "none" }} to="/sub">
+						<Link style={{ textDecoration: "none" }} to="/add">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Wybierz inny poziom
 							</li>

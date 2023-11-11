@@ -8,9 +8,14 @@ function Numbers() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-8 ">
 						<ul className="text-center">
+							<Link style={{ textDecoration: "none" }} to="/u5e">
+								<li className="list-desktop board-desktop">
+									Dodawanie do 5 - poziom łatwy
+								</li>
+							</Link>
 							<Link style={{ textDecoration: "none" }} to="/u5">
 								<li className="list-desktop board-desktop">
-									Dodawanie do 5
+									Dodawanie do 5 - poziom trudny
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/u10">
