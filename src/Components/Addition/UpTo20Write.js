@@ -63,7 +63,7 @@ function UpTo20Write() {
 
 		setCorrectAnswer(correct);
 		setShowSmile(false);
-		setTimer(10000);
+		setTimer(10);
 	};
 
 	const handleUserInput = (event) => {

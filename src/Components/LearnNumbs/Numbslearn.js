@@ -114,32 +114,34 @@ function Numbslearn() {
 									/>
 								</div>
 								<div className="title-page d-flex justify-content-center">
-									<div class="d-flex align-items-center text-book row">
-										<div class="row "></div>
-										<div class="row ">
+									<div className="d-flex align-items-center text-book row">
+										<div className="row "></div>
+										<div className="row ">
 											<div>UCZE</div>
 										</div>
-										<div class="row ">
+										<div className="row ">
 											<div>SIĘ</div>
 										</div>
-										<div class="row ">
+										<div className="row ">
 											<div>CYFEREK</div>
 										</div>
-										<div class="row "></div>
+										<div className="row "></div>
 									</div>
 								</div>
-								<div class="wrap-paper">
-									<div class="paper ">
-										<div class="d-flex align-items-center text-book row">
+								<div className="wrap-paper">
+									<div className="paper ">
+										<div className="d-flex align-items-center text-book row">
 											<div className="text-desktop">
-												<div class="row ">jeden</div>
-												<div class="row ">1</div>
+												<div className="row ">
+													jeden
+												</div>
+												<div className="row ">1</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="wrap-paper">
-									<div class="paper">
+								<div className="wrap-paper">
+									<div className="paper">
 										<img
 											className="pic-de"
 											src={require("./photos/1.png")}
@@ -147,20 +149,20 @@ function Numbslearn() {
 										/>
 									</div>
 								</div>
-								<div class="wrap-paper">
-									<div class="paper">
+								<div className="wrap-paper">
+									<div className="paper">
 										jak to zrobić zeby każda strona była
 										nowym komponentem
 									</div>
 								</div>
-								<div class="wrap-paper">
-									<div class="paper">
+								<div className="wrap-paper">
+									<div className="paper">
 										jak to zrobić zeby każda strona była
 										nowym komponentem
 									</div>
 								</div>
-								<div class="wrap-paper">
-									<div class="paper">
+								<div className="wrap-paper">
+									<div className="paper">
 										jak to zrobić zeby każda strona była
 										nowym komponentem
 									</div>

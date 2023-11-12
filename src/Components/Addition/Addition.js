@@ -45,7 +45,7 @@ function Numbers() {
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/">
 								<li className="list-desktop board-desktop hover-back">
-									Wróć
+									Powrót do menu
 								</li>
 							</Link>
 						</ul>

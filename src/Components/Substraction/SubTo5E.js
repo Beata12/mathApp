@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import {
+	faFaceFrown,
+	faFaceSmile,
+	faCircle,
+} from "@fortawesome/free-regular-svg-icons";
+import {
+	faHeart,
+	faHeartCrack,
+	faBan,
+} from "@fortawesome/free-solid-svg-icons";
 
-function SubtractionUpTo10Write() {
+function SubtractionUpTo5() {
 	const [timer, setTimer] = useState(10);
 	const [number1, setNumber1] = useState(null);
 	const [number2, setNumber2] = useState(null);
-	const [userInput, setUserInput] = useState("");
+	const [answer1, setAnswer1] = useState(null);
+	const [answer2, setAnswer2] = useState(null);
+	const [answer3, setAnswer3] = useState(null);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [points, setPoints] = useState(0);
 	const [showSmile, setShowSmile] = useState(false);
@@ -17,7 +27,6 @@ function SubtractionUpTo10Write() {
 	const [lives, setLives] = useState(3);
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
-	const [isCheckingAnswer, setIsCheckingAnswer] = useState(false); // New state
 
 	useEffect(() => {
 		generateRandomNumbers();
@@ -32,7 +41,6 @@ function SubtractionUpTo10Write() {
 				setShowFrown(true);
 				if (lives > 0) {
 					setLives(lives - 1);
-					setIncorrectAnswers(incorrectAnswers + 1); // Increment incorrect answers
 				} else {
 					setGameOver(true);
 				}
@@ -46,12 +54,12 @@ function SubtractionUpTo10Write() {
 		return () => {
 			clearInterval(intervalId);
 		};
-	}, [timer, canAnswer, lives, incorrectAnswers]);
+	}, [timer, canAnswer, lives]);
 
 	const generateRandomNumbers = () => {
 		setCanAnswer(true);
-		const min = 0;
-		const max = 10;
+		const min = 1;
+		const max = 5;
 
 		let newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
 		let newNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -61,59 +69,91 @@ function SubtractionUpTo10Write() {
 		}
 
 		const correct = newNumber1 - newNumber2;
+		const incorrectIndexes = [0, 1, 2];
+		const correctIndex = Math.floor(Math.random() * 3);
+
+		incorrectIndexes.splice(correctIndex, 1);
+
+		let incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
+		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
+		let incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+
+		if (incorrect1 === "" || incorrect2 === "") {
+			incorrect1 = 0;
+			incorrect2 = 0;
+		}
 
 		setNumber1(newNumber1);
 		setNumber2(newNumber2);
+
+		const answers = [correct, incorrect1, incorrect2].filter(
+			(answer) => answer !== ""
+		);
+		const shuffledAnswers = shuffleArray(answers);
+
+		setAnswer1(shuffledAnswers[0]);
+		setAnswer2(shuffledAnswers[1]);
+		setAnswer3(shuffledAnswers[2]);
 
 		setCorrectAnswer(correct);
 		setShowSmile(false);
 		setTimer(10);
 	};
 
-	const handleUserInput = (event) => {
-		setUserInput(event.target.value);
+	const generateIncorrectAnswer = (excludedIndexes, correct) => {
+		const min = 1;
+		const max = 5;
+
+		let incorrect = Math.floor(Math.random() * (max - min + 1)) + min;
+
+		while (excludedIndexes.includes(incorrect) || incorrect === correct) {
+			incorrect = Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		return incorrect;
 	};
 
-	const checkAnswer = () => {
-		if (isCheckingAnswer) {
-			return; // Return early if already checking answer
+	const shuffleArray = (array) => {
+		const shuffledArray = [...array];
+		for (let i = shuffledArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffledArray[i], shuffledArray[j]] = [
+				shuffledArray[j],
+				shuffledArray[i],
+			];
 		}
+		return shuffledArray;
+	};
 
-		setIsCheckingAnswer(true); // Set to true while checking the answer
+	const checkAnswer = (selectedAnswer) => {
+		if (canAnswer) {
+			setCanAnswer(false);
 
-		if (userInput === correctAnswer.toString()) {
-			setPoints(points + 1);
-			setShowSmile(true);
-		} else {
-			setIncorrectAnswers(incorrectAnswers + 1);
-			if (lives > 0) {
-				setLives(lives - 1);
-			}
-			setShowFrown(true);
+			if (selectedAnswer === correctAnswer) {
+				setPoints(points + 1);
+				setShowSmile(true);
 
-			if (incorrectAnswers + 1 >= 3) {
-				setGameOver(true);
+				setTimeout(() => {
+					setShowSmile(false);
+					generateRandomNumbers();
+				}, 2000);
+			} else {
+				setIncorrectAnswers(incorrectAnswers + 1);
+				if (lives > 0) {
+					setLives(lives - 1);
+				}
+				setShowFrown(true);
+
+				setTimeout(() => {
+					setShowFrown(false);
+					generateRandomNumbers();
+
+					if (incorrectAnswers === 2) {
+						setGameOver(true);
+					}
+				}, 2000);
 			}
 		}
-
-		setCanAnswer(false); // Disable answering while showing icons
-
-		setTimeout(() => {
-			setShowSmile(false);
-			setShowFrown(false);
-			generateRandomNumbers();
-			setUserInput(""); // Clear the userInput field
-			setCanAnswer(true); // Enable answering for the new question
-			setIsCheckingAnswer(false); // Set to false when answer check is completed
-
-			// Check for game over after an incorrect answer
-			if (
-				incorrectAnswers + 1 >= 3 &&
-				userInput !== correctAnswer.toString()
-			) {
-				setGameOver(true);
-			}
-		}, 2000);
 	};
 
 	const generateHeartIcons = () => {
@@ -154,7 +194,7 @@ function SubtractionUpTo10Write() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<div className="list-title-desktop">
-								ODEJMOWANIE DO 10
+								ODEJMOWANIE DO 5
 							</div>
 							{gameOver && (
 								<div className="gameOver">
@@ -195,6 +235,38 @@ function SubtractionUpTo10Write() {
 									</div>
 									<div>
 										<div className="container">
+											<div className="row justify-content-center">
+												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
+													{Array.from(
+														{
+															length: number2,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faBan}
+																className="ban-icon-desktop"
+															/>
+														)
+													)}
+													{Array.from(
+														{
+															length:
+																number1 -
+																number2,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faCircle}
+																className="circle-icon-desktop"
+															/>
+														)
+													)}
+												</div>
+											</div>
+										</div>
+										<div className="container">
 											<div className="row d-flex justify-content-center">
 												<div className="col-2 equations-desktop">
 													{number1}
@@ -209,26 +281,48 @@ function SubtractionUpTo10Write() {
 										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
-												<input
-													className=" answer-box-desktop d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
-													type="number"
-													value={userInput}
-													onChange={handleUserInput}
-													max="10"
-													disabled={isCheckingAnswer} // Disable input while checking answer
-												/>
-												<button
-													className=" answer-box-desktop d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
-													onClick={() => {
-														checkAnswer();
-													}}
-													disabled={
-														!canAnswer ||
-														isCheckingAnswer
-													} // Disable button when answering is disabled or answer is being checked
-												>
-													Sprawdź
-												</button>
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														onClick={() =>
+															checkAnswer(answer1)
+														}
+														disabled={
+															number1 === null ||
+															number2 === null
+														}
+													>
+														{answer1}
+													</button>
+												</div>
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														onClick={() =>
+															checkAnswer(answer2)
+														}
+														disabled={
+															number1 === null ||
+															number2 === null
+														}
+													>
+														{answer2}
+													</button>
+												</div>
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														onClick={() =>
+															checkAnswer(answer3)
+														}
+														disabled={
+															number1 === null ||
+															number2 === null
+														}
+													>
+														{answer3}
+													</button>
+												</div>
 											</div>
 										</div>
 										<div className="information-desktop">
@@ -265,7 +359,7 @@ function SubtractionUpTo10Write() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div className="list-title-mobile">
-							ODEJMOWANIE DO 10
+							ODEJMOWANIE DO 5
 						</div>
 						{gameOver && (
 							<div className="gameOver">
@@ -281,7 +375,7 @@ function SubtractionUpTo10Write() {
 									>
 										Zagraj jeszcze raz
 									</button>
-								</div>{" "}
+								</div>
 							</div>
 						)}
 						{!gameOver && (
@@ -316,26 +410,48 @@ function SubtractionUpTo10Write() {
 									</div>
 									<div className="container">
 										<div className="row d-flex justify-content-center">
-											<input
-												className=" answer-box-mobile d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
-												type="number"
-												value={userInput}
-												onChange={handleUserInput}
-												max="10"
-												disabled={isCheckingAnswer} // Disable input while checking answer
-											/>
-											<button
-												className=" answer-box-mobile d-flex align-items-center justify-content-center input-mobile"
-												onClick={() => {
-													checkAnswer();
-												}}
-												disabled={
-													!canAnswer ||
-													isCheckingAnswer
-												} // Disable button when answering is disabled or answer is being checked
-											>
-												Sprawdź
-											</button>
+											<div className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile">
+												<button
+													className="equations-mobile"
+													onClick={() =>
+														checkAnswer(answer1)
+													}
+													disabled={
+														number1 === null ||
+														number2 === null
+													}
+												>
+													{answer1}
+												</button>
+											</div>
+											<div className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile">
+												<button
+													className="equations-mobile"
+													onClick={() =>
+														checkAnswer(answer2)
+													}
+													disabled={
+														number1 === null ||
+														number2 === null
+													}
+												>
+													{answer2}
+												</button>
+											</div>
+											<div className="col-3 answer-box-mobile d-flex align-items-center justify-content-center ">
+												<button
+													className="equations-mobile"
+													onClick={() =>
+														checkAnswer(answer3)
+													}
+													disabled={
+														number1 === null ||
+														number2 === null
+													}
+												>
+													{answer3}
+												</button>
+											</div>
 										</div>
 									</div>
 									<div className="information-mobile">
@@ -370,4 +486,5 @@ function SubtractionUpTo10Write() {
 		</main>
 	);
 }
-export default SubtractionUpTo10Write;
+
+export default SubtractionUpTo5;

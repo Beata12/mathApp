@@ -22,7 +22,9 @@ import EasyGreater from "./GreaterSmaller/EasyGreater";
 import EasySmaller from "./GreaterSmaller/EasySmaller";
 import Examples from "./GreaterSmaller/Examples";
 import Substraction from "./Substraction/Substraction";
+import SubTo5E from "./Substraction/SubTo5E";
 import SubTo5 from "./Substraction/SubTo5";
+import SubTo10E from "./Substraction/SubTo10E";
 import SubTo10 from "./Substraction/SubTo10";
 import SubTo10Write from "./Substraction/SubTo10Write";
 import SubTo20 from "./Substraction/SubTo20";
@@ -60,7 +62,9 @@ function App() {
 				<Route path="/w20" element={<Write20 />} />
 				<Route path="/sign" element={<Signs />} />
 				<Route path="/sub" element={<Substraction />} />
+				<Route path="/o5e" element={<SubTo5E />} />
 				<Route path="/o5" element={<SubTo5 />} />
+				<Route path="/o10e" element={<SubTo10E />} />
 				<Route path="/o10" element={<SubTo10 />} />
 				<Route path="/ow10" element={<SubTo10Write />} />
 				<Route path="/o20" element={<SubTo20 />} />

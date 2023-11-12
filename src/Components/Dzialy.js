@@ -14,7 +14,7 @@ function Dzialy() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<Link style={{ textDecoration: "none" }} to="./num">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Poznajemy liczby
 								</li>
 							</Link>
@@ -22,17 +22,17 @@ function Dzialy() {
 								style={{ textDecoration: "none" }}
 								to="./sign"
 							>
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Poznajemy znaki matematyczne
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="./add">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Uczymy się dodawać
 								</li>
 							</Link>{" "}
 							<Link style={{ textDecoration: "none" }} to="./sub">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Uczymy się odejmować
 								</li>
 							</Link>{" "}
@@ -40,12 +40,12 @@ function Dzialy() {
 								style={{ textDecoration: "none" }}
 								to="./comp"
 							>
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Porównywanie liczb
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="./un">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Działania z niewiadomą
 								</li>
 							</Link>
