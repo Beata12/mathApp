@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap");
 
+.fa-face-smile {
+	color: #12bb12;
+	font-size: 70px;
+}
+
+.fa-face-frown {
+	color: red;
+	font-size: 70px;
+}
+
 @media screen and (max-width: 600px) {
 	.fa-face-smile {
 		color: #008000;
