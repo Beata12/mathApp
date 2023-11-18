@@ -37,7 +37,7 @@ function UnknownAdd() {
 
 		possibleChoices.sort(() => Math.random() - 0.5);
 
-		setResult(`${num2} + X = ${num1}`);
+		setResult(`${num2} + ? = ${num1}`);
 		setCorrectAnswer(correctResult);
 		setChoices(possibleChoices);
 		setAnswered(false);
@@ -118,6 +118,96 @@ function UnknownAdd() {
 
 	return (
 		<main className="main-dzialy">
+			<div className="dzialy-desktop">
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-8 ">
+						<ul className="text-center">
+							<div className="list-title-desktop">
+								Dodawanie z niewiadomą
+							</div>
+							{gameOver ? (
+								<div className="gameOver">
+									<div className="list-desktop">
+										KONIEC GRY
+									</div>
+									<div className="list-desktop">
+										Punkty: {points}
+									</div>
+									<div className="list-desktop">
+										Gratulacje
+									</div>
+									<div className="list-desktop board-desktop align-items-center justify-content-center">
+										<button
+											onClick={startNewGame}
+											className="btn-desktop"
+										>
+											Zagraj jeszcze raz
+										</button>
+									</div>
+								</div>
+							) : (
+								<>
+									<div className="icons-desktop">
+										{resultIcon ? (
+											<FontAwesomeIcon
+												icon={resultIcon}
+												className="face-icon"
+											/>
+										) : null}
+									</div>
+									<p className="equations-desktop">
+										{result}
+									</p>
+
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											{choices.map((choice, index) => (
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														key={index}
+														onClick={() =>
+															handleChoiceClick(
+																choice
+															)
+														}
+														disabled={answered}
+													>
+														{choice}
+													</button>
+												</div>
+											))}
+										</div>
+									</div>
+									<div className="container">
+										<div className="row">
+											<div className="col">
+												{generateHeartIcons()}
+											</div>
+										</div>
+									</div>
+									<div className="information-desktop">
+										Punkty: {points}
+									</div>
+									<div className="information-desktop">
+										Czas: {timer}
+									</div>
+								</>
+							)}
+							<Link style={{ textDecoration: "none" }} to="/un">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Wybierz inny poziom
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Powrót do menu
+								</li>
+							</Link>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">

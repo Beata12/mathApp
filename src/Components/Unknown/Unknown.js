@@ -8,23 +8,26 @@ function Uknnown() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-8 ">
 						<ul className="text-center">
+							<li className="list-desktop board-desktop main-title">
+								DZIAŁANIA Z NIEWIADOMĄ
+							</li>
 							<Link style={{ textDecoration: "none" }} to="/una">
-								<li className="list-desktop board-desktop">
-									Dodawanie z liczbą niewiadomą
+								<li className="list-desktop board-desktop hover-hard">
+									Dodawanie z niewiadomą
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/uns">
-								<li className="list-desktop board-desktop">
-									Odejmowanie z liczbą niewiadomą
+								<li className="list-desktop board-desktop hover-hard">
+									Odejmowanie z niewiadomą
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/unas">
-								<li className="list-desktop board-desktop">
-									Dodawanie i odejmowanie z liczbą niewiadomą
+								<li className="list-desktop board-desktop hover-hard">
+									Dodawanie i odejmowanie z niewiadomą
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Powrót do menu
 								</li>
 							</Link>

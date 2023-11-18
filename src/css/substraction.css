@@ -178,19 +178,25 @@
 
 .hover-easy:hover {
 	color: rgb(67, 209, 67);
-	font-size: 36px;
-	padding: 10px !important;
+	font-size: 35px;
+	padding: 11px !important;
 }
 
 .hover-hard:hover {
 	color: rgb(101, 0, 0);
-	font-size: 36px;
-	padding: 10px !important;
+	font-size: 35px;
+	padding: 11px !important;
 	font-weight: bold;
 }
 
 .hover-back:hover {
-	font-size: 36px;
+	font-size: 35px;
+	padding: 11px !important;
+	font-weight: bold;
+}
+
+.hover-menu:hover {
+	font-size: 37px;
 	padding: 10px !important;
 	font-weight: bold;
 }
@@ -204,4 +210,9 @@
 .equations-desktop-green {
 	color: rgb(54, 183, 54);
 	font-size: 100px;
+}
+
+.main-title {
+	font-size: 41px;
+	font-weight: bold;
 }

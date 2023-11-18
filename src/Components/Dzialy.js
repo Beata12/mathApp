@@ -5,16 +5,14 @@ function Dzialy() {
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
-				<div>
-					<div className="d-flex justify-content-center list-desktop">
-						DZIAŁY
-					</div>
-				</div>
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-8 ">
 						<ul className="text-center">
+							<li className="list-desktop board-desktop main-title">
+								DZIAŁY
+							</li>
 							<Link style={{ textDecoration: "none" }} to="./num">
-								<li className="list-desktop board-desktop hover-back">
+								<li className="list-desktop board-desktop hover-menu">
 									Poznajemy liczby
 								</li>
 							</Link>
@@ -22,17 +20,17 @@ function Dzialy() {
 								style={{ textDecoration: "none" }}
 								to="./sign"
 							>
-								<li className="list-desktop board-desktop hover-back">
+								<li className="list-desktop board-desktop hover-menu">
 									Poznajemy znaki matematyczne
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="./add">
-								<li className="list-desktop board-desktop hover-back">
+								<li className="list-desktop board-desktop hover-menu">
 									Uczymy się dodawać
 								</li>
 							</Link>{" "}
 							<Link style={{ textDecoration: "none" }} to="./sub">
-								<li className="list-desktop board-desktop hover-back">
+								<li className="list-desktop board-desktop hover-menu">
 									Uczymy się odejmować
 								</li>
 							</Link>{" "}
@@ -40,12 +38,12 @@ function Dzialy() {
 								style={{ textDecoration: "none" }}
 								to="./comp"
 							>
-								<li className="list-desktop board-desktop hover-back">
+								<li className="list-desktop board-desktop hover-menu">
 									Porównywanie liczb
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="./un">
-								<li className="list-desktop board-desktop hover-back">
+								<li className="list-desktop board-desktop hover-menu">
 									Działania z niewiadomą
 								</li>
 							</Link>
