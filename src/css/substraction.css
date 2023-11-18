@@ -194,3 +194,14 @@
 	padding: 10px !important;
 	font-weight: bold;
 }
+
+.hover-compare:hover {
+	font-size: 30px;
+	padding: 15px !important;
+	font-weight: bold;
+}
+
+.equations-desktop-green {
+	color: rgb(54, 183, 54);
+	font-size: 100px;
+}

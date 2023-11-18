@@ -239,18 +239,6 @@ function SubtractionUpTo5() {
 												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
-															length: number2,
-														},
-														(_, index) => (
-															<FontAwesomeIcon
-																key={index}
-																icon={faBan}
-																className="ban-icon-desktop"
-															/>
-														)
-													)}
-													{Array.from(
-														{
 															length:
 																number1 -
 																number2,
@@ -260,6 +248,18 @@ function SubtractionUpTo5() {
 																key={index}
 																icon={faCircle}
 																className="circle-icon-desktop"
+															/>
+														)
+													)}
+													{Array.from(
+														{
+															length: number2,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faBan}
+																className="ban-icon-desktop"
 															/>
 														)
 													)}

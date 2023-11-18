@@ -9,29 +9,29 @@ function Numbers() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<Link style={{ textDecoration: "none" }} to="/eg">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-compare">
 									Porównywanie liczb - przykłady
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/esm">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-compare">
 									Porównywanie liczb - która liczba jest
 									mniejsza
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/egr">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-compare">
 									Porównywanie liczb - która liczba jest
 									większa
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/grsm">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-compare">
 									Porównywanie liczb - poziom trudny
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-compare">
 									Powrót do menu
 								</li>
 							</Link>

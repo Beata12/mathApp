@@ -55,7 +55,12 @@ function GreaterSmaller() {
 			if (lives === 0) {
 				setGameOver(true);
 			} else {
-				generateRandomNumbers();
+				if (lives <= 0) {
+					// Dodatkowy warunek sprawdzający ilość żyć
+					setGameOver(true);
+				} else {
+					generateRandomNumbers();
+				}
 			}
 			setIsComparing(false);
 		}, 2000);

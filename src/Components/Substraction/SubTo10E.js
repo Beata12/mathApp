@@ -239,18 +239,6 @@ function SubtractionUpTo10() {
 												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
-															length: number2,
-														},
-														(_, index) => (
-															<FontAwesomeIcon
-																key={index}
-																icon={faBan}
-																className="ban-icon-desktop"
-															/>
-														)
-													)}
-													{Array.from(
-														{
 															length:
 																number1 -
 																number2,
@@ -263,18 +251,30 @@ function SubtractionUpTo10() {
 															/>
 														)
 													)}
+													{Array.from(
+														{
+															length: number2,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faBan}
+																className="ban-icon-desktop"
+															/>
+														)
+													)}
 												</div>
 											</div>
 										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
-												<div className="col-2 equations-desktop">
+												<div className="col-2 equations-desktop-green">
 													{number1}
 												</div>
 												<div className="col-2 equations-desktop">
 													-
 												</div>
-												<div className="col-2 equations-desktop">
+												<div className="col-2 equations-desktop-red">
 													{number2}
 												</div>
 											</div>
