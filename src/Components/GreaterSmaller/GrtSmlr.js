@@ -42,9 +42,13 @@ function GreaterSmaller() {
 			setResultIcon(faFaceSmile);
 			isCorrect = true;
 		} else {
-			setResultIcon(faFaceFrown);
 			// Zmiana ikony serduszka na faHeartCrack w przypadku złej odpowiedzi
 			setLives(lives - 1);
+			setResultIcon(faFaceFrown);
+			// If lives reach 0, set game over immediately
+			if (lives - 1 === 0) {
+				setGameOver(true);
+			}
 		}
 
 		setTimeout(() => {
@@ -52,15 +56,8 @@ function GreaterSmaller() {
 			if (isCorrect) {
 				setPoints(points + 1);
 			}
-			if (lives === 0) {
-				setGameOver(true);
-			} else {
-				if (lives <= 0) {
-					// Dodatkowy warunek sprawdzający ilość żyć
-					setGameOver(true);
-				} else {
-					generateRandomNumbers();
-				}
+			if (lives > 0) {
+				generateRandomNumbers();
 			}
 			setIsComparing(false);
 		}, 2000);
@@ -131,84 +128,212 @@ function GreaterSmaller() {
 
 	return (
 		<main className="main-dzialy">
-			<ul className="text-center">
-				<div className="list-title-mobile">
-					Wybierz odpowiedni znak:
-				</div>
-				{gameOver ? (
-					<div className="gameOver">
-						<div className="list-mobile">KONIEC GRY</div>
-						<div className="list-mobile">Punkty: {points}</div>
-						<div className="list-mobile">Gratulacje</div>
-						<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-							<button
-								onClick={startNewGame}
-								className="btn-mobile"
-							>
-								Zagraj jeszcze raz
-							</button>
-						</div>
+			<div className="dzialy-desktop">
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-8 ">
+						<ul className="text-center">
+							<div className="list-title-desktop">
+								Wybierz odpowiedni znak:
+							</div>
+							{gameOver ? (
+								<div className="gameOver">
+									<div className="list-desktop">
+										KONIEC GRY
+									</div>
+									<div className="list-desktop">
+										Punkty: {points}
+									</div>
+									<div className="list-desktop">
+										Gratulacje
+									</div>
+									<div className="list-desktop board-desktop align-items-center justify-content-center">
+										<button
+											onClick={startNewGame}
+											className="btn-desktop"
+										>
+											Zagraj jeszcze raz
+										</button>
+									</div>
+								</div>
+							) : (
+								<>
+									<div className="gameOver">
+										<div className="icons-desktop">
+											{resultIcon ? (
+												<FontAwesomeIcon
+													icon={resultIcon}
+												/>
+											) : null}
+										</div>
+										<div className="equations-desktop">
+											{number1} &nbsp;&nbsp;{" "}
+											{selectedSign} &nbsp;&nbsp;{" "}
+											{number2}
+										</div>
+										<div className="container">
+											<div className="row d-flex justify-content-center">
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														onClick={() =>
+															handleAnswerClick(
+																"<"
+															)
+														}
+														disabled={
+															isComparing ||
+															isTimeUp
+														}
+													>
+														{"<"}
+													</button>
+												</div>
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														onClick={() =>
+															handleAnswerClick(
+																">"
+															)
+														}
+														disabled={
+															isComparing ||
+															isTimeUp
+														}
+													>
+														{">"}
+													</button>
+												</div>
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														onClick={() =>
+															handleAnswerClick(
+																"="
+															)
+														}
+														disabled={
+															isComparing ||
+															isTimeUp
+														}
+													>
+														{"="}
+													</button>
+												</div>
+											</div>
+										</div>
+										<div className="container">
+											<div className="row">
+												<div className="col">
+													{generateHeartIcons()}
+												</div>
+											</div>
+										</div>
+										<div className="information-desktop">
+											Punkty: {points}
+										</div>
+										<div className="information-desktop">
+											Czas: {timer}
+										</div>
+									</div>
+								</>
+							)}
+							<Link style={{ textDecoration: "none" }} to="/comp">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Wybierz inny poziom
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Powrót do menu
+								</li>
+							</Link>
+						</ul>
 					</div>
-				) : (
-					<>
-						<div className="result">
-							{resultIcon ? (
-								<FontAwesomeIcon icon={resultIcon} />
-							) : null}
-						</div>
-						<div className="numbers-mobile">
-							{number1} &nbsp;&nbsp; {selectedSign} &nbsp;&nbsp;{" "}
-							{number2}
-						</div>
-						<div className="container">
-							<div className="row d-flex justify-content-center">
+				</div>
+			</div>
+			<div className="dzialy-mobile">
+				<ul className="text-center">
+					<div className="list-title-mobile">
+						Wybierz odpowiedni znak:
+					</div>
+					{gameOver ? (
+						<div className="gameOver">
+							<div className="list-mobile">KONIEC GRY</div>
+							<div className="list-mobile">Punkty: {points}</div>
+							<div className="list-mobile">Gratulacje</div>
+							<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								<button
-									className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
-									onClick={() => handleAnswerClick("<")}
-									disabled={isComparing || isTimeUp}
+									onClick={startNewGame}
+									className="btn-mobile"
 								>
-									{"<"}
-								</button>
-								<button
-									className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
-									onClick={() => handleAnswerClick(">")}
-									disabled={isComparing || isTimeUp}
-								>
-									{">"}
-								</button>
-								<button
-									className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
-									onClick={() => handleAnswerClick("=")}
-									disabled={isComparing || isTimeUp}
-								>
-									{"="}
+									Zagraj jeszcze raz
 								</button>
 							</div>
 						</div>
-						<div className="container">
-							<div className="row">
-								<div className="col">
-									{generateHeartIcons()}
+					) : (
+						<>
+							<div className="result">
+								{resultIcon ? (
+									<FontAwesomeIcon icon={resultIcon} />
+								) : null}
+							</div>
+							<div className="numbers-mobile">
+								{number1} &nbsp;&nbsp; {selectedSign}{" "}
+								&nbsp;&nbsp; {number2}
+							</div>
+							<div className="container">
+								<div className="row d-flex justify-content-center">
+									<button
+										className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+										onClick={() => handleAnswerClick("<")}
+										disabled={isComparing || isTimeUp}
+									>
+										{"<"}
+									</button>
+									<button
+										className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+										onClick={() => handleAnswerClick(">")}
+										disabled={isComparing || isTimeUp}
+									>
+										{">"}
+									</button>
+									<button
+										className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+										onClick={() => handleAnswerClick("=")}
+										disabled={isComparing || isTimeUp}
+									>
+										{"="}
+									</button>
 								</div>
 							</div>
-						</div>
-						<div className="information-mobile">
-							Punkty: {points}
-						</div>
-						<div className="information-mobile">Czas: {timer}</div>
-					</>
-				)}
-				<Link style={{ textDecoration: "none" }} to="/comp">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Wybierz inny poziom
-					</li>
-				</Link>
-				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Powrót do menu
-					</li>
-				</Link>
-			</ul>
+							<div className="container">
+								<div className="row">
+									<div className="col">
+										{generateHeartIcons()}
+									</div>
+								</div>
+							</div>
+							<div className="information-mobile">
+								Punkty: {points}
+							</div>
+							<div className="information-mobile">
+								Czas: {timer}
+							</div>
+						</>
+					)}
+					<Link style={{ textDecoration: "none" }} to="/comp">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Wybierz inny poziom
+						</li>
+					</Link>
+					<Link style={{ textDecoration: "none" }} to="/">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Powrót do menu
+						</li>
+					</Link>
+				</ul>
+			</div>
 		</main>
 	);
 }
