@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import { faRedditAlien } from "@fortawesome/free-brands-svg-icons";
 
 function EasySmaller() {
 	const [number1, setNumber1] = useState(0);
@@ -173,8 +174,40 @@ function EasySmaller() {
 								</div>
 							</div>
 							<div className="container">
+								<div className="row justify-content-center align-items-center">
+									<div className="col-4 equations-desktop ">
+										{Array.from(
+											{
+												length: number1,
+											},
+											(_, index) => (
+												<FontAwesomeIcon
+													key={index}
+													icon={faRedditAlien}
+													className="alien1-icon-desktop"
+												/>
+											)
+										)}
+									</div>
+									<div className="col-4 equations-desktop ">
+										{Array.from(
+											{
+												length: number2,
+											},
+											(_, index) => (
+												<FontAwesomeIcon
+													key={index}
+													icon={faRedditAlien}
+													className="alien2-icon-desktop"
+												/>
+											)
+										)}
+									</div>
+								</div>
+							</div>
+							<div className="container">
 								<div className="row d-flex justify-content-center">
-									<div className="col-2 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+									<div className="col-4 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
 										<button
 											className="equations-desktop"
 											onClick={() =>
@@ -185,7 +218,7 @@ function EasySmaller() {
 											{number1}
 										</button>
 									</div>
-									<div className="col-2 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+									<div className="col-4 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
 										<button
 											className="equations-desktop"
 											onClick={() =>

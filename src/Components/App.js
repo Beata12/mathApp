@@ -19,7 +19,9 @@ import Write20 from "./Addition/UpTo20Write";
 import Signs from "./GreaterSmaller/Signs";
 import GrtSmlr from "./GreaterSmaller/GrtSmlr";
 import EasyGreater from "./GreaterSmaller/EasyGreater";
+import HardGreater from "./GreaterSmaller/HardGreater";
 import EasySmaller from "./GreaterSmaller/EasySmaller";
+import HardSmaller from "./GreaterSmaller/HardSmaller";
 import Examples from "./GreaterSmaller/Examples";
 import Substraction from "./Substraction/Substraction";
 import SubTo5E from "./Substraction/SubTo5E";
@@ -74,7 +76,9 @@ function App() {
 				<Route path="/uns" element={<UnknownSub />} />
 				<Route path="/unas" element={<UnknownAddSub />} />
 				<Route path="/egr" element={<EasyGreater />} />
+				<Route path="/hgr" element={<HardGreater />} />
 				<Route path="/esm" element={<EasySmaller />} />
+				<Route path="/hsm" element={<HardSmaller />} />
 				<Route path="/grsm" element={<GrtSmlr />} />
 				<Route path="/eg" element={<Examples />} />
 			</Routes>

@@ -14,19 +14,27 @@ function Numbers() {
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/esm">
-								<li className="list-desktop board-desktop hover-compare">
-									Porównywanie liczb - która liczba jest
-									mniejsza
+								<li className="list-desktop board-desktop hover-easy">
+									Która liczba jest mniejsza - poziom łatwy
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/hsm">
+								<li className="list-desktop board-desktop hover-hard">
+									Która liczba jest mniejsza - poziom trudny
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/egr">
-								<li className="list-desktop board-desktop hover-compare">
-									Porównywanie liczb - która liczba jest
-									większa
+								<li className="list-desktop board-desktop hover-easy">
+									Która liczba jest większa - poziom ławty
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/hgr">
+								<li className="list-desktop board-desktop hover-hard">
+									Która liczba jest większa - poziom trudny
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/grsm">
-								<li className="list-desktop board-desktop hover-compare">
+								<li className="list-desktop board-desktop hover-hard">
 									Porównywanie liczb - poziom trudny
 								</li>
 							</Link>
