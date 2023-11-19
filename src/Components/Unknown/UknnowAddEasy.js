@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faHeartCrack,
+	faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 function UnknownAdd() {
 	const [result, setResult] = useState(null);
@@ -126,7 +130,7 @@ function UnknownAdd() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<div className="list-title-desktop">
-								Odejmowanie z niewiadomą
+								Dodawanie z niewiadomą - łatwy
 							</div>
 							{gameOver ? (
 								<div className="gameOver">
@@ -159,12 +163,48 @@ function UnknownAdd() {
 										) : null}
 									</div>
 									<div className="container">
+										<div className="row justify-content-center">
+											<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
+												{Array.from(
+													{
+														length: result.num1,
+													},
+													(_, index) => (
+														<FontAwesomeIcon
+															key={index}
+															icon={faStar}
+															className="star2-icon-desktop"
+														/>
+													)
+												)}
+											</div>
+										</div>
+									</div>
+									<div className="container">
+										<div className="row justify-content-center">
+											<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
+												{Array.from(
+													{
+														length: result.num2,
+													},
+													(_, index) => (
+														<FontAwesomeIcon
+															key={index}
+															icon={faStar}
+															className="star1-icon-desktop"
+														/>
+													)
+												)}
+											</div>
+										</div>
+									</div>
+									<div className="container">
 										<div className="row d-flex justify-content-center">
 											<div className="col-2 equations-desktop">
-												{result && result.num1}
+												{result && result.num2}
 											</div>
 											<div className="col-2 equations-desktop">
-												-
+												+
 											</div>
 											<div className="col-2 equations-desktop">
 												?
@@ -173,7 +213,7 @@ function UnknownAdd() {
 												=
 											</div>
 											<div className="col-2 equations-desktop">
-												{result && result.num2}
+												{result && result.num1}
 											</div>
 										</div>
 									</div>
@@ -230,7 +270,7 @@ function UnknownAdd() {
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div className="list-title-mobile">
-							Odejmowanie z niewiadomą
+							Dodawanie z niewiadomą
 						</div>
 						{gameOver ? (
 							<div className="gameOver">
@@ -261,10 +301,10 @@ function UnknownAdd() {
 								<div className="container">
 									<div className="row d-flex justify-content-center">
 										<div className="col-2 equations-mobile">
-											{result && result.num1}
+											{result && result.num2}
 										</div>
 										<div className="col-2 equations-mobile">
-											-
+											+
 										</div>
 										<div className="col-2 equations-mobile">
 											?
@@ -273,7 +313,7 @@ function UnknownAdd() {
 											=
 										</div>
 										<div className="col-2 equations-mobile">
-											{result && result.num2}
+											{result && result.num1}
 										</div>
 									</div>
 								</div>

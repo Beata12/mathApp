@@ -11,14 +11,24 @@ function Uknnown() {
 							<li className="list-desktop board-desktop main-title">
 								DZIAŁANIA Z NIEWIADOMĄ
 							</li>
+							<Link style={{ textDecoration: "none" }} to="/unae">
+								<li className="list-desktop board-desktop hover-easy">
+									Dodawanie z niewiadomą - poziom łatwy
+								</li>
+							</Link>
 							<Link style={{ textDecoration: "none" }} to="/una">
 								<li className="list-desktop board-desktop hover-hard">
-									Dodawanie z niewiadomą
+									Dodawanie z niewiadomą - poziom trudny
+								</li>
+							</Link>{" "}
+							<Link style={{ textDecoration: "none" }} to="/unse">
+								<li className="list-desktop board-desktop hover-easy">
+									Odejmowanie z niewiadomą - poziom łatwy
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/uns">
 								<li className="list-desktop board-desktop hover-hard">
-									Odejmowanie z niewiadomą
+									Odejmowanie z niewiadomą-poziom trudny
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/unas">

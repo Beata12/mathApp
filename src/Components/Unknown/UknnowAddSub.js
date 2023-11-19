@@ -4,9 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
-function UnknownAddSub() {
+function UnknownAdd() {
 	const [result, setResult] = useState(null);
-	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [choices, setChoices] = useState([]);
 	const [answered, setAnswered] = useState(false);
 	const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
@@ -20,7 +19,7 @@ function UnknownAddSub() {
 	const random1 = () => Math.floor(Math.random() * 11);
 	const random2 = () => Math.floor(Math.random() * 11);
 
-	const generateNewSubEquation = () => {
+	const generateNewEquationAddition = () => {
 		let num1, num2, correctResult;
 		do {
 			num1 = random1();
@@ -38,8 +37,12 @@ function UnknownAddSub() {
 
 		possibleChoices.sort(() => Math.random() - 0.5);
 
-		setResult(`${num2} + X = ${num1}`);
-		setCorrectAnswer(correctResult);
+		setResult({
+			num1,
+			num2,
+			correctResult,
+		});
+
 		setChoices(possibleChoices);
 		setAnswered(false);
 		setAnsweredCorrectly(false);
@@ -47,7 +50,7 @@ function UnknownAddSub() {
 		setTimer(10);
 	};
 
-	const generateNewAddEquation = () => {
+	const generateNewEquationSubstraction = () => {
 		let num1, num2, correctResult;
 		do {
 			num1 = random1();
@@ -65,8 +68,12 @@ function UnknownAddSub() {
 
 		possibleChoices.sort(() => Math.random() - 0.5);
 
-		setResult(`${num1} + X = ${num2}`);
-		setCorrectAnswer(correctResult);
+		setResult({
+			num1,
+			num2,
+			correctResult,
+		});
+
 		setChoices(possibleChoices);
 		setAnswered(false);
 		setAnsweredCorrectly(false);
@@ -74,8 +81,21 @@ function UnknownAddSub() {
 		setTimer(10);
 	};
 
+	const genetrateSign = () => {
+		let plus, minus;
+
+		plus = "+";
+		minus = "-";
+
+		if (generateNewEquationAddition === true) {
+			return plus;
+		} else {
+			return minus;
+		}
+	};
+
 	const handleChoiceClick = (choice) => {
-		if (choice === correctAnswer) {
+		if (choice === result.correctResult) {
 			setAnsweredCorrectly(true);
 			setPoints(points + 1);
 			setResultIcon(faFaceSmile);
@@ -95,18 +115,18 @@ function UnknownAddSub() {
 			setCurrentOperation(randomOperation);
 
 			if (randomOperation === "addition") {
-				generateNewAddEquation();
+				generateNewEquationAddition();
 			} else {
-				generateNewSubEquation();
+				generateNewEquationSubstraction();
 			}
 		}, 2000);
 	};
 
 	useEffect(() => {
 		if (currentOperation === "addition") {
-			generateNewAddEquation();
+			generateNewEquationAddition();
 		} else {
-			generateNewSubEquation();
+			generateNewEquationSubstraction();
 		}
 	}, [currentOperation]);
 
@@ -159,15 +179,121 @@ function UnknownAddSub() {
 		setCurrentOperation(randomOperation);
 
 		if (randomOperation === "addition") {
-			generateNewAddEquation();
+			generateNewEquationAddition();
 		} else {
-			generateNewSubEquation();
+			generateNewEquationSubstraction();
 		}
+		genetrateSign();
 		setTimer(10);
 	};
-
 	return (
 		<main className="main-dzialy">
+			<div className="dzialy-desktop">
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-8 ">
+						<ul className="text-center">
+							<div className="list-title-desktop">
+								Dodawanie i odejmowanie z niewiadomą
+							</div>
+							{gameOver ? (
+								<div className="gameOver">
+									<div className="list-desktop">
+										KONIEC GRY
+									</div>
+									<div className="list-desktop">
+										Punkty: {points}
+									</div>
+									<div className="list-desktop">
+										Gratulacje
+									</div>
+									<div className="list-desktop board-desktop align-items-center justify-content-center">
+										<button
+											onClick={startNewGame}
+											className="btn-desktop"
+										>
+											Zagraj jeszcze raz
+										</button>
+									</div>
+								</div>
+							) : (
+								<>
+									<div className="icons-desktop">
+										{resultIcon ? (
+											<FontAwesomeIcon
+												icon={resultIcon}
+												className="face-icon"
+											/>
+										) : null}
+									</div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											<div className="col-2 equations-desktop">
+												{result && result.num2}
+											</div>
+											<div className="col-2 equations-desktop">
+												{/* +/- */}
+												{genetrateSign}
+											</div>
+											<div className="col-2 equations-desktop">
+												?
+											</div>
+											<div className="col-2 equations-desktop">
+												=
+											</div>
+											<div className="col-2 equations-desktop">
+												{result && result.num1}
+											</div>
+										</div>
+									</div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											{choices.map((choice, index) => (
+												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<button
+														className="equations-desktop"
+														key={index}
+														onClick={() =>
+															handleChoiceClick(
+																choice
+															)
+														}
+														disabled={answered}
+													>
+														{choice}
+													</button>
+												</div>
+											))}
+										</div>
+									</div>
+									<div className="container">
+										<div className="row">
+											<div className="col">
+												{generateHeartIcons()}
+											</div>
+										</div>
+									</div>
+									<div className="information-desktop">
+										Punkty: {points}
+									</div>
+									<div className="information-desktop">
+										Czas: {timer}
+									</div>
+								</>
+							)}
+							<Link style={{ textDecoration: "none" }} to="/un">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Wybierz inny poziom
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Powrót do menu
+								</li>
+							</Link>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
@@ -200,7 +326,25 @@ function UnknownAddSub() {
 										/>
 									) : null}
 								</div>
-								<p className="numbers-mobile">{result}</p>
+								<div className="container">
+									<div className="row d-flex justify-content-center">
+										<div className="col-2 equations-mobile">
+											{result && result.num2}
+										</div>
+										<div className="col-2 equations-mobile">
+											+
+										</div>
+										<div className="col-2 equations-mobile">
+											?
+										</div>
+										<div className="col-2 equations-mobile">
+											=
+										</div>
+										<div className="col-2 equations-mobile">
+											{result && result.num1}
+										</div>
+									</div>
+								</div>
 
 								<div className="container">
 									<div className="row d-flex justify-content-center">
@@ -250,4 +394,4 @@ function UnknownAddSub() {
 	);
 }
 
-export default UnknownAddSub;
+export default UnknownAdd;

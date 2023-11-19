@@ -33,7 +33,9 @@ import SubTo20 from "./Substraction/SubTo20";
 import SubTo20Write from "./Substraction/SubTo20Write";
 import Unknown from "./Unknown/Unknown";
 import UnknownAdd from "./Unknown/UknnowAdd";
+import UnknownAddEasy from "./Unknown/UknnowAddEasy";
 import UnknownSub from "./Unknown/UknnowSub";
+import UnknownSubEasy from "./Unknown/UknnowSubEasy";
 import UnknownAddSub from "./Unknown/UknnowAddSub";
 import { useEffect } from "react";
 import AOS from "aos";
@@ -73,7 +75,9 @@ function App() {
 				<Route path="/ow20" element={<SubTo20Write />} />
 				<Route path="/un" element={<Unknown />} />
 				<Route path="/una" element={<UnknownAdd />} />
+				<Route path="/unae" element={<UnknownAddEasy />} />
 				<Route path="/uns" element={<UnknownSub />} />
+				<Route path="/unse" element={<UnknownSubEasy />} />
 				<Route path="/unas" element={<UnknownAddSub />} />
 				<Route path="/egr" element={<EasyGreater />} />
 				<Route path="/hgr" element={<HardGreater />} />
