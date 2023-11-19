@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-// import HTMLFlipBook from "react-pageflip";
 
 function Numbslearn() {
 	const [currentNumber, setCurrentNumber] = useState(1);
@@ -33,98 +32,61 @@ function Numbslearn() {
 	};
 
 	useEffect(() => {
-		// Aktualizuj currentPic na podstawie currentNumber po zmianie currentNumber
-		// Pobierz nazwy plików obrazów z obiektu pics bez przecinków
 		const picNames = pics[currentNumber];
 
 		setCurrentPic(picNames);
 	}, [currentNumber]);
 
 	const pics = {
-		1: ["1.png"],
-		2: ["2.png", "2.png"],
-		3: ["3.png", "3.png", "3.png"],
-		4: ["4.png", "4.png", "4.png", "4.png"],
-		5: ["5.png", "5.png", "5.png", "5.png", "5.png"],
-		6: ["6.png", "6.png", "6.png", "6.png", "6.png", "6.png"],
-		7: ["7.png", "7.png", "7.png", "7.png", "7.png", "7.png", "7.png"],
+		1: ["faStar"],
+		2: ["faStar", "faStar"],
+		3: ["faStar", "faStar", "faStar"],
+		4: ["faStar", "faStar", "faStar", "faStar"],
+		5: ["faStar", "faStar", "faStar", "faStar", "faStar"],
+		6: ["faStar", "faStar", "faStar", "faStar", "faStar", "faStar"],
+		7: [
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+		],
 		8: [
-			"8.png",
-			"8.png",
-			"8.png",
-			"8.png",
-			"8.png",
-			"8.png",
-			"8.png",
-			"8.png",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
 		],
 		9: [
-			"9.png",
-			"9.png",
-			"9.png",
-			"9.png",
-			"9.png",
-			"9.png",
-			"9.png",
-			"9.png",
-			"9.png",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
 		],
 		10: [
-			"10.png",
-			"10.png",
-			"10.png",
-			"10.png",
-			"10.png",
-			"10.png",
-			"10.png",
-			"10.png",
-			"10.png",
-			"10.png",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
+			"faStar",
 		],
 	};
-
-	// const pics = {
-	// 	1: [faStar],
-	// 	2: ["2.png", "2.png"],
-	// 	3: ["3.png", "3.png", "3.png"],
-	// 	4: ["4.png", "4.png", "4.png", "4.png"],
-	// 	5: ["5.png", "5.png", "5.png", "5.png", "5.png"],
-	// 	6: ["6.png", "6.png", "6.png", "6.png", "6.png", "6.png"],
-	// 	7: ["7.png", "7.png", "7.png", "7.png", "7.png", "7.png", "7.png"],
-	// 	8: [
-	// 		"8.png",
-	// 		"8.png",
-	// 		"8.png",
-	// 		"8.png",
-	// 		"8.png",
-	// 		"8.png",
-	// 		"8.png",
-	// 		"8.png",
-	// 	],
-	// 	9: [
-	// 		"9.png",
-	// 		"9.png",
-	// 		"9.png",
-	// 		"9.png",
-	// 		"9.png",
-	// 		"9.png",
-	// 		"9.png",
-	// 		"9.png",
-	// 		"9.png",
-	// 	],
-	// 	10: [
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 		"10.png",
-	// 	],
-	// };
 
 	const classes = {
 		1: "one-class",
@@ -182,12 +144,27 @@ function Numbslearn() {
 									</div>
 								</div>
 								{currentPic.map((pic, index) => (
-									<img
-										className={` ${classes[currentNumber]}`}
-										key={index}
-										src={require(`./photos/${pic}`)}
-										alt={`Zdjęcie ${currentNumber}`}
-									/>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											<div className="col-3">
+												<div
+													key={index}
+													className={` ${classes[currentNumber]}`}
+												>
+													{pic === "faStar" ? (
+														<FontAwesomeIcon
+															icon={faStar}
+														/>
+													) : (
+														<img
+															src={require(`./photos/${pic}`)}
+															alt={`Zdjęcie ${currentNumber}`}
+														/>
+													)}
+												</div>
+											</div>
+										</div>
+									</div>
 								))}
 							</div>
 							<ul className="text-center">
@@ -209,94 +186,6 @@ function Numbslearn() {
 					</div>
 				</div>
 			</div>
-
-			{/* <div className="dzialy-desktop">
-				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
-						<div className="d-flex justify-content-center book">
-							<HTMLFlipBook width={400} height={700}>
-								<div className="table">
-									<img
-										width={400}
-										height={700}
-										src={require("./photos/desk.jpg")}
-										alt={"desk"}
-									/>
-								</div>
-								<div className="title-page d-flex justify-content-center">
-									<div className="d-flex align-items-center text-book row">
-										<div className="row "></div>
-										<div className="row ">
-											<div>UCZE</div>
-										</div>
-										<div className="row ">
-											<div>SIĘ</div>
-										</div>
-										<div className="row ">
-											<div>CYFEREK</div>
-										</div>
-										<div className="row "></div>
-									</div>
-								</div>
-								<div className="wrap-paper">
-									<div className="paper ">
-										<div className="d-flex align-items-center text-book row">
-											<div className="text-desktop">
-												<div className="row ">
-													jeden
-												</div>
-												<div className="row ">1</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="wrap-paper">
-									<div className="paper">
-										<img
-											className="pic-de"
-											src={require("./photos/1.png")}
-											alt={"desk"}
-										/>
-									</div>
-								</div>
-								<div className="wrap-paper">
-									<div className="paper">
-										jak to zrobić zeby każda strona była
-										nowym komponentem
-									</div>
-								</div>
-								<div className="wrap-paper">
-									<div className="paper">
-										jak to zrobić zeby każda strona była
-										nowym komponentem
-									</div>
-								</div>
-								<div className="wrap-paper">
-									<div className="paper">
-										jak to zrobić zeby każda strona była
-										nowym komponentem
-									</div>
-								</div>
-								<div className="table">
-									<img
-										width={400}
-										height={700}
-										src={require("./photos/desk.jpg")}
-										alt={"desk"}
-									/>
-								</div>
-							</HTMLFlipBook>
-						</div>
-						<ul className="text-center">
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop">
-									Powrót do menu
-								</li>
-							</Link>
-						</ul>
-					</div>
-				</div>
-			</div> */}
 			<div className="dzialy-mobile">
 				<div className="header-mobile">Poznaje cyfty</div>
 				<div className="blackboard container text-center">
@@ -325,12 +214,19 @@ function Numbslearn() {
 						</div>
 					</div>
 					{currentPic.map((pic, index) => (
-						<img
-							className={` ${classes[currentNumber]}`}
+						<div
 							key={index}
-							src={require(`./photos/${pic}`)}
-							alt={`Zdjęcie ${currentNumber}`}
-						/>
+							className={` ${classes[currentNumber]}`}
+						>
+							{pic === "faStar" ? (
+								<FontAwesomeIcon icon={faStar} />
+							) : (
+								<img
+									src={require(`./photos/${pic}`)}
+									alt={`Zdjęcie ${currentNumber}`}
+								/>
+							)}
+						</div>
 					))}
 				</div>
 

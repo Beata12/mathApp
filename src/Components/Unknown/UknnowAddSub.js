@@ -82,16 +82,7 @@ function UnknownAdd() {
 	};
 
 	const generateSign = () => {
-		let plus, minus;
-
-		plus = "+";
-		minus = "-";
-
-		if (generateNewEquationAddition === true) {
-			return plus;
-		} else {
-			return minus;
-		}
+		return currentOperation === "addition" ? "+" : "-";
 	};
 
 	const handleChoiceClick = (choice) => {
