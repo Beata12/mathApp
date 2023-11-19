@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
+import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
 function Signs() {
 	const divContents = [
@@ -33,21 +36,68 @@ function Signs() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-8 ">
 						<ul className="text-center">
-							<Link style={{ textDecoration: "none" }} to="/eg">
-								<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-									Przykłady
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/comp">
-								<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-									Chcesz poćwiczyć
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-									Powrót do menu
-								</li>
-							</Link>
+							<div className="board-desktop">
+								<div className="list-title-desktop">
+									ZNAKI MATEMATYCZNE
+								</div>
+								<div className="container">
+									<div className="row d-flex justify-content-center">
+										<div className="col-5 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+											<button
+												className="btn-desktop"
+												onClick={handlePreviousClick}
+											>
+												Poprzedni
+											</button>
+										</div>
+										<div className="col-5 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+											<button
+												className="btn-desktop"
+												onClick={handleNextClick}
+											>
+												Dalej
+											</button>
+										</div>
+									</div>
+								</div>
+								<div className="container">
+									<div className="row d-flex justify-content-center">
+										<div className="row-2 sign-name">
+											{currentDiv.explanation}
+										</div>
+										<div className="row-2 sign-which">
+											{currentDiv.meaning}
+										</div>
+										<div className="row-2 sign-symbol">
+											{currentDiv.sign}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<ul className="text-center">
+								<Link
+									style={{ textDecoration: "none" }}
+									to="/eg"
+								>
+									<li className="list-desktop board-desktop align-items-center justify-content-center">
+										Przykłady
+									</li>
+								</Link>
+								<Link
+									style={{ textDecoration: "none" }}
+									to="/comp"
+								>
+									<li className="list-desktop board-desktop align-items-center justify-content-center">
+										Chcesz poćwiczyć
+									</li>
+								</Link>
+								<Link style={{ textDecoration: "none" }} to="/">
+									<li className="list-desktop board-desktop align-items-center justify-content-center">
+										Powrót do menu
+									</li>
+								</Link>
+							</ul>
 						</ul>
 					</div>
 				</div>

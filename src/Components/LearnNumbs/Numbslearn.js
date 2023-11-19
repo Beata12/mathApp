@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { star } from "@fortawesome/free-regular-svg-icons";
-import HTMLFlipBook from "react-pageflip";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+// import HTMLFlipBook from "react-pageflip";
 
 function Numbslearn() {
 	const [currentNumber, setCurrentNumber] = useState(1);
@@ -83,6 +83,49 @@ function Numbslearn() {
 		],
 	};
 
+	// const pics = {
+	// 	1: [faStar],
+	// 	2: ["2.png", "2.png"],
+	// 	3: ["3.png", "3.png", "3.png"],
+	// 	4: ["4.png", "4.png", "4.png", "4.png"],
+	// 	5: ["5.png", "5.png", "5.png", "5.png", "5.png"],
+	// 	6: ["6.png", "6.png", "6.png", "6.png", "6.png", "6.png"],
+	// 	7: ["7.png", "7.png", "7.png", "7.png", "7.png", "7.png", "7.png"],
+	// 	8: [
+	// 		"8.png",
+	// 		"8.png",
+	// 		"8.png",
+	// 		"8.png",
+	// 		"8.png",
+	// 		"8.png",
+	// 		"8.png",
+	// 		"8.png",
+	// 	],
+	// 	9: [
+	// 		"9.png",
+	// 		"9.png",
+	// 		"9.png",
+	// 		"9.png",
+	// 		"9.png",
+	// 		"9.png",
+	// 		"9.png",
+	// 		"9.png",
+	// 		"9.png",
+	// 	],
+	// 	10: [
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 		"10.png",
+	// 	],
+	// };
+
 	const classes = {
 		1: "one-class",
 		2: "two-class",
@@ -101,6 +144,73 @@ function Numbslearn() {
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-8 ">
+						<ul className="text-center">
+							<div className="board-desktop">
+								<div className="list-title-desktop">
+									ZNAKI MATEMATYCZNE
+								</div>
+								<div className="container">
+									<div className="row d-flex justify-content-center">
+										<div className="col-5 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+											<button
+												className=" btn-desktop"
+												onClick={handlePrevious}
+											>
+												Poprzedni
+											</button>
+										</div>
+										<div className="col-5 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+											<button
+												className=" btn-desktop"
+												onClick={handleNext}
+											>
+												Następny
+											</button>
+										</div>
+									</div>
+								</div>
+								<div className="container">
+									<div className="row d-flex justify-content-center">
+										<div className="col-3 sign-name">
+											{currentNumber}
+										</div>
+										<div className="col-3 sign-name">
+											{numberTexts[currentNumber]}
+										</div>
+									</div>
+								</div>
+								{currentPic.map((pic, index) => (
+									<img
+										className={` ${classes[currentNumber]}`}
+										key={index}
+										src={require(`./photos/${pic}`)}
+										alt={`Zdjęcie ${currentNumber}`}
+									/>
+								))}
+							</div>
+							<ul className="text-center">
+								<Link
+									style={{ textDecoration: "none" }}
+									to="/num"
+								>
+									<li className="list-desktop board-desktop align-items-center justify-content-center">
+										Chcesz poćwiczyć
+									</li>
+								</Link>
+								<Link style={{ textDecoration: "none" }} to="/">
+									<li className="list-desktop board-desktop align-items-center justify-content-center">
+										Powrót do menu
+									</li>
+								</Link>
+							</ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			{/* <div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-8 ">
 						<div className="d-flex justify-content-center book">
@@ -186,7 +296,7 @@ function Numbslearn() {
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> */}
 			<div className="dzialy-mobile">
 				<div className="header-mobile">Poznaje cyfty</div>
 				<div className="blackboard container text-center">
@@ -201,7 +311,7 @@ function Numbslearn() {
 							className="btn btn-changenum"
 							onClick={handleNext}
 						>
-							Dalej
+							Następny
 						</button>
 					</div>
 					<div className="row">

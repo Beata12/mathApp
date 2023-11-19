@@ -165,10 +165,18 @@ function GreaterSmaller() {
 												/>
 											) : null}
 										</div>
-										<div className="equations-desktop">
-											{number1} &nbsp;&nbsp;{" "}
-											{selectedSign} &nbsp;&nbsp;{" "}
-											{number2}
+										<div className="container">
+											<div className="row d-flex justify-content-center">
+												<div className="col-2 equations-desktop">
+													{number1}
+												</div>
+												<div className="col-2 equations-desktop">
+													{selectedSign}
+												</div>
+												<div className="col-2 equations-desktop">
+													{number2}
+												</div>
+											</div>
 										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
@@ -278,9 +286,18 @@ function GreaterSmaller() {
 									<FontAwesomeIcon icon={resultIcon} />
 								) : null}
 							</div>
-							<div className="numbers-mobile">
-								{number1} &nbsp;&nbsp; {selectedSign}{" "}
-								&nbsp;&nbsp; {number2}
+							<div className="container">
+								<div className="row d-flex justify-content-center">
+									<div className="col-2 equations-mobile">
+										{number1}
+									</div>
+									<div className="col-2 equations-mobile">
+										{selectedSign}
+									</div>
+									<div className="col-2 equations-mobile">
+										{number2}
+									</div>
+								</div>
 							</div>
 							<div className="container">
 								<div className="row d-flex justify-content-center">

@@ -236,7 +236,7 @@ function SubtractionUpTo5() {
 									<div>
 										<div className="container">
 											<div className="row justify-content-center">
-												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
+												<div className="row-2 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
 															length:
@@ -259,7 +259,7 @@ function SubtractionUpTo5() {
 															<FontAwesomeIcon
 																key={index}
 																icon={faBan}
-																className="ban-icon-desktop"
+																className="circle-icon-desktop"
 															/>
 														)
 													)}

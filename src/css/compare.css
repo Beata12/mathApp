@@ -1,6 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap");
 
+.sign-name,
+.sign-which,
+.sign-symbol {
+	color: white;
+	margin: 30px;
+}
+
+.sign-name {
+	margin-top: 50px !important;
+	font-size: 50px;
+}
+
+.sign-which {
+	font-size: 45px;
+}
+
+.sign-symbol {
+	font-size: 100px;
+}
+
 .alien1-icon-desktop {
 	height: 35px;
 	color: rgb(230, 137, 44);

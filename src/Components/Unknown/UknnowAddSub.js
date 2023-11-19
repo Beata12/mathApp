@@ -81,7 +81,7 @@ function UnknownAdd() {
 		setTimer(10);
 	};
 
-	const genetrateSign = () => {
+	const generateSign = () => {
 		let plus, minus;
 
 		plus = "+";
@@ -183,7 +183,7 @@ function UnknownAdd() {
 		} else {
 			generateNewEquationSubstraction();
 		}
-		genetrateSign();
+		generateSign();
 		setTimer(10);
 	};
 	return (
@@ -232,7 +232,7 @@ function UnknownAdd() {
 											</div>
 											<div className="col-2 equations-desktop">
 												{/* +/- */}
-												{genetrateSign}
+												{generateSign}
 											</div>
 											<div className="col-2 equations-desktop">
 												?
