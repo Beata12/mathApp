@@ -12,28 +12,28 @@ function Numbers() {
 								style={{ textDecoration: "none" }}
 								to="/numlearn"
 							>
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Poznaje liczby
 								</li>
 							</Link>
 
 							<Link style={{ textDecoration: "none" }} to="/nume">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-easy">
 									Rozpoznawanie liczb - poziom łatwy
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/numh">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-hard">
 									Rozpoznawanie liczb - poziom trudny
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/numl">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-easy">
 									Rozpoznawanie liczb - słuchanie
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop">
+								<li className="list-desktop board-desktop hover-back">
 									Powrót do menu
 								</li>
 							</Link>

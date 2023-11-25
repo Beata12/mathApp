@@ -4,96 +4,135 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
 
-const numbersdigit = {
-	1: "jeden",
-	2: "dwa",
-	3: "trzy",
-	4: "cztery",
-	5: "pięć",
-	6: "sześć",
-	7: "siedem",
-	8: "osiem",
-	9: "dziewięć",
-	10: "dziesięć",
-};
-
-const answers = {
-	jeden: 1,
-	dwa: 2,
-	trzy: 3,
-	cztery: 4,
-	pięć: 5,
-	sześć: 6,
-	siedem: 7,
-	osiem: 8,
-	dziewięć: 9,
-	dziesięć: 10,
-};
-
-const getRandomNumbers = () => {
-	const uniqueNumbers = new Set();
-	while (uniqueNumbers.size < 3) {
-		uniqueNumbers.add(Math.floor(Math.random() * 10) + 1);
-	}
-	return [...uniqueNumbers];
-};
-
-const NumbHard = () => {
+function Numberhard() {
 	const [timer, setTimer] = useState(10);
-	const [numbers, setNumbers] = useState([]);
+	const [answers, setAnswers] = useState([null, null, null]);
 	const [randomWord, setRandomWord] = useState("");
-	const [correctDigit, setCorrectDigit] = useState("");
-	const [selectedDigit, setSelectedDigit] = useState("");
 	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [points, setPoints] = useState(0);
+	const [emoji, setEmoji] = useState(null);
 	const [canAnswer, setCanAnswer] = useState(true);
 	const [lives, setLives] = useState(3);
+	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
-	const [showNextQuestion, setShowNextQuestion] = useState(false);
-	const [emoji, setEmoji] = useState(null);
 
-	const generateRandomNumbers = () => {
-		const optionsArray = getRandomNumbers();
-		const randomIndex = Math.floor(Math.random() * optionsArray.length);
-		const correctNum = optionsArray[randomIndex];
-		setNumbers(optionsArray);
-		setCorrectDigit(correctNum.toString());
-		setRandomWord(numbersdigit[correctNum]);
+	useEffect(() => {
+		generateRandomWord();
+	}, []);
+
+	useEffect(() => {
+		const intervalId = setInterval(() => {
+			if (timer > 0 && canAnswer) {
+				setTimer((prevTimer) => prevTimer - 1);
+			} else if (timer === 0 && canAnswer) {
+				clearInterval(intervalId);
+				handleWrongAnswer();
+			}
+		}, 1000);
+
+		return () => {
+			clearInterval(intervalId);
+		};
+	}, [timer, canAnswer]);
+
+	const generateRandomWord = () => {
+		const min = 1;
+		const max = 10;
+
+		const numbersdigit = {
+			1: "jeden",
+			2: "dwa",
+			3: "trzy",
+			4: "cztery",
+			5: "pięć",
+			6: "sześć",
+			7: "siedem",
+			8: "osiem",
+			9: "dziewięć",
+			10: "dziesięć",
+		};
+
+		let randomNum = Math.floor(Math.random() * (max - min + 1) + min);
+		let randomWord = numbersdigit[randomNum];
+
+		const correctNum = randomNum;
+		const incorrectIndexes = [1, 2];
+
+		const incorrect1 = generateIncorrectAnswer(
+			incorrectIndexes,
+			correctNum
+		);
+		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
+		const incorrect2 = generateIncorrectAnswer(
+			incorrectIndexes,
+			correctNum
+		);
+
+		const answersArray = shuffleArray([correctNum, incorrect1, incorrect2]);
+
+		setAnswers(answersArray);
+		setCorrectAnswer(correctNum);
+		setRandomWord(randomWord);
+		setCanAnswer(true);
+		setTimer(10);
 	};
 
-	let intervalId;
+	const generateIncorrectAnswer = (excludedIndexes, correct) => {
+		const min = 1;
+		const max = 10;
 
-	const handleDigitClick = (digit) => {
-		if (!canAnswer) return;
+		let incorrect;
+		do {
+			incorrect = Math.floor(Math.random() * (max - min + 1)) + min;
+		} while (excludedIndexes.includes(incorrect) || incorrect === correct);
+		return incorrect;
+	};
 
-		setCanAnswer(false); // Disable answering during the transition
-		setSelectedDigit(digit);
-		const isCorrect = digit === correctDigit;
-		setCorrectAnswer(isCorrect);
+	const shuffleArray = (array) => {
+		const shuffledArray = [...array];
+		for (let i = shuffledArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffledArray[i], shuffledArray[j]] = [
+				shuffledArray[j],
+				shuffledArray[i],
+			];
+		}
+		return shuffledArray;
+	};
 
-		if (isCorrect) {
-			setPoints((prevPoints) => prevPoints + 1);
-			setEmoji("frown"); // Set the emoji to sad face
-		} else {
-			setLives((prevLives) => prevLives - 1);
-			setEmoji("frown"); // Set the emoji to sad face
-			if (lives === 1) {
-				setGameOver(true);
+	const handleAnswerClick = (selectedAnswer) => {
+		if (canAnswer) {
+			setCanAnswer(false);
+
+			if (selectedAnswer === correctAnswer) {
+				handleCorrectAnswer();
+			} else {
+				handleWrongAnswer();
 			}
 		}
+	};
 
-		clearInterval(intervalId);
+	const handleCorrectAnswer = () => {
+		setPoints((prevPoints) => prevPoints + 1);
+		setEmoji("smile");
 		setTimeout(() => {
-			setCorrectAnswer(null);
-			generateRandomNumbers();
-			setTimer(10);
-			setShowNextQuestion(true);
-			setTimeout(() => {
-				setShowNextQuestion(false);
-				startTimer();
-				setEmoji(null); // Reset the emoji
-				setCanAnswer(true); // Enable answering for the new question
-			}, 2000);
+			setEmoji(null);
+			generateRandomWord();
+		}, 2000);
+	};
+
+	const handleWrongAnswer = () => {
+		setIncorrectAnswers((prevIncorrect) => prevIncorrect + 1);
+		if (lives > 0) {
+			setLives((prevLives) => prevLives - 1);
+		}
+		setEmoji("frown");
+		setTimeout(() => {
+			setEmoji(null);
+			generateRandomWord();
+			if (incorrectAnswers === 2) {
+				setGameOver(true);
+			}
 		}, 2000);
 	};
 
@@ -124,35 +163,114 @@ const NumbHard = () => {
 		setGameOver(false);
 		setPoints(0);
 		setLives(3);
-		setEmoji(null); // Reset the emoji
-		generateRandomNumbers();
-		startTimer();
-	};
-
-	useEffect(() => {
-		generateRandomNumbers();
-		startTimer();
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, []);
-
-	const startTimer = () => {
-		intervalId = setInterval(() => {
-			if (timer > 0 && canAnswer) {
-				setTimer((prevTimer) => prevTimer - 1);
-			} else if (timer === 0 && canAnswer) {
-				clearInterval(intervalId);
-			}
-		}, 1000);
+		setIncorrectAnswers(0);
+		generateRandomWord();
 	};
 
 	return (
 		<main className="main-dzialy">
+			<div className="dzialy-desktop">
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-8 ">
+						<ul className="text-center">
+							<div className="list-title-desktop">
+								ROZPOZNAWANIE LICZB
+							</div>
+							{gameOver ? (
+								<div className="gameOver">
+									<div className="list-desktop">
+										KONIEC GRY
+									</div>
+									<div className="list-desktop">
+										Punkty: {points}
+									</div>
+									<div className="list-desktop">
+										Gratulacje
+									</div>
+									<li className="list-desktop board-desktop align-items-center justify-content-center">
+										<button
+											className="btn-desktop"
+											onClick={startNewGame}
+										>
+											Zagraj jeszcze raz
+										</button>
+									</li>
+								</div>
+							) : (
+								<div className="container">
+									<div className="icons-desktop">
+										{emoji === "smile" && (
+											<FontAwesomeIcon
+												icon={faFaceSmile}
+												className="smile-icon-desktop"
+											/>
+										)}
+										{emoji === "frown" && (
+											<FontAwesomeIcon
+												icon={faFaceFrown}
+												className="frown-icon-desktop"
+											/>
+										)}
+									</div>
+									<div className="container">
+										<div className=" d-flex justify-content-center">
+											<div className="col-2 equations-desktop">
+												{randomWord}
+											</div>
+										</div>
+									</div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											{answers.map((answer, index) => (
+												<div
+													key={index}
+													className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+													onClick={() =>
+														handleAnswerClick(
+															answer
+														)
+													}
+												>
+													{answer}
+												</div>
+											))}
+										</div>
+									</div>
+									<div className="information-desktop">
+										Czas {timer}
+									</div>
+									<div className="information-desktop">
+										Punkty {points}
+									</div>
+									<div className="container">
+										<div className="row">
+											<div className="col">
+												{generateHeartIcons()}
+											</div>
+										</div>
+									</div>
+								</div>
+							)}
+							<Link style={{ textDecoration: "none" }} to="/num">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Wybierz inny poziom
+								</li>
+							</Link>
+							<Link style={{ textDecoration: "none" }} to="/">
+								<li className="list-desktop board-desktop align-items-center justify-content-center">
+									Powrót do menu
+								</li>
+							</Link>
+						</ul>
+					</div>
+				</div>
+			</div>
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<li className="list-mobile">Poziom trudny</li>
+						<div className="list-title-mobile">
+							ROZPOZNAWANIE LICZB
+						</div>
 						{gameOver ? (
 							<div className="gameOver">
 								<div className="list-mobile">KONIEC GRY</div>
@@ -170,7 +288,7 @@ const NumbHard = () => {
 								</div>
 							</div>
 						) : (
-							<>
+							<div className="container">
 								<div className="icons-mobile">
 									{emoji === "smile" && (
 										<FontAwesomeIcon
@@ -185,20 +303,24 @@ const NumbHard = () => {
 										/>
 									)}
 								</div>
-								<div className="horizontal-options">
-									<p className="digitword">{randomWord}</p>
+								<div className="container">
+									<div className="horizontal-options">
+										<p className="digitword">
+											{randomWord}
+										</p>
+									</div>
 								</div>
 								<div className="container">
 									<div className="row d-flex justify-content-center">
-										{numbers.map((digit, index) => (
+										{answers.map((answer, index) => (
 											<div
-												className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
 												key={index}
+												className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
 												onClick={() =>
-													handleDigitClick(digit)
+													handleAnswerClick(answer)
 												}
 											>
-												{digit}
+												{answer}
 											</div>
 										))}
 									</div>
@@ -216,12 +338,7 @@ const NumbHard = () => {
 										</div>
 									</div>
 								</div>
-								{showNextQuestion && (
-									<div className="next-question">
-										Następne pytanie za chwilę...
-									</div>
-								)}
-							</>
+							</div>
 						)}
 						<Link style={{ textDecoration: "none" }} to="/num">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
@@ -238,6 +355,6 @@ const NumbHard = () => {
 			</div>
 		</main>
 	);
-};
+}
 
-export default NumbHard;
+export default Numberhard;

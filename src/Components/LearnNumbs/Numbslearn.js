@@ -143,10 +143,11 @@ function Numbslearn() {
 										</div>
 									</div>
 								</div>
+
 								{currentPic.map((pic, index) => (
 									<div className="container">
-										<div className="row d-flex justify-content-center">
-											<div className="col-3">
+										<div className="row justify-content-center">
+											<div className="row-2 equations-desktop d-flex justify-content-center align-items-center">
 												<div
 													key={index}
 													className={` ${classes[currentNumber]}`}
