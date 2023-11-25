@@ -76,4 +76,8 @@ ul {
 	.dzialy-mobile {
 		display: block;
 	}
+
+	.main-mobile {
+		margin-top: 40px;
+	}
 }

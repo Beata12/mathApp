@@ -3,3 +3,13 @@
 	font-size: 25px !important;
 	margin-left: 20px !important;
 }
+
+.logo {
+	color: white;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.btn-lg {
+	background-color: white !important;
+}
