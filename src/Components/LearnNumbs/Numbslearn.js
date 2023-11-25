@@ -19,89 +19,25 @@ function Numbslearn() {
 		10: "dziesięć",
 	};
 
+	const [stars, setStars] = useState(Array(currentNumber).fill(null));
+
 	const handleNext = () => {
 		if (currentNumber < 10) {
 			setCurrentNumber(currentNumber + 1);
+			setStars(Array(currentNumber + 1).fill(null));
 		}
 	};
 
 	const handlePrevious = () => {
 		if (currentNumber > 1) {
 			setCurrentNumber(currentNumber - 1);
+			setStars(Array(currentNumber - 1).fill(null));
 		}
 	};
 
 	useEffect(() => {
-		const picNames = pics[currentNumber];
-
-		setCurrentPic(picNames);
+		setStars(Array(currentNumber).fill(null));
 	}, [currentNumber]);
-
-	const pics = {
-		1: ["faStar"],
-		2: ["faStar", "faStar"],
-		3: ["faStar", "faStar", "faStar"],
-		4: ["faStar", "faStar", "faStar", "faStar"],
-		5: ["faStar", "faStar", "faStar", "faStar", "faStar"],
-		6: ["faStar", "faStar", "faStar", "faStar", "faStar", "faStar"],
-		7: [
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-		],
-		8: [
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-		],
-		9: [
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-		],
-		10: [
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-			"faStar",
-		],
-	};
-
-	const classes = {
-		1: "one-class",
-		2: "two-class",
-		3: "three-class",
-		4: "four-class",
-		5: "fife-class",
-		6: "six-class",
-		7: "seven-class",
-		8: "eight-class",
-		9: "nine-class",
-		10: "ten-class",
-	};
-
-	const [currentPic, setCurrentPic] = useState(pics[currentNumber]);
 
 	return (
 		<main className="main-dzialy">
@@ -143,30 +79,21 @@ function Numbslearn() {
 										</div>
 									</div>
 								</div>
-
-								{currentPic.map((pic, index) => (
-									<div className="container">
-										<div className="row justify-content-center">
-											<div className="row-2 equations-desktop d-flex justify-content-center align-items-center">
-												<div
-													key={index}
-													className={` ${classes[currentNumber]}`}
-												>
-													{pic === "faStar" ? (
-														<FontAwesomeIcon
-															icon={faStar}
-														/>
-													) : (
-														<img
-															src={require(`./photos/${pic}`)}
-															alt={`Zdjęcie ${currentNumber}`}
-														/>
-													)}
-												</div>
+								<div className="container">
+									<div className="row d-flex justify-content-center">
+										{stars.map((star, index) => (
+											<div
+												className="col equations-desktop  justify-content-center"
+												key={index}
+											>
+												<FontAwesomeIcon
+													icon={faStar}
+													className="star-learn-num"
+												/>
 											</div>
-										</div>
+										))}
 									</div>
-								))}
+								</div>
 							</div>
 							<ul className="text-center">
 								<Link
@@ -188,8 +115,7 @@ function Numbslearn() {
 				</div>
 			</div>
 			<div className="dzialy-mobile">
-				<div className="header-mobile">Poznaje cyfty</div>
-				<div className="blackboard container text-center">
+				<div className="blackboard container">
 					<div className="text-center">
 						<button
 							className="btn btn-changenum"
@@ -197,6 +123,7 @@ function Numbslearn() {
 						>
 							Poprzedni
 						</button>
+
 						<button
 							className="btn btn-changenum"
 							onClick={handleNext}
@@ -204,46 +131,46 @@ function Numbslearn() {
 							Następny
 						</button>
 					</div>
-					<div className="row">
-						<div className="col ">
-							<p className="number">{currentNumber}</p>
-						</div>
-						<div className="col">
-							<p className="number-tekst">
+					<div className="container">
+						<div className="row d-flex justify-content-center">
+							<div className="col numbers-mobile">
+								{currentNumber}
+							</div>
+							<div className="col numbers-mobile">
 								{numberTexts[currentNumber]}
-							</p>
+							</div>
 						</div>
 					</div>
-					{currentPic.map((pic, index) => (
-						<div
-							key={index}
-							className={` ${classes[currentNumber]}`}
-						>
-							{pic === "faStar" ? (
-								<FontAwesomeIcon icon={faStar} />
-							) : (
-								<img
-									src={require(`./photos/${pic}`)}
-									alt={`Zdjęcie ${currentNumber}`}
-								/>
-							)}
+					<div className="container">
+						<div className="row d-flex justify-content-center">
+							{stars.map((star, index) => (
+								<div
+									className="col-3 d-flex align-items-center justify-content-center equations-mobile"
+									key={index}
+								>
+									<FontAwesomeIcon
+										icon={faStar}
+										className="star-learn-mobile"
+									/>
+								</div>
+							))}
 						</div>
-					))}
+					</div>
 				</div>
-
-				<ul className="text-center">
-					<Link style={{ textDecoration: "none" }} to="/num">
-						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-							Chcesz poćwiczyć
-						</li>
-					</Link>
-					<Link style={{ textDecoration: "none" }} to="/">
-						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-							Powrót do menu
-						</li>
-					</Link>
-				</ul>
 			</div>
+
+			<ul className="text-center">
+				<Link style={{ textDecoration: "none" }} to="/num">
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Chcesz poćwiczyć
+					</li>
+				</Link>
+				<Link style={{ textDecoration: "none" }} to="/">
+					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+						Powrót do menu
+					</li>
+				</Link>
+			</ul>
 		</main>
 	);
 }

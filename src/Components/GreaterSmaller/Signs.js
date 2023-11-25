@@ -120,7 +120,9 @@ function Signs() {
 						</button>
 					</div>
 					<div className="signs-content-mobile">
-						<div>{currentDiv.explanation}</div>
+						<div className="explanation-mobile">
+							{currentDiv.explanation}
+						</div>
 						<div className="meaning-mobile">
 							{currentDiv.meaning}
 						</div>

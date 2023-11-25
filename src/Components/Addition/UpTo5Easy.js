@@ -333,7 +333,7 @@ function UpTo5() {
 									>
 										Zagraj jeszcze raz
 									</button>
-								</div>{" "}
+								</div>
 							</div>
 						) : (
 							<div className="gameOver">

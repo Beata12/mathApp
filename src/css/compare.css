@@ -50,7 +50,8 @@
 	}
 
 	.meaning-mobile {
-		margin-top: 40px;
+		color: white;
+		margin-top: 20px;
 		font-size: 35px;
 	}
 
@@ -61,7 +62,12 @@
 	}
 
 	.sign-mobile {
-		font-size: 180px;
+		font-size: 160px;
+		color: white;
+	}
+
+	.explanation-mobile {
+		color: white;
 	}
 
 	.sign-exmp-mobile {
