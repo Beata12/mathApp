@@ -68,6 +68,10 @@ ul {
 	padding: 15px;
 }
 
+.volume-icon {
+	font-size: 35px;
+}
+
 @media only screen and (max-width: 800px) {
 	.dzialy-desktop {
 		display: none;

@@ -1,54 +1,244 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import add5E from "../../audio/Add5E.mp3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+//dodaj reszte głosów i później dodaj do HTML
 
 function Numbers() {
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
+
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10">
-						<ul className="text-center">
-							<Link style={{ textDecoration: "none" }} to="/u5e">
-								<li className="list-desktop board-desktop hover-easy">
-									Dodawanie do 5 - poziom łatwy
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/u5">
-								<li className="list-desktop board-desktop hover-hard">
-									Dodawanie do 5 - poziom trudny
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/u10e">
-								<li className="list-desktop board-desktop hover-easy">
-									Dodawanie do 10 - poziom łatwy
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/u10">
-								<li className="list-desktop board-desktop hover-hard">
-									Dodawanie do 10 - poziom trudny
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/w10">
-								<li className="list-desktop board-desktop hover-hard">
-									Dodawanie do 10 - wpisywanie
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/u20">
-								<li className="list-desktop board-desktop hover-hard">
-									Dodawanie do 20
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/w20">
-								<li className="list-desktop board-desktop hover-hard">
-									Dodawanie do 20 - wpisywanie
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop hover-back">
-									Powrót do menu
-								</li>
-							</Link>
-						</ul>
+					<div className="col-10 text-center">
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./u5e"
+									>
+										<button className="btn-desktop hover-easy">
+											Dodawanie do 5 - poziom łatwy
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./u5"
+									>
+										<button className="btn-desktop hover-hard">
+											Dodawanie do 5 - poziom trudny
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./u10e"
+									>
+										<button className="btn-desktop hover-easy">
+											Dodawanie do 10 - poziom łatwy
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./u10"
+									>
+										<button className="btn-desktop hover-hard">
+											Dodawanie do 10 - poziom hard
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./w10"
+									>
+										<button className="btn-desktop hover-easy">
+											Dodawanie do 10 - wpisywanie
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./u20"
+									>
+										<button className="btn-desktop hover-easy">
+											Dodawanie do 20
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./w20"
+									>
+										<button className="btn-desktop hover-easy">
+											Dodawanie do 20 - wpisywanie
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./"
+									>
+										<button className="btn-desktop hover-back">
+											Powrót do menu
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(add5E)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

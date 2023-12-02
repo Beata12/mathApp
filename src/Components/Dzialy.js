@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import numbers from "../audio/poznajemyLiczby.mp3";
 import signs from "../audio/znaki.mp3";
@@ -6,6 +6,8 @@ import add from "../audio/dodawanie.mp3";
 import sub from "../audio/odejmowanie.mp3";
 import comp from "../audio/porownywanie.mp3";
 import ukn from "../audio/niewiadoma.mp3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 function Dzialy() {
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -14,41 +16,19 @@ function Dzialy() {
 		if (!isButtonDisabled) {
 			const audio = new Audio(audioFile);
 			audio.play();
-			setTimeout(() => {
-				setButtonDisabled(false);
-			}, 2000);
+			setButtonDisabled(true);
 		}
 	}
 
-	function handleMouseOverNumbers() {
-		play(numbers);
-		setButtonDisabled(true);
-	}
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
 
-	function handleMouseOverSigns() {
-		play(signs);
-		setButtonDisabled(true);
-	}
-
-	function handleMouseOverAdd() {
-		play(add);
-		setButtonDisabled(true);
-	}
-
-	function handleMouseOverSub() {
-		play(sub);
-		setButtonDisabled(true);
-	}
-
-	function handleMouseOverComp() {
-		play(comp);
-		setButtonDisabled(true);
-	}
-
-	function handleMouseOverUkn() {
-		play(ukn);
-		setButtonDisabled(true);
-	}
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	return (
 		<main className="main-dzialy">
@@ -56,81 +36,165 @@ function Dzialy() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-10">
 						<ul className="text-center">
-							<li className="list-desktop board-desktop main-title">
+							<div className="container list-desktop board-desktop main-title">
 								DZIAŁY
-							</li>
-							<Link style={{ textDecoration: "none" }} to="./num">
-								<li className="list-desktop board-desktop">
-									<button
-										className="btn-desktop hover-menu"
-										onMouseOver={handleMouseOverNumbers}
-										disabled={isButtonDisabled}
-									>
-										Poznajemy liczby
-									</button>
-								</li>
-							</Link>
-							<Link
-								style={{ textDecoration: "none" }}
-								to="./sign"
-							>
-								<li className="list-desktop board-desktop">
-									<button
-										className="btn-desktop hover-menu"
-										onMouseOver={handleMouseOverSigns}
-										disabled={isButtonDisabled}
-									>
-										Poznajemy znaki matematyczne
-									</button>
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="./add">
-								<li className="list-desktop board-desktop">
-									<button
-										className="btn-desktop hover-menu"
-										onMouseOver={handleMouseOverAdd}
-										disabled={isButtonDisabled}
-									>
-										Uczymy się dodawać
-									</button>
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="./sub">
-								<li className="list-desktop board-desktop">
-									<button
-										className="btn-desktop hover-menu"
-										onMouseOver={handleMouseOverSub}
-										disabled={isButtonDisabled}
-									>
-										Uczymy się odejmować
-									</button>
-								</li>
-							</Link>
-							<Link
-								style={{ textDecoration: "none" }}
-								to="./comp"
-							>
-								<li className="list-desktop board-desktop">
-									<button
-										className="btn-desktop hover-menu"
-										onMouseOver={handleMouseOverComp}
-										disabled={isButtonDisabled}
-									>
-										Porównywanie liczb
-									</button>
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="./un">
-								<li className="list-desktop board-desktop">
-									<button
-										className="btn-desktop hover-menu"
-										onMouseOver={handleMouseOverUkn}
-										disabled={isButtonDisabled}
-									>
-										Działania z niewiadomą
-									</button>
-								</li>
-							</Link>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="./sign"
+										>
+											<button className="btn-desktop hover-menu">
+												Poznajemy liczby
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(numbers)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="./sign"
+										>
+											<button className="btn-desktop hover-menu">
+												Poznajemy znaki matematyczne
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(signs)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="./add"
+										>
+											<button className="btn-desktop hover-menu">
+												Uczymy się dodawać
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(add)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="./sub"
+										>
+											<button className="btn-desktop hover-menu">
+												Uczymy się odejmować
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(sub)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="./sign"
+										>
+											<button className="btn-desktop hover-menu">
+												Porównywanie liczb
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(comp)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="./sign"
+										>
+											<button className="btn-desktop hover-menu">
+												Działania z niewiadomą
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(ukn)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>
