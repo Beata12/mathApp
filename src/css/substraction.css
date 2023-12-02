@@ -27,6 +27,10 @@
 	font-size: 20px;
 }
 
+.answer-box-desktop:hover {
+	cursor: pointer;
+}
+
 .answer-box-mobile {
 	border: #b9713d solid 2px;
 	border-top: #8b4513 solid 2px;
@@ -176,35 +180,56 @@
 	background-color: rgb(51, 110, 51);
 }
 
+.hover-easy,
+.hover-hard,
+.hover-b,
+.hover-menu {
+	padding: 10px;
+}
+
 .hover-easy:hover {
 	color: rgb(67, 209, 67);
 	font-size: 35px;
-	padding: 11px !important;
+	padding: 6px !important;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 .hover-hard:hover {
 	color: rgb(101, 0, 0);
 	font-size: 35px;
-	padding: 11px !important;
+	padding: 6px !important;
 	font-weight: bold;
+	cursor: pointer;
+}
+
+.hover-b:hover {
+	font-size: 35px;
+	padding: 6px !important;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 .hover-back:hover {
 	font-size: 35px;
 	padding: 11px !important;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .hover-menu:hover {
 	font-size: 37px;
-	padding: 10px !important;
+	padding: 5px !important;
 	font-weight: bold;
+	cursor: pointer;
+	cursor: pointer;
 }
 
 .hover-compare:hover {
 	font-size: 30px;
 	padding: 15px !important;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .equations-desktop-green {

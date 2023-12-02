@@ -1,6 +1,6 @@
 .main-dzialy {
 	overflow: scroll;
-	height: 80vh;
+	height: 75vh;
 }
 
 .body {
@@ -79,5 +79,15 @@ ul {
 
 	.main-mobile {
 		margin-top: 40px;
+	}
+
+	.margin-mobile {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.margin-mob {
+		margin-top: 50px !important;
+		margin-bottom: 20px;
 	}
 }

@@ -10,14 +10,18 @@ import ukn from "../audio/niewiadoma.mp3";
 function Dzialy() {
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
 
-	function play(audioFile) {
-		if (!isButtonDisabled) {
-			const audio = new Audio(audioFile);
-			audio.play();
-			setTimeout(() => {
-				setButtonDisabled(false);
-			}, 2000);
-		}
+	// function play(audioFile) {
+	// 	if (!isButtonDisabled) {
+	// 		const audio = new Audio(audioFile);
+	// 		audio.play();
+	// 		setTimeout(() => {
+	// 			setButtonDisabled(false);
+	// 		}, 2000);
+	// 	}
+	// }
+
+	function play() {
+		new Audio(numbers);
 	}
 
 	function handleMouseOverNumbers() {
@@ -59,17 +63,28 @@ function Dzialy() {
 							<li className="list-desktop board-desktop main-title">
 								DZIAŁY
 							</li>
-							<Link style={{ textDecoration: "none" }} to="./num">
-								<li className="list-desktop board-desktop">
-									<button
-										className="btn-desktop hover-menu"
-										onMouseOver={handleMouseOverNumbers}
-										disabled={isButtonDisabled}
-									>
-										Poznajemy liczby
-									</button>
-								</li>
-							</Link>
+							<li className="list-desktop board-desktop hover-menu">
+								<div className="container">
+									<div className="row d-flex justify-content-center">
+										<div className="col-8  d-flex align-items-center justify-content-center equations-desktop">
+											<Link
+												style={{
+													textDecoration: "none",
+												}}
+												to="./num"
+											>
+												Poznajemy liczby
+											</Link>
+										</div>
+										<div className="col-2  d-flex align-items-center justify-content-center equations-desktop">
+											<button
+												className="btn-secondary"
+												onClick={play}
+											></button>
+										</div>
+									</div>
+								</div>
+							</li>
 							<Link
 								style={{ textDecoration: "none" }}
 								to="./sign"
@@ -137,7 +152,7 @@ function Dzialy() {
 			</div>
 
 			<div className="dzialy-mobile">
-				<div className="d-flex justify-content-center align-items-center margin-mobile">
+				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center main-mobile">
 						<Link style={{ textDecoration: "none" }} to="./num">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">

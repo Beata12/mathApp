@@ -4,6 +4,11 @@
 	margin-left: 20px !important;
 }
 
+.nav-desktop,
+.footer-desktop {
+	margin: 2.2vh;
+}
+
 .logo {
 	color: white;
 	font-weight: bold;
@@ -12,4 +17,11 @@
 
 .btn-lg {
 	background-color: white !important;
+}
+
+@media screen and (max-width: 600px) {
+	.nav-desktop,
+	.footer-desktop {
+		margin: 0vh;
+	}
 }

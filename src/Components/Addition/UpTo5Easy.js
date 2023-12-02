@@ -170,7 +170,7 @@ function UpTo5() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<div className="list-title-desktop">
-								DODAWANIE DO 5
+								DODAWANIE DO 5 - poziom łatwy
 							</div>
 							{gameOver ? (
 								<div className="gameOver">
@@ -194,6 +194,9 @@ function UpTo5() {
 								</div>
 							) : (
 								<div className="gameOver">
+									<div className="list-title-desktop">
+										Wybierz odpowiedni wynik
+									</div>
 									<div className="icons-desktop">
 										{emoji === "smile" && (
 											<FontAwesomeIcon
@@ -252,6 +255,9 @@ function UpTo5() {
 												</div>
 												<div className="col-2 equations-desktop">
 													{numbers.num2}
+												</div>
+												<div className="col-2 equations-desktop">
+													=
 												</div>
 											</div>
 										</div>
@@ -315,7 +321,7 @@ function UpTo5() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div className="list-title-mobile">DODAWANIE DO 5</div>

@@ -102,7 +102,7 @@ function Examples() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="blackboard container">
 					<div className="text-center">
 						<button
@@ -119,7 +119,7 @@ function Examples() {
 							Dalej
 						</button>
 					</div>
-					<div className="signs-content-exmp-mobile">
+					<div className="equations-mobile">
 						<div>{currentDiv.explanation}</div>
 						<div className="meaning-exmp-mobile">
 							{currentDiv.meaning}

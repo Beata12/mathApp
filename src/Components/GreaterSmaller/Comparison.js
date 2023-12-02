@@ -6,7 +6,7 @@ function Numbers() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10 ">
 						<ul className="text-center">
 							<Link style={{ textDecoration: "none" }} to="/eg">
 								<li className="list-desktop board-desktop hover-compare">
@@ -47,7 +47,7 @@ function Numbers() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<Link style={{ textDecoration: "none" }} to="/eg">

@@ -190,6 +190,9 @@ function UpTo5() {
 								</div>
 							) : (
 								<div className="gameOver">
+									<div className="list-title-desktop">
+										Wybierz odpowiedni wynik
+									</div>
 									<div className="icons-desktop">
 										{emoji === "smile" && (
 											<FontAwesomeIcon
@@ -278,10 +281,9 @@ function UpTo5() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-title-mobile">DODAWANIE DO 5</div>
 						{gameOver ? (
 							<div className="gameOver">
 								<div className="list-mobile">KONIEC GRY</div>
@@ -296,10 +298,13 @@ function UpTo5() {
 									>
 										Zagraj jeszcze raz
 									</button>
-								</div>{" "}
+								</div>
 							</div>
 						) : (
 							<div className="gameOver">
+								<div className="list-title-mobile">
+									Wybierz odpowiedni wynik
+								</div>
 								<div className="icons-mobile">
 									{emoji === "smile" && (
 										<FontAwesomeIcon
@@ -325,6 +330,9 @@ function UpTo5() {
 											</div>
 											<div className="col-2 equations-mobile">
 												{numbers.num2}
+											</div>
+											<div className="col-2 equations-mobile">
+												=
 											</div>
 										</div>
 									</div>
@@ -371,7 +379,7 @@ function UpTo5() {
 								</div>
 							</div>
 						)}
-						<Link style={{ textDecoration: "none" }} to="/sub">
+						<Link style={{ textDecoration: "none" }} to="/add">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Wybierz inny poziom
 							</li>

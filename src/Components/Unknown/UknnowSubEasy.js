@@ -226,7 +226,7 @@ function UnknownAdd() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div className="list-title-mobile">

@@ -225,7 +225,7 @@ function EasySmaller() {
 					</Link>
 				</ul>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<ul className="text-center">
 					<div className="list-title-mobile">
 						Która liczba jest mniejsza?

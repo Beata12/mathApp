@@ -43,7 +43,7 @@ function Numbslearn() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10">
 						<ul className="text-center">
 							<div className="board-desktop">
 								<div className="list-title-desktop">
@@ -157,20 +157,19 @@ function Numbslearn() {
 						</div>
 					</div>
 				</div>
+				<ul className="text-center">
+					<Link style={{ textDecoration: "none" }} to="/num">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Chcesz poćwiczyć
+						</li>
+					</Link>
+					<Link style={{ textDecoration: "none" }} to="/">
+						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+							Powrót do menu
+						</li>
+					</Link>
+				</ul>
 			</div>
-
-			<ul className="text-center">
-				<Link style={{ textDecoration: "none" }} to="/num">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Chcesz poćwiczyć
-					</li>
-				</Link>
-				<Link style={{ textDecoration: "none" }} to="/">
-					<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-						Powrót do menu
-					</li>
-				</Link>
-			</ul>
 		</main>
 	);
 }

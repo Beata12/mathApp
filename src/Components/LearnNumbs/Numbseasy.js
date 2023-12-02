@@ -7,6 +7,9 @@ import {
 	faHeartCrack,
 	faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import answer from "../../audio/answer.mp3";
+import level from "../../audio/poziom.mp3";
+import menu from "../../audio/menu.mp3";
 
 function Numberseasy() {
 	const [timer, setTimer] = useState(10);
@@ -19,6 +22,33 @@ function Numberseasy() {
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
 	const [alienCount, setAlienCount] = useState(0);
+
+	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setTimeout(() => {
+				setIsButtonDisabled(false);
+			}, 2000);
+		}
+	}
+
+	function handleMouseOverAnswer() {
+		play(answer);
+		setIsButtonDisabled(true);
+	}
+
+	function handleMouseOverLevel() {
+		play(level);
+		setIsButtonDisabled(true);
+	}
+
+	function handleMouseOverMenu() {
+		play(menu);
+		setIsButtonDisabled(true);
+	}
 
 	useEffect(() => {
 		generateNumbersEmoji();
@@ -62,6 +92,9 @@ function Numberseasy() {
 		const incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
 		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
 		const incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+		while (incorrect1 === incorrect2) {
+			incorrect1 = generateIncorrectAnswer;
+		}
 
 		return shuffleArray([correct, incorrect1, incorrect2]);
 	};
@@ -160,7 +193,7 @@ function Numberseasy() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10">
 						<ul className="text-center">
 							<div className="list-title-desktop">
 								ROZPOZNAWANIE LICZB
@@ -187,6 +220,16 @@ function Numberseasy() {
 								</div>
 							) : (
 								<div className="container">
+									<div className="list-title-desktop">
+										<button
+											className="btn-desktop"
+											onMouseOver={handleMouseOverAnswer}
+											disabled={isButtonDisabled}
+										>
+											Wybierz poprawną odpowiedź, zrobimy
+											to onclick
+										</button>
+									</div>
 									<div className="icons-desktop">
 										{emoji === "smile" && (
 											<FontAwesomeIcon
@@ -234,10 +277,10 @@ function Numberseasy() {
 										</div>
 									</div>
 									<div className="information-desktop">
-										Czas {timer}
+										Czas: {timer}
 									</div>
 									<div className="information-desktop">
-										Punkty {points}
+										Punkty: {points}
 									</div>
 									<div className="container">
 										<div className="row">
@@ -250,23 +293,35 @@ function Numberseasy() {
 							)}
 							<Link style={{ textDecoration: "none" }} to="/num">
 								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Wybierz inny poziom
+									<button
+										className="btn-desktop"
+										onMouseOver={handleMouseOverLevel}
+										disabled={isButtonDisabled}
+									>
+										Wybierz inny poziom
+									</button>
 								</li>
 							</Link>
 							<Link style={{ textDecoration: "none" }} to="/">
 								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Powrót do menu
+									<button
+										className="btn-desktop"
+										onMouseOver={handleMouseOverMenu}
+										disabled={isButtonDisabled}
+									>
+										Powrót do menu
+									</button>
 								</li>
 							</Link>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div className="list-title-mobile">
-							ROZPOZNAWANIE LICZB
+							Wybierz odbiowiednią liczbę
 						</div>
 						{gameOver ? (
 							<div className="gameOver">

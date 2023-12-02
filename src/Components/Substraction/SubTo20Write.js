@@ -261,12 +261,9 @@ function SubtractionUpTo20Write() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-title-mobile">
-							ODEJMOWANIE DO 20
-						</div>
 						{gameOver && (
 							<div className="gameOver">
 								<div className="list-mobile">KONIEC GRY</div>
@@ -286,6 +283,9 @@ function SubtractionUpTo20Write() {
 						)}
 						{!gameOver && (
 							<div className="gameOver">
+								<div className="list-title-mobile">
+									Wybierz odpowiedni wynik
+								</div>
 								<div className="icons-mobile">
 									{showSmile && (
 										<FontAwesomeIcon
@@ -311,6 +311,9 @@ function SubtractionUpTo20Write() {
 											</div>
 											<div className="col-2 equations-mobile">
 												{number2}
+											</div>
+											<div className="col-2 equations-mobile">
+												=
 											</div>
 										</div>
 									</div>

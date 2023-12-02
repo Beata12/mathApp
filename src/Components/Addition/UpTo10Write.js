@@ -261,7 +261,7 @@ function UpTo10Write() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
 						<div className="list-title-mobile">DODAWANIE DO 10</div>
@@ -284,6 +284,9 @@ function UpTo10Write() {
 						)}
 						{!gameOver && (
 							<div className="gameOver">
+								<div className="list-title-mobile">
+									Wybierz odpowiedni wynik
+								</div>
 								<div className="icons-mobile">
 									{showSmile && (
 										<FontAwesomeIcon
@@ -309,6 +312,9 @@ function UpTo10Write() {
 											</div>
 											<div className="col-2 equations-mobile">
 												{number2}
+											</div>
+											<div className="col-2 equations-mobile">
+												=
 											</div>
 										</div>
 									</div>

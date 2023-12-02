@@ -102,7 +102,7 @@ function Signs() {
 					</div>
 				</div>
 			</div>
-			<div className="dzialy-mobile">
+			<div className="dzialy-mobile margin-mob">
 				<div className="blackboard container">
 					<div className="text-center">
 						<button
