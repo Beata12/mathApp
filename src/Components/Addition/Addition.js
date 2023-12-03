@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import add5E from "../../audio/Add5E.mp3";
+import add5H from "../../audio/Add5H.mp3";
+import add10E from "../../audio/Add10E.mp3";
+import add10H from "../../audio/Add10H.mp3";
+import add10W from "../../audio/Add10W.mp3";
+import add20 from "../../audio/Add20.mp3";
+import add20W from "../../audio/add20W.mp3";
+import menu from "../../audio/menu.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
-//dodaj reszte głosów i później dodaj do HTML
 
-function Numbers() {
+function Addition() {
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
 
 	function play(audioFile) {
@@ -31,12 +37,15 @@ function Numbers() {
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-10 text-center">
+						<div className="container list-desktop board-desktop main-title">
+							DODAWANIE
+						</div>
 						<div className="container list-desktop board-desktop">
 							<div className="row d-flex align-items-center">
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./u5e"
+										to="/u5e"
 									>
 										<button className="btn-desktop hover-easy">
 											Dodawanie do 5 - poziom łatwy
@@ -62,7 +71,7 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./u5"
+										to="/u5"
 									>
 										<button className="btn-desktop hover-hard">
 											Dodawanie do 5 - poziom trudny
@@ -72,7 +81,7 @@ function Numbers() {
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(add5E)}
+										onClick={() => play(add5H)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon
@@ -88,7 +97,7 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./u10e"
+										to="/u10e"
 									>
 										<button className="btn-desktop hover-easy">
 											Dodawanie do 10 - poziom łatwy
@@ -98,7 +107,7 @@ function Numbers() {
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(add5E)}
+										onClick={() => play(add10E)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon
@@ -114,17 +123,17 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./u10"
+										to="/u10"
 									>
 										<button className="btn-desktop hover-hard">
-											Dodawanie do 10 - poziom hard
+											Dodawanie do 10 - poziom trudny
 										</button>
 									</Link>
 								</div>
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(add5E)}
+										onClick={() => play(add10H)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon
@@ -140,7 +149,7 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./w10"
+										to="/w10"
 									>
 										<button className="btn-desktop hover-easy">
 											Dodawanie do 10 - wpisywanie
@@ -150,7 +159,7 @@ function Numbers() {
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(add5E)}
+										onClick={() => play(add10W)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon
@@ -166,7 +175,7 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./u20"
+										to="/u20"
 									>
 										<button className="btn-desktop hover-easy">
 											Dodawanie do 20
@@ -176,7 +185,7 @@ function Numbers() {
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(add5E)}
+										onClick={() => play(add20)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon
@@ -192,7 +201,7 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./w20"
+										to="/w20"
 									>
 										<button className="btn-desktop hover-easy">
 											Dodawanie do 20 - wpisywanie
@@ -202,7 +211,7 @@ function Numbers() {
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(add5E)}
+										onClick={() => play(add20W)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon
@@ -218,9 +227,9 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="./"
+										to="/"
 									>
-										<button className="btn-desktop hover-back">
+										<button className="btn-desktop hover-menu">
 											Powrót do menu
 										</button>
 									</Link>
@@ -228,7 +237,7 @@ function Numbers() {
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(add5E)}
+										onClick={() => play(menu)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon
@@ -282,4 +291,4 @@ function Numbers() {
 	);
 }
 
-export default Numbers;
+export default Addition;

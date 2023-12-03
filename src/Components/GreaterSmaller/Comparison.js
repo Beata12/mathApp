@@ -1,49 +1,230 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import easygreater from "../../audio/easygreater.mp3";
+import easysmaller from "../../audio/easysmaller.mp3";
+import examples from "../../audio/examples.mp3";
+import grtsmlr from "../../audio/grtsmlr.mp3";
+import hardgreater from "../../audio/hardgreater.mp3";
+import hardsmaller from "../../audio/hardsmaller.mp3";
+import menu from "../../audio/menu.mp3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-function Numbers() {
+function Comparasion() {
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
+
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-10 ">
-						<ul className="text-center">
-							<Link style={{ textDecoration: "none" }} to="/eg">
-								<li className="list-desktop board-desktop hover-compare">
-									Porównywanie liczb - przykłady
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/esm">
-								<li className="list-desktop board-desktop hover-easy">
-									Która liczba jest mniejsza - poziom łatwy
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/hsm">
-								<li className="list-desktop board-desktop hover-hard">
-									Która liczba jest mniejsza - poziom trudny
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/egr">
-								<li className="list-desktop board-desktop hover-easy">
-									Która liczba jest większa - poziom ławty
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/hgr">
-								<li className="list-desktop board-desktop hover-hard">
-									Która liczba jest większa - poziom trudny
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/grsm">
-								<li className="list-desktop board-desktop hover-hard">
-									Porównywanie liczb - poziom trudny
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop hover-compare">
-									Powrót do menu
-								</li>
-							</Link>
-						</ul>
+						<div className="container list-desktop board-desktop main-title">
+							PORÓWNYWANIE LICZB
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/eg"
+									>
+										<button className="btn-desktop hover-menu">
+											Porównywanie liczb - przykłady
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(examples)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/esm"
+									>
+										<button className="btn-desktop hover-easy">
+											Która liczba jest mniejsza - poziom
+											łatwy
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(easysmaller)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/hsm"
+									>
+										<button className="btn-desktop hover-hard">
+											Która liczba jest mniejsza - poziom
+											trudny
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(hardsmaller)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/egr"
+									>
+										<button className="btn-desktop hover-easy">
+											Która liczba jest większa - poziom
+											łatwy
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(easygreater)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/hgr"
+									>
+										<button className="btn-desktop hover-hard">
+											Która liczba jest większa - poziom
+											trudny
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(hardgreater)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/grsm"
+									>
+										<button className="btn-desktop hover-hard">
+											Porównywanie liczb - poziom trudny
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(grtsmlr)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/"
+									>
+										<button className="btn-desktop hover-menu">
+											Powrót do menu
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(menu)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -82,4 +263,4 @@ function Numbers() {
 	);
 }
 
-export default Numbers;
+export default Comparasion;

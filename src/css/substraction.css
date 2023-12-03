@@ -74,7 +74,7 @@
 }
 
 .icons-desktop {
-	height: 80px;
+	height: 140px;
 	margin: 20px;
 }
 
@@ -154,10 +154,28 @@
 	margin: 10px;
 }
 
+.sub-nb {
+	color: rgb(164, 16, 16);
+	font-size: 100px;
+}
+
+.sub-nb1 {
+	color: rgb(54, 183, 54);
+	font-size: 100px;
+}
+
+.uknnown {
+	color: rgb(164, 16, 16);
+}
+
 .circle-icon-desktop {
 	color: #f7ec09;
 	height: 70px;
 	margin: 10px;
+}
+
+.sub-result {
+	color: #f7ec09;
 }
 
 .star1b-icon-desktop {
@@ -232,12 +250,18 @@
 	cursor: pointer;
 }
 
-.equations-desktop-green {
-	color: rgb(54, 183, 54);
-	font-size: 100px;
-}
-
 .main-title {
 	font-size: 41px;
 	font-weight: bold;
+}
+
+.correct-answer-info {
+	color: white;
+	font-size: 35px;
+	margin: 20px;
+}
+
+.corect-ans {
+	font-size: 50px;
+	color: rgb(24, 174, 24) !important;
 }

@@ -12,7 +12,7 @@ import {
 	faBan,
 } from "@fortawesome/free-solid-svg-icons";
 
-function SubtractionUpTo10() {
+function SubtractionUpTo5E() {
 	const [timer, setTimer] = useState(10);
 	const [number1, setNumber1] = useState(null);
 	const [number2, setNumber2] = useState(null);
@@ -27,6 +27,7 @@ function SubtractionUpTo10() {
 	const [lives, setLives] = useState(3);
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
+	const [correctAnswerInfo, setCorrectAnswerInfo] = useState(null);
 
 	useEffect(() => {
 		generateRandomNumbers();
@@ -36,18 +37,22 @@ function SubtractionUpTo10() {
 		const intervalId = setInterval(() => {
 			if (timer > 0 && canAnswer) {
 				setTimer(timer - 1);
-			} else if (timer === 0 && canAnswer) {
+			} else {
 				clearInterval(intervalId);
-				setShowFrown(true);
-				if (lives > 0) {
-					setLives(lives - 1);
-				} else {
-					setGameOver(true);
+				if (canAnswer) {
+					setShowFrown(true);
+					if (lives > 0) {
+						setLives(lives - 1);
+					} else {
+						setGameOver(true);
+					}
+					setCorrectAnswerInfo(correctAnswer);
+					setTimeout(() => {
+						setShowFrown(false);
+						setCorrectAnswerInfo(null);
+						generateRandomNumbers();
+					}, 2000);
 				}
-				setTimeout(() => {
-					setShowFrown(false);
-					generateRandomNumbers();
-				}, 2000);
 			}
 		}, 1000);
 
@@ -97,7 +102,8 @@ function SubtractionUpTo10() {
 
 		setCorrectAnswer(correct);
 		setShowSmile(false);
-		setTimer(15);
+		setTimer(10);
+		setCorrectAnswerInfo(null); // Wyczyść poprawną odpowiedź przy generowaniu nowego pytania
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {
@@ -144,14 +150,17 @@ function SubtractionUpTo10() {
 				}
 				setShowFrown(true);
 
+				setCorrectAnswerInfo(correctAnswer);
+
 				setTimeout(() => {
 					setShowFrown(false);
+					setCorrectAnswerInfo(null);
 					generateRandomNumbers();
 
 					if (incorrectAnswers === 2) {
 						setGameOver(true);
 					}
-				}, 2000);
+				}, 3000); // Zwiększenie czasu wyświetlania poprawnej odpowiedzi na 3 sekundy
 			}
 		}
 	};
@@ -177,6 +186,22 @@ function SubtractionUpTo10() {
 			);
 		}
 		return heartIcons;
+	};
+
+	const renderCorrectAnswerInfo = () => {
+		if (correctAnswerInfo !== null) {
+			return (
+				<div className="container">
+					<div className="row correct-answer-info d-flex justify-content-center align-items-center">
+						<div className="col-7">Poprawna odpowiedź:</div>
+						<div className="correct-ans col-2">
+							{correctAnswerInfo}
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return null;
 	};
 
 	const startNewGame = () => {
@@ -219,7 +244,11 @@ function SubtractionUpTo10() {
 							)}
 							{!gameOver && (
 								<div className="gameOver">
+									<div className="list-title-desktop">
+										Wybierz poprawną odpowiedź
+									</div>
 									<div className="icons-desktop">
+										{renderCorrectAnswerInfo()}
 										{showSmile && (
 											<FontAwesomeIcon
 												icon={faFaceSmile}
@@ -236,7 +265,7 @@ function SubtractionUpTo10() {
 									<div>
 										<div className="container">
 											<div className="row justify-content-center">
-												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
+												<div className="row-2 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
 															length:
@@ -267,15 +296,18 @@ function SubtractionUpTo10() {
 											</div>
 										</div>
 										<div className="container">
-											<div className="row d-flex justify-content-center">
-												<div className="col-2 equations-desktop-green">
+											<div className="row d-flex justify-content-center align-items-center">
+												<div className="col-2 equations-desktop sub-nb1 ">
 													{number1}
 												</div>
 												<div className="col-2 equations-desktop">
 													-
 												</div>
-												<div className="col-2 equations-desktop-red">
+												<div className="col-2 equations-desktop sub-nb">
 													{number2}
+												</div>
+												<div className="col-2 equations-desktop">
+													=
 												</div>
 											</div>
 										</div>
@@ -283,7 +315,7 @@ function SubtractionUpTo10() {
 											<div className="row d-flex justify-content-center">
 												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
 													<button
-														className="equations-desktop"
+														className="equations-desktop sub-result"
 														onClick={() =>
 															checkAnswer(answer1)
 														}
@@ -297,7 +329,7 @@ function SubtractionUpTo10() {
 												</div>
 												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
 													<button
-														className="equations-desktop"
+														className="equations-desktop sub-result"
 														onClick={() =>
 															checkAnswer(answer2)
 														}
@@ -311,7 +343,7 @@ function SubtractionUpTo10() {
 												</div>
 												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
 													<button
-														className="equations-desktop"
+														className="equations-desktop sub-result"
 														onClick={() =>
 															checkAnswer(answer3)
 														}
@@ -358,9 +390,6 @@ function SubtractionUpTo10() {
 			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-title-mobile">
-							ODEJMOWANIE DO 10
-						</div>
 						{gameOver && (
 							<div className="gameOver">
 								<div className="list-mobile">KONIEC GRY</div>
@@ -380,6 +409,9 @@ function SubtractionUpTo10() {
 						)}
 						{!gameOver && (
 							<div className="gameOver">
+								<div className="list-title-mobile">
+									Wybierz odpowiedni wynik
+								</div>
 								<div className="icons-mobile">
 									{showSmile && (
 										<FontAwesomeIcon
@@ -405,6 +437,9 @@ function SubtractionUpTo10() {
 											</div>
 											<div className="col-2 equations-mobile">
 												{number2}
+											</div>
+											<div className="col-2 equations-mobile">
+												=
 											</div>
 										</div>
 									</div>
@@ -487,4 +522,4 @@ function SubtractionUpTo10() {
 	);
 }
 
-export default SubtractionUpTo10;
+export default SubtractionUpTo5E;

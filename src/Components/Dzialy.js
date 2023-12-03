@@ -44,7 +44,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./sign"
+											to="./num"
 										>
 											<button className="btn-desktop hover-menu">
 												Poznajemy liczby
@@ -148,7 +148,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./sign"
+											to="./comp"
 										>
 											<button className="btn-desktop hover-menu">
 												Porównywanie liczb
@@ -174,7 +174,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./sign"
+											to="./un"
 										>
 											<button className="btn-desktop hover-menu">
 												Działania z niewiadomą

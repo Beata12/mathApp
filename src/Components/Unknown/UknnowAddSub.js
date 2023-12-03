@@ -222,8 +222,7 @@ function UnknownAdd() {
 												{result && result.num2}
 											</div>
 											<div className="col-2 equations-desktop">
-												{/* +/- */}
-												{generateSign}
+												{generateSign()}
 											</div>
 											<div className="col-2 equations-desktop">
 												?
@@ -323,7 +322,7 @@ function UnknownAdd() {
 											{result && result.num2}
 										</div>
 										<div className="col-2 equations-mobile">
-											+
+											{generateSign()}
 										</div>
 										<div className="col-2 equations-mobile">
 											?

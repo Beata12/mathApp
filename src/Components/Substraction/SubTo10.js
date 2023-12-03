@@ -19,6 +19,7 @@ function SubtractionUpTo10() {
 	const [lives, setLives] = useState(3);
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
+	const [correctAnswerInfo, setCorrectAnswerInfo] = useState(null);
 
 	useEffect(() => {
 		generateRandomNumbers();
@@ -28,29 +29,32 @@ function SubtractionUpTo10() {
 		const intervalId = setInterval(() => {
 			if (timer > 0 && canAnswer) {
 				setTimer(timer - 1);
-			} else if (timer === 0 && canAnswer) {
+			} else {
 				clearInterval(intervalId);
-				setShowFrown(true);
-				if (lives > 0) {
-					setLives(lives - 1);
-				} else {
-					setGameOver(true);
+				if (canAnswer) {
+					setShowFrown(true);
+					if (lives > 0) {
+						setLives(lives - 1);
+					} else {
+						setGameOver(true);
+					}
+					setCorrectAnswerInfo(correctAnswer);
+					setTimeout(() => {
+						setShowFrown(false);
+						setCorrectAnswerInfo(null);
+						generateRandomNumbers();
+					}, 2000);
 				}
-				setTimeout(() => {
-					setShowFrown(false);
-					generateRandomNumbers();
-				}, 2000);
 			}
 		}, 1000);
-
 		return () => {
 			clearInterval(intervalId);
 		};
-	}, [timer, canAnswer, lives]);
+	}, [timer, canAnswer, lives, correctAnswer]);
 
 	const generateRandomNumbers = () => {
 		setCanAnswer(true);
-		const min = 1;
+		const min = 0;
 		const max = 10;
 
 		let newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -90,10 +94,11 @@ function SubtractionUpTo10() {
 		setCorrectAnswer(correct);
 		setShowSmile(false);
 		setTimer(10);
+		setCorrectAnswerInfo(null); // Wyczyść poprawną odpowiedź przy generowaniu nowego pytania
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {
-		const min = 1;
+		const min = 0;
 		const max = 10;
 
 		let incorrect = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -136,6 +141,8 @@ function SubtractionUpTo10() {
 				}
 				setShowFrown(true);
 
+				setCorrectAnswerInfo(correctAnswer);
+
 				setTimeout(() => {
 					setShowFrown(false);
 					generateRandomNumbers();
@@ -171,6 +178,22 @@ function SubtractionUpTo10() {
 		return heartIcons;
 	};
 
+	const renderCorrectAnswerInfo = () => {
+		if (correctAnswerInfo !== null) {
+			return (
+				<div className="container">
+					<div className="row correct-answer-info d-flex justify-content-center align-items-center">
+						<div className="col-7">Poprawna odpowiedź:</div>
+						<div className="corect-ans col-2">
+							{correctAnswerInfo}
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	const startNewGame = () => {
 		setGameOver(false);
 		setPoints(0);
@@ -186,7 +209,7 @@ function SubtractionUpTo10() {
 					<div className="col-8 ">
 						<ul className="text-center">
 							<div className="list-title-desktop">
-								ODEJMOWANIE DO 10
+								ODEJMOWANIE DO 10 - poziom trudny
 							</div>
 							{gameOver && (
 								<div className="gameOver">
@@ -211,7 +234,11 @@ function SubtractionUpTo10() {
 							)}
 							{!gameOver && (
 								<div className="gameOver">
+									<div className="list-title-desktop">
+										Wybierz poprawną odpowiedź
+									</div>
 									<div className="icons-desktop">
+										{renderCorrectAnswerInfo()}
 										{showSmile && (
 											<FontAwesomeIcon
 												icon={faFaceSmile}
@@ -236,6 +263,9 @@ function SubtractionUpTo10() {
 												</div>
 												<div className="col-2 equations-desktop">
 													{number2}
+												</div>
+												<div className="col-2 equations-desktop">
+													=
 												</div>
 											</div>
 										</div>

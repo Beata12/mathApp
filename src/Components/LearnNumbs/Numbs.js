@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import learnNum from "../../audio/liczby.mp3";
 import menu from "../../audio/menu.mp3";
 import numeasy from "../../audio/rozpliczla.mp3";
 import numhard from "../../audio/rozplicztr.mp3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 function Numbers() {
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -12,92 +14,158 @@ function Numbers() {
 		if (!isButtonDisabled) {
 			const audio = new Audio(audioFile);
 			audio.play();
-			setTimeout(() => {
-				setButtonDisabled(false);
-			}, 2000);
+			setButtonDisabled(true);
 		}
 	}
 
-	function handleMouseOverLearn() {
-		play(learnNum);
-		setButtonDisabled(true);
-	}
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
 
-	function handleMouseOverMenu() {
-		play(menu);
-		setButtonDisabled(true);
-	}
-
-	function handleMouseOverNumEasy() {
-		play(numeasy);
-		setButtonDisabled(true);
-	}
-
-	function handleMouseOverNumHard() {
-		play(numhard);
-		setButtonDisabled(true);
-	}
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-10">
-						<ul className="text-center">
-							<Link
-								style={{ textDecoration: "none" }}
-								to="/numlearn"
-							>
-								<li className="list-desktop board-desktop">
+						<div className="container list-desktop board-desktop main-title">
+							POZNAJEMY LICZBY
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/numlearn"
+									>
+										<button className="btn-desktop hover-menu">
+											Poznaje liczby
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
 									<button
-										className="btn-desktop hover-b"
-										onMouseOver={handleMouseOverLearn}
+										className="btn-desktop"
+										onClick={() => play(learnNum)}
 										disabled={isButtonDisabled}
 									>
-										Poznaje liczby
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
 									</button>
-								</li>
-							</Link>
-
-							<Link style={{ textDecoration: "none" }} to="/nume">
-								<li className="list-desktop board-desktop">
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/nume"
+									>
+										<button className="btn-desktop hover-easy">
+											Rozpoznawanie liczb - poziom łatwy
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
 									<button
-										className="btn-desktop hover-easy"
-										onMouseOver={handleMouseOverNumEasy}
+										className="btn-desktop"
+										onClick={() => play(numeasy)}
 										disabled={isButtonDisabled}
 									>
-										Rozpoznawanie liczb - poziom łatwy
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
 									</button>
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/numh">
-								<li className="list-desktop board-desktop">
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/nume"
+									>
+										<button className="btn-desktop hover-hard">
+											Rozpoznawanie liczb - poziom trudny
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
 									<button
-										className="btn-desktop hover-hard"
-										onMouseOver={handleMouseOverNumHard}
+										className="btn-desktop"
+										onClick={() => play(numhard)}
 										disabled={isButtonDisabled}
 									>
-										Rozpoznawanie liczb - poziom trudny
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
 									</button>
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/numl">
-								<li className="list-desktop board-desktop hover-easy">
-									Rozpoznawanie liczb - słuchanie
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop ">
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/numl"
+									>
+										<button className="btn-desktop hover-hard">
+											Rozpoznawanie liczb - słuchanie
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
 									<button
-										className="btn-desktop hover-b"
-										onMouseOver={handleMouseOverMenu}
+										className="btn-desktop"
+										onClick={() => play(menu)}
 										disabled={isButtonDisabled}
 									>
-										Powrót do menu
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
 									</button>
-								</li>
-							</Link>
-						</ul>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="/"
+									>
+										<button className="btn-desktop hover-menu">
+											Powrót do menu
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(menu)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
