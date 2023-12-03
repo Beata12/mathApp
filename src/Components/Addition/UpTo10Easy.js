@@ -211,7 +211,7 @@ function UpTo10() {
 										>
 											Zagraj jeszcze raz
 										</button>
-									</div>{" "}
+									</div>
 								</div>
 							)}
 							{!gameOver && (
@@ -454,7 +454,7 @@ function UpTo10() {
 									>
 										Zagraj jeszcze raz
 									</button>
-								</div>{" "}
+								</div>
 							</div>
 						)}
 						{!gameOver && (

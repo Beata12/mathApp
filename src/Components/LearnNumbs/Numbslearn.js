@@ -1,10 +1,53 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+// import jeden from "../../audio/jeden.mp3";
+// import dwa from "../../audio/dwa.mp3";
+// import trzy from "../../audio/trzy.mp3";
+// import cztery from "../../audio/cztery.mp3";
+// import piec from "../../audio/piec.mp3";
+// import szesc from "../../audio/szesc.mp3";
+// import siedem from "../../audio/siedem.mp3";
+// import osiem from "../../audio/osiem.mp3";
+// import dziewiec from "../../audio/dziewiec.mp3";
+// import dziesiec from "../../audio/dziesiec.mp3";
+import menu from "../../audio/menu.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 function Numbslearn() {
 	const [currentNumber, setCurrentNumber] = useState(1);
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
+
+	// const numberVoice = {
+	// 	1: play(jeden),
+	// 	2: play(dwa),
+	// 	3: play(trzy),
+	// 	4: play(cztery),
+	// 	5: play(piec),
+	// 	6: play(szesc),
+	// 	7: play(siedem),
+	// 	8: play(osiem),
+	// 	9: play(dziewiec),
+	// 	10: play(dziesiec),
+	// };
 
 	const numberTexts = {
 		1: "jeden",
@@ -47,7 +90,7 @@ function Numbslearn() {
 						<ul className="text-center">
 							<div className="board-desktop">
 								<div className="list-title-desktop">
-									ZNAKI MATEMATYCZNE
+									Poznaje liczby
 								</div>
 								<div className="container">
 									<div className="row d-flex justify-content-center">
@@ -77,13 +120,29 @@ function Numbslearn() {
 										<div className="col-3 sign-name">
 											{numberTexts[currentNumber]}
 										</div>
+										<div className="col-3 sign-name">
+											<button
+												className="btn-desktop"
+												// onClick={() =>
+												// 	play(
+												// 		numberTexts[numberVoice]
+												// 	)
+												// }
+												// disabled={isButtonDisabled}
+											>
+												<FontAwesomeIcon
+													icon={faVolumeUp}
+													className="volume-icon"
+												/>
+											</button>
+										</div>
 									</div>
 								</div>
 								<div className="container">
 									<div className="row d-flex justify-content-center">
 										{stars.map((star, index) => (
 											<div
-												className="col equations-desktop  justify-content-center"
+												className="col equations-desktop justify-content-center"
 												key={index}
 											>
 												<FontAwesomeIcon
@@ -96,19 +155,62 @@ function Numbslearn() {
 								</div>
 							</div>
 							<ul className="text-center">
-								<Link
-									style={{ textDecoration: "none" }}
-									to="/num"
-								>
-									<li className="list-desktop board-desktop align-items-center justify-content-center">
-										Chcesz poćwiczyć
-									</li>
-								</Link>
-								<Link style={{ textDecoration: "none" }} to="/">
-									<li className="list-desktop board-desktop align-items-center justify-content-center">
-										Powrót do menu
-									</li>
-								</Link>
+								<div className="list-desktop board-desktop align-items-center justify-content-center">
+									<div className="row d-flex align-items-center">
+										<div className="col-9">
+											<Link
+												style={{
+													textDecoration: "none",
+												}}
+												to="/num"
+											>
+												<button className="btn-desktop hover-menu">
+													Chce poćwiczyć
+												</button>
+											</Link>
+										</div>
+										<div className="col-3">
+											<button
+												className="btn-desktop"
+												onClick={() => play(menu)}
+												disabled={isButtonDisabled}
+											>
+												<FontAwesomeIcon
+													icon={faVolumeUp}
+													className="volume-icon"
+												/>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div className="list-desktop board-desktop align-items-center justify-content-center">
+									<div className="row d-flex align-items-center">
+										<div className="col-9">
+											<Link
+												style={{
+													textDecoration: "none",
+												}}
+												to="/"
+											>
+												<button className="btn-desktop hover-menu">
+													Powrót do menu
+												</button>
+											</Link>
+										</div>
+										<div className="col-3">
+											<button
+												className="btn-desktop"
+												onClick={() => play(menu)}
+												disabled={isButtonDisabled}
+											>
+												<FontAwesomeIcon
+													icon={faVolumeUp}
+													className="volume-icon"
+												/>
+											</button>
+										</div>
+									</div>
+								</div>
 							</ul>
 						</ul>
 					</div>

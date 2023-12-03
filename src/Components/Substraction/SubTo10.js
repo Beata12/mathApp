@@ -362,7 +362,7 @@ function SubtractionUpTo10() {
 									>
 										Zagraj jeszcze raz
 									</button>
-								</div>{" "}
+								</div>
 							</div>
 						)}
 						{!gameOver && (

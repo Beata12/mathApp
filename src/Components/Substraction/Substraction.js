@@ -91,7 +91,7 @@ function Substraction() {
 									</button>
 								</div>
 							</div>
-						</div>{" "}
+						</div>
 						<div className="container list-desktop board-desktop">
 							<div className="row d-flex align-items-center">
 								<div className="col-9">

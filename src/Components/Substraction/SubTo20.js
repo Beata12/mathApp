@@ -206,7 +206,7 @@ function SubtractionUpTo20() {
 										>
 											Zagraj jeszcze raz
 										</button>
-									</div>{" "}
+									</div>
 								</div>
 							)}
 							{!gameOver && (
@@ -332,7 +332,7 @@ function SubtractionUpTo20() {
 									>
 										Zagraj jeszcze raz
 									</button>
-								</div>{" "}
+								</div>
 							</div>
 						)}
 						{!gameOver && (

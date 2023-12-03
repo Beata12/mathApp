@@ -207,16 +207,16 @@
 
 .hover-easy:hover {
 	color: rgb(67, 209, 67);
-	font-size: 35px;
-	padding: 6px !important;
+	font-size: 34px;
+	padding: 7px !important;
 	font-weight: bold;
 	cursor: pointer;
 }
 
 .hover-hard:hover {
 	color: rgb(101, 0, 0);
-	font-size: 35px;
-	padding: 6px !important;
+	font-size: 34px;
+	padding: 7px !important;
 	font-weight: bold;
 	cursor: pointer;
 }
@@ -253,6 +253,7 @@
 .main-title {
 	font-size: 41px;
 	font-weight: bold;
+	color: white;
 }
 
 .correct-answer-info {
@@ -264,4 +265,9 @@
 .corect-ans {
 	font-size: 50px;
 	color: rgb(24, 174, 24) !important;
+}
+
+.task-desktop {
+	color: white;
+	font-size: 30px;
 }

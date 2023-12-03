@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import answer from "../../audio/answer.mp3";
+import level from "../../audio/poziom.mp3";
+import menu from "../../audio/menu.mp3";
+import zagraj from "../../audio/zagraj.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import {
 	faHeart,
 	faHeartCrack,
 	faStar,
+	faVolumeUp,
 } from "@fortawesome/free-solid-svg-icons";
-import answer from "../../audio/answer.mp3";
-import level from "../../audio/poziom.mp3";
-import menu from "../../audio/menu.mp3";
 
 function Numberseasy() {
 	const [timer, setTimer] = useState(10);
@@ -22,33 +24,25 @@ function Numberseasy() {
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
 	const [alienCount, setAlienCount] = useState(0);
-
-	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
 
 	function play(audioFile) {
 		if (!isButtonDisabled) {
 			const audio = new Audio(audioFile);
 			audio.play();
-			setTimeout(() => {
-				setIsButtonDisabled(false);
-			}, 2000);
+			setButtonDisabled(true);
 		}
 	}
 
-	function handleMouseOverAnswer() {
-		play(answer);
-		setIsButtonDisabled(true);
-	}
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
 
-	function handleMouseOverLevel() {
-		play(level);
-		setIsButtonDisabled(true);
-	}
-
-	function handleMouseOverMenu() {
-		play(menu);
-		setIsButtonDisabled(true);
-	}
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	useEffect(() => {
 		generateNumbersEmoji();
@@ -78,7 +72,7 @@ function Numberseasy() {
 
 		setAlienCount(randomAlienCount);
 
-		const answersArray = generateAnswersArray(randomAlienCount);
+		let answersArray = generateAnswersArray(randomAlienCount);
 
 		setAnswers(answersArray);
 		setCorrectAnswer(randomAlienCount);
@@ -86,7 +80,7 @@ function Numberseasy() {
 		setTimer(10);
 	};
 
-	const generateAnswersArray = (correct) => {
+	let generateAnswersArray = (correct) => {
 		const incorrectIndexes = [1, 2];
 
 		const incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
@@ -209,26 +203,49 @@ function Numberseasy() {
 									<div className="list-desktop">
 										Gratulacje
 									</div>
-									<li className="list-desktop board-desktop align-items-center justify-content-center">
-										<button
-											className="btn-desktop"
-											onClick={startNewGame}
-										>
-											Zagraj jeszcze raz
-										</button>
-									</li>
+									<div className="container list-desktop board-desktop">
+										<div className="row d-flex align-items-center">
+											<div className="col-9">
+												<button
+													className="btn-desktop"
+													onClick={startNewGame}
+												>
+													Zagraj jeszcze raz
+												</button>
+											</div>
+											<div className="col-3">
+												<button
+													className="btn-desktop"
+													onClick={() => play(zagraj)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
+									</div>
 								</div>
 							) : (
-								<div className="container">
-									<div className="list-title-desktop">
-										<button
-											className="btn-desktop"
-											onMouseOver={handleMouseOverAnswer}
-											disabled={isButtonDisabled}
-										>
-											Wybierz poprawną odpowiedź, zrobimy
-											to onclick
-										</button>
+								<div className="container list-desktop board-desktop">
+									<div className="row d-flex align-items-center justify-content-center margin-main">
+										<div className="col-10 main-title">
+											Wybierz poprawną odpowiedź
+										</div>
+										<div className="col-2">
+											<button
+												className="btn-desktop"
+												onClick={() => play(answer)}
+												disabled={isButtonDisabled}
+											>
+												<FontAwesomeIcon
+													icon={faVolumeUp}
+													className="volume-icon"
+												/>
+											</button>
+										</div>
 									</div>
 									<div className="icons-desktop">
 										{emoji === "smile" && (
@@ -291,28 +308,58 @@ function Numberseasy() {
 									</div>
 								</div>
 							)}
-							<Link style={{ textDecoration: "none" }} to="/num">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									<button
-										className="btn-desktop"
-										onMouseOver={handleMouseOverLevel}
-										disabled={isButtonDisabled}
-									>
-										Wybierz inny poziom
-									</button>
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									<button
-										className="btn-desktop"
-										onMouseOver={handleMouseOverMenu}
-										disabled={isButtonDisabled}
-									>
-										Powrót do menu
-									</button>
-								</li>
-							</Link>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/num"
+										>
+											<button className="btn-desktop hover-menu">
+												Wybierz inny poziom
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(level)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>

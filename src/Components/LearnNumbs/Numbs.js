@@ -93,7 +93,7 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="/nume"
+										to="/numh"
 									>
 										<button className="btn-desktop hover-hard">
 											Rozpoznawanie liczb - poziom trudny

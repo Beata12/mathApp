@@ -194,8 +194,8 @@ function UpTo5() {
 								</div>
 							) : (
 								<div className="gameOver">
-									<div className="list-title-desktop">
-										Wybierz odpowiedni wynik
+									<div className="task-desktop">
+										Wybierz poprawną odpowiedź
 									</div>
 									<div className="icons-desktop">
 										{emoji === "smile" && (

@@ -278,7 +278,7 @@ function SubtractionUpTo20Write() {
 									>
 										Zagraj jeszcze raz
 									</button>
-								</div>{" "}
+								</div>
 							</div>
 						)}
 						{!gameOver && (

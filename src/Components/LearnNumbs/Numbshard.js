@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import answer from "../../audio/answer.mp3";
+import level from "../../audio/poziom.mp3";
+import menu from "../../audio/menu.mp3";
+import zagraj from "../../audio/zagraj.mp3";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faHeartCrack,
+	faVolumeUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Numberhard() {
 	const [timer, setTimer] = useState(10);
@@ -15,6 +23,25 @@ function Numberhard() {
 	const [lives, setLives] = useState(3);
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	useEffect(() => {
 		generateRandomWord();
@@ -187,26 +214,49 @@ function Numberhard() {
 									<div className="list-desktop">
 										Gratulacje
 									</div>
-									<li className="list-desktop board-desktop align-items-center justify-content-center">
-										<button
-											className="btn-desktop"
-											onClick={startNewGame}
-										>
-											Zagraj jeszcze raz
-										</button>
-									</li>
+									<div className="container list-desktop board-desktop">
+										<div className="row d-flex align-items-center">
+											<div className="col-9">
+												<button
+													className="btn-desktop"
+													onClick={startNewGame}
+												>
+													Zagraj jeszcze raz
+												</button>
+											</div>
+											<div className="col-3">
+												<button
+													className="btn-desktop"
+													onClick={() => play(zagraj)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
+									</div>
 								</div>
 							) : (
 								<div className="container">
-									<div className="list-title-desktop">
-										<button
-											className="btn-desktop"
-											// onMouseOver={handleMouseOverAnswer}
-											// disabled={isButtonDisabled}
-										>
-											Wybierz poprawną odpowiedź, zrobimy
-											to onclick
-										</button>
+									<div className="row d-flex align-items-center justify-content-center margin-main">
+										<div className="col-11 main-title">
+											Wybierz poprawną odpowiedź
+										</div>
+										<div className="col-1">
+											<button
+												className="btn-desktop"
+												onClick={() => play(answer)}
+												disabled={isButtonDisabled}
+											>
+												<FontAwesomeIcon
+													icon={faVolumeUp}
+													className="volume-icon"
+												/>
+											</button>
+										</div>
 									</div>
 									<div className="icons-desktop">
 										{emoji === "smile" && (
@@ -261,16 +311,58 @@ function Numberhard() {
 									</div>
 								</div>
 							)}
-							<Link style={{ textDecoration: "none" }} to="/num">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Wybierz inny poziom
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Powrót do menu
-								</li>
-							</Link>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/num"
+										>
+											<button className="btn-desktop hover-menu">
+												Wybierz inny poziom
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(level)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>
