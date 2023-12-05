@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import jeden from "../../audio/jeden.mp3";
-// import dwa from "../../audio/dwa.mp3";
-// import trzy from "../../audio/trzy.mp3";
-// import cztery from "../../audio/cztery.mp3";
-// import piec from "../../audio/piec.mp3";
-// import szesc from "../../audio/szesc.mp3";
-// import siedem from "../../audio/siedem.mp3";
-// import osiem from "../../audio/osiem.mp3";
-// import dziewiec from "../../audio/dziewiec.mp3";
-// import dziesiec from "../../audio/dziesiec.mp3";
+import jeden from "../../audio/jeden.mp3";
+import dwa from "../../audio/dwa.mp3";
+import trzy from "../../audio/trzy.mp3";
+import cztery from "../../audio/cztery.mp3";
+import piec from "../../audio/piec.mp3";
+import szesc from "../../audio/szesc.mp3";
+import siedem from "../../audio/siedem.mp3";
+import osiem from "../../audio/osiem.mp3";
+import dziewiec from "../../audio/dziewiec.mp3";
+import dziesiec from "../../audio/dziesiec.mp3";
 import menu from "../../audio/menu.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
@@ -36,18 +36,18 @@ function Numbslearn() {
 		};
 	}, [isButtonDisabled]);
 
-	// const numberVoice = {
-	// 	1: play(jeden),
-	// 	2: play(dwa),
-	// 	3: play(trzy),
-	// 	4: play(cztery),
-	// 	5: play(piec),
-	// 	6: play(szesc),
-	// 	7: play(siedem),
-	// 	8: play(osiem),
-	// 	9: play(dziewiec),
-	// 	10: play(dziesiec),
-	// };
+	const numberVoice = {
+		1: () => play(jeden),
+		2: () => play(dwa),
+		3: () => play(trzy),
+		4: () => play(cztery),
+		5: () => play(piec),
+		6: () => play(szesc),
+		7: () => play(siedem),
+		8: () => play(osiem),
+		9: () => play(dziewiec),
+		10: () => play(dziesiec),
+	};
 
 	const numberTexts = {
 		1: "jeden",
@@ -123,12 +123,14 @@ function Numbslearn() {
 										<div className="col-3 sign-name">
 											<button
 												className="btn-desktop"
-												// onClick={() =>
-												// 	play(
-												// 		numberTexts[numberVoice]
-												// 	)
-												// }
-												// disabled={isButtonDisabled}
+												onClick={() =>
+													play(
+														numberVoice[
+															currentNumber
+														]()
+													)
+												}
+												disabled={isButtonDisabled}
 											>
 												<FontAwesomeIcon
 													icon={faVolumeUp}
