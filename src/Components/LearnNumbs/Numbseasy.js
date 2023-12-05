@@ -80,7 +80,7 @@ function Numberseasy() {
 		setTimer(10);
 	};
 
-	let generateAnswersArray = (correct) => {
+	const generateAnswersArray = (correct) => {
 		const incorrectIndexes = [1, 2];
 
 		const incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
@@ -105,7 +105,7 @@ function Numberseasy() {
 	};
 
 	const shuffleArray = (array) => {
-		const shuffledArray = [...array];
+		let shuffledArray = [...array];
 		for (let i = shuffledArray.length - 1; i > 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
 			[shuffledArray[i], shuffledArray[j]] = [
@@ -128,7 +128,7 @@ function Numberseasy() {
 		}
 	};
 
-	const handleCorrectAnswer = () => {
+	let handleCorrectAnswer = () => {
 		setPoints((prevPoints) => prevPoints + 1);
 		setEmoji("smile");
 		setTimeout(() => {
@@ -137,7 +137,7 @@ function Numberseasy() {
 		}, 2000);
 	};
 
-	const handleWrongAnswer = () => {
+	let handleWrongAnswer = () => {
 		setIncorrectAnswers((prevIncorrect) => prevIncorrect + 1);
 		if (lives > 0) {
 			setLives((prevLives) => prevLives - 1);

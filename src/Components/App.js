@@ -5,6 +5,7 @@ import Dzialy from "./Dzialy";
 import Numbs from "./LearnNumbs/Numbs";
 import Numbslearn from "./LearnNumbs/Numbslearn";
 import Numbseasy from "./LearnNumbs/Numbseasy";
+import Numbmidium from "./LearnNumbs/Numbmidium";
 import Numbshard from "./LearnNumbs/Numbshard";
 import Numbslisten from "./LearnNumbs/Numbslisten";
 import Comparison from "./GreaterSmaller/Comparison";
@@ -53,6 +54,7 @@ function App() {
 				<Route path="/num" element={<Numbs />} />
 				<Route path="/numlearn" element={<Numbslearn />} />
 				<Route path="/nume" element={<Numbseasy />} />
+				<Route path="/numm" element={<Numbmidium />} />
 				<Route path="/numh" element={<Numbshard />} />
 				<Route path="/numl" element={<Numbslisten />} />
 				<Route path="/comp" element={<Comparison />} />

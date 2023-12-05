@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import learnNum from "../../audio/liczby.mp3";
+import learnNum from "../../audio/learnNum/liczby.mp3";
 import menu from "../../audio/menu.mp3";
-import numeasy from "../../audio/rozpliczla.mp3";
-import numhard from "../../audio/rozplicztr.mp3";
+import numeasy from "../../audio/learnNum/rozpliczla.mp3";
+import nummid from "../../audio/learnNum/nummid.mp3";
+import numhard from "../../audio/learnNum/rozplicztr.mp3";
+import numlis from "../../audio/learnNum/numlis.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -93,6 +95,32 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
+										to="/numm"
+									>
+										<button className="btn-desktop hover-easy">
+											Rozpoznawanie liczb - poziom średni
+										</button>
+									</Link>
+								</div>
+								<div className="col-3">
+									<button
+										className="btn-desktop"
+										onClick={() => play(nummid)}
+										disabled={isButtonDisabled}
+									>
+										<FontAwesomeIcon
+											icon={faVolumeUp}
+											className="volume-icon"
+										/>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="container list-desktop board-desktop">
+							<div className="row d-flex align-items-center">
+								<div className="col-9">
+									<Link
+										style={{ textDecoration: "none" }}
 										to="/numh"
 									>
 										<button className="btn-desktop hover-hard">
@@ -129,7 +157,7 @@ function Numbers() {
 								<div className="col-3">
 									<button
 										className="btn-desktop"
-										onClick={() => play(menu)}
+										onClick={() => play(numlis)}
 										disabled={isButtonDisabled}
 									>
 										<FontAwesomeIcon

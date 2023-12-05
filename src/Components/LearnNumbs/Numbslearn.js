@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import jeden from "../../audio/jeden.mp3";
-import dwa from "../../audio/dwa.mp3";
-import trzy from "../../audio/trzy.mp3";
-import cztery from "../../audio/cztery.mp3";
-import piec from "../../audio/piec.mp3";
-import szesc from "../../audio/szesc.mp3";
-import siedem from "../../audio/siedem.mp3";
-import osiem from "../../audio/osiem.mp3";
-import dziewiec from "../../audio/dziewiec.mp3";
-import dziesiec from "../../audio/dziesiec.mp3";
+import jeden from "../../audio/numbers/jeden.mp3";
+import dwa from "../../audio/numbers/dwa.mp3";
+import trzy from "../../audio/numbers/trzy.mp3";
+import cztery from "../../audio/numbers/cztery.mp3";
+import piec from "../../audio/numbers/piec.mp3";
+import szesc from "../../audio/numbers/szesc.mp3";
+import siedem from "../../audio/numbers/siedem.mp3";
+import osiem from "../../audio/numbers/osiem.mp3";
+import dziewiec from "../../audio/numbers/dziewiec.mp3";
+import dziesiec from "../../audio/numbers/dziesiec.mp3";
 import menu from "../../audio/menu.mp3";
+import practice from "../../audio/practice.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -174,7 +175,7 @@ function Numbslearn() {
 										<div className="col-3">
 											<button
 												className="btn-desktop"
-												onClick={() => play(menu)}
+												onClick={() => play(practice)}
 												disabled={isButtonDisabled}
 											>
 												<FontAwesomeIcon

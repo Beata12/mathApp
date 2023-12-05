@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import easygreater from "../../audio/easygreater.mp3";
-import easysmaller from "../../audio/easysmaller.mp3";
+import easygreater from "../../audio/comparation/easygreater.mp3";
+import easysmaller from "../../audio/comparation/easysmaller.mp3";
 import examples from "../../audio/examples.mp3";
-import grtsmlr from "../../audio/grtsmlr.mp3";
-import hardgreater from "../../audio/hardgreater.mp3";
-import hardsmaller from "../../audio/hardsmaller.mp3";
+import grtsmlr from "../../audio/comparation/grtsmlr.mp3";
+import hardgreater from "../../audio/comparation/hardgreater.mp3";
+import hardsmaller from "../../audio/comparation/hardsmaller.mp3";
 import menu from "../../audio/menu.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";

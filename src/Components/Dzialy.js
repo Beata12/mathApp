@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import numbers from "../audio/poznajemyLiczby.mp3";
-import signs from "../audio/znaki.mp3";
-import add from "../audio/dodawanie.mp3";
-import sub from "../audio/odejmowanie.mp3";
-import comp from "../audio/porownywanie.mp3";
-import ukn from "../audio/niewiadoma.mp3";
+import numbers from "../audio/dzialy/poznajemyLiczby.mp3";
+import signs from "../audio/dzialy/znaki.mp3";
+import add from "../audio/dzialy/dodawanie.mp3";
+import sub from "../audio/dzialy/odejmowanie.mp3";
+import comp from "../audio/dzialy/porownywanie.mp3";
+import ukn from "../audio/dzialy/niewiadoma.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 

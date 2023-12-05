@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import menu from "../../audio/menu.mp3";
-import unkAddE from "../../audio/unkAddE.mp3";
-import unkAddH from "../../audio/unkAddH.mp3";
-import unkSubE from "../../audio/unkSubE.mp3";
-import unkSubH from "../../audio/unkSubH.mp3";
-import unkAddSub from "../../audio/unkAddSub.mp3";
+import unkAddE from "../../audio/unknown/unkAddE.mp3";
+import unkAddH from "../../audio/unknown/unkAddH.mp3";
+import unkSubE from "../../audio/unknown/unkSubE.mp3";
+import unkSubH from "../../audio/unknown/unkSubH.mp3";
+import unkAddSub from "../../audio/unknown/unkAddSub.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
