@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import answer from "../../audio/answer.mp3";
+import level from "../../audio/poziom.mp3";
+import menu from "../../audio/menu.mp3";
+import zagraj from "../../audio/zagraj.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import {
 	faHeart,
 	faHeartCrack,
 	faStar,
+	faVolumeUp,
 } from "@fortawesome/free-solid-svg-icons";
 
 function UpTo5() {
@@ -19,6 +24,26 @@ function UpTo5() {
 	const [lives, setLives] = useState(3);
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+	const [correctAnswerInfo, setCorrectAnswerInfo] = useState(null);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	useEffect(() => {
 		generateRandomNumbers();
@@ -58,7 +83,10 @@ function UpTo5() {
 
 		const incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
 		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
-		const incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+		let incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+		while (incorrect1 === incorrect2) {
+			incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+		}
 
 		setNumbers({ num1: newNumber1, num2: newNumber2 });
 		const answers = [correct, incorrect1, incorrect2].filter(
@@ -68,6 +96,7 @@ function UpTo5() {
 		setAnswers(shuffledAnswers);
 		setCorrectAnswer(correct);
 		setEmoji(null);
+		setCorrectAnswerInfo(null);
 		setTimer(10);
 	};
 
@@ -122,6 +151,7 @@ function UpTo5() {
 			setLives((prevLives) => prevLives - 1);
 		}
 		setEmoji("frown");
+		setCorrectAnswerInfo(correctAnswer);
 		setTimeout(() => {
 			setEmoji(null);
 			generateRandomNumbers();
@@ -163,11 +193,31 @@ function UpTo5() {
 		generateRandomNumbers();
 	};
 
+	const renderCorrectAnswerInfo = () => {
+		if (correctAnswerInfo !== null) {
+			setTimeout(() => {
+				setCorrectAnswerInfo(null);
+			}, 2000);
+
+			return (
+				<div className="container">
+					<div className="row correct-answer-info d-flex justify-content-center align-items-center">
+						<div className="col-7">Poprawna odpowiedź:</div>
+						<div className="correct-ans col-2">
+							{correctAnswerInfo}
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10">
 						<ul className="text-center">
 							<div className="list-title-desktop">
 								DODAWANIE DO 5 - poziom łatwy
@@ -183,21 +233,52 @@ function UpTo5() {
 									<div className="list-desktop">
 										Gratulacje
 									</div>
-									<div className="list-desktop board-desktop align-items-center justify-content-center">
-										<button
-											onClick={startNewGame}
-											className="btn-desktop"
-										>
-											Zagraj jeszcze raz
-										</button>
+									<div className="container list-desktop board-desktop">
+										<div className="row d-flex align-items-center">
+											<div className="col-9">
+												<button
+													className="btn-desktop hover-menu"
+													onClick={startNewGame}
+												>
+													Zagraj jeszcze raz
+												</button>
+											</div>
+											<div className="col-3">
+												<button
+													className="btn-desktop"
+													onClick={() => play(zagraj)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							) : (
 								<div className="gameOver">
-									<div className="task-desktop">
-										Wybierz poprawną odpowiedź
+									<div className="row d-flex align-items-center justify-content-center margin-main">
+										<div className="col-11 main-title">
+											Wybierz poprawną odpowiedź
+										</div>
+										<div className="col-1">
+											<button
+												className="btn-desktop"
+												onClick={() => play(answer)}
+												disabled={isButtonDisabled}
+											>
+												<FontAwesomeIcon
+													icon={faVolumeUp}
+													className="volume-icon"
+												/>
+											</button>
+										</div>
 									</div>
 									<div className="icons-desktop">
+										{renderCorrectAnswerInfo()}
 										{emoji === "smile" && (
 											<FontAwesomeIcon
 												icon={faFaceSmile}
@@ -213,8 +294,8 @@ function UpTo5() {
 									</div>
 									<div>
 										<div className="container">
-											<div className="row justify-content-center">
-												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
+											<div className="row">
+												<div className="col-6 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
 															length: numbers.num1,
@@ -228,8 +309,8 @@ function UpTo5() {
 														)
 													)}
 												</div>
-												<div className="col-2"></div>
-												<div className="col-2 equations-desktop d-flex justify-content-center align-items-center">
+												<div className="col-1"></div>
+												<div className="col-1 equations-desktop d-flex justify-content-center align-items-center">
 													{Array.from(
 														{
 															length: numbers.num2,
@@ -247,7 +328,7 @@ function UpTo5() {
 										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
-												<div className="col-2 equations-desktop">
+												<div className="col-3 equations-desktop">
 													{numbers.num1}
 												</div>
 												<div className="col-2 equations-desktop">
@@ -306,17 +387,58 @@ function UpTo5() {
 									</div>
 								</div>
 							)}
-
-							<Link style={{ textDecoration: "none" }} to="/add">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Wybierz inny poziom
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Powrót do menu
-								</li>
-							</Link>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/add"
+										>
+											<button className="btn-desktop hover-menu">
+												Wybierz inny poziom
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(level)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>{" "}
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>

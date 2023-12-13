@@ -249,7 +249,7 @@ function Numberhard() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10">
 						<ul className="text-center">
 							<div className="list-title-desktop">
 								ROZPOZNAWANIE LICZB
