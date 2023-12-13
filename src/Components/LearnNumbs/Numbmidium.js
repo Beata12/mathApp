@@ -34,6 +34,7 @@ function Numberhard() {
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
+	const [correctAnswerInfo, setCorrectAnswerInfo] = useState(null);
 
 	function play(audioFile) {
 		if (!isButtonDisabled) {
@@ -108,12 +109,9 @@ function Numberhard() {
 		const correctNum = randomNum;
 		const incorrectIndexes = [1, 2];
 
-		const incorrect1 = generateIncorrectAnswer(
-			incorrectIndexes,
-			correctNum
-		);
+		let incorrect1 = generateIncorrectAnswer(incorrectIndexes, correctNum);
 		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
-		const incorrect2 = generateIncorrectAnswer(
+		let incorrect2 = generateIncorrectAnswer(
 			incorrectIndexes,
 			correctNum,
 			incorrect1
@@ -186,6 +184,7 @@ function Numberhard() {
 			setLives((prevLives) => prevLives - 1);
 		}
 		setEmoji("frown");
+		setCorrectAnswerInfo(correctAnswer);
 		setTimeout(() => {
 			setEmoji(null);
 			generateRandomWord();
@@ -226,6 +225,26 @@ function Numberhard() {
 		generateRandomWord();
 	};
 
+	const renderCorrectAnswerInfo = () => {
+		if (correctAnswerInfo !== null) {
+			setTimeout(() => {
+				setCorrectAnswerInfo(null);
+			}, 2000);
+
+			return (
+				<div className="container">
+					<div className="row correct-answer-info d-flex justify-content-center align-items-center">
+						<div className="col-7">Poprawna odpowiedź:</div>
+						<div className="correct-ans col-2">
+							{correctAnswerInfo}
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
@@ -250,7 +269,7 @@ function Numberhard() {
 										<div className="row d-flex align-items-center">
 											<div className="col-9">
 												<button
-													className="btn-desktop"
+													className="btn-desktop hover-menu"
 													onClick={startNewGame}
 												>
 													Zagraj jeszcze raz
@@ -291,6 +310,7 @@ function Numberhard() {
 										</div>
 									</div>
 									<div className="icons-desktop">
+										{renderCorrectAnswerInfo()}
 										{emoji === "smile" && (
 											<FontAwesomeIcon
 												icon={faFaceSmile}
