@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import answer from "../../audio/answer.mp3";
+import level from "../../audio/poziom.mp3";
+import menu from "../../audio/menu.mp3";
+import zagraj from "../../audio/zagraj.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faHeartCrack,
+	faVolumeUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 function GreaterSmaller() {
 	const [number1, setNumber1] = useState(0);
@@ -14,8 +22,28 @@ function GreaterSmaller() {
 	const [timer, setTimer] = useState(10);
 	const [isTimeUp, setIsTimeUp] = useState(false);
 	const [hasSelectedAnswer, setHasSelectedAnswer] = useState(false);
-	const [lives, setLives] = useState(3); // Maksymalnie 3 życia
+	const [lives, setLives] = useState(3);
 	const [gameOver, setGameOver] = useState(false);
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+	const [correctAnswerInfo, setCorrectAnswerInfo] = useState(null);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearInterval(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	const generateRandomNumbers = () => {
 		const randomNum1 = Math.floor(Math.random() * 11);
@@ -42,10 +70,9 @@ function GreaterSmaller() {
 			setResultIcon(faFaceSmile);
 			isCorrect = true;
 		} else {
-			// Zmiana ikony serduszka na faHeartCrack w przypadku złej odpowiedzi
 			setLives(lives - 1);
 			setResultIcon(faFaceFrown);
-			// If lives reach 0, set game over immediately
+			setCorrectAnswerInfo(`${isCorrect}`);
 			if (lives - 1 === 0) {
 				setGameOver(true);
 			}
@@ -119,10 +146,32 @@ function GreaterSmaller() {
 		return heartIcons;
 	};
 
+	const renderCorrectAnswerInfo = () => {
+		if (correctAnswerInfo !== null) {
+			setTimeout(() => {
+				setCorrectAnswerInfo(null);
+			}, 2000);
+
+			return (
+				<div className="container">
+					<div className="row correct-answer-info d-flex justify-content-center align-items-center">
+						<div className="col-7">Poprawna odpowiedź:</div>
+						<div className="correct-ans col-2">
+							{correctAnswerInfo}
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	const startNewGame = () => {
 		setGameOver(false);
 		setPoints(0);
 		setLives(3);
+		generateRandomNumbers();
+		setCorrectAnswerInfo(null);
 		generateRandomNumbers();
 	};
 
@@ -130,35 +179,54 @@ function GreaterSmaller() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10">
 						<ul className="text-center">
 							<div className="list-title-desktop">
 								Wybierz odpowiedni znak:
 							</div>
 							{gameOver ? (
 								<div className="gameOver">
-									<div className="list-desktop">
-										KONIEC GRY
+									<div className="container board-desktop">
+										<div className="list-desktop">
+											KONIEC GRY
+										</div>
+										<div className="list-desktop">
+											Punkty: {points}
+										</div>
+										<div className="list-desktop">
+											Gratulacje
+										</div>
 									</div>
-									<div className="list-desktop">
-										Punkty: {points}
-									</div>
-									<div className="list-desktop">
-										Gratulacje
-									</div>
-									<div className="list-desktop board-desktop align-items-center justify-content-center">
-										<button
-											onClick={startNewGame}
-											className="btn-desktop"
-										>
-											Zagraj jeszcze raz
-										</button>
+									<div className="container list-desktop board-desktop">
+										<div className="row d-flex align-items-center">
+											<div className="col-9">
+												<button
+													className="btn-desktop hover-menu"
+													onClick={startNewGame}
+												>
+													Zagraj jeszcze raz
+												</button>
+											</div>
+											<div className="col-3">
+												<button
+													className="btn-desktop"
+													onClick={() => play(zagraj)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							) : (
-								<>
+								<div className="container board-desktop">
 									<div className="gameOver">
 										<div className="icons-desktop">
+											{renderCorrectAnswerInfo()}
 											{resultIcon ? (
 												<FontAwesomeIcon
 													icon={resultIcon}
@@ -244,18 +312,60 @@ function GreaterSmaller() {
 											Czas: {timer}
 										</div>
 									</div>
-								</>
+								</div>
 							)}
-							<Link style={{ textDecoration: "none" }} to="/comp">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Wybierz inny poziom
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Powrót do menu
-								</li>
-							</Link>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/comp"
+										>
+											<button className="btn-desktop hover-menu">
+												Wybierz inny poziom
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(level)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>

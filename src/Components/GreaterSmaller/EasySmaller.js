@@ -17,7 +17,6 @@ import { faRedditAlien } from "@fortawesome/free-brands-svg-icons";
 function EasySmaller() {
 	const [timer, setTimer] = useState(10);
 	const [numbers, setNumbers] = useState({ num1: null, num2: null });
-	const [answers, setAnswers] = useState([null, null, null]);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [points, setPoints] = useState(0);
 	const [emoji, setEmoji] = useState(null);
@@ -187,33 +186,179 @@ function EasySmaller() {
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
-				<ul className="text-center">
-					<div className="list-title-desktop">
-						Która liczba jest mniejsza?
-					</div>
-					{gameOver ? (
-						<div className="gameOver">
-							<div className="container board-desktop">
-								<div className="list-desktop">KONIEC GRY</div>
-								<div className="list-desktop">
-									Punkty: {points}
-								</div>
-								<div className="list-desktop">Gratulacje</div>
+				<div className="container d-flex justify-content-center align-items-center">
+					<div className="col-12">
+						<ul className="text-center">
+							<div className="list-title-desktop">
+								Która liczba jest mniejsza?
 							</div>
+							{gameOver ? (
+								<div className="gameOver">
+									<div className="container board-desktop">
+										<div className="list-desktop">
+											KONIEC GRY
+										</div>
+										<div className="list-desktop">
+											Punkty: {points}
+										</div>
+										<div className="list-desktop">
+											Gratulacje
+										</div>
+									</div>
+									<div className="container list-desktop board-desktop">
+										<div className="row d-flex align-items-center">
+											<div className="col-9">
+												<button
+													className="btn-desktop hover-menu"
+													onClick={startNewGame}
+												>
+													Zagraj jeszcze raz
+												</button>
+											</div>
+											<div className="col-3">
+												<button
+													className="btn-desktop"
+													onClick={() => play(zagraj)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							) : (
+								<div className="gameOver">
+									<div className="container board-desktop">
+										<div className="row d-flex align-items-center justify-content-center margin-main">
+											<div className="col-10 main-title">
+												Wybierz poprawną odpowiedź
+											</div>
+											<div className="col-1">
+												<button
+													className="btn-desktop"
+													onClick={() => play(answer)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
+										<div className="icons-desktop">
+											{renderCorrectAnswerInfo()}
+											{emoji === "smile" && (
+												<FontAwesomeIcon
+													icon={faFaceSmile}
+													className="smile-icon-desktop"
+												/>
+											)}
+											{emoji === "frown" && (
+												<FontAwesomeIcon
+													icon={faFaceFrown}
+													className="frown-icon-desktop"
+												/>
+											)}
+										</div>
+										<div className="container">
+											<div className="row d-flex justify-content-center">
+												<div className="col-4 equations-desktop d-flex justify-content-center align-items-center">
+													{Array.from(
+														{
+															length: numbers.num1,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={
+																	faRedditAlien
+																}
+																className="alien1-icon-desktop"
+															/>
+														)
+													)}
+												</div>
+												<div className="col-1"></div>
+												<div className="col-4 equations-desktop d-flex justify-content-center align-items-center">
+													{Array.from(
+														{
+															length: numbers.num2,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={
+																	faRedditAlien
+																}
+																className="alien2-icon-desktop"
+															/>
+														)
+													)}
+												</div>
+											</div>
+										</div>
+										<div className="container">
+											<div className="row d-flex justify-content-center">
+												<div
+													className="col-4 answer-box-desktop equations-desktop d-flex justify-content-center align-items-center"
+													onClick={() =>
+														handleAnswerClick(
+															numbers.num1
+														)
+													}
+												>
+													{numbers.num1}
+												</div>
+												<div className="col-1"></div>
+												<div
+													className="col-4 answer-box-desktop equations-desktop d-flex justify-content-center align-items-center"
+													onClick={() =>
+														handleAnswerClick(
+															numbers.num2
+														)
+													}
+												>
+													{numbers.num2}
+												</div>
+											</div>
+										</div>
+										<div className="information-desktop">
+											Czas: {timer}
+										</div>
+										<div className="information-desktop">
+											Punkty: {points}
+										</div>
+										<div className="container ">
+											<div className="row ">
+												<div className="col ">
+													{generateHeartIcons()}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							)}
 							<div className="container list-desktop board-desktop">
 								<div className="row d-flex align-items-center">
 									<div className="col-9">
-										<button
-											className="btn-desktop hover-menu"
-											onClick={startNewGame}
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/comp"
 										>
-											Zagraj jeszcze raz
-										</button>
+											<button className="btn-desktop hover-menu">
+												Wybierz inny poziom
+											</button>
+										</Link>
 									</div>
 									<div className="col-3">
 										<button
 											className="btn-desktop"
-											onClick={() => play(zagraj)}
+											onClick={() => play(level)}
 											disabled={isButtonDisabled}
 										>
 											<FontAwesomeIcon
@@ -224,87 +369,91 @@ function EasySmaller() {
 									</div>
 								</div>
 							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div className="dzialy-mobile margin-mob">
+				<ul className="text-center">
+					<div className="list-title-mobile">
+						Która liczba jest mniejsza?
+					</div>
+					{gameOver ? (
+						<div className="gameOver">
+							<div className="container board-mobile">
+								<div className="list-mobile">KONIEC GRY</div>
+								<div className="list-mobile">
+									Punkty: {points}
+								</div>
+								<div className="list-mobile">Gratulacje</div>
+							</div>
+							<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								<button
+									className="btn-mobile"
+									onClick={startNewGame}
+								>
+									Zagraj jeszcze raz
+								</button>
+							</div>
 						</div>
 					) : (
 						<div className="gameOver">
-							<div className="row d-flex align-items-center justify-content-center margin-main">
-								<div className="col-11 main-title">
-									Wybierz poprawną odpowiedź
-								</div>
-								<div className="col-1">
-									<button
-										className="btn-desktop"
-										onClick={() => play(answer)}
-										disabled={isButtonDisabled}
-									>
-										<FontAwesomeIcon
-											icon={faVolumeUp}
-											className="volume-icon"
-										/>
-									</button>
-								</div>
+							<div className="text-mobile">
+								Wybierz poprawną odpowiedź
 							</div>
-							<div className="icons-desktop">
-								{renderCorrectAnswerInfo()}
+							<div className="icons-mobile">
+								{/* {renderCorrectAnswerInfo()} */}
 								{emoji === "smile" && (
 									<FontAwesomeIcon
 										icon={faFaceSmile}
-										className="smile-icon-desktop"
+										className="smile-icon-mobile"
 									/>
 								)}
 								{emoji === "frown" && (
 									<FontAwesomeIcon
 										icon={faFaceFrown}
-										className="frown-icon-desktop"
+										className="frown-icon-mobile"
 									/>
 								)}
 							</div>
 							<div className="container">
 								<div className="row d-flex justify-content-center">
-									<div className="col-4 equations-desktop d-flex justify-content-center align-items-center">
-										{Array.from(
-											{
-												length: numbers.num1,
-											},
-											(_, index) => (
-												<FontAwesomeIcon
-													key={index}
-													icon={faRedditAlien}
-													className="alien1-icon-desktop"
-												/>
-											)
-										)}
-									</div>
-									<div className="col-1"></div>
-									<div className="col-4 equations-desktop d-flex justify-content-center align-items-center">
-										{Array.from(
-											{
-												length: numbers.num2,
-											},
-											(_, index) => (
-												<FontAwesomeIcon
-													key={index}
-													icon={faRedditAlien}
-													className="alien2-icon-desktop"
-												/>
-											)
-										)}
-									</div>
-								</div>
-							</div>
-							<div className="container">
-								<div className="row d-flex justify-content-center">
 									<div
-										className="col-4 answer-box-desktop equations-desktop d-flex justify-content-center align-items-center"
+										className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
 										onClick={() =>
 											handleAnswerClick(numbers.num1)
 										}
 									>
 										{numbers.num1}
 									</div>
-									<div className="col-1"></div>
 									<div
-										className="col-4 answer-box-desktop equations-desktop d-flex justify-content-center align-items-center"
+										className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
 										onClick={() =>
 											handleAnswerClick(numbers.num2)
 										}
@@ -313,91 +462,8 @@ function EasySmaller() {
 									</div>
 								</div>
 							</div>
-							<div className="information-desktop">
-								Czas: {timer}
-							</div>
-							<div className="information-desktop">
-								Punkty: {points}
-							</div>
-							<div className="container ">
-								<div className="row ">
-									<div className="col ">
-										{generateHeartIcons()}
-									</div>
-								</div>
-							</div>
-						</div>
-					)}
-					<Link style={{ textDecoration: "none" }} to="/comp">
-						<li className="list-desktop board-desktop align-items-center justify-content-center">
-							Wybierz inny poziom
-						</li>
-					</Link>
-					<Link style={{ textDecoration: "none" }} to="/">
-						<li className="list-desktop board-desktop align-items-center justify-content-center">
-							Powrót do menu
-						</li>
-					</Link>
-				</ul>
-			</div>
-			{/* <div className="dzialy-mobile margin-mob">
-				<ul className="text-center">
-					<div className="list-title-mobile">
-						Która liczba jest mniejsza?
-					</div>
-					{gameOver ? (
-						<div className="gameOver">
-							<div className="list-mobile">KONIEC GRY</div>
-							<div className="list-mobile">Punkty: {points}</div>
-							<div className="list-mobile">Gratulacje</div>
-							<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								<button
-									onClick={startNewGame}
-									className="btn-mobile"
-								>
-									Zagraj jeszcze raz
-								</button>
-							</div>
-						</div>
-					) : (
-						<>
-							<div className="result">
-								{result === "correct" ? (
-									<FontAwesomeIcon icon={faFaceSmile} />
-								) : result === "incorrect" ? (
-									<>
-										<FontAwesomeIcon icon={faFaceFrown} />
-									</>
-								) : null}
-							</div>
-							<div className="container">
-								<div className="row d-flex justify-content-center">
-									<div className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile">
-										<button
-											className="equations-mobile"
-											onClick={() =>
-												handleComparison("number1")
-											}
-											disabled={!isComparing}
-										>
-											{number1}
-										</button>
-									</div>
-									<div className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile">
-										<button
-											className="equations-mobile"
-											onClick={() =>
-												handleComparison("number2")
-											}
-											disabled={!isComparing}
-										>
-											{number2}
-										</button>
-									</div>
-								</div>
-							</div>
 							<div className="information-mobile">
-								Czas: {timeRemaining}
+								Czas: {timer}
 							</div>
 							<div className="information-mobile">
 								Punkty: {points}
@@ -409,7 +475,7 @@ function EasySmaller() {
 									</div>
 								</div>
 							</div>
-						</>
+						</div>
 					)}
 					<Link style={{ textDecoration: "none" }} to="/comp">
 						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
@@ -422,7 +488,7 @@ function EasySmaller() {
 						</li>
 					</Link>
 				</ul>
-			</div> */}
+			</div>
 		</main>
 	);
 }

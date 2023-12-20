@@ -94,4 +94,9 @@ ul {
 		margin-top: 50px !important;
 		margin-bottom: 20px;
 	}
+
+	.text-mobile {
+		color: white;
+		font-size: 20px;
+	}
 }
