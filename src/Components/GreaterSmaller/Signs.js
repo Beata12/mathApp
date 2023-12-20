@@ -57,7 +57,7 @@ function Signs() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10">
+					<div className="col-12">
 						<ul className="text-center">
 							<div className="board-desktop">
 								<div className="container ">

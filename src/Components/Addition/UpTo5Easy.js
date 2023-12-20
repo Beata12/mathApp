@@ -185,14 +185,6 @@ function UpTo5() {
 		return heartIcons;
 	};
 
-	const startNewGame = () => {
-		setGameOver(false);
-		setPoints(0);
-		setLives(3);
-		setIncorrectAnswers(0);
-		generateRandomNumbers();
-	};
-
 	const renderCorrectAnswerInfo = () => {
 		if (correctAnswerInfo !== null) {
 			setTimeout(() => {
@@ -213,6 +205,14 @@ function UpTo5() {
 		return null;
 	};
 
+	const startNewGame = () => {
+		setGameOver(false);
+		setPoints(0);
+		setLives(3);
+		setIncorrectAnswers(0);
+		generateRandomNumbers();
+	};
+
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
@@ -224,14 +224,16 @@ function UpTo5() {
 							</div>
 							{gameOver ? (
 								<div className="gameOver">
-									<div className="list-desktop">
-										KONIEC GRY
-									</div>
-									<div className="list-desktop">
-										Punkty: {points}
-									</div>
-									<div className="list-desktop">
-										Gratulacje
+									<div className="container board-desktop">
+										<div className="list-desktop">
+											KONIEC GRY
+										</div>
+										<div className="list-desktop">
+											Punkty: {points}
+										</div>
+										<div className="list-desktop">
+											Gratulacje
+										</div>
 									</div>
 									<div className="container list-desktop board-desktop">
 										<div className="row d-flex align-items-center">
@@ -292,96 +294,92 @@ function UpTo5() {
 											/>
 										)}
 									</div>
-									<div>
-										<div className="container">
-											<div className="row">
-												<div className="col-6 equations-desktop d-flex justify-content-center align-items-center">
-													{Array.from(
-														{
-															length: numbers.num1,
-														},
-														(_, index) => (
-															<FontAwesomeIcon
-																key={index}
-																icon={faStar}
-																className="star1-icon-desktop"
-															/>
-														)
-													)}
-												</div>
-												<div className="col-1"></div>
-												<div className="col-1 equations-desktop d-flex justify-content-center align-items-center">
-													{Array.from(
-														{
-															length: numbers.num2,
-														},
-														(_, index) => (
-															<FontAwesomeIcon
-																key={index}
-																icon={faStar}
-																className="star2-icon-desktop"
-															/>
-														)
-													)}
-												</div>
-											</div>
-										</div>
-										<div className="container">
-											<div className="row d-flex justify-content-center">
-												<div className="col-3 equations-desktop">
-													{numbers.num1}
-												</div>
-												<div className="col-2 equations-desktop">
-													+
-												</div>
-												<div className="col-2 equations-desktop">
-													{numbers.num2}
-												</div>
-												<div className="col-2 equations-desktop">
-													=
-												</div>
-											</div>
-										</div>
-										<div className="container">
-											<div className="row d-flex justify-content-center">
-												{answers.map(
-													(answer, index) => (
-														<div
-															className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+									<div className="container">
+										<div className="row">
+											<div className="col-6 equations-desktop d-flex justify-content-center align-items-center">
+												{Array.from(
+													{
+														length: numbers.num1,
+													},
+													(_, index) => (
+														<FontAwesomeIcon
 															key={index}
-														>
-															<button
-																className="equations-desktop"
-																onClick={() =>
-																	handleAnswerClick(
-																		answer
-																	)
-																}
-																disabled={
-																	numbers.num1 ===
-																		null ||
-																	numbers.num2 ===
-																		null
-																}
-															>
-																{answer}
-															</button>
-														</div>
+															icon={faStar}
+															className="star1-icon-desktop"
+														/>
+													)
+												)}
+											</div>
+											<div className="col-1"></div>
+											<div className="col-1 equations-desktop d-flex justify-content-center align-items-center">
+												{Array.from(
+													{
+														length: numbers.num2,
+													},
+													(_, index) => (
+														<FontAwesomeIcon
+															key={index}
+															icon={faStar}
+															className="star2-icon-desktop"
+														/>
 													)
 												)}
 											</div>
 										</div>
-										<div className="information-desktop">
-											Czas: {timer}
+									</div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											<div className="col-3 equations-desktop">
+												{numbers.num1}
+											</div>
+											<div className="col-2 equations-desktop">
+												+
+											</div>
+											<div className="col-2 equations-desktop">
+												{numbers.num2}
+											</div>
+											<div className="col-2 equations-desktop">
+												=
+											</div>
 										</div>
-										<div className="information-desktop">
-											Punkty: {points}
-										</div>
-										<div className="container ">
-											<div className="row ">
-												<div className="col ">
-													{generateHeartIcons()}
+									</div>
+									<div className="container">
+										<div className="row d-flex justify-content-center">
+											{answers.map((answer, index) => (
+												<div
+													className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+													key={index}
+												>
+													<button
+														className="equations-desktop"
+														onClick={() =>
+															handleAnswerClick(
+																answer
+															)
+														}
+														disabled={
+															numbers.num1 ===
+																null ||
+															numbers.num2 ===
+																null
+														}
+													>
+														{answer}
+													</button>
 												</div>
+											))}
+										</div>
+									</div>
+									<div className="information-desktop">
+										Czas: {timer}
+									</div>
+									<div className="information-desktop">
+										Punkty: {points}
+									</div>
+									<div className="container ">
+										<div className="row ">
+											<div className="col ">
+												{generateHeartIcons()}
 											</div>
 										</div>
 									</div>
