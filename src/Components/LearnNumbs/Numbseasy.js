@@ -55,6 +55,7 @@ function Numberseasy() {
 				setTimer((prevTimer) => prevTimer - 1);
 			} else if (timer === 0 && canAnswer) {
 				clearInterval(intervalId);
+				setCanAnswer(false);
 				handleWrongAnswer();
 			}
 		}, 1000);
@@ -183,6 +184,7 @@ function Numberseasy() {
 		setLives(3);
 		setIncorrectAnswers(0);
 		generateNumbersEmoji();
+		setCorrectAnswerInfo(null);
 	};
 
 	const renderCorrectAnswerInfo = () => {
@@ -216,14 +218,16 @@ function Numberseasy() {
 							</div>
 							{gameOver ? (
 								<div className="gameOver">
-									<div className="list-desktop">
-										KONIEC GRY
-									</div>
-									<div className="list-desktop">
-										Punkty: {points}
-									</div>
-									<div className="list-desktop">
-										Gratulacje
+									<div className="container board-desktop">
+										<div className="list-desktop">
+											KONIEC GRY
+										</div>
+										<div className="list-desktop">
+											Punkty: {points}
+										</div>
+										<div className="list-desktop">
+											Gratulacje
+										</div>
 									</div>
 									<div className="container list-desktop board-desktop">
 										<div className="row d-flex align-items-center">
@@ -409,8 +413,22 @@ function Numberseasy() {
 							</div>
 						) : (
 							<div className="gameOver">
-								<div className="list-title-mobile">
-									Wybierz odbiowiednią liczbę
+								<div className="row d-flex align-items-center justify-content-center margin-main">
+									<div className="col-11 main-title">
+										Wybierz poprawną odpowiedź
+									</div>
+									<div className="col-1">
+										<button
+											className="btn-desktop"
+											onClick={() => play(answer)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
 								</div>
 								<div className="icons-mobile">
 									{emoji === "smile" && (
