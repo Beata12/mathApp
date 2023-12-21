@@ -75,7 +75,7 @@
 
 .icons-desktop {
 	height: 140px;
-	margin: 20px;
+	margin: 5px;
 }
 
 .icons-space-desktop {
@@ -192,6 +192,8 @@
 
 .input-mobile {
 	width: 65% !important;
+	padding: 15px;
+	font-size: 40px;
 }
 
 .input-bck-mobile {
@@ -254,6 +256,7 @@
 	font-size: 41px;
 	font-weight: bold;
 	color: white;
+	margin: 30px;
 }
 
 .correct-answer-info {

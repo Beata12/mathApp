@@ -13,7 +13,7 @@ import {
 	faVolumeUp,
 } from "@fortawesome/free-solid-svg-icons";
 
-function UpTo5() {
+function UpTo5E() {
 	const [timer, setTimer] = useState(10);
 	const [numbers, setNumbers] = useState({ num1: null, num2: null });
 	const [answers, setAnswers] = useState([null, null, null]);
@@ -55,6 +55,7 @@ function UpTo5() {
 				setTimer((prevTimer) => prevTimer - 1);
 			} else if (timer === 0 && canAnswer) {
 				clearInterval(intervalId);
+				setCanAnswer(false);
 				handleWrongAnswer();
 			}
 		}, 1000);
@@ -211,6 +212,7 @@ function UpTo5() {
 		setLives(3);
 		setIncorrectAnswers(0);
 		generateRandomNumbers();
+		setCorrectAnswerInfo(null);
 	};
 
 	return (
@@ -262,124 +264,128 @@ function UpTo5() {
 								</div>
 							) : (
 								<div className="gameOver">
-									<div className="row d-flex align-items-center justify-content-center margin-main">
-										<div className="col-11 main-title">
-											Wybierz poprawną odpowiedź
-										</div>
-										<div className="col-1">
-											<button
-												className="btn-desktop"
-												onClick={() => play(answer)}
-												disabled={isButtonDisabled}
-											>
-												<FontAwesomeIcon
-													icon={faVolumeUp}
-													className="volume-icon"
-												/>
-											</button>
-										</div>
-									</div>
-									<div className="icons-desktop">
-										{renderCorrectAnswerInfo()}
-										{emoji === "smile" && (
-											<FontAwesomeIcon
-												icon={faFaceSmile}
-												className="smile-icon-desktop"
-											/>
-										)}
-										{emoji === "frown" && (
-											<FontAwesomeIcon
-												icon={faFaceFrown}
-												className="frown-icon-desktop"
-											/>
-										)}
-									</div>
-									<div className="container">
-										<div className="row">
-											<div className="col-6 equations-desktop d-flex justify-content-center align-items-center">
-												{Array.from(
-													{
-														length: numbers.num1,
-													},
-													(_, index) => (
-														<FontAwesomeIcon
-															key={index}
-															icon={faStar}
-															className="star1-icon-desktop"
-														/>
-													)
-												)}
+									<div className="container board-desktop">
+										<div className="row d-flex align-items-center justify-content-center margin-main">
+											<div className="col-11 main-title">
+												Wybierz poprawną odpowiedź
 											</div>
-											<div className="col-1"></div>
-											<div className="col-1 equations-desktop d-flex justify-content-center align-items-center">
-												{Array.from(
-													{
-														length: numbers.num2,
-													},
-													(_, index) => (
-														<FontAwesomeIcon
-															key={index}
-															icon={faStar}
-															className="star2-icon-desktop"
-														/>
-													)
-												)}
-											</div>
-										</div>
-									</div>
-									<div className="container">
-										<div className="row d-flex justify-content-center">
-											<div className="col-3 equations-desktop">
-												{numbers.num1}
-											</div>
-											<div className="col-2 equations-desktop">
-												+
-											</div>
-											<div className="col-2 equations-desktop">
-												{numbers.num2}
-											</div>
-											<div className="col-2 equations-desktop">
-												=
-											</div>
-										</div>
-									</div>
-									<div className="container">
-										<div className="row d-flex justify-content-center">
-											{answers.map((answer, index) => (
-												<div
-													className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
-													key={index}
+											<div className="col-1">
+												<button
+													className="btn-desktop"
+													onClick={() => play(answer)}
+													disabled={isButtonDisabled}
 												>
-													<button
-														className="equations-desktop"
-														onClick={() =>
-															handleAnswerClick(
-																answer
-															)
-														}
-														disabled={
-															numbers.num1 ===
-																null ||
-															numbers.num2 ===
-																null
-														}
-													>
-														{answer}
-													</button>
-												</div>
-											))}
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
 										</div>
-									</div>
-									<div className="information-desktop">
-										Czas: {timer}
-									</div>
-									<div className="information-desktop">
-										Punkty: {points}
-									</div>
-									<div className="container ">
-										<div className="row ">
-											<div className="col ">
-												{generateHeartIcons()}
+										<div className="icons-desktop">
+											{renderCorrectAnswerInfo()}
+											{emoji === "smile" && (
+												<FontAwesomeIcon
+													icon={faFaceSmile}
+													className="smile-icon-desktop"
+												/>
+											)}
+											{emoji === "frown" && (
+												<FontAwesomeIcon
+													icon={faFaceFrown}
+													className="frown-icon-desktop"
+												/>
+											)}
+										</div>
+										<div className="container">
+											<div className="row">
+												<div className="col-6 equations-desktop d-flex justify-content-center align-items-center">
+													{Array.from(
+														{
+															length: numbers.num1,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faStar}
+																className="star1-icon-desktop"
+															/>
+														)
+													)}
+												</div>
+												<div className="col-1"></div>
+												<div className="col-1 equations-desktop d-flex justify-content-center align-items-center">
+													{Array.from(
+														{
+															length: numbers.num2,
+														},
+														(_, index) => (
+															<FontAwesomeIcon
+																key={index}
+																icon={faStar}
+																className="star2-icon-desktop"
+															/>
+														)
+													)}
+												</div>
+											</div>
+										</div>
+										<div className="container">
+											<div className="row d-flex justify-content-center">
+												<div className="col-3 equations-desktop">
+													{numbers.num1}
+												</div>
+												<div className="col-2 equations-desktop">
+													+
+												</div>
+												<div className="col-2 equations-desktop">
+													{numbers.num2}
+												</div>
+												<div className="col-2 equations-desktop">
+													=
+												</div>
+											</div>
+										</div>
+										<div className="container">
+											<div className="row d-flex justify-content-center">
+												{answers.map(
+													(answer, index) => (
+														<div
+															className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+															key={index}
+														>
+															<button
+																className="equations-desktop"
+																onClick={() =>
+																	handleAnswerClick(
+																		answer
+																	)
+																}
+																disabled={
+																	numbers.num1 ===
+																		null ||
+																	numbers.num2 ===
+																		null
+																}
+															>
+																{answer}
+															</button>
+														</div>
+													)
+												)}
+											</div>
+										</div>
+										<div className="information-desktop">
+											Czas: {timer}
+										</div>
+										<div className="information-desktop">
+											Punkty: {points}
+										</div>
+										<div className="container ">
+											<div className="row ">
+												<div className="col ">
+													{generateHeartIcons()}
+												</div>
 											</div>
 										</div>
 									</div>
@@ -410,7 +416,7 @@ function UpTo5() {
 										</button>
 									</div>
 								</div>
-							</div>{" "}
+							</div>
 							<div className="container list-desktop board-desktop">
 								<div className="row d-flex align-items-center">
 									<div className="col-9">
@@ -551,4 +557,4 @@ function UpTo5() {
 	);
 }
 
-export default UpTo5;
+export default UpTo5E;
