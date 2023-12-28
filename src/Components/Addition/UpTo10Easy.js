@@ -265,21 +265,30 @@ function UpTo10E() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
-										<div className="row d-flex align-items-center justify-content-center margin-main">
-											<div className="col-11 main-title">
-												Wybierz poprawną odpowiedź
-											</div>
-											<div className="col-1">
-												<button
-													className="btn-desktop"
-													onClick={() => play(answer)}
-													disabled={isButtonDisabled}
-												>
-													<FontAwesomeIcon
-														icon={faVolumeUp}
-														className="volume-icon"
-													/>
-												</button>
+										<div className="container list-desktop">
+											<div className="row d-flex align-items-center">
+												<div className="col-9">
+													<button className="btn-desktop main-title">
+														Wybierz poprawną
+														odpowiedź
+													</button>
+												</div>
+												<div className="col-3">
+													<button
+														className="btn-desktop"
+														onClick={() =>
+															play(answer)
+														}
+														disabled={
+															isButtonDisabled
+														}
+													>
+														<FontAwesomeIcon
+															icon={faVolumeUp}
+															className="volume-icon"
+														/>
+													</button>
+												</div>
 											</div>
 										</div>
 										<div className="icons-desktop">

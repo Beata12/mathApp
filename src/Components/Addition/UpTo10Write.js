@@ -15,7 +15,6 @@ import {
 function UpTo10W() {
 	const [timer, setTimer] = useState(10);
 	const [numbers, setNumbers] = useState({ num1: null, num2: null });
-	const [answers, setAnswers] = useState([null, null, null]);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [points, setPoints] = useState(0);
 	const [emoji, setEmoji] = useState(null);
@@ -150,17 +149,17 @@ function UpTo10W() {
 		}, 2000);
 	};
 
-	const handleAnswerClick = (selectedAnswer) => {
-		if (canAnswer) {
-			setCanAnswer(false);
+	// const handleAnswerClick = (selectedAnswer) => {
+	// 	if (canAnswer) {
+	// 		setCanAnswer(false);
 
-			if (selectedAnswer === correctAnswer) {
-				handleCorrectAnswer();
-			} else {
-				handleWrongAnswer();
-			}
-		}
-	};
+	// 		if (selectedAnswer === correctAnswer) {
+	// 			handleCorrectAnswer();
+	// 		} else {
+	// 			handleWrongAnswer();
+	// 		}
+	// 	}
+	// };
 
 	const handleCorrectAnswer = () => {
 		setPoints((prevPoints) => prevPoints + 1);
@@ -290,21 +289,30 @@ function UpTo10W() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
-										<div className="row d-flex align-items-center justify-content-center margin-main">
-											<div className="col-11 main-title">
-												Wybierz poprawną odpowiedź
-											</div>
-											<div className="col-1">
-												<button
-													className="btn-desktop"
-													onClick={() => play(answer)}
-													disabled={isButtonDisabled}
-												>
-													<FontAwesomeIcon
-														icon={faVolumeUp}
-														className="volume-icon"
-													/>
-												</button>
+										<div className="container list-desktop">
+											<div className="row d-flex align-items-center">
+												<div className="col-9">
+													<button className="btn-desktop main-title">
+														Wybierz poprawną
+														odpowiedź
+													</button>
+												</div>
+												<div className="col-3">
+													<button
+														className="btn-desktop"
+														onClick={() =>
+															play(answer)
+														}
+														disabled={
+															isButtonDisabled
+														}
+													>
+														<FontAwesomeIcon
+															icon={faVolumeUp}
+															className="volume-icon"
+														/>
+													</button>
+												</div>
 											</div>
 										</div>
 										<div className="icons-desktop">
@@ -490,29 +498,30 @@ function UpTo10W() {
 									</div>
 									<div className="container">
 										<div className="row d-flex justify-content-center">
-											{answers.map((answer, index) => (
-												<div
-													className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
-													key={index}
-												>
-													<button
-														className="equations-mobile"
-														onClick={() =>
-															handleAnswerClick(
-																answer
-															)
-														}
-														disabled={
-															numbers.num1 ===
-																null ||
-															numbers.num2 ===
-																null
-														}
-													>
-														{answer}
-													</button>
-												</div>
-											))}
+											<input
+												className="answer-box-mobile d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
+												type="text"
+												pattern="[0-9]*"
+												value={userInput}
+												onChange={handleUserInput}
+												disabled={isCheckingAnswer}
+												style={{
+													textAlign: "center",
+													width: "100%",
+												}}
+											/>
+											<button
+												className=" answer-box-mobile d-flex align-items-center justify-content-center input-mobile"
+												onClick={() => {
+													checkAnswer();
+												}}
+												disabled={
+													!canAnswer ||
+													isCheckingAnswer
+												}
+											>
+												Sprawdź
+											</button>
 										</div>
 									</div>
 									<div className="information-mobile">
