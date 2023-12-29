@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import answer from "../../audio/answer.mp3";
+import level from "../../audio/poziom.mp3";
+import menu from "../../audio/menu.mp3";
+import zagraj from "../../audio/zagraj.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faFaceFrown,
@@ -10,6 +14,7 @@ import {
 	faHeart,
 	faHeartCrack,
 	faBan,
+	faVolumeUp,
 } from "@fortawesome/free-solid-svg-icons";
 
 function SubtractionUpTo5E() {
@@ -28,6 +33,25 @@ function SubtractionUpTo5E() {
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
 	const [correctAnswerInfo, setCorrectAnswerInfo] = useState(null);
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	useEffect(() => {
 		generateRandomNumbers();
@@ -216,173 +240,269 @@ function SubtractionUpTo5E() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10">
 						<ul className="text-center">
 							<div className="list-title-desktop">
-								ODEJMOWANIE DO 5
+								ODEJMOWANIE DO 5 - poziom łatwy
 							</div>
 							{gameOver && (
 								<div className="gameOver">
-									<div className="list-desktop">
-										KONIEC GRY
+									<div className="container board-desktop">
+										<div className="list-desktop">
+											KONIEC GRY
+										</div>
+										<div className="list-desktop">
+											Punkty: {points}
+										</div>
+										<div className="list-desktop">
+											Gratulacje
+										</div>
 									</div>
-									<div className="list-desktop">
-										Punkty: {points}
-									</div>
-									<div className="list-desktop">
-										Gratulacje
-									</div>
-									<div className="list-desktop board-desktop align-items-center justify-content-center">
-										<button
-											onClick={startNewGame}
-											className="btn-desktop"
-										>
-											Zagraj jeszcze raz
-										</button>
+									<div className="container list-desktop board-desktop">
+										<div className="row d-flex align-items-center">
+											<div className="col-9">
+												<button
+													className="btn-desktop hover-menu"
+													onClick={startNewGame}
+												>
+													Zagraj jeszcze raz
+												</button>
+											</div>
+											<div className="col-3">
+												<button
+													className="btn-desktop"
+													onClick={() => play(zagraj)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							)}
 							{!gameOver && (
 								<div className="gameOver">
-									<div className="list-title-desktop">
-										Wybierz poprawną odpowiedź
-									</div>
-									<div className="icons-desktop">
-										{renderCorrectAnswerInfo()}
-										{showSmile && (
-											<FontAwesomeIcon
-												icon={faFaceSmile}
-												className="smile-icon-desktop"
-											/>
-										)}
-										{showFrown && (
-											<FontAwesomeIcon
-												icon={faFaceFrown}
-												className="frown-icon-desktop"
-											/>
-										)}
-									</div>
-									<div>
-										<div className="container">
-											<div className="row justify-content-center">
-												<div className="row-2 equations-desktop d-flex justify-content-center align-items-center">
-													{Array.from(
-														{
-															length:
-																number1 -
-																number2,
-														},
-														(_, index) => (
-															<FontAwesomeIcon
-																key={index}
-																icon={faCircle}
-																className="circle-icon-desktop"
-															/>
-														)
-													)}
-													{Array.from(
-														{
-															length: number2,
-														},
-														(_, index) => (
-															<FontAwesomeIcon
-																key={index}
-																icon={faBan}
-																className="ban-icon-desktop"
-															/>
-														)
-													)}
-												</div>
-											</div>
-										</div>
-										<div className="container">
-											<div className="row d-flex justify-content-center align-items-center">
-												<div className="col-2 equations-desktop sub-nb1 ">
-													{number1}
-												</div>
-												<div className="col-2 equations-desktop">
-													-
-												</div>
-												<div className="col-2 equations-desktop sub-nb">
-													{number2}
-												</div>
-												<div className="col-2 equations-desktop">
-													=
-												</div>
-											</div>
-										</div>
-										<div className="container">
-											<div className="row d-flex justify-content-center">
-												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
-													<button
-														className="equations-desktop sub-result"
-														onClick={() =>
-															checkAnswer(answer1)
-														}
-														disabled={
-															number1 === null ||
-															number2 === null
-														}
-													>
-														{answer1}
+									<div className="container board-desktop">
+										<div className="container list-desktop">
+											<div className="row d-flex align-items-center">
+												<div className="col-9">
+													<button className="btn-desktop main-title">
+														Wybierz poprawną
+														odpowiedź
 													</button>
 												</div>
-												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+												<div className="col-3">
 													<button
-														className="equations-desktop sub-result"
+														className="btn-desktop"
 														onClick={() =>
-															checkAnswer(answer2)
+															play(answer)
 														}
 														disabled={
-															number1 === null ||
-															number2 === null
+															isButtonDisabled
 														}
 													>
-														{answer2}
-													</button>
-												</div>
-												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
-													<button
-														className="equations-desktop sub-result"
-														onClick={() =>
-															checkAnswer(answer3)
-														}
-														disabled={
-															number1 === null ||
-															number2 === null
-														}
-													>
-														{answer3}
+														<FontAwesomeIcon
+															icon={faVolumeUp}
+															className="volume-icon"
+														/>
 													</button>
 												</div>
 											</div>
 										</div>
-										<div className="information-desktop">
-											Czas: {timer}
+										<div className="icons-desktop">
+											{renderCorrectAnswerInfo()}
+											{showSmile && (
+												<FontAwesomeIcon
+													icon={faFaceSmile}
+													className="smile-icon-desktop"
+												/>
+											)}
+											{showFrown && (
+												<FontAwesomeIcon
+													icon={faFaceFrown}
+													className="frown-icon-desktop"
+												/>
+											)}
 										</div>
-										<div className="information-desktop">
-											Punkty: {points}
-										</div>
-										<div className="container">
-											<div className="row">
-												<div className="col">
-													{generateHeartIcons()}
+										<div>
+											<div className="container">
+												<div className="row justify-content-center">
+													<div className="row-2 equations-desktop d-flex justify-content-center align-items-center">
+														{Array.from(
+															{
+																length:
+																	number1 -
+																	number2,
+															},
+															(_, index) => (
+																<FontAwesomeIcon
+																	key={index}
+																	icon={
+																		faCircle
+																	}
+																	className="circle-icon-desktop"
+																/>
+															)
+														)}
+														{Array.from(
+															{
+																length: number2,
+															},
+															(_, index) => (
+																<FontAwesomeIcon
+																	key={index}
+																	icon={faBan}
+																	className="ban-icon-desktop"
+																/>
+															)
+														)}
+													</div>
+												</div>
+											</div>
+											<div className="container">
+												<div className="row d-flex justify-content-center align-items-center">
+													<div className="col-2 equations-desktop sub-nb1 ">
+														{number1}
+													</div>
+													<div className="col-2 equations-desktop">
+														-
+													</div>
+													<div className="col-2 equations-desktop sub-nb">
+														{number2}
+													</div>
+													<div className="col-2 equations-desktop">
+														=
+													</div>
+												</div>
+											</div>
+											<div className="container">
+												<div className="row d-flex justify-content-center">
+													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+														<button
+															className="equations-desktop sub-result"
+															onClick={() =>
+																checkAnswer(
+																	answer1
+																)
+															}
+															disabled={
+																number1 ===
+																	null ||
+																number2 === null
+															}
+														>
+															{answer1}
+														</button>
+													</div>
+													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+														<button
+															className="equations-desktop sub-result"
+															onClick={() =>
+																checkAnswer(
+																	answer2
+																)
+															}
+															disabled={
+																number1 ===
+																	null ||
+																number2 === null
+															}
+														>
+															{answer2}
+														</button>
+													</div>
+													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+														<button
+															className="equations-desktop sub-result"
+															onClick={() =>
+																checkAnswer(
+																	answer3
+																)
+															}
+															disabled={
+																number1 ===
+																	null ||
+																number2 === null
+															}
+														>
+															{answer3}
+														</button>
+													</div>
+												</div>
+											</div>
+											<div className="information-desktop">
+												Czas: {timer}
+											</div>
+											<div className="information-desktop">
+												Punkty: {points}
+											</div>
+											<div className="container">
+												<div className="row">
+													<div className="col">
+														{generateHeartIcons()}
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							)}
-							<Link style={{ textDecoration: "none" }} to="/sub">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Wybierz inny poziom
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Powrót do menu
-								</li>
-							</Link>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/sub"
+										>
+											<button className="btn-desktop hover-menu">
+												Wybierz inny poziom
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(level)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>
@@ -390,6 +510,9 @@ function SubtractionUpTo5E() {
 			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
+						<div className="list-title-mobile">
+							ODEJMOWANIE DO 5
+						</div>
 						{gameOver && (
 							<div className="gameOver">
 								<div className="list-mobile">KONIEC GRY</div>

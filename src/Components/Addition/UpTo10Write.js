@@ -149,27 +149,6 @@ function UpTo10W() {
 		}, 2000);
 	};
 
-	// const handleAnswerClick = (selectedAnswer) => {
-	// 	if (canAnswer) {
-	// 		setCanAnswer(false);
-
-	// 		if (selectedAnswer === correctAnswer) {
-	// 			handleCorrectAnswer();
-	// 		} else {
-	// 			handleWrongAnswer();
-	// 		}
-	// 	}
-	// };
-
-	const handleCorrectAnswer = () => {
-		setPoints((prevPoints) => prevPoints + 1);
-		setEmoji("smile");
-		setTimeout(() => {
-			setEmoji(null);
-			generateRandomNumbers();
-		}, 2000);
-	};
-
 	const handleWrongAnswer = () => {
 		setIncorrectAnswers((prevIncorrect) => prevIncorrect + 1);
 		if (lives > 0) {
@@ -293,8 +272,7 @@ function UpTo10W() {
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
 													<button className="btn-desktop main-title">
-														Wybierz poprawną
-														odpowiedź
+														Wpisz poprawną odpowiedź
 													</button>
 												</div>
 												<div className="col-3">

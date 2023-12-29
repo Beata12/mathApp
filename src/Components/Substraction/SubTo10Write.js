@@ -1,23 +1,49 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import answer from "../../audio/answer.mp3";
+import level from "../../audio/poziom.mp3";
+import menu from "../../audio/menu.mp3";
+import zagraj from "../../audio/zagraj.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import { faHeart, faHeartCrack } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faHeartCrack,
+	faVolumeUp,
+} from "@fortawesome/free-solid-svg-icons";
 
-function SubtractionUpTo10Write() {
+function SubUpTo10W() {
 	const [timer, setTimer] = useState(10);
-	const [number1, setNumber1] = useState(null);
-	const [number2, setNumber2] = useState(null);
-	const [userInput, setUserInput] = useState("");
+	const [numbers, setNumbers] = useState({ num1: null, num2: null });
 	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [points, setPoints] = useState(0);
-	const [showSmile, setShowSmile] = useState(false);
-	const [showFrown, setShowFrown] = useState(false);
+	const [emoji, setEmoji] = useState(null);
 	const [canAnswer, setCanAnswer] = useState(true);
 	const [lives, setLives] = useState(3);
 	const [incorrectAnswers, setIncorrectAnswers] = useState(0);
 	const [gameOver, setGameOver] = useState(false);
-	const [isCheckingAnswer, setIsCheckingAnswer] = useState(false); // New state
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+	const [correctAnswerInfo, setCorrectAnswerInfo] = useState(null);
+	const [userInput, setUserInput] = useState("");
+	const [isCheckingAnswer, setIsCheckingAnswer] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	useEffect(() => {
 		generateRandomNumbers();
@@ -26,91 +52,112 @@ function SubtractionUpTo10Write() {
 	useEffect(() => {
 		const intervalId = setInterval(() => {
 			if (timer > 0 && canAnswer) {
-				setTimer(timer - 1);
+				setTimer((prevTimer) => prevTimer - 1);
 			} else if (timer === 0 && canAnswer) {
 				clearInterval(intervalId);
-				setShowFrown(true);
-				if (lives > 0) {
-					setLives(lives - 1);
-					setIncorrectAnswers(incorrectAnswers + 1); // Increment incorrect answers
-				} else {
-					setGameOver(true);
-				}
-				setTimeout(() => {
-					setShowFrown(false);
-					generateRandomNumbers();
-				}, 2000);
+				setCanAnswer(false);
+				handleWrongAnswer();
 			}
 		}, 1000);
 
 		return () => {
 			clearInterval(intervalId);
 		};
-	}, [timer, canAnswer, lives, incorrectAnswers]);
+	}, [timer, canAnswer]);
 
 	const generateRandomNumbers = () => {
 		setCanAnswer(true);
-		const min = 0;
+		const min = 1;
 		const max = 10;
 
-		let newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
-		let newNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
-
-		while (newNumber2 > newNumber1) {
+		let newNumber1, newNumber2, correct;
+		do {
+			newNumber1 = Math.floor(Math.random() * (max - min + 1)) + min;
 			newNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
-		}
-
-		const correct = newNumber1 - newNumber2;
-
-		setNumber1(newNumber1);
-		setNumber2(newNumber2);
+			while (newNumber2 > newNumber1) {
+				newNumber2 = Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			correct = newNumber1 - newNumber2;
+		} while (correct > 10);
 
 		setCorrectAnswer(correct);
-		setShowSmile(false);
+		setNumbers({ num1: newNumber1, num2: newNumber2 });
+		setEmoji(null);
+		setCorrectAnswerInfo(null);
 		setTimer(10);
+		setUserInput("");
 	};
 
 	const handleUserInput = (event) => {
-		setUserInput(event.target.value);
+		const inputValue = event.target.value;
+		const isNumeric = /^\d+$/;
+
+		if (isNumeric.test(inputValue) && parseInt(inputValue, 10) <= 10) {
+			setUserInput(inputValue);
+		} else if (inputValue === "") {
+			setUserInput("");
+		}
 	};
 
 	const checkAnswer = () => {
-		if (isCheckingAnswer) {
-			return; // Return early if already checking answer
+		if (isCheckingAnswer || userInput === "") {
+			return;
 		}
 
-		setIsCheckingAnswer(true); // Set to true while checking the answer
+		setIsCheckingAnswer(true);
 
 		if (userInput === correctAnswer.toString()) {
 			setPoints(points + 1);
-			setShowSmile(true);
+			setEmoji("smile");
 		} else {
 			setIncorrectAnswers(incorrectAnswers + 1);
 			if (lives > 0) {
 				setLives(lives - 1);
 			}
-			setShowFrown(true);
+			setEmoji("frown");
+			setCorrectAnswerInfo(correctAnswer);
 
 			if (incorrectAnswers + 1 >= 3) {
-				setGameOver(true);
+				setTimeout(() => {
+					setGameOver(true);
+				}, 2000);
+				return;
 			}
 		}
 
-		setCanAnswer(false); // Disable answering while showing icons
+		setCanAnswer(false);
 
 		setTimeout(() => {
-			setShowSmile(false);
-			setShowFrown(false);
+			setEmoji(null);
 			generateRandomNumbers();
-			setUserInput(""); // Clear the userInput field
-			setCanAnswer(true); // Enable answering for the new question
-			setIsCheckingAnswer(false); // Set to false when answer check is completed
+			setUserInput("");
+			setCanAnswer(true);
+			setIsCheckingAnswer(false);
 
-			// Check for game over after an incorrect answer
 			if (
 				incorrectAnswers + 1 >= 3 &&
 				userInput !== correctAnswer.toString()
 			) {
+				setTimeout(() => {
+					setCorrectAnswerInfo(null);
+					setEmoji("frown");
+				}, 2000);
+			}
+		}, 2000);
+	};
+
+	const handleWrongAnswer = () => {
+		setIncorrectAnswers((prevIncorrect) => prevIncorrect + 1);
+		if (lives > 0) {
+			setLives((prevLives) => prevLives - 1);
+		}
+		setEmoji("frown");
+		setCorrectAnswerInfo(correctAnswer);
+		setTimeout(() => {
+			setEmoji(null);
+			generateRandomNumbers();
+
+			if (incorrectAnswers === 2) {
 				setGameOver(true);
 			}
 		}, 2000);
@@ -139,86 +186,157 @@ function SubtractionUpTo10Write() {
 		return heartIcons;
 	};
 
+	const renderCorrectAnswerInfo = () => {
+		if (correctAnswerInfo !== null) {
+			setTimeout(() => {
+				setCorrectAnswerInfo(null);
+			}, 2000);
+
+			return (
+				<div className="container">
+					<div className="row correct-answer-info d-flex justify-content-center align-items-center">
+						<div className="col-7">Poprawna odpowiedź:</div>
+						<div className="correct-ans col-2">
+							{correctAnswerInfo}
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	const startNewGame = () => {
 		setGameOver(false);
 		setPoints(0);
 		setLives(3);
 		setIncorrectAnswers(0);
 		generateRandomNumbers();
+		setCorrectAnswerInfo(null);
 	};
 
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-8 ">
+					<div className="col-10">
 						<ul className="text-center">
 							<div className="list-title-desktop">
-								ODEJMOWANIE DO 10
+								ODEJMOWANIE DO 10 - poziom trudny
 							</div>
-							{gameOver && (
+							{gameOver ? (
 								<div className="gameOver">
-									<div className="list-desktop">
-										KONIEC GRY
+									<div className="container board-desktop">
+										<div className="list-desktop">
+											KONIEC GRY
+										</div>
+										<div className="list-desktop">
+											Punkty: {points}
+										</div>
+										<div className="list-desktop">
+											Gratulacje
+										</div>
 									</div>
-									<div className="list-desktop">
-										Punkty: {points}
-									</div>
-									<div className="list-desktop">
-										Gratulacje
-									</div>
-									<div className="list-desktop board-desktop align-items-center justify-content-center">
-										<button
-											onClick={startNewGame}
-											className="btn-desktop"
-										>
-											Zagraj jeszcze raz
-										</button>
+									<div className="container list-desktop board-desktop">
+										<div className="row d-flex align-items-center">
+											<div className="col-9">
+												<button
+													className="btn-desktop hover-menu"
+													onClick={startNewGame}
+												>
+													Zagraj jeszcze raz
+												</button>
+											</div>
+											<div className="col-3">
+												<button
+													className="btn-desktop"
+													onClick={() => play(zagraj)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
 									</div>
 								</div>
-							)}
-							{!gameOver && (
+							) : (
 								<div className="gameOver">
-									<div className="icons-desktop">
-										{showSmile && (
-											<FontAwesomeIcon
-												icon={faFaceSmile}
-												className="smile-icon-desktop"
-											/>
-										)}
-										{showFrown && (
-											<FontAwesomeIcon
-												icon={faFaceFrown}
-												className="frown-icon-desktop"
-											/>
-										)}
-									</div>
-									<div>
+									<div className="container board-desktop">
+										<div className="container list-desktop">
+											<div className="row d-flex align-items-center">
+												<div className="col-9">
+													<button className="btn-desktop main-title">
+														Wpisz poprawną odpowiedź
+													</button>
+												</div>
+												<div className="col-3">
+													<button
+														className="btn-desktop"
+														onClick={() =>
+															play(answer)
+														}
+														disabled={
+															isButtonDisabled
+														}
+													>
+														<FontAwesomeIcon
+															icon={faVolumeUp}
+															className="volume-icon"
+														/>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div className="icons-desktop">
+											{renderCorrectAnswerInfo()}
+											{emoji === "smile" && (
+												<FontAwesomeIcon
+													icon={faFaceSmile}
+													className="smile-icon-desktop"
+												/>
+											)}
+											{emoji === "frown" && (
+												<FontAwesomeIcon
+													icon={faFaceFrown}
+													className="frown-icon-desktop"
+												/>
+											)}
+										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
-												<div className="col-2 equations-desktop">
-													{number1}
+												<div className="col-3 equations-desktop">
+													{numbers.num1}
 												</div>
 												<div className="col-2 equations-desktop">
 													-
 												</div>
 												<div className="col-2 equations-desktop">
-													{number2}
+													{numbers.num2}
+												</div>
+												<div className="col-2 equations-desktop">
+													=
 												</div>
 											</div>
 										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
 												<input
-													className=" answer-box-desktop d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
-													type="number"
+													className="answer-box-desktop d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
+													type="text"
+													pattern="[0-9]*"
 													value={userInput}
 													onChange={handleUserInput}
-													max="10"
-													disabled={isCheckingAnswer} // Disable input while checking answer
+													disabled={isCheckingAnswer}
+													style={{
+														textAlign: "center",
+														width: "100%",
+													}}
 												/>
 												<button
-													className=" answer-box-desktop d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
+													className="answer-box-desktop d-flex align-items-center justify-content-center input-mobile"
 													onClick={() => {
 														checkAnswer();
 													}}
@@ -237,9 +355,9 @@ function SubtractionUpTo10Write() {
 										<div className="information-desktop">
 											Punkty: {points}
 										</div>
-										<div className="container">
-											<div className="row">
-												<div className="col">
+										<div className="container ">
+											<div className="row ">
+												<div className="col ">
 													{generateHeartIcons()}
 												</div>
 											</div>
@@ -247,16 +365,58 @@ function SubtractionUpTo10Write() {
 									</div>
 								</div>
 							)}
-							<Link style={{ textDecoration: "none" }} to="/sub">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Wybierz inny poziom
-								</li>
-							</Link>
-							<Link style={{ textDecoration: "none" }} to="/">
-								<li className="list-desktop board-desktop align-items-center justify-content-center">
-									Powrót do menu
-								</li>
-							</Link>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/sub"
+										>
+											<button className="btn-desktop hover-menu">
+												Wybierz inny poziom
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(level)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>
@@ -264,7 +424,10 @@ function SubtractionUpTo10Write() {
 			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						{gameOver && (
+						<div className="list-title-mobile">
+							ODEJMOWANIE DO 10
+						</div>
+						{gameOver ? (
 							<div className="gameOver">
 								<div className="list-mobile">KONIEC GRY</div>
 								<div className="list-mobile">
@@ -280,20 +443,16 @@ function SubtractionUpTo10Write() {
 									</button>
 								</div>
 							</div>
-						)}
-						{!gameOver && (
+						) : (
 							<div className="gameOver">
-								<div className="list-title-mobile">
-									Wybierz odpowiedni wynik
-								</div>
 								<div className="icons-mobile">
-									{showSmile && (
+									{emoji === "smile" && (
 										<FontAwesomeIcon
 											icon={faFaceSmile}
 											className="smile-icon"
 										/>
 									)}
-									{showFrown && (
+									{emoji === "frown" && (
 										<FontAwesomeIcon
 											icon={faFaceFrown}
 											className="frown-icon"
@@ -304,28 +463,29 @@ function SubtractionUpTo10Write() {
 									<div className="container">
 										<div className="row d-flex justify-content-center">
 											<div className="col-2 equations-mobile">
-												{number1}
+												{numbers.num1}
 											</div>
 											<div className="col-2 equations-mobile">
 												-
 											</div>
 											<div className="col-2 equations-mobile">
-												{number2}
-											</div>
-											<div className="col-2 equations-mobile">
-												=
+												{numbers.num2}
 											</div>
 										</div>
 									</div>
 									<div className="container">
 										<div className="row d-flex justify-content-center">
 											<input
-												className=" answer-box-mobile d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
-												type="number"
+												className="answer-box-mobile d-flex align-items-center justify-content-center input-mobile input-bck-mobile"
+												type="text"
+												pattern="[0-9]*"
 												value={userInput}
 												onChange={handleUserInput}
-												max="10"
-												disabled={isCheckingAnswer} // Disable input while checking answer
+												disabled={isCheckingAnswer}
+												style={{
+													textAlign: "center",
+													width: "100%",
+												}}
 											/>
 											<button
 												className=" answer-box-mobile d-flex align-items-center justify-content-center input-mobile"
@@ -335,7 +495,7 @@ function SubtractionUpTo10Write() {
 												disabled={
 													!canAnswer ||
 													isCheckingAnswer
-												} // Disable button when answering is disabled or answer is being checked
+												}
 											>
 												Sprawdź
 											</button>
@@ -373,4 +533,5 @@ function SubtractionUpTo10Write() {
 		</main>
 	);
 }
-export default SubtractionUpTo10Write;
+
+export default SubUpTo10W;
