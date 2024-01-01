@@ -106,6 +106,9 @@ function SubtractionUpTo5E() {
 		let incorrect1 = generateIncorrectAnswer(incorrectIndexes, correct);
 		incorrectIndexes.splice(incorrectIndexes.indexOf(incorrect1), 1);
 		let incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+		while (incorrect2 === incorrect1) {
+			incorrect2 = generateIncorrectAnswer(incorrectIndexes, correct);
+		}
 
 		if (incorrect1 === "" || incorrect2 === "") {
 			incorrect1 = 0;
@@ -330,8 +333,8 @@ function SubtractionUpTo5E() {
 										</div>
 										<div>
 											<div className="container">
-												<div className="row justify-content-center">
-													<div className="row-2 equations-desktop d-flex justify-content-center align-items-center">
+												<div className="row">
+													<div className="row-2">
 														{Array.from(
 															{
 																length:

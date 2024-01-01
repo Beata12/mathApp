@@ -390,9 +390,9 @@ function UpTo5E() {
 										<div className="information-desktop">
 											Punkty: {points}
 										</div>
-										<div className="container ">
-											<div className="row ">
-												<div className="col ">
+										<div className="container">
+											<div className="row">
+												<div className="col">
 													{generateHeartIcons()}
 												</div>
 											</div>
