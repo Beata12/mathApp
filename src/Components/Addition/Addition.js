@@ -36,7 +36,7 @@ function Addition() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10 text-center">
+					<div className="col-12 text-center">
 						<div className="container list-desktop board-desktop main-title">
 							DODAWANIE
 						</div>
@@ -227,7 +227,7 @@ function Addition() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="/"
+										to="/dz"
 									>
 										<button className="btn-desktop hover-menu">
 											Powrót do menu
@@ -279,9 +279,9 @@ function Addition() {
 								Dodawanie do 20 - wpisywanie
 							</li>
 						</Link>
-						<Link style={{ textDecoration: "none" }} to="/">
+						<Link style={{ textDecoration: "none" }} to="/dz">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Wróć
+								Powrót do menu
 							</li>
 						</Link>
 					</ul>

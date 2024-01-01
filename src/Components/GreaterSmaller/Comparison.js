@@ -35,7 +35,7 @@ function Comparasion() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10 ">
+					<div className="col-12">
 						<div className="container list-desktop board-desktop main-title">
 							PORÓWNYWANIE LICZB
 						</div>
@@ -204,7 +204,7 @@ function Comparasion() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="/"
+										to="/dz"
 									>
 										<button className="btn-desktop hover-menu">
 											Powrót do menu
@@ -251,7 +251,7 @@ function Comparasion() {
 								Porównywanie liczb
 							</li>
 						</Link>
-						<Link style={{ textDecoration: "none" }} to="/">
+						<Link style={{ textDecoration: "none" }} to="/dz">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Powrót do menu
 							</li>

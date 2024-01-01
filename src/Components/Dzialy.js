@@ -23,7 +23,7 @@ function Dzialy() {
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
 			setButtonDisabled(false);
-		}, 2000);
+		}, 2500);
 
 		return () => {
 			clearTimeout(timeoutId);
@@ -39,7 +39,8 @@ function Dzialy() {
 							<div className="container list-desktop board-desktop main-title">
 								<Link style={{ textDecoration: "none" }} to="/">
 									<button className="btn-desktop">
-										MATEMATYCZNA KRAINA ZABAWY
+										🔢 = 🤔 ➕ 🎲 MATEMATYCZNA KRAINA ZABAWY
+										🎲 ➕ 🤔 = 🔢
 									</button>
 								</Link>
 							</div>
@@ -51,7 +52,7 @@ function Dzialy() {
 											to="./num"
 										>
 											<button className="btn-desktop hover-menu">
-												Liczbowe Spotkanie
+												🔢 Liczbowe Spotkanie 🔢
 											</button>
 										</Link>
 									</div>
@@ -77,7 +78,7 @@ function Dzialy() {
 											to="./sign"
 										>
 											<button className="btn-desktop hover-menu">
-												Magiczne Znaki Matematyki
+												▶ Magiczne Znaki Matematyki ✍️
 											</button>
 										</Link>
 									</div>
@@ -103,7 +104,7 @@ function Dzialy() {
 											to="./add"
 										>
 											<button className="btn-desktop hover-menu">
-												Odkrywamy Świat Dodawania
+												➕ Odkrywamy Świat Dodawania ➕
 											</button>
 										</Link>
 									</div>
@@ -129,7 +130,8 @@ function Dzialy() {
 											to="./sub"
 										>
 											<button className="btn-desktop hover-menu">
-												Odkrywamy Świat Odejmowania
+												⛔ Odkrywamy Świat Odejmowania
+												⛔
 											</button>
 										</Link>
 									</div>
@@ -155,7 +157,8 @@ function Dzialy() {
 											to="./comp"
 										>
 											<button className="btn-desktop hover-menu">
-												Zabawy w Porównywanie Liczb
+												⚖️ Zabawy w Porównywanie Liczb
+												⚖️
 											</button>
 										</Link>
 									</div>
@@ -181,7 +184,8 @@ function Dzialy() {
 											to="./un"
 										>
 											<button className="btn-desktop hover-menu">
-												Zagadkowe Działania z Niewiadomą
+												❓ Zagadkowe Działania z
+												Niewiadomą ❓
 											</button>
 										</Link>
 									</div>

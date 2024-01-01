@@ -193,7 +193,7 @@ function Numbslearn() {
 												style={{
 													textDecoration: "none",
 												}}
-												to="/"
+												to="/dz"
 											>
 												<button className="btn-desktop hover-menu">
 													Powrót do menu
@@ -268,7 +268,7 @@ function Numbslearn() {
 							Chcesz poćwiczyć
 						</li>
 					</Link>
-					<Link style={{ textDecoration: "none" }} to="/">
+					<Link style={{ textDecoration: "none" }} to="/dz">
 						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 							Powrót do menu
 						</li>

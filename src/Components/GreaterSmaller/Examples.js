@@ -1,5 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import signs from "../../audio/signs/signs.mp3";
+import menu from "../../audio/menu.mp3";
+import practice from "../../audio/practice1.mp3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 function Examples() {
 	const divContents = [
@@ -12,6 +17,25 @@ function Examples() {
 	];
 
 	const [currentDivIndex, setCurrentDivIndex] = useState(0);
+	const [isButtonDisabled, setButtonDisabled] = useState(false);
+
+	function play(audioFile) {
+		if (!isButtonDisabled) {
+			const audio = new Audio(audioFile);
+			audio.play();
+			setButtonDisabled(true);
+		}
+	}
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setButtonDisabled(false);
+		}, 2000);
+
+		return () => {
+			clearTimeout(timeoutId);
+		};
+	}, [isButtonDisabled]);
 
 	const handleNextClick = () => {
 		const nextIndex = (currentDivIndex + 1) % divContents.length;
@@ -37,8 +61,24 @@ function Examples() {
 					<div className="col-12">
 						<ul className="text-center">
 							<div className="board-desktop">
-								<div className="list-title-desktop">
-									ZNAKI MATEMATYCZNE
+								<div className="row d-flex align-items-center">
+									<div className="col-10">
+										<div className="list-title-desktop">
+											ZNAKI MATEMATYCZNE
+										</div>
+									</div>
+									<div className="col-2">
+										<button
+											className="btn-desktop"
+											onClick={() => play(signs)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
 								</div>
 								<div className="container">
 									<div className="row d-flex justify-content-center">
@@ -55,7 +95,7 @@ function Examples() {
 												className="btn-desktop"
 												onClick={handleNextClick}
 											>
-												Dalej
+												Następny
 											</button>
 										</div>
 									</div>
@@ -74,30 +114,62 @@ function Examples() {
 									</div>
 								</div>
 							</div>
-
-							<ul className="text-center">
-								<Link
-									style={{ textDecoration: "none" }}
-									to="/eg"
-								>
-									<li className="list-desktop board-desktop align-items-center justify-content-center">
-										Przykłady
-									</li>
-								</Link>
-								<Link
-									style={{ textDecoration: "none" }}
-									to="/comp"
-								>
-									<li className="list-desktop board-desktop align-items-center justify-content-center">
-										Chcesz poćwiczyć
-									</li>
-								</Link>
-								<Link style={{ textDecoration: "none" }} to="/">
-									<li className="list-desktop board-desktop align-items-center justify-content-center">
-										Powrót do menu
-									</li>
-								</Link>
-							</ul>
+							<div className=" list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/comp"
+										>
+											<button className="btn-desktop hover-menu">
+												Chce poćwiczyć
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(practice)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className=" list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/dz"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do menu
+											</button>
+										</Link>
+									</div>
+									<div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(menu)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>
@@ -116,7 +188,7 @@ function Examples() {
 							className="btn btn-changenum"
 							onClick={handleNextClick}
 						>
-							Dalej
+							Następny
 						</button>
 					</div>
 					<div className="equations-mobile">
@@ -133,7 +205,7 @@ function Examples() {
 				<ul className="text-center">
 					<Link style={{ textDecoration: "none" }} to="/comp">
 						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-							Chcesz poćwiczyć
+							Chce poćwiczyć
 						</li>
 					</Link>
 					<Link style={{ textDecoration: "none" }} to="/sign">
@@ -141,7 +213,7 @@ function Examples() {
 							Znaki matematyczne
 						</li>
 					</Link>
-					<Link style={{ textDecoration: "none" }} to="/">
+					<Link style={{ textDecoration: "none" }} to="/dz">
 						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 							Powrót do menu
 						</li>

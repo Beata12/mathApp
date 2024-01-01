@@ -23,7 +23,7 @@ function Numbers() {
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
 			setButtonDisabled(false);
-		}, 2000);
+		}, 2500);
 
 		return () => {
 			clearTimeout(timeoutId);
@@ -34,9 +34,9 @@ function Numbers() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10">
+					<div className="col-12">
 						<div className="container list-desktop board-desktop main-title">
-							POZNAJEMY LICZBY
+							0️⃣ 4️⃣ LICZBOWE SPOTKANIA 6️⃣ 9️⃣
 						</div>
 						<div className="container list-desktop board-desktop">
 							<div className="row d-flex align-items-center">
@@ -46,7 +46,8 @@ function Numbers() {
 										to="/numlearn"
 									>
 										<button className="btn-desktop hover-menu">
-											Poznaje liczby
+											{/* 1️⃣ 3️⃣ Poznaje liczby 5️⃣ 8️⃣ */}
+											🔢 Poznaje liczby 🔢
 										</button>
 									</Link>
 								</div>
@@ -73,6 +74,7 @@ function Numbers() {
 									>
 										<button className="btn-desktop hover-easy">
 											Rozpoznawanie liczb - poziom łatwy
+											✅
 										</button>
 									</Link>
 								</div>
@@ -99,6 +101,7 @@ function Numbers() {
 									>
 										<button className="btn-desktop hover-easy">
 											Rozpoznawanie liczb - poziom średni
+											✔️ ✔️
 										</button>
 									</Link>
 								</div>
@@ -125,6 +128,7 @@ function Numbers() {
 									>
 										<button className="btn-desktop hover-hard">
 											Rozpoznawanie liczb - poziom trudny
+											❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -150,7 +154,7 @@ function Numbers() {
 										to="/numl"
 									>
 										<button className="btn-desktop hover-hard">
-											Rozpoznawanie liczb - słuchanie
+											Rozpoznawanie liczb - słuchanie 🗣
 										</button>
 									</Link>
 								</div>
@@ -173,7 +177,7 @@ function Numbers() {
 								<div className="col-9">
 									<Link
 										style={{ textDecoration: "none" }}
-										to="/"
+										to="/dz"
 									>
 										<button className="btn-desktop hover-menu">
 											Powrót do menu
@@ -221,7 +225,7 @@ function Numbers() {
 								Rozpoznawanie liczb - słuchanie
 							</li>
 						</Link>
-						<Link style={{ textDecoration: "none" }} to="/">
+						<Link style={{ textDecoration: "none" }} to="/dz">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Powrót do menu
 							</li>

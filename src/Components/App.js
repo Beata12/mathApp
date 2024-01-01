@@ -54,13 +54,16 @@ function App() {
 				<Route path="/" element={<MainPage />} />
 				<Route path="/dz" element={<Dzialy />} />
 				<Route path="/dz/num" element={<Numbs />} />
+				<Route path="/num" element={<Numbs />} />
 				<Route path="/numlearn" element={<Numbslearn />} />
 				<Route path="/nume" element={<Numbseasy />} />
 				<Route path="/numm" element={<Numbmidium />} />
 				<Route path="/numh" element={<Numbshard />} />
 				<Route path="/numl" element={<Numbslisten />} />
 				<Route path="/dz/comp" element={<Comparison />} />
+				<Route path="/comp" element={<Comparison />} />
 				<Route path="/dz/add" element={<Addition />} />
+				<Route path="/add" element={<Addition />} />
 				<Route path="/u5" element={<UpTo5 />} />
 				<Route path="/u5e" element={<UpTo5Easy />} />
 				<Route path="/u10" element={<UpTo10 />} />
@@ -69,7 +72,9 @@ function App() {
 				<Route path="/u20" element={<UpTo20 />} />
 				<Route path="/w20" element={<Write20 />} />
 				<Route path="/dz/sign" element={<Signs />} />
+				<Route path="/sign" element={<Signs />} />
 				<Route path="/dz/sub" element={<Substraction />} />
+				<Route path="/sub" element={<Substraction />} />
 				<Route path="/o5e" element={<SubTo5E />} />
 				<Route path="/o5" element={<SubTo5 />} />
 				<Route path="/o10e" element={<SubTo10E />} />
@@ -78,6 +83,7 @@ function App() {
 				<Route path="/o20" element={<SubTo20 />} />
 				<Route path="/ow20" element={<SubTo20Write />} />
 				<Route path="/dz/un" element={<Unknown />} />
+				<Route path="/un" element={<Unknown />} />
 				<Route path="/una" element={<UnknownAdd />} />
 				<Route path="/unae" element={<UnknownAddEasy />} />
 				<Route path="/uns" element={<UnknownSub />} />

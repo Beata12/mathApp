@@ -17,6 +17,8 @@ import {
 	faPencil,
 	faChild,
 	faBook,
+	faArrowLeft,
+	faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 function MainPage() {
@@ -72,62 +74,120 @@ function MainPage() {
 						➕ 🤔 = 🔢
 					</h2>
 					<p className="text-math">
-						🧮🎉 Przygotowaliśmy dla Ciebie wiele fascynujących gier
-						i zadań matematycznych, które sprawią, że nauka stanie
-						się prawdziwą przygodą! 🎉🧮
+						🧮🎉 Przygotowano dla Ciebie wiele fascynujących gier i
+						zadań matematycznych, które sprawią, że nauka stanie się
+						prawdziwą przygodą! 🎉🧮
 					</p>
 				</div>
 				<div>
-					<div className="d-flex justify-content-center">
-						<Link style={{ textDecoration: "none" }} to="./dz">
-							<div className="mb-4">
-								<div className=" board-desktop">
-									<div className="card-body">
-										<div className="container">
-											<div className="row">
-												<div className="col-2">
-													<FontAwesomeIcon
-														icon={faBook}
-														size="4x"
-														className="mb-2 book-icon"
-													/>
-												</div>
-												<div className="col-8">
-													<h2 className="card-title-desktop">
-														Matematyka Dla Smyka
-													</h2>
-												</div>
-												<div className="col-2">
-													<FontAwesomeIcon
-														icon={faChild}
-														size="4x"
-														className="mb-2 child-icon"
-													/>
-												</div>
-											</div>
-											<div className="container">
-												<div className="row d-felx justify-content-center">
-													<div className="col-8">
-														<h3 className="card-text-desktop">
-															Kliknij i poznaj
-															matematyczną krainę
-															zabawy
-														</h3>
-													</div>
-													<div className="col-1">
-														<FontAwesomeIcon
-															icon={faPencil}
-															size="3x"
-															className="mb-2 pen-icon"
-														/>
-													</div>
-												</div>
-											</div>
+					<div class="container">
+						<div class="row d-flex align-items-center">
+							<div class="col-2">
+								<div class="container">
+									<div class="row">
+										<div class="row-2">
+											<FontAwesomeIcon
+												icon={faArrowRight}
+												size="4x"
+												className="mb-2 arrow-icon"
+											/>
+										</div>
+										<div class="row-2">
+											<FontAwesomeIcon
+												icon={faArrowRight}
+												size="4x"
+												className="mb-2 arrow-icon"
+											/>
 										</div>
 									</div>
 								</div>
 							</div>
-						</Link>
+							<div class="col-8">
+								<div className="d-flex justify-content-center">
+									<Link
+										style={{ textDecoration: "none" }}
+										to="./dz"
+									>
+										<div className="mb-4">
+											<div className=" board-desktop">
+												<div className="card-body">
+													<div className="container">
+														<div className="row">
+															<div className="col-2">
+																<FontAwesomeIcon
+																	icon={
+																		faBook
+																	}
+																	size="4x"
+																	className="mb-2 book-icon"
+																/>
+															</div>
+															<div className="col-8">
+																<h2 className="card-title-desktop">
+																	Matematyka
+																	Dla Smyka
+																</h2>
+															</div>
+															<div className="col-2">
+																<FontAwesomeIcon
+																	icon={
+																		faChild
+																	}
+																	size="4x"
+																	className="mb-2 child-icon"
+																/>
+															</div>
+														</div>
+														<div className="container">
+															<div className="row d-felx justify-content-center">
+																<div className="col-8">
+																	<h3 className="card-text-desktop">
+																		Kliknij
+																		i poznaj
+																		matematyczną
+																		krainę
+																		zabawy
+																	</h3>
+																</div>
+																<div className="col-1">
+																	<FontAwesomeIcon
+																		icon={
+																			faPencil
+																		}
+																		size="3x"
+																		className="mb-2 pen-icon"
+																	/>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</Link>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="container">
+									<div class="row">
+										<div class="row-2">
+											<FontAwesomeIcon
+												icon={faArrowLeft}
+												size="4x"
+												className="mb-2 arrow-icon"
+											/>
+										</div>
+										<div class="row-2">
+											<FontAwesomeIcon
+												icon={faArrowLeft}
+												size="4x"
+												className="mb-2 arrow-icon"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div className="row d-flex justify-content-center align-items-center">
 						<div className="col-md-4 mb-4">
@@ -249,55 +309,117 @@ function MainPage() {
 						</div>
 					</div>
 					<div className="d-flex justify-content-center">
-						<Link style={{ textDecoration: "none" }} to="./dz">
-							<div className="mb-4">
-								<div className=" board-desktop">
-									<div className="card-body">
-										<div className="container">
-											<div className="row">
-												<div className="col-2">
-													<FontAwesomeIcon
-														icon={faBook}
-														size="4x"
-														className="mb-2 book-icon"
-													/>
-												</div>
-												<div className="col-8">
-													<h2 className="card-title-desktop">
-														Matematyka Dla Smyka
-													</h2>
-												</div>
-												<div className="col-2">
-													<FontAwesomeIcon
-														icon={faChild}
-														size="4x"
-														className="mb-2 child-icon"
-													/>
+						<div class="container">
+							<div class="row d-flex align-items-center">
+								<div class="col-2">
+									<div class="container">
+										<div class="row">
+											<div class="row-2">
+												<FontAwesomeIcon
+													icon={faArrowRight}
+													size="4x"
+													className="mb-2 arrow-icon"
+												/>
+											</div>
+											<div class="row-2">
+												<FontAwesomeIcon
+													icon={faArrowRight}
+													size="4x"
+													className="mb-2 arrow-icon"
+												/>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-8">
+									<div className="d-flex justify-content-center">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="./dz"
+										>
+											<div className="mb-4">
+												<div className=" board-desktop">
+													<div className="card-body">
+														<div className="container">
+															<div className="row">
+																<div className="col-2">
+																	<FontAwesomeIcon
+																		icon={
+																			faBook
+																		}
+																		size="4x"
+																		className="mb-2 book-icon"
+																	/>
+																</div>
+																<div className="col-8">
+																	<h2 className="card-title-desktop">
+																		Matematyka
+																		Dla
+																		Smyka
+																	</h2>
+																</div>
+																<div className="col-2">
+																	<FontAwesomeIcon
+																		icon={
+																			faChild
+																		}
+																		size="4x"
+																		className="mb-2 child-icon"
+																	/>
+																</div>
+															</div>
+															<div className="container">
+																<div className="row d-felx justify-content-center">
+																	<div className="col-8">
+																		<h3 className="card-text-desktop">
+																			Kliknij
+																			i
+																			poznaj
+																			matematyczną
+																			krainę
+																			zabawy
+																		</h3>
+																	</div>
+																	<div className="col-1">
+																		<FontAwesomeIcon
+																			icon={
+																				faPencil
+																			}
+																			size="3x"
+																			className="mb-2 pen-icon"
+																		/>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
-											<div className="container">
-												<div className="row d-felx justify-content-center">
-													<div className="col-8">
-														<h3 className="card-text-desktop">
-															Kliknij i poznaj
-															matematyczną krainę
-															zabawy
-														</h3>
-													</div>
-													<div className="col-1">
-														<FontAwesomeIcon
-															icon={faPencil}
-															size="3x"
-															className="mb-2 pen-icon"
-														/>
-													</div>
-												</div>
+										</Link>
+									</div>
+								</div>
+								<div class="col-2">
+									<div class="container">
+										<div class="row">
+											<div class="row-2">
+												<FontAwesomeIcon
+													icon={faArrowLeft}
+													size="4x"
+													className="mb-2 arrow-icon"
+												/>
+											</div>
+											<div class="row-2">
+												<FontAwesomeIcon
+													icon={faArrowLeft}
+													size="4x"
+													className="mb-2 arrow-icon"
+												/>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</Link>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -308,9 +430,9 @@ function MainPage() {
 						Zabawy! <br></br> 🎲 ➕ 🤔 = 🔢
 					</h2>
 					<p className="text-math">
-						🧮🎉 Przygotowaliśmy dla Ciebie wiele fascynujących gier
-						i zadań matematycznych, które sprawią, że nauka stanie
-						się prawdziwą przygodą! 🎉🧮
+						🧮🎉 Przygotowano dla Ciebie wiele fascynujących gier i
+						zadań matematycznych, które sprawią, że nauka stanie się
+						prawdziwą przygodą! 🎉🧮
 					</p>
 				</div>
 				<div>

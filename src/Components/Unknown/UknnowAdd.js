@@ -218,7 +218,7 @@ function UnknownAdd() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10">
+					<div className="col-12">
 						<ul className="text-center">
 							<div className="list-title-desktop">
 								DODAWANIE Z NIEWIADOMĄ
@@ -227,13 +227,13 @@ function UnknownAdd() {
 								<div className="gameOver">
 									<div className="container board-desktop">
 										<div className="list-desktop">
-											KONIEC GRY
+											🛑 KONIEC GRY 🛑
 										</div>
 										<div className="list-desktop">
 											Punkty: {points}
 										</div>
 										<div className="list-desktop">
-											Gratulacje
+											Gratulacje 🥳🎉👏
 										</div>
 									</div>
 									<div className="container list-desktop board-desktop">
@@ -400,7 +400,7 @@ function UnknownAdd() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="/"
+											to="/dz"
 										>
 											<button className="btn-desktop hover-menu">
 												Powrót do menu
@@ -433,11 +433,15 @@ function UnknownAdd() {
 						</div>
 						{gameOver ? (
 							<div className="gameOver">
-								<div className="list-mobile">KONIEC GRY</div>
+								<div className="list-mobile">
+									🛑 KONIEC GRY 🛑
+								</div>
 								<div className="list-mobile">
 									Punkty: {points}
 								</div>
-								<div className="list-mobile">Gratulacje</div>
+								<div className="list-mobile">
+									Gratulacje 🥳🎉👏
+								</div>
 								<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 									<button
 										onClick={startNewGame}
@@ -531,7 +535,7 @@ function UnknownAdd() {
 								Wybierz inny poziom
 							</li>
 						</Link>
-						<Link style={{ textDecoration: "none" }} to="/">
+						<Link style={{ textDecoration: "none" }} to="/dz">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Powrót do menu
 							</li>

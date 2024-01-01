@@ -2,20 +2,46 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import menu from "../../audio/menu.mp3";
-import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
-import {
-	faHeart,
-	faHeartCrack,
-	faVolumeUp,
-} from "@fortawesome/free-solid-svg-icons";
+import less from "../../audio/signs/less.mp3";
+import more from "../../audio/signs/more.mp3";
+import add from "../../audio/signs/add.mp3";
+import sub from "../../audio/signs/sub.mp3";
+import equal from "../../audio/signs/equal.mp3";
+import signs from "../../audio/signs/signs.mp3";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 function Signs() {
 	const divContents = [
-		{ explanation: "Znak", meaning: "dodawania", sign: "+" },
-		{ explanation: "Znak", meaning: "odejmowania", sign: "-" },
-		{ explanation: "Znak", meaning: "równości", sign: "=" },
-		{ explanation: "Znak", meaning: "większości", sign: ">" },
-		{ explanation: "Znak", meaning: "mniejszości", sign: "<" },
+		{
+			explanation: "Znak",
+			meaning: "dodawania",
+			sign: "+",
+			play: () => play(add),
+		},
+		{
+			explanation: "Znak",
+			meaning: "odejmowania",
+			sign: "-",
+			play: () => play(sub),
+		},
+		{
+			explanation: "Znak",
+			meaning: "równości",
+			sign: "=",
+			play: () => play(equal),
+		},
+		{
+			explanation: "Znak",
+			meaning: "większości",
+			sign: ">",
+			play: () => play(more),
+		},
+		{
+			explanation: "Znak",
+			meaning: "mniejszości",
+			sign: "<",
+			play: () => play(less),
+		},
 	];
 	const [currentDivIndex, setCurrentDivIndex] = useState(0);
 	const [isButtonDisabled, setButtonDisabled] = useState(false);
@@ -70,8 +96,8 @@ function Signs() {
 										<div className="col-2">
 											<button
 												className="btn-desktop"
-												// onClick={() => play(level)}
-												// disabled={isButtonDisabled}
+												onClick={() => play(signs)}
+												disabled={isButtonDisabled}
 											>
 												<FontAwesomeIcon
 													icon={faVolumeUp}
@@ -115,8 +141,8 @@ function Signs() {
 											<div className="col-4">
 												<button
 													className="btn-desktop"
-													// onClick={() => play(zagraj)}
-													// disabled={isButtonDisabled}
+													onClick={currentDiv.play}
+													disabled={isButtonDisabled}
 												>
 													<FontAwesomeIcon
 														icon={faVolumeUp}
@@ -194,7 +220,7 @@ function Signs() {
 											style={{
 												textDecoration: "none",
 											}}
-											to="/"
+											to="/dz"
 										>
 											<button className="btn-desktop hover-menu">
 												Powrót do menu
@@ -257,7 +283,7 @@ function Signs() {
 							Chce poćwiczyć
 						</li>
 					</Link>
-					<Link style={{ textDecoration: "none" }} to="/">
+					<Link style={{ textDecoration: "none" }} to="/dz">
 						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 							Powrót do menu
 						</li>

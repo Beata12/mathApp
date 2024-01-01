@@ -251,7 +251,7 @@ function Numberhard() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10">
+					<div className="col-12">
 						<ul className="text-center">
 							<div className="list-title-desktop">
 								ROZPOZNAWANIE LICZB
@@ -260,13 +260,13 @@ function Numberhard() {
 								<div className="gameOver">
 									<div className="container board-desktop">
 										<div className="list-desktop">
-											KONIEC GRY
+											🛑 KONIEC GRY 🛑
 										</div>
 										<div className="list-desktop">
 											Punkty: {points}
 										</div>
 										<div className="list-desktop">
-											Gratulacje
+											Gratulacje 🥳🎉👏
 										</div>
 									</div>
 									<div className="container list-desktop board-desktop">
@@ -297,7 +297,7 @@ function Numberhard() {
 							) : (
 								<div className="container list-desktop board-desktop">
 									<div className="row d-flex align-items-center justify-content-center margin-main">
-										<div className="col-11 main-title">
+										<div className="col-10 main-title">
 											Wybierz poprawną odpowiedź
 										</div>
 										<div className="col-1">
@@ -418,7 +418,7 @@ function Numberhard() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="/"
+											to="/dz"
 										>
 											<button className="btn-desktop hover-menu">
 												Powrót do menu
@@ -451,11 +451,15 @@ function Numberhard() {
 						</div>
 						{gameOver ? (
 							<div className="gameOver">
-								<div className="list-mobile">KONIEC GRY</div>
+								<div className="list-mobile">
+									🛑 KONIEC GRY 🛑
+								</div>
 								<div className="list-mobile">
 									Punkty: {points}
 								</div>
-								<div className="list-mobile">Gratulacje</div>
+								<div className="list-mobile">
+									Gratulacje 🥳🎉👏
+								</div>
 								<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 									<button
 										onClick={startNewGame}
@@ -523,7 +527,7 @@ function Numberhard() {
 								Wybierz inny poziom
 							</li>
 						</Link>
-						<Link style={{ textDecoration: "none" }} to="/">
+						<Link style={{ textDecoration: "none" }} to="/dz">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Powrót do menu
 							</li>
