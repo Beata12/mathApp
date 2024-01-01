@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Dzialy from "./Dzialy";
+import MainPage from "./MainPage";
 import Numbs from "./LearnNumbs/Numbs";
 import Numbslearn from "./LearnNumbs/Numbslearn";
 import Numbseasy from "./LearnNumbs/Numbseasy";
@@ -50,15 +51,16 @@ function App() {
 		<div className="App container text-center scroll">
 			<Navigation />
 			<Routes>
-				<Route path="/" element={<Dzialy />} />
-				<Route path="/num" element={<Numbs />} />
+				<Route path="/" element={<MainPage />} />
+				<Route path="/dz" element={<Dzialy />} />
+				<Route path="/dz/num" element={<Numbs />} />
 				<Route path="/numlearn" element={<Numbslearn />} />
 				<Route path="/nume" element={<Numbseasy />} />
 				<Route path="/numm" element={<Numbmidium />} />
 				<Route path="/numh" element={<Numbshard />} />
 				<Route path="/numl" element={<Numbslisten />} />
-				<Route path="/comp" element={<Comparison />} />
-				<Route path="/add" element={<Addition />} />
+				<Route path="/dz/comp" element={<Comparison />} />
+				<Route path="/dz/add" element={<Addition />} />
 				<Route path="/u5" element={<UpTo5 />} />
 				<Route path="/u5e" element={<UpTo5Easy />} />
 				<Route path="/u10" element={<UpTo10 />} />
@@ -66,8 +68,8 @@ function App() {
 				<Route path="/w10" element={<Write10 />} />
 				<Route path="/u20" element={<UpTo20 />} />
 				<Route path="/w20" element={<Write20 />} />
-				<Route path="/sign" element={<Signs />} />
-				<Route path="/sub" element={<Substraction />} />
+				<Route path="/dz/sign" element={<Signs />} />
+				<Route path="/dz/sub" element={<Substraction />} />
 				<Route path="/o5e" element={<SubTo5E />} />
 				<Route path="/o5" element={<SubTo5 />} />
 				<Route path="/o10e" element={<SubTo10E />} />
@@ -75,7 +77,7 @@ function App() {
 				<Route path="/ow10" element={<SubTo10Write />} />
 				<Route path="/o20" element={<SubTo20 />} />
 				<Route path="/ow20" element={<SubTo20Write />} />
-				<Route path="/un" element={<Unknown />} />
+				<Route path="/dz/un" element={<Unknown />} />
 				<Route path="/una" element={<UnknownAdd />} />
 				<Route path="/unae" element={<UnknownAddEasy />} />
 				<Route path="/uns" element={<UnknownSub />} />

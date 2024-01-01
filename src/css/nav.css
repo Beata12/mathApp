@@ -1,22 +1,31 @@
 .navigation {
 	color: white !important;
-	font-size: 25px !important;
-	margin-left: 20px !important;
+	font-size: 26px !important;
 }
 
 .nav-desktop,
 .footer-desktop {
-	margin: 2.2vh;
+	margin: 80px;
 }
 
 .logo {
 	color: white;
 	font-weight: bold;
-	font-size: 25px;
+	font-size: 28px;
 }
 
-.btn-lg {
-	background-color: white !important;
+@media screen and (max-width: 1500px) {
+	.nav-desktop,
+	.footer-desktop {
+		margin: 30px;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.nav-desktop,
+	.footer-desktop {
+		margin: 10px;
+	}
 }
 
 @media screen and (max-width: 600px) {

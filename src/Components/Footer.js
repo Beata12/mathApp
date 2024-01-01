@@ -2,10 +2,10 @@ import React from "react";
 
 function Footer() {
 	return (
-		<footer className=" py-4 mt-auto footer-desktop">
-			<div className="container px-5">
+		<footer className="footer-desktop">
+			<div className="container">
 				<div className="d-flex justify-content-center">
-					<div className="small m-0 copy-mobile">
+					<div className="copy-mobile">
 						Copyright &copy; Beata 2023
 					</div>
 				</div>

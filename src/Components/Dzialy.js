@@ -34,10 +34,14 @@ function Dzialy() {
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
-					<div className="col-10">
+					<div className="col-12">
 						<ul className="text-center">
 							<div className="container list-desktop board-desktop main-title">
-								DZIAŁY
+								<Link style={{ textDecoration: "none" }} to="/">
+									<button className="btn-desktop">
+										MATEMATYCZNA KRAINA ZABAWY
+									</button>
+								</Link>
 							</div>
 							<div className="container list-desktop board-desktop">
 								<div className="row d-flex align-items-center">
@@ -47,7 +51,7 @@ function Dzialy() {
 											to="./num"
 										>
 											<button className="btn-desktop hover-menu">
-												Poznajemy liczby
+												Liczbowe Spotkanie
 											</button>
 										</Link>
 									</div>
@@ -73,7 +77,7 @@ function Dzialy() {
 											to="./sign"
 										>
 											<button className="btn-desktop hover-menu">
-												Poznajemy znaki matematyczne
+												Magiczne Znaki Matematyki
 											</button>
 										</Link>
 									</div>
@@ -99,7 +103,7 @@ function Dzialy() {
 											to="./add"
 										>
 											<button className="btn-desktop hover-menu">
-												Uczymy się dodawać
+												Odkrywamy Świat Dodawania
 											</button>
 										</Link>
 									</div>
@@ -125,7 +129,7 @@ function Dzialy() {
 											to="./sub"
 										>
 											<button className="btn-desktop hover-menu">
-												Uczymy się odejmować
+												Odkrywamy Świat Odejmowania
 											</button>
 										</Link>
 									</div>
@@ -151,7 +155,7 @@ function Dzialy() {
 											to="./comp"
 										>
 											<button className="btn-desktop hover-menu">
-												Porównywanie liczb
+												Zabawy w Porównywanie Liczb
 											</button>
 										</Link>
 									</div>
@@ -177,7 +181,7 @@ function Dzialy() {
 											to="./un"
 										>
 											<button className="btn-desktop hover-menu">
-												Działania z niewiadomą
+												Zagadkowe Działania z Niewiadomą
 											</button>
 										</Link>
 									</div>

@@ -21,6 +21,28 @@
 	font-size: 25px;
 }
 
+.text-header {
+	color: white;
+	margin-top: 80px !important;
+	margin: 40px;
+}
+
+.text-math {
+	color: white;
+	font-size: 28px;
+}
+
+.card-title-desktop {
+	color: #0c2e13;
+	font-size: 35px;
+	padding: 10px;
+}
+
+.card-text-desktop {
+	color: white;
+	font-size: 25px;
+}
+
 .scroll {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -57,4 +79,44 @@ ul.text-center {
 .copy-mobile {
 	color: white;
 	font-size: 18px !important;
+}
+
+.book-icon {
+	color: #c38457 !important;
+}
+
+.child-icon {
+	color: #73cfed;
+}
+
+.icon-marg {
+	margin-top: 40px;
+}
+
+.pen-icon {
+	color: rgb(158, 180, 194);
+}
+
+.learnnum-icon {
+	color: rgb(4, 30, 109);
+}
+
+.sign-icon {
+	color: rgb(88, 61, 185);
+}
+
+.add-icon {
+	color: rgb(120, 255, 47);
+}
+
+.sub-icon {
+	color: rgb(247, 60, 60);
+}
+
+.comp-icon {
+	color: yellow;
+}
+
+.uknnown-icon {
+	color: rgb(187, 1, 1);
 }

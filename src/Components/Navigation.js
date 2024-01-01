@@ -2,48 +2,49 @@ import React from "react";
 
 function Navigation() {
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light nav-desktop">
-			<div className="container d-flex justify-content-center align-items-center">
-				<div className="col-10">
-					<div className="row d-flex align-items-center dzialy-desktop">
-						<div className="col-10 logo">MATEMATYKA DLA SMYKA</div>
-						<div className="col-2">
-							<button
-								className="navbar-toggler btn-lg"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#navbarSupportedContent"
-								aria-controls="navbarSupportedContent"
-								aria-expanded="false"
-								aria-label="Toggle navigation"
-							>
-								<span className="navbar-toggler-icon color-span"></span>
-							</button>
-						</div>
+		<nav className="navbar navbar-expand-lg bcg-nav" id="navigation">
+			<div className="container">
+				<div className="ms-4" href="#navigation">
+					<div className="logo">
+						<a href="./" className="nav-link me-lg-3 navigation">
+							MATEMATYKA DLA SMYKA
+						</a>
 					</div>
 				</div>
-			</div>
-			<div
-				className="collapse navbar-collapse col-6"
-				id="navbarSupportedContent"
-			>
-				<ul className="navbar-nav small fw-bolder d-flex justify-content-center align-items-center">
-					<li className="nav-item">
-						<a className="nav-link navigation" href="./">
-							DZIAŁY
-						</a>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link navigation" href="numlearn">
-							LICZBY
-						</a>
-					</li>
-					<li className="nav-item">
-						<a className="nav-link navigation" href="sign">
-							ZNAKI MATEMATYCZNE
-						</a>
-					</li>
-				</ul>
+				<button
+					className="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span className="navbar-toggler-icon menu-mbl"></span>
+				</button>
+				<div
+					className="collapse navbar-collapse"
+					id="navbarSupportedContent"
+				>
+					<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li className="nav-item">
+							<a
+								className="nav-link me-lg-3 navigation"
+								href="numlearn"
+							>
+								Liczbowe Spotkanie
+							</a>
+						</li>
+						<li className="nav-item">
+							<a
+								className="nav-link me-lg-3 navigation"
+								href="sign"
+							>
+								Magiczne Znaki Matematyki
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);
