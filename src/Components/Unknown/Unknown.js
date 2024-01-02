@@ -47,7 +47,7 @@ function Uknnown() {
 									>
 										<button className="btn-desktop hover-easy">
 											Dodawanie z niewiadomą - poziom
-											łatwy
+											łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -74,7 +74,7 @@ function Uknnown() {
 									>
 										<button className="btn-desktop hover-hard">
 											Dodawanie z niewiadomą - poziom
-											trudny
+											trudny ❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -101,7 +101,7 @@ function Uknnown() {
 									>
 										<button className="btn-desktop hover-easy">
 											Odejmowanie z niewiadomą - poziom
-											łatwy
+											łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -128,7 +128,7 @@ function Uknnown() {
 									>
 										<button className="btn-desktop hover-hard">
 											Odejmowanie z niewiadomą - poziom
-											trudny
+											trudny ❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -155,6 +155,7 @@ function Uknnown() {
 									>
 										<button className="btn-desktop hover-hard">
 											Dodawanie i odejmowanie z niewiadomą
+											❗❗❗
 										</button>
 									</Link>
 								</div>

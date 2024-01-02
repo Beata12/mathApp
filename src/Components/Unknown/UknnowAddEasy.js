@@ -221,12 +221,13 @@ function UnknownAddE() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								DODAWANIE Z NIEWIADOMĄ
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-desktop">
+											❓ DODAWANIE Z NIEWIADOMĄ - POZIOM
+											ŁATWY ❓
+										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
@@ -265,6 +266,9 @@ function UnknownAddE() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop easy-level">
+											Dodwanie z niewiadomą - poziom łatwy
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
@@ -362,11 +366,11 @@ function UnknownAddE() {
 												{answers.map(
 													(answer, index) => (
 														<div
-															className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+															className="col-3 d-flex align-items-center justify-content-center equations-desktop"
 															key={index}
 														>
 															<button
-																className="equations-desktop uknnown"
+																className="equations-desktop uknnown answer-box-desktop"
 																onClick={() =>
 																	handleAnswerClick(
 																		answer

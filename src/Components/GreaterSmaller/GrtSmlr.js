@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import answer from "../../audio/answer.mp3";
 import level from "../../audio/poziom.mp3";
 import menu from "../../audio/menu.mp3";
+import sign from "../../audio/sign.mp3";
 import zagraj from "../../audio/zagraj.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
@@ -61,6 +61,7 @@ function GreaterSmaller() {
 		setIsComparing(true);
 
 		let isCorrect = false;
+		let correctSign = "";
 
 		if (
 			(selectedSign === "<" && number1 < number2) ||
@@ -72,7 +73,8 @@ function GreaterSmaller() {
 		} else {
 			setLives(lives - 1);
 			setResultIcon(faFaceFrown);
-			setCorrectAnswerInfo(`${isCorrect}`);
+			correctSign = getCorrectSign();
+			setCorrectAnswerInfo(correctSign);
 			if (lives - 1 === 0) {
 				setGameOver(true);
 			}
@@ -88,6 +90,16 @@ function GreaterSmaller() {
 			}
 			setIsComparing(false);
 		}, 2000);
+	};
+
+	const getCorrectSign = () => {
+		if (number1 < number2) {
+			return "<";
+		} else if (number1 > number2) {
+			return ">";
+		} else {
+			return "=";
+		}
 	};
 
 	useEffect(() => {
@@ -181,15 +193,11 @@ function GreaterSmaller() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								Wybierz odpowiedni znak:
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="container board-desktop">
 										<div className="list-desktop">
-											⚖️ KTÓRA LICZBA JEST MNIEJSZA -
-											POZIOM ŁATWY ⚖️
+											⚖️ PORÓWNYWANIE LICZB ⚖️
 										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
@@ -229,6 +237,23 @@ function GreaterSmaller() {
 							) : (
 								<div className="container board-desktop">
 									<div className="gameOver">
+										<div className="row d-flex align-items-center justify-content-center">
+											<div className="col-7 list-title-desktop hard-level margin-main">
+												Wybierz odpowiedni znak
+											</div>
+											<div className="col-4">
+												<button
+													className="btn-desktop hard-level margin-main"
+													onClick={() => play(sign)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
 										<div className="icons-desktop">
 											{renderCorrectAnswerInfo()}
 											{resultIcon ? (
@@ -252,9 +277,9 @@ function GreaterSmaller() {
 										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
-												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+												<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 													<button
-														className="equations-desktop"
+														className="equations-desktop answer-box-desktop"
 														onClick={() =>
 															handleAnswerClick(
 																"<"
@@ -268,9 +293,9 @@ function GreaterSmaller() {
 														{"<"}
 													</button>
 												</div>
-												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+												<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 													<button
-														className="equations-desktop"
+														className="equations-desktop answer-box-desktop"
 														onClick={() =>
 															handleAnswerClick(
 																">"
@@ -284,9 +309,9 @@ function GreaterSmaller() {
 														{">"}
 													</button>
 												</div>
-												<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+												<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 													<button
-														className="equations-desktop"
+														className="equations-desktop answer-box-desktop"
 														onClick={() =>
 															handleAnswerClick(
 																"="

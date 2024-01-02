@@ -220,12 +220,13 @@ function UnknownAdd() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								DODAWANIE Z NIEWIADOMĄ
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-desktop">
+											❓ DODAWANIE Z NIEWIADOMĄ - POZIOM
+											TRUDNY ❓
+										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
@@ -264,6 +265,10 @@ function UnknownAdd() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop hard-level">
+											Dodawanie z niewiadomą - poziom
+											trudny
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
@@ -307,7 +312,7 @@ function UnknownAdd() {
 										</div>
 										<div className="container">
 											<div className="row d-flex justify-content-center">
-												<div className="col-3 equations-desktop">
+												<div className="col-2 equations-desktop">
 													{numbers.num1}
 												</div>
 												<div className="col-2 equations-desktop">
@@ -329,11 +334,11 @@ function UnknownAdd() {
 												{answers.map(
 													(answer, index) => (
 														<div
-															className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+															className="col-3 d-flex align-items-center justify-content-center equations-desktop"
 															key={index}
 														>
 															<button
-																className="equations-desktop"
+																className="equations-desktop answer-box-desktop"
 																onClick={() =>
 																	handleAnswerClick(
 																		answer

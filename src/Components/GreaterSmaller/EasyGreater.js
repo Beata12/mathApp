@@ -234,13 +234,14 @@ function EasySmaller() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
-										<div className="row d-flex align-items-center justify-content-center margin-main">
-											<div className="col-10 main-title">
-												Kt
+										<div className="row d-flex align-items-center justify-content-center">
+											<div className="col-8 main-title easy-level margin-main">
+												Która liczba jest większa? -
+												poziom łatwy
 											</div>
-											<div className="col-1">
+											<div className="col-2">
 												<button
-													className="btn-desktop"
+													className="btn-desktop easy-level margin-main"
 													onClick={() => play(answer)}
 													disabled={isButtonDisabled}
 												>
@@ -252,10 +253,10 @@ function EasySmaller() {
 											</div>
 										</div>
 										<div className="row d-flex align-items-center justify-content-center margin-main">
-											<div className="col-10 main-title">
+											<div className="col-8 main-title">
 												Wybierz poprawną odpowiedź
 											</div>
-											<div className="col-1">
+											<div className="col-2">
 												<button
 													className="btn-desktop"
 													onClick={() => play(answer)}
