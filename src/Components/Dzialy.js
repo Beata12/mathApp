@@ -203,6 +203,32 @@ function Dzialy() {
 									</div>
 								</div>
 							</div>
+							<div className="container list-desktop board-desktop">
+								<div className="row d-flex align-items-center">
+									<div className="col-9">
+										<Link
+											style={{ textDecoration: "none" }}
+											to="/"
+										>
+											<button className="btn-desktop hover-menu">
+												Powrót do strony głównej
+											</button>
+										</Link>
+									</div>
+									{/* <div className="col-3">
+										<button
+											className="btn-desktop"
+											onClick={() => play(ukn)}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
+									</div> */}
+								</div>
+							</div>
 						</ul>
 					</div>
 				</div>

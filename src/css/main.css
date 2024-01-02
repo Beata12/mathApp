@@ -27,9 +27,20 @@
 	margin: 40px;
 }
 
+.text-header-mobile {
+	color: white;
+	margin: 20px;
+}
+
 .text-math {
 	color: white;
 	font-size: 28px;
+}
+
+.text-math-moblile {
+	color: white;
+	margin: 30px;
+	font-size: 20px;
 }
 
 .card-title-desktop {
@@ -38,9 +49,25 @@
 	padding: 10px;
 }
 
+.marg {
+	margin-top: 10px;
+}
+
+.marg-pnc {
+	margin-top: 30px;
+}
+
+.card-title-mobile {
+	color: white;
+}
+
 .card-text-desktop {
 	color: white;
 	font-size: 25px;
+}
+
+.card-text-mobile {
+	color: white;
 }
 
 .scroll {
