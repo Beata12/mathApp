@@ -4,6 +4,7 @@ import answer from "../../audio/answer.mp3";
 import level from "../../audio/poziom.mp3";
 import menu from "../../audio/menu.mp3";
 import zagraj from "../../audio/zagraj.mp3";
+import wpisz from "../../audio/wpisz.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -224,9 +225,6 @@ function UpTo10W() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								DODAWANIE DO 10 - poziom trudny
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="gameOver">
@@ -268,28 +266,38 @@ function UpTo10W() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop hard-level">
+											DODAWANIE DO 10 - WPISYWANIE
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
-												<div className="col-9">
-													<button className="btn-desktop main-title">
-														Wpisz poprawną odpowiedź
-													</button>
-												</div>
-												<div className="col-3">
-													<button
-														className="btn-desktop"
-														onClick={() =>
-															play(answer)
-														}
-														disabled={
-															isButtonDisabled
-														}
-													>
-														<FontAwesomeIcon
-															icon={faVolumeUp}
-															className="volume-icon"
-														/>
-													</button>
+												<div className="container list-desktop">
+													<div className="row d-flex align-items-center">
+														<div className="col-9">
+															<button className="btn-desktop main-title">
+																Wpisz poprawną
+																odpowiedź
+															</button>
+														</div>
+														<div className="col-3">
+															<button
+																className="btn-desktop"
+																onClick={() =>
+																	play(wpisz)
+																}
+																disabled={
+																	isButtonDisabled
+																}
+															>
+																<FontAwesomeIcon
+																	icon={
+																		faVolumeUp
+																	}
+																	className="volume-icon"
+																/>
+															</button>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -346,7 +354,7 @@ function UpTo10W() {
 													disabled={
 														!canAnswer ||
 														isCheckingAnswer
-													} // Disable button when answering is disabled or answer is being checked
+													}
 												>
 													Sprawdź
 												</button>

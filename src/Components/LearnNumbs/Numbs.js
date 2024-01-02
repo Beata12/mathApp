@@ -99,7 +99,7 @@ function Numbers() {
 										style={{ textDecoration: "none" }}
 										to="/numm"
 									>
-										<button className="btn-desktop hover-easy">
+										<button className="btn-desktop hover-mid">
 											Rozpoznawanie liczb - poziom średni
 											✔️ ✔️
 										</button>

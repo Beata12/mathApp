@@ -221,9 +221,6 @@ function UpTo5E() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								DODAWANIE DO 5 - poziom łatwy
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="gameOver">
@@ -265,6 +262,9 @@ function UpTo5E() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop easy-level">
+											DODAWANIE DO 5 - POZIOM ŁATWY
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
@@ -360,11 +360,11 @@ function UpTo5E() {
 												{answers.map(
 													(answer, index) => (
 														<div
-															className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+															className="col-3 d-flex align-items-center justify-content-center equations-desktop"
 															key={index}
 														>
 															<button
-																className="equations-desktop"
+																className="equations-desktop answer-box-desktop"
 																onClick={() =>
 																	handleAnswerClick(
 																		answer

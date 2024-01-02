@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import answer from "../../audio/answer.mp3";
 import level from "../../audio/poziom.mp3";
 import menu from "../../audio/menu.mp3";
+import wpisz from "../../audio/wpisz.mp3";
 import zagraj from "../../audio/zagraj.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceFrown, faFaceSmile } from "@fortawesome/free-regular-svg-icons";
@@ -221,12 +221,12 @@ function SubUpTo10W() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								ODEJMOWANIE DO 10 - poziom trudny
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-desktop">
+											⛔ ODEJMOWANIE DO 10 - WPISYWANIE ⛔
+										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
@@ -265,6 +265,9 @@ function SubUpTo10W() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop hard-level">
+											ODEJMOWANIE DO 10 - WPISYWANIE
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
@@ -276,7 +279,7 @@ function SubUpTo10W() {
 													<button
 														className="btn-desktop"
 														onClick={() =>
-															play(answer)
+															play(wpisz)
 														}
 														disabled={
 															isButtonDisabled

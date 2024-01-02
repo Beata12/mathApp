@@ -48,7 +48,7 @@ function Addition() {
 										to="/u5e"
 									>
 										<button className="btn-desktop hover-easy">
-											Dodawanie do 5 - poziom łatwy
+											Dodawanie do 5 - poziom łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -73,8 +73,8 @@ function Addition() {
 										style={{ textDecoration: "none" }}
 										to="/u5"
 									>
-										<button className="btn-desktop hover-hard">
-											Dodawanie do 5 - poziom trudny
+										<button className="btn-desktop hover-mid">
+											Dodawanie do 5 - poziom średni ✔️ ✔️
 										</button>
 									</Link>
 								</div>
@@ -100,7 +100,7 @@ function Addition() {
 										to="/u10e"
 									>
 										<button className="btn-desktop hover-easy">
-											Dodawanie do 10 - poziom łatwy
+											Dodawanie do 10 - poziom łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -127,6 +127,7 @@ function Addition() {
 									>
 										<button className="btn-desktop hover-hard">
 											Dodawanie do 10 - poziom trudny
+											❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -151,8 +152,8 @@ function Addition() {
 										style={{ textDecoration: "none" }}
 										to="/w10"
 									>
-										<button className="btn-desktop hover-easy">
-											Dodawanie do 10 - wpisywanie
+										<button className="btn-desktop hover-hard">
+											Dodawanie do 10 - wpisywanie ❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -177,8 +178,8 @@ function Addition() {
 										style={{ textDecoration: "none" }}
 										to="/u20"
 									>
-										<button className="btn-desktop hover-easy">
-											Dodawanie do 20
+										<button className="btn-desktop hover-hard">
+											Dodawanie do 20 ❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -203,8 +204,8 @@ function Addition() {
 										style={{ textDecoration: "none" }}
 										to="/w20"
 									>
-										<button className="btn-desktop hover-easy">
-											Dodawanie do 20 - wpisywanie
+										<button className="btn-desktop hover-hard">
+											Dodawanie do 20 - wpisywanie ❗❗❗
 										</button>
 									</Link>
 								</div>

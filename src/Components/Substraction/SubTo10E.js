@@ -245,12 +245,13 @@ function SubtractionUpTo10E() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								ODEJMOWANIE DO 10 - poziom łatwy
-							</div>
 							{gameOver && (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop">
+											⛔ ODEJMOWANIE DO 10 - POZIOM ŁATWY
+											⛔
+										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
@@ -290,6 +291,9 @@ function SubtractionUpTo10E() {
 							{!gameOver && (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop easy-level">
+											ODEJMOWANIE DO 10 - POZIOM ŁATWY
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
@@ -384,9 +388,9 @@ function SubtractionUpTo10E() {
 											</div>
 											<div className="container">
 												<div className="row d-flex justify-content-center">
-													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 														<button
-															className="equations-desktop sub-result"
+															className="equations-desktop sub-result answer-box-desktop"
 															onClick={() =>
 																checkAnswer(
 																	answer1
@@ -401,9 +405,9 @@ function SubtractionUpTo10E() {
 															{answer1}
 														</button>
 													</div>
-													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 														<button
-															className="equations-desktop sub-result"
+															className="equations-desktop sub-result answer-box-desktop"
 															onClick={() =>
 																checkAnswer(
 																	answer2
@@ -418,9 +422,9 @@ function SubtractionUpTo10E() {
 															{answer2}
 														</button>
 													</div>
-													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 														<button
-															className="equations-desktop sub-result"
+															className="equations-desktop sub-result answer-box-desktop"
 															onClick={() =>
 																checkAnswer(
 																	answer3

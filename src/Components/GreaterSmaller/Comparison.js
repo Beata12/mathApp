@@ -74,7 +74,7 @@ function Comparasion() {
 									>
 										<button className="btn-desktop hover-easy">
 											Która liczba jest mniejsza - poziom
-											łatwy
+											łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -101,7 +101,7 @@ function Comparasion() {
 									>
 										<button className="btn-desktop hover-hard">
 											Która liczba jest mniejsza - poziom
-											trudny
+											trudny ❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -128,7 +128,7 @@ function Comparasion() {
 									>
 										<button className="btn-desktop hover-easy">
 											Która liczba jest większa - poziom
-											łatwy
+											łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -155,7 +155,7 @@ function Comparasion() {
 									>
 										<button className="btn-desktop hover-hard">
 											Która liczba jest większa - poziom
-											trudny
+											trudny ❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -182,6 +182,7 @@ function Comparasion() {
 									>
 										<button className="btn-desktop hover-hard">
 											Porównywanie liczb - poziom trudny
+											❗❗❗
 										</button>
 									</Link>
 								</div>

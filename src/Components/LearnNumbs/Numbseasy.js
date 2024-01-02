@@ -213,9 +213,6 @@ function Numberseasy() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								ROZPOZNAWANIE LICZB
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="container board-desktop">
@@ -257,6 +254,10 @@ function Numberseasy() {
 							) : (
 								<div className="container list-desktop board-desktop">
 									<div className="row d-flex align-items-center justify-content-center margin-main">
+										<div className="list-title-desktop easy-level">
+											ROZPOZNAWANIE LICZB - POZIOM ŁATWY
+										</div>
+
 										<div className="col-10 main-title">
 											Wybierz poprawną odpowiedź
 										</div>

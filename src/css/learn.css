@@ -45,6 +45,18 @@
 	font-size: 80px;
 }
 
+.easy-level {
+	color: rgb(99, 255, 47) !important;
+}
+
+.mid-level {
+	color: #534982 !important;
+}
+
+.hard-level {
+	color: rgb(101, 0, 0) !important;
+}
+
 .title-page {
 	background-color: #f8f5de;
 	background-image: linear-gradient(

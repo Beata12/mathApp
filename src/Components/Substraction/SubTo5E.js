@@ -130,7 +130,7 @@ function SubtractionUpTo5E() {
 		setCorrectAnswer(correct);
 		setShowSmile(false);
 		setTimer(10);
-		setCorrectAnswerInfo(null); // Wyczyść poprawną odpowiedź przy generowaniu nowego pytania
+		setCorrectAnswerInfo(null);
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {
@@ -187,7 +187,7 @@ function SubtractionUpTo5E() {
 					if (incorrectAnswers === 2) {
 						setGameOver(true);
 					}
-				}, 3000); // Zwiększenie czasu wyświetlania poprawnej odpowiedzi na 3 sekundy
+				}, 3000);
 			}
 		}
 	};
@@ -245,12 +245,13 @@ function SubtractionUpTo5E() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								ODEJMOWANIE DO 5 - poziom łatwy
-							</div>
 							{gameOver && (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-desktop">
+											⛔ ODEJMOWANIE DO 5 - POZIOM ŁATWY
+											⛔
+										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
@@ -290,6 +291,9 @@ function SubtractionUpTo5E() {
 							{!gameOver && (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop easy-level">
+											ODEJMOWANIE DO 5 - POZIOM ŁATWY
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
@@ -384,9 +388,9 @@ function SubtractionUpTo5E() {
 											</div>
 											<div className="container">
 												<div className="row d-flex justify-content-center">
-													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 														<button
-															className="equations-desktop sub-result"
+															className="equations-desktop sub-result answer-box-desktop"
 															onClick={() =>
 																checkAnswer(
 																	answer1
@@ -401,9 +405,9 @@ function SubtractionUpTo5E() {
 															{answer1}
 														</button>
 													</div>
-													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 														<button
-															className="equations-desktop sub-result"
+															className="equations-desktop sub-result answer-box-desktop"
 															onClick={() =>
 																checkAnswer(
 																	answer2
@@ -418,9 +422,9 @@ function SubtractionUpTo5E() {
 															{answer2}
 														</button>
 													</div>
-													<div className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+													<div className="col-3 d-flex align-items-center justify-content-center equations-desktop">
 														<button
-															className="equations-desktop sub-result"
+															className="equations-desktop sub-result answer-box-desktop"
 															onClick={() =>
 																checkAnswer(
 																	answer3
@@ -513,9 +517,6 @@ function SubtractionUpTo5E() {
 			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-title-mobile">
-							ODEJMOWANIE DO 5
-						</div>
 						{gameOver && (
 							<div className="gameOver">
 								<div className="list-mobile">
@@ -539,6 +540,9 @@ function SubtractionUpTo5E() {
 						)}
 						{!gameOver && (
 							<div className="gameOver">
+								<div className="list-title-mobile">
+									ODEJMOWANIE DO 5 - POZIOM ŁATWY
+								</div>
 								<div className="list-title-mobile">
 									Wybierz odpowiedni wynik
 								</div>

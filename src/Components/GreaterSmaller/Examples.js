@@ -82,17 +82,17 @@ function Examples() {
 								</div>
 								<div className="container">
 									<div className="row d-flex justify-content-center">
-										<div className="col-5 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+										<div className="col-5 d-flex align-items-center justify-content-center equations-desktop">
 											<button
-												className="btn-desktop"
+												className="btn-desktop answer-box-desktop"
 												onClick={handlePreviousClick}
 											>
 												Poprzedni
 											</button>
 										</div>
-										<div className="col-5 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop">
+										<div className="col-5 d-flex align-items-center justify-content-center equations-desktop">
 											<button
-												className="btn-desktop"
+												className="btn-desktop answer-box-desktop"
 												onClick={handleNextClick}
 											>
 												Następny

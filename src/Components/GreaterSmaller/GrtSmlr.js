@@ -188,6 +188,10 @@ function GreaterSmaller() {
 								<div className="gameOver">
 									<div className="container board-desktop">
 										<div className="list-desktop">
+											⚖️ KTÓRA LICZBA JEST MNIEJSZA -
+											POZIOM ŁATWY ⚖️
+										</div>
+										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
 										<div className="list-desktop">

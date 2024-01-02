@@ -6,6 +6,7 @@ import add from "../audio/dzialy/dodawanie.mp3";
 import sub from "../audio/dzialy/odejmowanie.mp3";
 import comp from "../audio/dzialy/porownywanie.mp3";
 import ukn from "../audio/dzialy/niewiadoma.mp3";
+import mainpage from "../audio/mainpage.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -211,14 +212,14 @@ function Dzialy() {
 											to="/"
 										>
 											<button className="btn-desktop hover-menu">
-												Powrót do strony głównej
+												🔙 Powrót do strony głównej
 											</button>
 										</Link>
 									</div>
-									{/* <div className="col-3">
+									<div className="col-3">
 										<button
 											className="btn-desktop"
-											onClick={() => play(ukn)}
+											onClick={() => play(mainpage)}
 											disabled={isButtonDisabled}
 										>
 											<FontAwesomeIcon
@@ -226,7 +227,7 @@ function Dzialy() {
 												className="volume-icon"
 											/>
 										</button>
-									</div> */}
+									</div>
 								</div>
 							</div>
 						</ul>

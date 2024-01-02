@@ -223,12 +223,13 @@ function SubUpTo10() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								ODEJMOWANIE DO 10 - poziom trudny
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-desktop">
+											⛔ ODEJMOWANIE DO 10 - POZIOM TRUDNY
+											⛔
+										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
@@ -267,6 +268,9 @@ function SubUpTo10() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-title-desktop hard-level">
+											ODEJMOWANIE DO 10 - PPOZIOM TRUDNY
+										</div>
 										<div className="container list-desktop">
 											<div className="row d-flex align-items-center">
 												<div className="col-9">
@@ -329,11 +333,11 @@ function SubUpTo10() {
 												{answers.map(
 													(answer, index) => (
 														<div
-															className="col-3 answer-box-desktop d-flex align-items-center justify-content-center equations-desktop"
+															className="col-3 d-flex align-items-center justify-content-center equations-desktop"
 															key={index}
 														>
 															<button
-																className="equations-desktop"
+																className="equations-desktop answer-box-desktop"
 																onClick={() =>
 																	handleAnswerClick(
 																		answer

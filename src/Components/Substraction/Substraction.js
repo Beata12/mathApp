@@ -48,7 +48,7 @@ function Substraction() {
 										to="/o5e"
 									>
 										<button className="btn-desktop hover-easy">
-											Odejmowanie do 5 - poziom łatwy
+											Odejmowanie do 5 - poziom łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -73,8 +73,9 @@ function Substraction() {
 										style={{ textDecoration: "none" }}
 										to="/o5"
 									>
-										<button className="btn-desktop hover-hard">
-											Odejmowanie do 5 - poziom trudny
+										<button className="btn-desktop hover-mid">
+											Odejmowanie do 5 - poziom średni ✔️
+											✔️
 										</button>
 									</Link>
 								</div>
@@ -100,7 +101,7 @@ function Substraction() {
 										to="/o10e"
 									>
 										<button className="btn-desktop hover-easy">
-											Odejmowanie do 10 - poziom łatwy
+											Odejmowanie do 10 - poziom łatwy ✅
 										</button>
 									</Link>
 								</div>
@@ -127,6 +128,7 @@ function Substraction() {
 									>
 										<button className="btn-desktop hover-hard">
 											Odejmowanie do 10 - poziom trudny
+											❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -153,6 +155,7 @@ function Substraction() {
 									>
 										<button className="btn-desktop hover-hard">
 											Odejmowanie do 10 - wpisywanie
+											❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -178,7 +181,7 @@ function Substraction() {
 										to="/o20"
 									>
 										<button className="btn-desktop hover-hard">
-											Odejmowanie do 20
+											Odejmowanie do 20 ❗❗❗
 										</button>
 									</Link>
 								</div>
@@ -205,6 +208,7 @@ function Substraction() {
 									>
 										<button className="btn-desktop hover-hard">
 											Odejmowanie do 20 - wpisywanie
+											❗❗❗
 										</button>
 									</Link>
 								</div>

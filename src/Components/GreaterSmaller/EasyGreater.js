@@ -189,12 +189,13 @@ function EasySmaller() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="list-title-desktop">
-								Która liczba jest większa?
-							</div>
 							{gameOver ? (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="list-desktop">
+											⚖️ KTÓRA LICZBA JEST WIĘKSZA -
+											POZIOM ŁATWY ⚖️
+										</div>
 										<div className="list-desktop">
 											🛑 KONIEC GRY 🛑
 										</div>
@@ -233,6 +234,23 @@ function EasySmaller() {
 							) : (
 								<div className="gameOver">
 									<div className="container board-desktop">
+										<div className="row d-flex align-items-center justify-content-center margin-main">
+											<div className="col-10 main-title">
+												Kt
+											</div>
+											<div className="col-1">
+												<button
+													className="btn-desktop"
+													onClick={() => play(answer)}
+													disabled={isButtonDisabled}
+												>
+													<FontAwesomeIcon
+														icon={faVolumeUp}
+														className="volume-icon"
+													/>
+												</button>
+											</div>
+										</div>
 										<div className="row d-flex align-items-center justify-content-center margin-main">
 											<div className="col-10 main-title">
 												Wybierz poprawną odpowiedź
