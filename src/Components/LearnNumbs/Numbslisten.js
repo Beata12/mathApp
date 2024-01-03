@@ -479,10 +479,19 @@ function Numberhard() {
 									)}
 								</div>
 								<div className="container">
-									<div className="horizontal-options">
-										<p className="equations-mobile">
-											{randomWord}
-										</p>
+									<div className="d-flex justify-content-center align-items-center">
+										<button
+											className="btn-mobile"
+											onClick={() =>
+												play(numberVoice[randomWord]())
+											}
+											disabled={isButtonDisabled}
+										>
+											<FontAwesomeIcon
+												icon={faVolumeUp}
+												className="volume-icon"
+											/>
+										</button>
 									</div>
 								</div>
 								<div className="container">
@@ -490,7 +499,7 @@ function Numberhard() {
 										{answers.map((answer, index) => (
 											<div
 												key={index}
-												className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mobile"
+												className="col-3 answer-box-mobile d-flex align-items-center justify-content-center equations-mmobile"
 												onClick={() =>
 													handleAnswerClick(answer)
 												}

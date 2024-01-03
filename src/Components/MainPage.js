@@ -197,6 +197,20 @@ function MainPage() {
 										</div>
 									</div>
 								</div>
+								<h3 className="text-header">
+									Witajcie, mali odkrywcy! Razem nauczymy się
+									dużo ciekawych rzeczy:
+									{/* Tu, w magicznym
+									świecie nauki, zaczynamy fascynującą
+									przygodę z matematyką. To miejsce, gdzie
+									nauka staje się prawdziwą przygodą, a
+									zabawa, nauka i odkrywanie łączą się w
+									jedno. Teraz razem odkryjemy tajniki
+									matematyki. Czekają nas fascynujące lekcje,
+									które sprawią, że liczby staną się naszymi
+									przyjaciółmi. Gotowi na wspólną podróż pełną
+									zabawy i nowych umiejętności?  */}
+								</h3>
 								<div className="row d-flex justify-content-center align-items-center">
 									<div className="col-md-4 mb-4">
 										<div className=" board-desktop">
@@ -207,7 +221,7 @@ function MainPage() {
 													className="mb-2 learnnum-icon"
 												/>
 												<h3 className="card-title-desktop">
-													Poznajemy liczby
+													Poznamy liczby
 												</h3>
 												<p className="card-text-desktop">
 													Rozpocznij magiczną podróż
@@ -229,7 +243,7 @@ function MainPage() {
 													className="mb-2 sign-icon"
 												/>
 												<h3 className="card-title-desktop">
-													Poznajemy znaki matematyczne
+													Poznamy znaki matematyczne
 												</h3>
 												<p className="card-text-desktop">
 													Odkryj tajemnice
@@ -251,7 +265,7 @@ function MainPage() {
 													className="mb-2 add-icon"
 												/>
 												<h3 className="card-title-desktop">
-													Uczymy się dodawać
+													Nauczymy się dodawać
 												</h3>
 												<p className="card-text-desktop">
 													Przeżywaj radość
@@ -275,7 +289,7 @@ function MainPage() {
 													className="mb-2 sub-icon"
 												/>
 												<h3 className="card-title-desktop">
-													Uczymy się odejmować
+													Nauczymy się odejmować
 												</h3>
 												<p className="card-text-desktop">
 													Przeżywaj przygody z
@@ -294,7 +308,8 @@ function MainPage() {
 													className="mb-2 comp-icon"
 												/>
 												<h3 className="card-title-desktop">
-													Porównywanie liczb
+													Nauczymy się porównywać
+													liczb
 												</h3>
 												<p className="card-text-desktop">
 													Stawiaj liczby w rywalizacji
@@ -313,7 +328,8 @@ function MainPage() {
 													className="mb-2 uknnown-icon"
 												/>
 												<h3 className="card-title-desktop">
-													Działania z niewiadomą
+													Dowiemys się czym są
+													działania z niewiadomą
 												</h3>
 												<p className="card-text-desktop">
 													Rozwiązuj zadania
@@ -511,7 +527,7 @@ function MainPage() {
 						</Link>
 					</div>
 					<div className="row d-flex justify-content-center align-items-center">
-						<div className="col-md-4 mb-4">
+						<div className="row-md-4 mb-4">
 							<div className=" board-desktop">
 								<div className="card-body">
 									<FontAwesomeIcon
@@ -532,7 +548,7 @@ function MainPage() {
 								</div>
 							</div>
 						</div>
-						<div className="col-md-4 mb-4">
+						<div className="row-md-4 mb-4">
 							<div className="board-desktop">
 								<div className="card-body">
 									<FontAwesomeIcon
@@ -552,7 +568,7 @@ function MainPage() {
 								</div>
 							</div>
 						</div>
-						<div className="col-md-4 mb-4">
+						<div className="row-md-4 mb-4">
 							<div className="board-desktop">
 								<div className="card-body">
 									<FontAwesomeIcon
@@ -572,9 +588,9 @@ function MainPage() {
 								</div>
 							</div>
 						</div>
-					</div>
-					<div className="row d-flex justify-content-center align-items-center">
-						<div className="col-md-4 mb-4">
+						{/* </div>
+					<div className="row d-flex justify-content-center align-items-center"> */}
+						<div className="row-md-4 mb-4">
 							<div className="board-desktop">
 								<div className="card-body">
 									<FontAwesomeIcon
@@ -592,7 +608,7 @@ function MainPage() {
 								</div>
 							</div>
 						</div>
-						<div className="col-md-4 mb-4">
+						<div className="row-md-4 mb-4">
 							<div className="board-desktop">
 								<div className="card-body">
 									<FontAwesomeIcon
@@ -610,7 +626,7 @@ function MainPage() {
 								</div>
 							</div>
 						</div>
-						<div className="col-md-4 mb-4">
+						<div className="row-md-4 mb-4">
 							<div className="board-desktop">
 								<div className="card-body">
 									<FontAwesomeIcon

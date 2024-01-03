@@ -426,7 +426,7 @@ function UpTo20() {
 			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-title-mobile">DODAWANIE DO 10</div>
+						<div className="list-title-mobile">DODAWANIE DO 20</div>
 						{gameOver ? (
 							<div className="gameOver">
 								<div className="list-mobile">

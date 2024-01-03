@@ -3,9 +3,12 @@
 	font-size: 36px !important;
 }
 
-.nav-desktop,
-.footer-desktop {
+.nav-desktop {
 	margin-top: 80px;
+}
+
+.footer-desktop {
+	margin-top: 40px;
 }
 
 .logo {
