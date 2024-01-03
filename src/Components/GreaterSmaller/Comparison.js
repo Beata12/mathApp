@@ -240,16 +240,18 @@ function Comparasion() {
 						<Link style={{ textDecoration: "none" }} to="/esm">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Porównywanie liczb - która liczba jest mniejsza
+								✅
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/egr">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Porównywanie liczb - która liczba jest większa
+								✅
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/grsm">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Porównywanie liczb
+								Porównywanie liczb ❗❗❗
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/dz">

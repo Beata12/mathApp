@@ -260,27 +260,27 @@ function Substraction() {
 					<ul className="text-center">
 						<Link style={{ textDecoration: "none" }} to="/o5">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Odejmowanie do 5
+								Odejmowanie do 5 ✅
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/o10">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Odejmowanie do 10
+								Odejmowanie do 10 ✔️ ✔️
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/ow10">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Odejmowanie do 10 - wpisywanie
+								Odejmowanie do 10 - wpisywanie ❗❗❗
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/o20">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Odejmowanie do 20
+								Odejmowanie do 20 ✔️ ✔️
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/ow20">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Odejmowanie do 20 - wpisywanie
+								Odejmowanie do 20 - wpisywanie ❗❗❗
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/dz">

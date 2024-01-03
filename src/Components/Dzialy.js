@@ -234,39 +234,44 @@ function Dzialy() {
 					</div>
 				</div>
 			</div>
-
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center margin-mobile">
 					<ul className="text-center main-mobile">
+						<Link style={{ textDecoration: "none" }} to="/">
+							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+								🔢 = 🤔 ➕ 🎲 MATEMATYCZNA KRAINA ZABAWY 🎲 ➕
+								🤔 = 🔢
+							</li>
+						</Link>
 						<Link style={{ textDecoration: "none" }} to="./num">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Poznajemy liczby
+								🔢 Liczbowe Spotkanie 🔢
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./sign">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Poznajemy znaki matematyczne
+								▶ Magiczne Znaki Matematyki ✍️
 							</li>
 						</Link>
 
 						<Link style={{ textDecoration: "none" }} to="./add">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Uczymy się dodawać
+								➕ Odkrywamy Świat Dodawania ➕
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./sub">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Uczymy się odejmować
+								⛔ Odkrywamy Świat Odejmowania ⛔
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./comp">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Porównywanie liczb
+								⚖️ Zabawy w Porównywanie <br></br>Liczb ⚖️
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./un">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Działania z niewiadomą
+								❓ Zagadkowe Działania z Niewiadomą ❓
 							</li>
 						</Link>
 					</ul>

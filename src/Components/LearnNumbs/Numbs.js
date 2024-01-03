@@ -206,23 +206,23 @@ function Numbers() {
 					<ul className="text-center margin-mob">
 						<Link style={{ textDecoration: "none" }} to="/numlearn">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Poznaje liczby
+								🔢 Poznaje liczby 🔢
 							</li>
 						</Link>
 
 						<Link style={{ textDecoration: "none" }} to="/nume">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Rozpoznawanie liczb - poziom łatwy
+								Rozpoznawanie liczb - poziom łatwy ✅
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/numh">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Rozpoznawanie liczb - poziom trudny
+								Rozpoznawanie liczb - poziom trudny ❗❗❗
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/numl">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Rozpoznawanie liczb - słuchanie
+								Rozpoznawanie liczb - słuchanie 🗣
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/dz">

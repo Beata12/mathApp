@@ -207,17 +207,18 @@ function Uknnown() {
 					<ul className="text-center">
 						<Link style={{ textDecoration: "none" }} to="/una">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Dodawanie z liczbą niewiadomą
+								Dodawanie z liczbą niewiadomą ✔️ ✔️
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/uns">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								Odejmowanie z liczbą niewiadomą
+								Odejmowanie z liczbą niewiadomą ✔️ ✔️
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/unas">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
 								Dodawanie i odejmowanie z liczbą niewiadomą
+								❗❗❗
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="/dz">
