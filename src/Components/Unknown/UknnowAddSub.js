@@ -462,7 +462,10 @@ function UnknownAdd() {
 								</div>
 							</div>
 						) : (
-							<>
+							<div className="gameOver">
+								<div className="list-title-mobile">
+									Wybierz poprawną odpowiedź
+								</div>
 								<div className="icons-mobile">
 									{resultIcon ? (
 										<FontAwesomeIcon
@@ -490,7 +493,6 @@ function UnknownAdd() {
 										</div>
 									</div>
 								</div>
-
 								<div className="container">
 									<div className="row d-flex justify-content-center">
 										{choices.map((choice, index) => (
@@ -520,7 +522,7 @@ function UnknownAdd() {
 								<div className="information-mobile">
 									Czas: {timer}
 								</div>
-							</>
+							</div>
 						)}
 						<Link style={{ textDecoration: "none" }} to="/un">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">

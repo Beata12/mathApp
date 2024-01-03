@@ -457,6 +457,9 @@ function SubUpTo10() {
 							</div>
 						) : (
 							<div className="gameOver">
+								<div className="list-title-mobile">
+									Wybierz poprawną odpowiedź
+								</div>
 								<div className="icons-mobile">
 									{emoji === "smile" && (
 										<FontAwesomeIcon

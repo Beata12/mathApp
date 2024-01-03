@@ -395,10 +395,7 @@ function Numberseasy() {
 			<div className="dzialy-mobile margin-mob">
 				<div className="d-flex justify-content-center align-items-center">
 					<ul className="text-center">
-						<div className="list-title-mobile">
-							Wybierz odbiowiednią liczbę
-						</div>
-						<div className="list-title-mobile">Poznaje liczby</div>
+						{/* <div className="list-title-mobile">Poznaje liczby</div> */}
 						{gameOver ? (
 							<div className="gameOver">
 								<div className="list-mobile">
@@ -421,6 +418,9 @@ function Numberseasy() {
 							</div>
 						) : (
 							<div className="gameOver">
+								<div className="list-title-mobile">
+									Wybierz poprawną odpowiedź
+								</div>
 								<div className="icons-mobile">
 									{emoji === "smile" && (
 										<FontAwesomeIcon

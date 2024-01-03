@@ -265,7 +265,7 @@ function Numbslearn() {
 				<ul className="text-center">
 					<Link style={{ textDecoration: "none" }} to="/num">
 						<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-							Chcesz poćwiczyć
+							Chce poćwiczyć
 						</li>
 					</Link>
 					<Link style={{ textDecoration: "none" }} to="/dz">

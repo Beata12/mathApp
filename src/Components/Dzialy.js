@@ -239,8 +239,8 @@ function Dzialy() {
 					<ul className="text-center main-mobile">
 						<Link style={{ textDecoration: "none" }} to="/">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								🔢 = 🤔 ➕ 🎲 MATEMATYCZNA KRAINA ZABAWY 🎲 ➕
-								🤔 = 🔢
+								🔢 = 🤔 ➕ 🎲<br></br> MATEMATYCZNA KRAINA
+								ZABAWY <br></br>🎲 ➕ 🤔 = 🔢
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./num">
