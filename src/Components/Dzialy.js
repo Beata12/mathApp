@@ -51,8 +51,8 @@ function Dzialy() {
 									to="/info"
 								>
 									<button className="btn-desktop">
-										🔢 = 🤔 ➕ 🎲 MATEMATYKA DLA SMYKA -
-										INFO 🎲 ➕ 🤔 = 🔢
+										🔢 = 🤔 ➕ 🎲 CZEGO SIĘ NAUCZYMY 🎲 ➕
+										🤔 = 🔢
 									</button>
 								</Link>
 							</div>

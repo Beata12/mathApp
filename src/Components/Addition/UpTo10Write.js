@@ -227,15 +227,17 @@ function UpTo10W() {
 						<ul className="text-center">
 							{gameOver ? (
 								<div className="gameOver">
-									<div className="gameOver">
-										<div className="list-desktop">
-											🛑 KONIEC GRY 🛑
-										</div>
-										<div className="list-desktop">
-											Punkty: {points}
-										</div>
-										<div className="list-desktop">
-											Gratulacje 🥳🎉👏
+									<div className="container board-desktop">
+										<div className="gameOver">
+											<div className="list-desktop">
+												🛑 KONIEC GRY 🛑
+											</div>
+											<div className="list-desktop">
+												Punkty: {points}
+											</div>
+											<div className="list-desktop">
+												Gratulacje 🥳🎉👏
+											</div>
 										</div>
 									</div>
 									<div className="container list-desktop board-desktop">

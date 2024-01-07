@@ -49,6 +49,12 @@
 	padding: 10px;
 }
 
+.card-title-desktop-white {
+	color: white;
+	font-size: 35px;
+	padding: 10px;
+	margin: 10px;
+}
 .marg {
 	margin-top: 10px;
 }
@@ -110,6 +116,7 @@ ul.text-center {
 
 .book-icon {
 	color: #c38457 !important;
+	margin: 10px;
 }
 
 .child-icon {
@@ -122,6 +129,7 @@ ul.text-center {
 
 .pen-icon {
 	color: rgb(158, 180, 194);
+	margin: 15px;
 }
 
 .learnnum-icon {

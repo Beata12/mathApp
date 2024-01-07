@@ -429,22 +429,24 @@ function UpTo20() {
 						<div className="list-title-mobile">DODAWANIE DO 20</div>
 						{gameOver ? (
 							<div className="gameOver">
-								<div className="list-mobile">
-									🛑 KONIEC GRY 🛑
-								</div>
-								<div className="list-mobile">
-									Punkty: {points}
-								</div>
-								<div className="list-mobile">
-									Gratulacje 🥳🎉👏
-								</div>
-								<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-									<button
-										onClick={startNewGame}
-										className="btn-mobile"
-									>
-										Zagraj jeszcze raz
-									</button>
+								<div className="container board-desktop">
+									<div className="list-mobile">
+										🛑 KONIEC GRY 🛑
+									</div>
+									<div className="list-mobile">
+										Punkty: {points}
+									</div>
+									<div className="list-mobile">
+										Gratulacje 🥳🎉👏
+									</div>
+									<div className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
+										<button
+											onClick={startNewGame}
+											className="btn-mobile"
+										>
+											Zagraj jeszcze raz
+										</button>
+									</div>
 								</div>
 							</div>
 						) : (

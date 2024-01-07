@@ -76,26 +76,23 @@ function MainPage() {
 									🔢 = 🤔 ➕ 🎲 Witaj w Matematycznej Krainie
 									Zabawy! 🎲 ➕ 🤔 = 🔢
 								</h2>
+
 								<p className="text-math">
 									🧮🎉 Przygotowano dla Ciebie wiele
 									fascynujących gier i zadań matematycznych,
 									które sprawią, że nauka stanie się prawdziwą
 									przygodą! 🎉🧮
 								</p>
+								<p>
+									<br></br>
+								</p>
 							</div>
 							<div>
 								<div className="container">
 									<div className="row d-flex align-items-center">
-										<div className="col-2">
+										<div className="col-3">
 											<div className="container">
 												<div className="row">
-													<div className="row-2">
-														<FontAwesomeIcon
-															icon={faArrowRight}
-															size="4x"
-															className="mb-2 arrow-icon"
-														/>
-													</div>
 													<div className="row-2">
 														<FontAwesomeIcon
 															icon={faArrowRight}
@@ -106,7 +103,7 @@ function MainPage() {
 												</div>
 											</div>
 										</div>
-										<div className="col-8">
+										<div className="col-6">
 											<div className="d-flex justify-content-center">
 												<Link
 													style={{
@@ -114,27 +111,12 @@ function MainPage() {
 													}}
 													to="./dz"
 												>
-													<div className=" board-desktop">
-														<div className="card-body">
-															<div className="container">
-																<div className="container">
-																	<div className="row d-felx justify-content-center">
-																		<div className="col-12">
-																			<h3 className="card-text-desktop">
-																				ZACZYNAMY
-																			</h3>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													{/* <div className="mb-4">
-														<div className=" board-desktop">
+													<div className="mb-4">
+														<div className="board-desktop">
 															<div className="card-body">
 																<div className="container">
 																	<div className="row">
-																		<div className="col-2">
+																		<div className="col-3">
 																			<FontAwesomeIcon
 																				icon={
 																					faBook
@@ -143,36 +125,24 @@ function MainPage() {
 																				className="mb-2 book-icon"
 																			/>
 																		</div>
-																		<div className="col-8">
-																			<h2 className="card-title-desktop">
-																				Matematyka
-																				Dla
-																				Smyka
+																		<div className="col-7">
+																			<h2 className="card-title-desktop-white">
+																				ZACZYNAMY
 																			</h2>
 																		</div>
 																		<div className="col-2">
 																			<FontAwesomeIcon
 																				icon={
-																					faChild
+																					faPencil
 																				}
-																				size="4x"
-																				className="mb-2 child-icon"
+																				size="3x"
+																				className="mb-2 pen-icon"
 																			/>
 																		</div>
 																	</div>
-																	<div className="container">
+																	{/* <div className="container">
 																		<div className="row d-felx justify-content-center">
-																			<div className="col-8">
-																				<h3 className="card-text-desktop">
-																					Kliknij
-																					i
-																					poznaj
-																					matematyczną
-																					krainę
-																					zabawy
-																				</h3>
-																			</div>
-																			<div className="col-1">
+																			<div className="col-2">
 																				<FontAwesomeIcon
 																					icon={
 																						faPencil
@@ -182,24 +152,17 @@ function MainPage() {
 																				/>
 																			</div>
 																		</div>
-																	</div>
+																	</div> */}
 																</div>
 															</div>
 														</div>
-													</div> */}
+													</div>
 												</Link>
 											</div>
 										</div>
-										<div className="col-2">
+										<div className="col-3">
 											<div className="container">
 												<div className="row">
-													<div className="row-2">
-														<FontAwesomeIcon
-															icon={faArrowLeft}
-															size="4x"
-															className="mb-2 arrow-icon"
-														/>
-													</div>
 													<div className="row-2">
 														<FontAwesomeIcon
 															icon={faArrowLeft}
