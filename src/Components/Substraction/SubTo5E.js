@@ -18,7 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function SubtractionUpTo5E() {
-	const [timer, setTimer] = useState(10);
+	const [timer, setTimer] = useState(15);
 	const [number1, setNumber1] = useState(null);
 	const [number2, setNumber2] = useState(null);
 	const [answer1, setAnswer1] = useState(null);
@@ -129,7 +129,7 @@ function SubtractionUpTo5E() {
 
 		setCorrectAnswer(correct);
 		setShowSmile(false);
-		setTimer(10);
+		setTimer(15);
 		setCorrectAnswerInfo(null);
 	};
 

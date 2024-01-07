@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Numberseasy() {
-	const [timer, setTimer] = useState(10);
+	const [timer, setTimer] = useState(15);
 	const [answers, setAnswers] = useState([null, null, null]);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [points, setPoints] = useState(0);
@@ -79,7 +79,7 @@ function Numberseasy() {
 		setAnswers(answersArray);
 		setCorrectAnswer(randomAlienCount);
 		setCanAnswer(true);
-		setTimer(10);
+		setTimer(15);
 	};
 
 	const generateAnswersArray = (correct) => {

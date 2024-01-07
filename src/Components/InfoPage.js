@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-// import numbers from "../audio/dzialy/poznajemyLiczby.mp3";
-// import signs from "../audio/dzialy/znaki.mp3";
-// import add from "../audio/dzialy/dodawanie.mp3";
-// import sub from "../audio/dzialy/odejmowanie.mp3";
-// import comp from "../audio/dzialy/porownywanie.mp3";
-// import ukn from "../audio/dzialy/niewiadoma.mp3";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faSortNumericUpAlt,
@@ -21,69 +15,202 @@ import {
 	faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-function MainPage() {
-	// const [isButtonDisabled, setButtonDisabled] = useState(false);
-
-	// function play(audioFile) {
-	// 	if (!isButtonDisabled) {
-	// 		const audio = new Audio(audioFile);
-	// 		audio.play();
-	// 		setButtonDisabled(true);
-	// 	}
-	// }
-
-	// useEffect(() => {
-	// 	const timeoutId = setTimeout(() => {
-	// 		setButtonDisabled(false);
-	// 	}, 2000);
-
-	// 	return () => {
-	// 		clearTimeout(timeoutId);
-	// 	};
-	// }, [isButtonDisabled]);
-
+function InfoPage() {
 	return (
 		<main className="main-dzialy">
 			<div className="dzialy-desktop">
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="container">
-								<div className="row d-flex justify-content-center align-items-center">
-									<div className="col-2">
-										<FontAwesomeIcon
-											icon={faBook}
-											size="4x"
-											className="mb-2 book-icon icon-marg"
-										/>
+							<h3 className="text-header">
+								Witajcie, mali odkrywcy! Razem nauczymy się dużo
+								ciekawych rzeczy:
+								{/* Tu, w magicznym
+									świecie nauki, zaczynamy fascynującą
+									przygodę z matematyką. To miejsce, gdzie
+									nauka staje się prawdziwą przygodą, a
+									zabawa, nauka i odkrywanie łączą się w
+									jedno. Teraz razem odkryjemy tajniki
+									matematyki. Czekają nas fascynujące lekcje,
+									które sprawią, że liczby staną się naszymi
+									przyjaciółmi. Gotowi na wspólną podróż pełną
+									zabawy i nowych umiejętności?  */}
+							</h3>
+							<div className="row d-flex justify-content-center align-items-center">
+								<div className="col-md-4 mb-4">
+									<div className=" board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/num"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faSortNumericUpAlt}
+													size="4x"
+													className="mb-2 learnnum-icon"
+												/>
+												<h3 className="card-title-desktop">
+													Poznamy liczby
+												</h3>
+												<p className="card-text-desktop">
+													Rozpocznij magiczną podróż
+													po barwnym świecie liczb,
+													gdzie każda z nich otwiera
+													przed tobą fascynujące
+													tajemnice, gotowe do
+													odkrycia i zgłębienia.
+												</p>
+											</div>
+										</Link>
 									</div>
-									<div className="col-8">
-										<h1 className="text-header">
-											Matematyka Dla Smyka
-										</h1>
+								</div>
+								<div className="col-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/sign"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faGreaterThanEqual}
+													size="4x"
+													className="mb-2 sign-icon"
+												/>
+												<h3 className="card-title-desktop">
+													Poznamy znaki matematyczne
+												</h3>
+												<p className="card-text-desktop">
+													Odkryj tajemnice
+													matematycznych znaków,
+													zgłębiając ich fascynujący
+													świat i dzięki zabawie
+													poznaj unikalne znaczenia
+													każdego z nich.
+												</p>
+											</div>
+										</Link>
 									</div>
-									<div className="col-2">
-										<FontAwesomeIcon
-											icon={faChild}
-											size="4x"
-											className="mb-2 child-icon icon-marg"
-										/>
+								</div>
+								<div className="col-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/add"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faPlus}
+													size="4x"
+													className="mb-2 add-icon"
+												/>
+												<h3 className="card-title-desktop">
+													Nauczymy się dodawać
+												</h3>
+												<p className="card-text-desktop">
+													Przeżywaj radość
+													matematycznej przygody,
+													eksplorując świat dodawania
+													w pełen ciekawych gier,
+													które uczą i bawią
+													jednocześnie.
+												</p>
+											</div>
+										</Link>
 									</div>
 								</div>
 							</div>
-							<div className="mb-4">
-								<h2 className="text-header">
-									🔢 = 🤔 ➕ 🎲 Witaj w Matematycznej Krainie
-									Zabawy! 🎲 ➕ 🤔 = 🔢
-								</h2>
-								<p className="text-math">
-									🧮🎉 Przygotowano dla Ciebie wiele
-									fascynujących gier i zadań matematycznych,
-									które sprawią, że nauka stanie się prawdziwą
-									przygodą! 🎉🧮
-								</p>
+							<div className="row d-flex justify-content-center align-items-center">
+								<div className="col-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/sub"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faMinus}
+													size="4x"
+													className="mb-2 sub-icon"
+												/>
+												<h3 className="card-title-desktop">
+													Nauczymy się odejmować
+												</h3>
+												<p className="card-text-desktop">
+													Podążaj śladem fascynujących
+													przygód, gdzie magia
+													odejmowania ożywia się w
+													zabawnych grach i
+													interaktywnych zadaniach.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
+								<div className="col-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/comp"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faEquals}
+													size="4x"
+													className="mb-2 comp-icon"
+												/>
+												<h3 className="card-title-desktop">
+													Nauczymy się porównywać
+													liczb
+												</h3>
+												<p className="card-text-desktop">
+													Wprowadź liczby do
+													emocjonującej rywalizacji,
+													doskonaląc umiejętność
+													precyzyjnego porównywania.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
+								<div className="col-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/un"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faQuestion}
+													size="4x"
+													className="mb-2 uknnown-icon"
+												/>
+												<h3 className="card-title-desktop">
+													Dowiemy się czym są
+													działania z niewiadomą
+												</h3>
+												<p className="card-text-desktop">
+													Rozwiązuj zadania
+													matematyczne z nieznananymi
+													wartościami.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
 							</div>
-							<div>
+							<div className="d-flex justify-content-center">
 								<div className="container">
 									<div className="row d-flex align-items-center">
 										<div className="col-2">
@@ -112,24 +239,9 @@ function MainPage() {
 													style={{
 														textDecoration: "none",
 													}}
-													to="./dz"
+													to="/dz"
 												>
-													<div className=" board-desktop">
-														<div className="card-body">
-															<div className="container">
-																<div className="container">
-																	<div className="row d-felx justify-content-center">
-																		<div className="col-12">
-																			<h3 className="card-text-desktop">
-																				ZACZYNAMY
-																			</h3>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													{/* <div className="mb-4">
+													<div className="mb-4">
 														<div className=" board-desktop">
 															<div className="card-body">
 																<div className="container">
@@ -186,7 +298,7 @@ function MainPage() {
 																</div>
 															</div>
 														</div>
-													</div> */}
+													</div>
 												</Link>
 											</div>
 										</div>
@@ -462,4 +574,4 @@ function MainPage() {
 	);
 }
 
-export default MainPage;
+export default InfoPage;

@@ -18,7 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function SubtractionUpTo10E() {
-	const [timer, setTimer] = useState(10);
+	const [timer, setTimer] = useState(15);
 	const [number1, setNumber1] = useState(null);
 	const [number2, setNumber2] = useState(null);
 	const [answer1, setAnswer1] = useState(null);
@@ -129,8 +129,8 @@ function SubtractionUpTo10E() {
 
 		setCorrectAnswer(correct);
 		setShowSmile(false);
-		setTimer(10);
-		setCorrectAnswerInfo(null); // Wyczyść poprawną odpowiedź przy generowaniu nowego pytania
+		setTimer(15);
+		setCorrectAnswerInfo(null);
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {

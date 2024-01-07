@@ -15,7 +15,7 @@ import {
 import { faRedditAlien } from "@fortawesome/free-brands-svg-icons";
 
 function EasySmaller() {
-	const [timer, setTimer] = useState(10);
+	const [timer, setTimer] = useState(15);
 	const [numbers, setNumbers] = useState({ num1: null, num2: null });
 	const [correctAnswer, setCorrectAnswer] = useState(null);
 	const [points, setPoints] = useState(0);
@@ -87,7 +87,7 @@ function EasySmaller() {
 		setCorrectAnswer(correct);
 		setEmoji(null);
 		setCorrectAnswerInfo(null);
-		setTimer(10);
+		setTimer(15);
 	};
 
 	const handleAnswerClick = (selectedAnswer) => {

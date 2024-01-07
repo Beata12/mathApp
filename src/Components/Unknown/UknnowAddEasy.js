@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function UnknownAddE() {
-	const [timer, setTimer] = useState(10);
+	const [timer, setTimer] = useState(15);
 	const [numbers, setNumbers] = useState({ num1: null, num2: null });
 	const [answers, setAnswers] = useState([null, null, null]);
 	const [correctAnswer, setCorrectAnswer] = useState(null);
@@ -98,7 +98,7 @@ function UnknownAddE() {
 		setCorrectAnswer(correct);
 		setEmoji(null);
 		setCorrectAnswerInfo(null);
-		setTimer(10);
+		setTimer(15);
 	};
 
 	const generateIncorrectAnswer = (excludedIndexes, correct) => {

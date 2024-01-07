@@ -37,11 +37,22 @@ function Dzialy() {
 				<div className="container d-flex justify-content-center align-items-center">
 					<div className="col-12">
 						<ul className="text-center">
-							<div className="container list-desktop board-desktop main-title">
+							{/* <div className="container list-desktop board-desktop main-title">
 								<Link style={{ textDecoration: "none" }} to="/">
 									<button className="btn-desktop">
 										🔢 = 🤔 ➕ 🎲 MATEMATYCZNA KRAINA ZABAWY
 										🎲 ➕ 🤔 = 🔢
+									</button>
+								</Link>
+							</div> */}
+							<div className="container list-desktop board-desktop main-title">
+								<Link
+									style={{ textDecoration: "none" }}
+									to="/info"
+								>
+									<button className="btn-desktop">
+										🔢 = 🤔 ➕ 🎲 MATEMATYKA DLA SMYKA -
+										INFO 🎲 ➕ 🤔 = 🔢
 									</button>
 								</Link>
 							</div>
@@ -50,7 +61,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./num"
+											to="/num"
 										>
 											<button className="btn-desktop hover-menu">
 												🔢 Liczbowe Spotkanie 🔢
@@ -76,7 +87,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./sign"
+											to="/sign"
 										>
 											<button className="btn-desktop hover-menu">
 												▶ Magiczne Znaki Matematyki ✍️
@@ -102,7 +113,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./add"
+											to="/add"
 										>
 											<button className="btn-desktop hover-menu">
 												➕ Odkrywamy Świat Dodawania ➕
@@ -128,7 +139,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./sub"
+											to="/sub"
 										>
 											<button className="btn-desktop hover-menu">
 												⛔ Odkrywamy Świat Odejmowania
@@ -155,7 +166,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./comp"
+											to="/comp"
 										>
 											<button className="btn-desktop hover-menu">
 												⚖️ Zabawy w Porównywanie Liczb
@@ -182,7 +193,7 @@ function Dzialy() {
 									<div className="col-9">
 										<Link
 											style={{ textDecoration: "none" }}
-											to="./un"
+											to="/un"
 										>
 											<button className="btn-desktop hover-menu">
 												❓ Zagadkowe Działania z

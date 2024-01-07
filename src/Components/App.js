@@ -3,6 +3,7 @@ import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Dzialy from "./Dzialy";
 import MainPage from "./MainPage";
+import InfoPage from "./InfoPage";
 import Numbs from "./LearnNumbs/Numbs";
 import Numbslearn from "./LearnNumbs/Numbslearn";
 import Numbseasy from "./LearnNumbs/Numbseasy";
@@ -52,6 +53,7 @@ function App() {
 			<Navigation />
 			<Routes>
 				<Route path="/" element={<MainPage />} />
+				<Route path="/info" element={<InfoPage />} />
 				<Route path="/dz" element={<Dzialy />} />
 				<Route path="/dz/num" element={<Numbs />} />
 				<Route path="/num" element={<Numbs />} />
