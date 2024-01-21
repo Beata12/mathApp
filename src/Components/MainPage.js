@@ -58,7 +58,7 @@ function MainPage() {
 							<div>
 								<div className="container">
 									<div className="row d-flex align-items-center">
-										<div className="col-3">
+										<div className="col-2">
 											<div className="container">
 												<div className="row">
 													<div className="row-2">
@@ -71,7 +71,7 @@ function MainPage() {
 												</div>
 											</div>
 										</div>
-										<div className="col-6">
+										<div className="col-8">
 											<div className="d-flex justify-content-center">
 												<Link
 													style={{
@@ -115,7 +115,7 @@ function MainPage() {
 												</Link>
 											</div>
 										</div>
-										<div className="col-3">
+										<div className="col-2">
 											<div className="container">
 												<div className="row">
 													<div className="row-2">

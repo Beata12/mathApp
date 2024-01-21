@@ -160,3 +160,40 @@ ul.text-center {
 .arrow-icon {
 	color: rgb(187, 1, 1);
 }
+
+@media screen and (min-width: 768px) {
+	.card-title-desktop-white {
+		color: white;
+		font-size: 20px;
+		padding: 0 !important;
+		margin: 0 !important;
+		margin-top: 10px !important;
+	}
+
+	.book-icon {
+		font-size: 20px !important;
+	}
+
+	.pen-icon {
+		font-size: 20px !important;
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	.card-title-desktop-white {
+		color: white;
+		font-size: 25px;
+	}
+
+	.book-icon {
+		font-size: 40px !important;
+		margin: 0 !important;
+		margin-top: 10px !important;
+	}
+
+	.pen-icon {
+		margin: 0 !important;
+		font-size: 40px !important;
+		margin-top: 10px !important;
+	}
+}
