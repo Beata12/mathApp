@@ -29,7 +29,7 @@
 
 .text-header-mobile {
 	color: white;
-	margin: 20px;
+	margin: 10px;
 }
 
 .text-math {
@@ -55,12 +55,13 @@
 	padding: 10px;
 	margin: 10px;
 }
+
 .marg {
 	margin-top: 10px;
 }
 
 .marg-pnc {
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 .card-title-mobile {

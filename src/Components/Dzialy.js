@@ -248,10 +248,10 @@ function Dzialy() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center margin-mobile">
 					<ul className="text-center main-mobile">
-						<Link style={{ textDecoration: "none" }} to="/">
+						<Link style={{ textDecoration: "none" }} to="/info">
 							<li className="answer-box-mobile d-flex align-items-center justify-content-center choose-level-mobile">
-								🔢 = 🤔 ➕ 🎲<br></br> MATEMATYCZNA KRAINA
-								ZABAWY <br></br>🎲 ➕ 🤔 = 🔢
+								🔢 = 🤔 ➕ 🎲<br></br> Czego się nauczymy?
+								<br></br>🎲 ➕ 🤔 = 🔢
 							</li>
 						</Link>
 						<Link style={{ textDecoration: "none" }} to="./num">

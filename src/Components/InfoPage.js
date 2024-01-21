@@ -332,239 +332,179 @@ function InfoPage() {
 			<div className="dzialy-mobile">
 				<div className="d-flex justify-content-center align-items-center margin-mobile">
 					<ul className="text-center main-mobile">
-						<h2 className="text-header-mobile">
-							🔢 = 🤔 ➕ 🎲 <br></br>Witaj w Matematycznej Krainie
-							Zabawy! <br></br> 🎲 ➕ 🤔 = 🔢
-						</h2>
-						<p className="text-math-moblile">
-							🧮🎉 Przygotowano dla Ciebie wiele fascynujących
-							gier i zadań matematycznych, które sprawią, że nauka
-							stanie się prawdziwą przygodą! 🎉🧮
-						</p>
+						<h3 className="text-center card-title-mobile">
+							Witajcie, mali odkrywcy! Razem nauczymy się dużo
+							ciekawych rzeczy:
+						</h3>
 						<div>
-							<div className="d-flex justify-content-center">
-								<Link
-									style={{ textDecoration: "none" }}
-									to="./dz"
-								>
-									<div className="mb-4">
-										<div className="board-desktop">
-											<div className="card-body">
-												<div className="container">
-													<div className="row">
-														<div className="row-2">
-															<FontAwesomeIcon
-																icon={faBook}
-																size="4x"
-																className="mb-2 book-icon"
-															/>
-														</div>
-														<div className="row-8">
-															<h2 className="card-title-mobile">
-																Matematyka Dla
-																Smyka
-															</h2>
-														</div>
-													</div>
-													<div className="container">
-														<div className="row d-felx justify-content-center">
-															<div className="col-10">
-																<h5 className="card-text-mobile marg">
-																	Kliknij i
-																	poznaj
-																	matematyczną
-																	krainę
-																	zabawy
-																</h5>
-															</div>
-															<div className="col-1">
-																<FontAwesomeIcon
-																	icon={
-																		faPencil
-																	}
-																	size="2x"
-																	className="mb-2 pen-icon marg-pnc"
-																/>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</Link>
-							</div>
 							<div className="row d-flex justify-content-center align-items-center">
 								<div className="row-md-4 mb-4">
-									<div className=" board-desktop">
-										<div className="card-body">
-											<FontAwesomeIcon
-												icon={faSortNumericUpAlt}
-												size="4x"
-												className="mb-2 learnnum-icon"
-											/>
-											<h3 className="card-title-mobile">
-												Poznajemy liczby
-											</h3>
-											<p className="card-text-mobile">
-												Rozpocznij magiczną podróż po
-												barwnym świecie liczb, gdzie
-												każda z nich otwiera przed tobą
-												fascynujące tajemnice, gotowe do
-												odkrycia i zgłębienia.
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className="row-md-4 mb-4">
 									<div className="board-desktop">
-										<div className="card-body">
-											<FontAwesomeIcon
-												icon={faGreaterThanEqual}
-												size="4x"
-												className="mb-2 sign-icon"
-											/>
-											<h3 className="card-title-mobile">
-												Poznajemy znaki matematyczne
-											</h3>
-											<p className="card-text-mobile">
-												Odkryj tajemnice matematycznych
-												znaków, zgłębiając ich
-												fascynujący świat i dzięki
-												zabawie poznaj unikalne
-												znaczenia każdego z nich.
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className="row-md-4 mb-4">
-									<div className="board-desktop">
-										<div className="card-body">
-											<FontAwesomeIcon
-												icon={faPlus}
-												size="4x"
-												className="mb-2 add-icon"
-											/>
-											<h3 className="card-title-mobile">
-												Uczymy się dodawać
-											</h3>
-											<p className="card-text-mobile">
-												Przeżywaj radość matematycznej
-												przygody, eksplorując świat
-												dodawania w pełen ciekawych
-												gier, które uczą i bawią
-												jednocześnie.
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className="row-md-4 mb-4">
-									<div className="board-desktop">
-										<div className="card-body">
-											<FontAwesomeIcon
-												icon={faMinus}
-												size="4x"
-												className="mb-2 sub-icon"
-											/>
-											<h3 className="card-title-mobile">
-												Uczymy się odejmować
-											</h3>
-											<p className="card-text-mobile">
-												Przeżywaj przygody z
-												odejmowaniem w Matematycznej
-												Krainie.
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className="row-md-4 mb-4">
-									<div className="board-desktop">
-										<div className="card-body">
-											<FontAwesomeIcon
-												icon={faEquals}
-												size="4x"
-												className="mb-2 comp-icon"
-											/>
-											<h3 className="card-title-mobile">
-												Porównywanie liczb
-											</h3>
-											<p className="card-text-mobile">
-												Stawiaj liczby w rywalizacji i
-												ucz się poprawnie je porównywać.
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className="row-md-4 mb-4">
-									<div className="board-desktop">
-										<div className="card-body">
-											<FontAwesomeIcon
-												icon={faQuestion}
-												size="4x"
-												className="mb-2 uknnown-icon"
-											/>
-											<h3 className="card-title-mobile">
-												Działania z niewiadomą
-											</h3>
-											<p className="card-text-mobile">
-												Rozwiązuj zadania matematyczne z
-												nieznanych wartości.
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="d-flex justify-content-center">
-								<Link
-									style={{ textDecoration: "none" }}
-									to="./dz"
-								>
-									<div className="mb-4">
-										<div className=" board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/num"
+										>
 											<div className="card-body">
-												<div className="container">
-													<div className="row">
-														<div className="row-2">
-															<FontAwesomeIcon
-																icon={faBook}
-																size="4x"
-																className="mb-2 book-icon"
-															/>
-														</div>
-														<div className="row-8">
-															<h2 className="card-title-mobile">
-																Matematyka Dla
-																Smyka
-															</h2>
-														</div>
-													</div>
-													<div className="container">
-														<div className="row d-felx justify-content-center">
-															<div className="col-8">
-																<h3 className="card-text-mobile">
-																	Kliknij i
-																	poznaj
-																	matematyczną
-																	krainę
-																	zabawy
-																</h3>
-															</div>
-															<div className="col-1">
-																<FontAwesomeIcon
-																	icon={
-																		faPencil
-																	}
-																	size="3x"
-																	className="mb-2 pen-icon"
-																/>
-															</div>
-														</div>
-													</div>
-												</div>
+												<FontAwesomeIcon
+													icon={faSortNumericUpAlt}
+													size="4x"
+													className="mb-2 learnnum-icon"
+												/>
+												<h3 className="card-title-mobile">
+													Poznamy liczby
+												</h3>
+												<p className="card-text-mobile">
+													Rozpocznij magiczną podróż
+													po barwnym świecie liczb,
+													gdzie każda z nich otwiera
+													przed tobą fascynujące
+													tajemnice, gotowe do
+													odkrycia i zgłębienia.
+												</p>
 											</div>
-										</div>
+										</Link>
 									</div>
-								</Link>
+								</div>
+								<div className="row-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/sign"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faGreaterThanEqual}
+													size="4x"
+													className="mb-2 sign-icon"
+												/>
+												<h3 className="card-title-mobile">
+													Poznamy znaki matematyczne
+												</h3>
+												<p className="card-text-mobile">
+													Odkryj tajemnice
+													matematycznych znaków,
+													zgłębiając ich fascynujący
+													świat i dzięki zabawie
+													poznaj unikalne znaczenia
+													każdego z nich.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
+								<div className="row-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/add"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faPlus}
+													size="4x"
+													className="mb-2 add-icon"
+												/>
+												<h3 className="card-title-mobile">
+													Nauczymy się dodawać
+												</h3>
+												<p className="card-text-mobile">
+													Przeżywaj radość
+													matematycznej przygody,
+													eksplorując świat dodawania
+													w pełen ciekawych gier,
+													które uczą i bawią
+													jednocześnie.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
+								<div className="row-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/sub"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faMinus}
+													size="4x"
+													className="mb-2 sub-icon"
+												/>
+												<h3 className="card-title-mobile">
+													Nauczymy się odejmować
+												</h3>
+												<p className="card-text-mobile">
+													Przeżywaj przygody z
+													odejmowaniem w Matematycznej
+													Krainie.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
+								<div className="row-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/comp"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faEquals}
+													size="4x"
+													className="mb-2 comp-icon"
+												/>
+												<h3 className="card-title-mobile">
+													Nauczymy się porównywać
+													liczb
+												</h3>
+												<p className="card-text-mobile">
+													Stawiaj liczby w rywalizacji
+													i ucz się poprawnie je
+													porównywać.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
+								<div className="row-md-4 mb-4">
+									<div className="board-desktop">
+										<Link
+											style={{
+												textDecoration: "none",
+											}}
+											to="/un"
+										>
+											<div className="card-body">
+												<FontAwesomeIcon
+													icon={faQuestion}
+													size="4x"
+													className="mb-2 uknnown-icon"
+												/>
+												<h3 className="card-title-mobile">
+													Dowiemy się czym są
+													działania z niewiadomą
+												</h3>
+												<p className="card-text-mobile">
+													Rozwiązuj zadania
+													matematyczne z nieznanych
+													wartości.
+												</p>
+											</div>
+										</Link>
+									</div>
+								</div>
 							</div>
 						</div>
 					</ul>

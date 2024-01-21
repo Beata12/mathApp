@@ -72,7 +72,7 @@ ul {
 	font-size: 35px;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
 	.dzialy-desktop {
 		display: none;
 	}
