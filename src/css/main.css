@@ -160,7 +160,7 @@ ul.text-center {
 .arrow-icon {
 	color: rgb(187, 1, 1);
 }
-
+/* 
 @media screen and (min-width: 768px) {
 	.card-title-desktop-white {
 		color: white;
@@ -196,4 +196,4 @@ ul.text-center {
 		font-size: 40px !important;
 		margin-top: 10px !important;
 	}
-}
+} */

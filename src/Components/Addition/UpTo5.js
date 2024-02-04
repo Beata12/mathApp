@@ -194,8 +194,8 @@ function UpTo5() {
 			return (
 				<div className="container">
 					<div className="row correct-answer-info d-flex justify-content-center align-items-center">
-						<div className="col-7">Poprawna odpowiedź:</div>
-						<div className="correct-ans col-2">
+						<div className="col-4">Poprawna odpowiedź:</div>
+						<div className="correct-ans col-1">
 							{correctAnswerInfo}
 						</div>
 					</div>
