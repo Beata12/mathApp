@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Matematyka dla Smyka - Math for Kids
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
 
-## Available Scripts
+Math for Kids is an engaging and educational React-based web application designed to assist children in learning mathematics. The project introduces fundamental math concepts through interactive and visually appealing exercises, suitable for early learners. With categories ranging from Number Recognition, Mathematical Signs, Addition, Subtraction, Number Comparison, to Operations with Variables, Math for Kids offers a comprehensive learning experience. The application is crafted to cater to various skill levels with Easy, Medium, and Hard difficulties, ensuring a challenging yet accessible math practice for children.
 
-In the project directory, you can run:
+### Features
 
-### `npm start`
+- **Interactive Math Sections**: Includes various sections such as Number Recognition, Mathematical Signs, Addition, Subtraction, Comparing Numbers, and Operations with Variables.
+- **Difficulty Levels**: Three difficulty levels (Easy, Medium, Hard) to cater to the diverse proficiency of learners.
+- **Visualized Mathematical Operations**: Improve understanding through visual representation of mathematical operations.
+- **Audio Descriptions**: An audio feature that explains the tasks when the speaker icon is clicked, making it easier for kids to understand the exercises.
+- **Lives System**: Each session starts with 3 lives, adding a playful challenge to the learning process.
+- **Timed Challenges**: Introduces time constraints to exercises with 10 seconds for Medium and Hard levels, and 15 seconds for Easy level, encouraging quick thinking.
+- **Points System**: Keeps the learning process motivating by awarding points for correct answers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Live Application
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Experience the application live at [Math for Kids](https://matematykadlasmyka.netlify.app/).
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js installed on your system.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**To set up the project locally, follow these steps:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**1. Clone the repository to your local machine:**
+git clone https://github.com/Beata12/mathApp
 
-### `npm run eject`
+**2. Navigate to the project directory:**
+cd math-for-kids
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**3. Install the necessary packages:**
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**4. Run the application:**
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application will now be running on http://localhost:3000. 
+Enjoy exploring the math exercises!
