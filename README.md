@@ -46,3 +46,8 @@ npm start
 
 The application will now be running on http://localhost:3000. 
 Enjoy exploring the math exercises!
+
+
+![image](https://github.com/Beata12/mathApp/assets/38575612/d7e5eab5-cc10-4c3b-a60c-6f5c4e44ec28)
+
+
