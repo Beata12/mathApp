@@ -18,6 +18,10 @@ Math for Kids is an engaging and educational React-based web application designe
 
 Experience the application live at [Math for Kids](https://matematykadlasmyka.netlify.app/).
 
+
+![image](https://github.com/Beata12/mathApp/assets/38575612/dff8412f-43e9-4a07-8a26-d7611326c95c)
+
+
 ## Getting Started
 
 ### Prerequisites
